@@ -1,0 +1,38 @@
+/* ===== Dasar ===== */
+:root {
+  --paper: #F9F7F4;
+  --mist: #ECEFE9;
+  --sand: #D9D4CB;
+  --mauve: #8B5A6B;
+  --ink: #2E2A2D;
+}
+
+html { scroll-padding-top: 6rem; }
+
+body {
+  font-family: 'Nunito Sans', system-ui, sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+h1, h2, h3, .font-editorial {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Navigasi ===== */
+.glass-nav { background: var(--paper); }
+
+/* ===== Scrollbar ===== */
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: var(--mist); }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 9999px; }
+
+/* ===== Aksesibilitas ===== */
+:focus-visible { outline: 2px solid var(--mauve); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
