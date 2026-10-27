@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AURELIA ARTISTRY — Luxury Bridal & Beauty Make-Up Artist Studio</title>
+  <title>CHIRA MAKE UP — Luxury Bridal & Beauty Make-Up Artist Studio</title>
+  <meta name="description" content="CHIRA MAKE UP — Luxury bridal, editorial & beauty make-up artist studio di Semarang. Complexion HD anti-crack, high-end cosmetics, home service ke seluruh Indonesia." />
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script src="js/tailwind-config.js"></script>
-  <link rel="stylesheet" href="css/style.css">
+  <script src="Tailwind config.js"></script>
+  <link rel="stylesheet" href="Style.css">
 </head>
 <body class="min-h-screen flex flex-col selection:bg-mauve selection:text-white">
 
@@ -23,12 +24,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Brand Logo -->
       <a href="#beranda" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-full bg-mauve hover:bg-mauveDark flex items-center justify-center text-white font-editorial text-2xl font-bold shadow-sm">
-          A
+        <div class="w-10 h-10 rounded-full bg-mauve hover:bg-mauveDark flex items-center justify-center text-white font-editorial text-2xl font-bold shadow-sm transition-colors">
+          C
         </div>
         <div>
-          <span class="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-ink block leading-none">AURELIA</span>
-          <span class="text-[10px]  tracking-[0.25em] text-mauve font-semibold block mt-0.5">Bridal & Beauty Artistry</span>
+          <span class="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-ink block leading-none">CHIRA</span>
+          <span class="text-[10px] tracking-[0.25em] text-mauve font-semibold block mt-0.5">Make Up Artistry</span>
         </div>
       </a>
 
@@ -37,9 +38,8 @@
         <a href="#beranda" class="hover:text-mauve transition-colors">Beranda</a>
         <a href="#portofolio" class="hover:text-mauve transition-colors">Portofolio</a>
         <a href="#layanan" class="hover:text-mauve transition-colors">Paket & Harga</a>
-        <a href="#konsultasi" class="hover:text-mauve transition-colors">Skin & Look Quiz</a>
-        <a href="#kalkulator" class="hover:text-mauve transition-colors">Simulasi & Booking</a>
         <a href="#tentang" class="hover:text-mauve transition-colors">Profil MUA</a>
+        <a href="#testimoni" class="hover:text-mauve transition-colors">Testimoni</a>
       </nav>
 
       <!-- Action Buttons -->
@@ -51,7 +51,7 @@
           <span id="savedCountBadge" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-mauve text-white text-[11px] font-bold flex items-center justify-center">0</span>
         </button>
 
-        <a href="#kalkulator" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-mauve hover:bg-mauveDark text-white text-sm font-medium shadow-md  transition-all">
+        <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-mauve hover:bg-mauveDark text-white text-sm font-medium shadow-md transition-all">
           <span>Booking Jadwal</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -72,9 +72,9 @@
       <a href="#beranda" class="mobile-nav-link block py-2 px-3 rounded-lg hover:bg-mist text-sm font-medium">Beranda</a>
       <a href="#portofolio" class="mobile-nav-link block py-2 px-3 rounded-lg hover:bg-mist text-sm font-medium">Portofolio</a>
       <a href="#layanan" class="mobile-nav-link block py-2 px-3 rounded-lg hover:bg-mist text-sm font-medium">Paket & Harga</a>
-      <a href="#konsultasi" class="mobile-nav-link block py-2 px-3 rounded-lg hover:bg-mist text-sm font-medium">Skin & Look Quiz</a>
-      <a href="#kalkulator" class="mobile-nav-link block py-2 px-3 rounded-lg hover:bg-mist text-sm font-medium">Simulasi & Booking</a>
       <a href="#tentang" class="mobile-nav-link block py-2 px-3 rounded-lg hover:bg-mist text-sm font-medium">Profil MUA</a>
+      <a href="#testimoni" class="mobile-nav-link block py-2 px-3 rounded-lg hover:bg-mist text-sm font-medium">Testimoni</a>
+      <a href="booking.html" class="block py-2.5 px-3 rounded-lg bg-mauve hover:bg-mauveDark text-white text-sm font-semibold text-center mt-2">Booking Jadwal →</a>
     </div>
   </header>
 
@@ -85,8 +85,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <!-- Left Column -->
           <div class="lg:col-span-6 space-y-6">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-sand/50 border border-mauve/30 text-mauveDark text-xs font-semibold tracking-normal ">
-              <span class="w-2 h-2 rounded-full bg-mauve "></span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-sand/50 border border-mauve/30 text-mauveDark text-xs font-semibold tracking-normal">
+              <span class="w-2 h-2 rounded-full bg-mauve"></span>
               Certified Bridal & Editorial Make-Up Artist
             </div>
 
@@ -100,14 +100,14 @@
 
             <!-- CTA Group -->
             <div class="flex flex-wrap items-center gap-4 pt-2">
-              <a href="#kalkulator" class="px-7 py-3.5 rounded-lg bg-mauve hover:bg-mauveDark text-white font-medium text-sm sm:text-base shadow-lg  transition-all flex items-center gap-2">
+              <a href="booking.html" class="px-7 py-3.5 rounded-lg bg-mauve hover:bg-mauveDark text-white font-medium text-sm sm:text-base shadow-lg transition-all flex items-center gap-2">
                 <span>Cek Jadwal & Simulasi Biaya</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                 </svg>
               </a>
-              <a href="#konsultasi" class="px-6 py-3.5 rounded-lg bg-white border border-sand hover:border-mauve text-ink font-medium text-sm sm:text-base shadow-sm transition-all">
-                Coba Look Matcher Quiz
+              <a href="#portofolio" class="px-6 py-3.5 rounded-lg bg-white border border-sand hover:border-mauve text-ink font-medium text-sm sm:text-base shadow-sm transition-all">
+                Lihat Portofolio Kami
               </a>
             </div>
 
@@ -131,14 +131,10 @@
           <!-- Right Column: Hero Visual -->
           <div class="lg:col-span-6 relative">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-              <img
-                src="img/foto-1.jpg"
-                alt="Potret Pengantin Signature Soft Glam Aurelia Artistry"
-                class="w-full h-auto object-cover"
-              />
+              <img src="FOTO-CHIRA/ARTIST 2.png" alt="Potret Pengantin Signature Soft Glam CHIRA Make Up" class="w-full h-auto object-cover" />
               <div class="absolute inset-0 bg-ink/70 flex items-end p-6">
                 <div class="text-white">
-                  <span class="px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-md text-[11px]  tracking-normal font-medium">Signature Look 2026</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-md text-[11px] tracking-normal font-medium">Signature Look 2026</span>
                   <h2 class="font-editorial text-2xl sm:text-3xl font-semibold mt-1">Royal Champagne Dewy Bridal</h2>
                   <p class="text-xs sm:text-sm text-sand/90">Perpaduan riasan pengantin modern & sanggul melati kontemporer</p>
                 </div>
@@ -153,7 +149,7 @@
                 </svg>
               </div>
               <div>
-                <p class="text-xs font-bold text-ink  tracking-normal">High-End Cosmetics Only</p>
+                <p class="text-xs font-bold text-ink tracking-normal">High-End Cosmetics Only</p>
                 <p class="text-xs text-ink/70">Dior Backstage, NARS, Charlotte Tilbury, Shu Uemura & Hourglass</p>
               </div>
             </div>
@@ -167,11 +163,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
-            <span class="text-xs  tracking-[0.2em] text-mauve font-semibold">Galeri Karya & Lookbook</span>
+            <span class="text-xs tracking-[0.2em] text-mauve font-semibold">Galeri Karya & Lookbook</span>
             <h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-ink mt-1">Sentuhan Riasan di Setiap Momen</h2>
           </div>
 
-          <!-- Filter Buttons -->
           <div id="portfolioFilters" class="flex flex-wrap gap-2">
             <button type="button" data-filter="all" class="portfolio-filter-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-ink text-white shadow-sm transition-all">Semua Look (6)</button>
             <button type="button" data-filter="bridal" class="portfolio-filter-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-mist text-ink hover:bg-sand/60 transition-all">Bridal & Adat</button>
@@ -180,118 +175,17 @@
           </div>
         </div>
 
-        <!-- Portfolio Grid -->
         <div id="portfolioGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           <!-- Populated dynamically via JS -->
         </div>
       </div>
     </section>
 
-    <!-- INTERACTIVE SKIN & LOOK MATCHER QUIZ -->
-    <section id="konsultasi" class="py-16 bg-mist/60 border-y border-sand/60">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-10">
-          <span class="text-xs  tracking-[0.2em] text-mauve font-semibold">Konsultasi AI Virtual</span>
-          <h2 class="font-editorial text-3xl sm:text-4xl font-bold text-ink mt-1">Temukan Signature Makeup Look Anda</h2>
-          <p class="text-sm sm:text-base text-ink/75 mt-2">
-            Pilih jenis kulit, undertone, dan suasana acara Anda untuk mendapatkan rekomendasi teknik complexion dan nuansa warna dari MUA kami.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-3xl shadow-xl border border-sand/70 p-6 sm:p-8 lg:p-10">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <!-- QuizControls -->
-            <div class="lg:col-span-7 space-y-6">
-              <!-- Step 1: Skin Type -->
-              <div>
-                <label class="block text-xs font-bold  tracking-normal text-ink/80 mb-2.5">1. Apa Kondisi Kulit Wajah Anda?</label>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="quizSkinTypeGroup">
-                  <button type="button" data-skin="oily" class="quiz-skin-btn px-3 py-2.5 rounded-xl border border-mauve bg-mist/80 text-ink text-xs font-semibold text-center transition-all">Berminyak / Acne</button>
-                  <button type="button" data-skin="dry" class="quiz-skin-btn px-3 py-2.5 rounded-xl border border-sand hover:border-mauve text-ink/80 text-xs font-medium text-center transition-all">Kering / Dehidrasi</button>
-                  <button type="button" data-skin="combination" class="quiz-skin-btn px-3 py-2.5 rounded-xl border border-sand hover:border-mauve text-ink/80 text-xs font-medium text-center transition-all">Kombinasi T-Zone</button>
-                  <button type="button" data-skin="sensitive" class="quiz-skin-btn px-3 py-2.5 rounded-xl border border-sand hover:border-mauve text-ink/80 text-xs font-medium text-center transition-all">Sensitif / Kemerahan</button>
-                </div>
-              </div>
-
-              <!-- Step 2: Undertone -->
-              <div>
-                <label class="block text-xs font-bold  tracking-normal text-ink/80 mb-2.5">2. Pilih Skin Undertone Anda</label>
-                <div class="grid grid-cols-3 gap-3" id="quizUndertoneGroup">
-                  <button type="button" data-undertone="warm" class="quiz-undertone-btn p-3 rounded-xl border border-mauve bg-mist/80 text-left transition-all flex items-center gap-2.5">
-                    <span class="w-5 h-5 rounded-full bg-[#E3B788] border border-ink/20 shrink-0"></span>
-                    <div>
-                      <span class="block text-xs font-semibold text-ink">Warm / Kuning Langsat</span>
-                      <span class="block text-[10px] text-ink/60">Urat nadi kehijauan</span>
-                    </div>
-                  </button>
-                  <button type="button" data-undertone="neutral" class="quiz-undertone-btn p-3 rounded-xl border border-sand hover:border-mauve text-left transition-all flex items-center gap-2.5">
-                    <span class="w-5 h-5 rounded-full bg-[#E8C5B0] border border-ink/20 shrink-0"></span>
-                    <div>
-                      <span class="block text-xs font-semibold text-ink">Neutral Olive</span>
-                      <span class="block text-[10px] text-ink/60">Biru & hijau seimbang</span>
-                    </div>
-                  </button>
-                  <button type="button" data-undertone="cool" class="quiz-undertone-btn p-3 rounded-xl border border-sand hover:border-mauve text-left transition-all flex items-center gap-2.5">
-                    <span class="w-5 h-5 rounded-full bg-[#F2CFC9] border border-ink/20 shrink-0"></span>
-                    <div>
-                      <span class="block text-xs font-semibold text-ink">Cool / Pinkish</span>
-                      <span class="block text-[10px] text-ink/60">Urat nadi kebiruan</span>
-                    </div>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Step 3: Event Vibe -->
-              <div>
-                <label class="block text-xs font-bold  tracking-normal text-ink/80 mb-2.5">3. Momen Acara yang Dihadiri</label>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="quizOccasionGroup">
-                  <button type="button" data-occasion="wedding" class="quiz-occasion-btn px-3.5 py-2.5 rounded-xl border border-mauve bg-mist/80 text-ink text-xs font-semibold transition-all">Resepsi / Akad Nikah</button>
-                  <button type="button" data-occasion="graduation" class="quiz-occasion-btn px-3.5 py-2.5 rounded-xl border border-sand hover:border-mauve text-ink/80 text-xs font-medium transition-all">Wisuda / Lamaran Pagi</button>
-                  <button type="button" data-occasion="gala" class="quiz-occasion-btn px-3.5 py-2.5 rounded-xl border border-sand hover:border-mauve text-ink/80 text-xs font-medium transition-all">Gala Dinner / Photoshoot</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- QuizDynamic Output Card -->
-            <div class="lg:col-span-5 bg-gradient-to-br from-ink to-[#3E2B26] text-white rounded-2xl p-6 space-y-4 shadow-lg">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-lg bg-mauve/30 border border-mauve text-sand text-[11px] font-semibold  tracking-normal">Rekomendasi Personal</span>
-                <span id="quizMatchScore" class="text-xs text-sand font-medium">98% Match</span>
-              </div>
-
-              <h3 id="quizResultTitle" class="font-editorial text-2xl sm:text-3xl font-bold text-sand">Velvet Matte Terracotta Bridal</h3>
-              <p id="quizResultDesc" class="text-xs sm:text-sm text-paper/85 leading-relaxed">
-                Menggunakan teknik skin-prep oil-control primer dengan airbrush matte foundation yang mengunci minyak di area T-zone tanpa terlihat tebal.
-              </p>
-
-              <!-- Color Swatches -->
-              <div class="pt-2">
-                <p class="text-[11px]  tracking-normal text-sand/80 mb-2">Palet Shade Rekomendasi:</p>
-                <div id="quizPaletteSwatches" class="flex items-center gap-3">
-                  <!-- Populated via JS -->
-                </div>
-              </div>
-
-              <div class="pt-3 border-t border-white/15 flex items-center justify-between gap-2">
-                <div>
-                  <span class="text-[11px] text-sand/75 block">Paket yang Disarankan:</span>
-                  <span id="quizSuggestedPackage" class="text-sm font-semibold text-white">Royal Bridal Full-Day</span>
-                </div>
-                <button id="applyQuizToCalculatorBtn" type="button" class="px-4 py-2 rounded-lg bg-mauve hover:bg-mauveDark text-white text-xs font-semibold transition-all shrink-0">
-                  Pilih Paket Ini →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- SERVICES & PRICING PACKAGES -->
-    <section id="layanan" class="py-16 bg-paper">
+    <section id="layanan" class="py-16 bg-mist/40 border-y border-sand/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-12">
-          <span class="text-xs  tracking-[0.2em] text-mauve font-semibold">Investasi Kecantikan</span>
+          <span class="text-xs tracking-[0.2em] text-mauve font-semibold">Investasi Kecantikan</span>
           <h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-ink mt-1">Pilihan Paket & Layanan MUA</h2>
           <p class="text-sm sm:text-base text-ink/75 mt-2">
             Semua paket sudah termasuk skin preparation premium, bulu mata palsu 3D human-hair artisan, serta pinjam pakai softlens normal/minus.
@@ -301,185 +195,14 @@
         <div id="packagesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Populated dynamically via JS -->
         </div>
-      </div>
-    </section>
 
-    <!-- INTERACTIVE BOOKING & PRICE SIMULATOR -->
-    <section id="kalkulator" class="py-16 bg-mist/50 border-t border-sand/60">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-
-          <!-- Left Column: Calculator & Form -->
-          <div class="lg:col-span-7 bg-white rounded-3xl shadow-xl border border-sand/80 p-6 sm:p-8 space-y-6">
-            <div>
-              <span class="text-xs  tracking-[0.2em] text-mauve font-semibold">Reservasi & Estimasi Instan</span>
-              <h2 class="font-editorial text-3xl sm:text-4xl font-bold text-ink mt-1">Kalkulator Biaya & Booking Jadwal</h2>
-              <p class="text-xs sm:text-sm text-ink/70 mt-1">Hitung estimasi biaya sesuai kebutuhan acara Anda dan kunci tanggal secara instan.</p>
-            </div>
-
-            <form id="bookingForm" class="space-y-5">
-              <!-- Row 1: Client Details -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="clientName" class="block text-xs font-semibold text-ink mb-1.5">Nama Lengkap Anda *</label>
-                  <input id="clientName" type="text" required placeholder="Contoh: Clarissa Putri" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60" />
-                </div>
-                <div>
-                  <label for="clientPhone" class="block text-xs font-semibold text-ink mb-1.5">Nomor WhatsApp Aktif *</label>
-                  <input id="clientPhone" type="tel" required placeholder="Contoh: 081234567890" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60" />
-                </div>
-              </div>
-
-              <!-- Row 2: Event Date & Time -->
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div>
-                  <label for="eventDate" class="block text-xs font-semibold text-ink mb-1.5">Tanggal Acara *</label>
-                  <input id="eventDate" type="date" required value="2026-11-15" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60" />
-                </div>
-                <div>
-                  <label for="eventTime" class="block text-xs font-semibold text-ink mb-1.5">Jam Mulai Makeup *</label>
-                  <select id="eventTime" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60">
-                    <option value="03:00">03:00 WIB (Subuh / Akad Pagi)</option>
-                    <option value="05:00" selected>05:00 WIB (Wisuda / Pagi)</option>
-                    <option value="09:00">09:00 WIB (Siang / Lamaran)</option>
-                    <option value="14:00">14:00 WIB (Resepsi Malam / Party)</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="eventCity" class="block text-xs font-semibold text-ink mb-1.5">Lokasi / Kota Acara *</label>
-                  <select id="eventCity" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60">
-                    <option value="semarang" data-fee="0">Semarang Kota (Free Transport)</option>
-                    <option value="ungaran" data-fee="150000">Kab. Semarang / Ungaran (+Rp 150rb)</option>
-                    <option value="solo" data-fee="350000">Solo / Yogyakarta (+Rp 350rb)</option>
-                    <option value="jakarta" data-fee="1200000">Jakarta / Bandung / Surabaya (+Rp 1,2jt)</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Row 3: Main Package Selector -->
-              <div>
-                <label for="selectedPackageSelect" class="block text-xs font-semibold text-ink mb-1.5">Pilih Paket Utama *</label>
-                <select id="selectedPackageSelect" class="w-full px-4 py-3 rounded-xl border border-mauve bg-mist/40 font-medium text-sm text-ink focus:outline-none">
-                  <option value="bridal" data-price="4500000">Royal Bridal Full-Day (Akad + Resepsi + Hairdo/Hijab) — Rp 4.500.000</option>
-                  <option value="engagement" data-price="1650000">Intimate Engagement / Tunangan + Hairdo/Hijab — Rp 1.650.000</option>
-                  <option value="graduation" data-price="850000">Flawless Graduation / Wisuda + Hairdo/Hijab — Rp 850.000</option>
-                  <option value="party" data-price="750000">Red Carpet Party / Bridesmaid Glam — Rp 750.000</option>
-                  <option value="masterclass" data-price="1950000">1-on-1 Private Self-Makeup Class (2 Sesi) — Rp 1.950.000</option>
-                </select>
-              </div>
-
-              <!-- Row 4: Additional Family / Bridesmaid Makeup -->
-              <div class="p-4 rounded-2xl bg-paper border border-sand space-y-3">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <span class="text-xs font-bold text-ink block">Tambahan Rias Ibu / Keluarga / Bridesmaid</span>
-                    <span class="text-[11px] text-ink/65">Rp 450.000 / orang (Sudah termasuk Hairdo / Hijab Styling)</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <button type="button" id="decExtraPaxBtn" class="w-8 h-8 rounded-full bg-mist hover:bg-sand text-ink font-bold text-sm flex items-center justify-center">−</button>
-                    <span id="extraPaxCountDisplay" class="w-8 text-center font-bold text-sm">0</span>
-                    <button type="button" id="incExtraPaxBtn" class="w-8 h-8 rounded-full bg-mist hover:bg-sand text-ink font-bold text-sm flex items-center justify-center">+</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Row 5: Optional Add-ons -->
-              <div>
-                <span class="block text-xs font-semibold text-ink mb-2">Layanan Tambahan (Opsional)</span>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-sand hover:border-mauve cursor-pointer bg-paper/40">
-                    <input type="checkbox" class="addon-checkbox w-4 h-4 accent-mauve" value="airbrush" data-name="Upgrade HD Airbrush Complexion" data-price="350000" />
-                    <span class="text-xs text-ink flex-grow">HD Airbrush Complexion <strong class="text-mauveDark">(+Rp 350rb)</strong></span>
-                  </label>
-                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-sand hover:border-mauve cursor-pointer bg-paper/40">
-                    <input type="checkbox" class="addon-checkbox w-4 h-4 accent-mauve" value="melati" data-name="Ronce Melati Segar & Siger/Aksesoris" data-price="550000" />
-                    <span class="text-xs text-ink flex-grow">Melati Segar & Aksesoris <strong class="text-mauveDark">(+Rp 550rb)</strong></span>
-                  </label>
-                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-sand hover:border-mauve cursor-pointer bg-paper/40">
-                    <input type="checkbox" class="addon-checkbox w-4 h-4 accent-mauve" value="standby" data-name="Standby Touch-Up Ekstra (3 Jam)" data-price="500000" />
-                    <span class="text-xs text-ink flex-grow">Standby Touch-Up 3 Jam <strong class="text-mauveDark">(+Rp 500rb)</strong></span>
-                  </label>
-                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-sand hover:border-mauve cursor-pointer bg-paper/40">
-                    <input type="checkbox" class="addon-checkbox w-4 h-4 accent-mauve" value="trial" data-name="Sesi Test Makeup Sebelum Hari-H" data-price="650000" />
-                    <span class="text-xs text-ink flex-grow">Sesi Test Makeup Studio <strong class="text-mauveDark">(+Rp 650rb)</strong></span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Row 6: Special Notes -->
-              <div>
-                <label for="clientNotes" class="block text-xs font-semibold text-ink mb-1.5">Catatan Khusus (Warna Kebaya/Gaun, Riwayat Alergi, dll.)</label>
-                <textarea id="clientNotes" rows="2" placeholder="Contoh: Kebaya warna Dusty Rose, kulit agak sensitif di area pipi..." class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60"></textarea>
-              </div>
-
-              <button type="submit" class="w-full py-3.5 rounded-full bg-mauve hover:bg-mauveDark text-white font-semibold text-sm sm:text-base shadow-lg  transition-all">
-                Simpan Reservasi & Buat Invoice Booking
-              </button>
-            </form>
-          </div>
-
-          <!-- Right Column: Live Price Breakdown & Availability Card -->
-          <div class="lg:col-span-5 space-y-6">
-            <div class="bg-ink text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-5 sticky top-28">
-              <div class="flex items-center justify-between border-b border-white/15 pb-4">
-                <div>
-                  <span class="text-[11px]  tracking-normal text-sand block">Ringkasan Estimasi Biaya</span>
-                  <h3 class="font-editorial text-2xl font-bold text-white mt-0.5">Aurelia Artistry Invoice</h3>
-                </div>
-                <div id="dateStatusPill" class="px-3 py-1 rounded-lg bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold">
-                  ✓ Slot Tersedia
-                </div>
-              </div>
-
-              <!-- Breakdown List -->
-              <div class="space-y-3 text-xs sm:text-sm">
-                <div class="flex justify-between items-start gap-2">
-                  <span id="summaryMainPackageName" class="text-sand/90">Royal Bridal Full-Day</span>
-                  <span id="summaryMainPackagePrice" class="font-semibold text-white shrink-0">Rp 4.500.000</span>
-                </div>
-                <div id="summaryExtraPaxRow" class="hidden justify-between items-start gap-2">
-                  <span id="summaryExtraPaxLabel" class="text-sand/90">Tambahan Rias Keluarga (0 org)</span>
-                  <span id="summaryExtraPaxPrice" class="font-semibold text-white shrink-0">Rp 0</span>
-                </div>
-                <div id="summaryAddonsContainer" class="space-y-2"></div>
-                <div class="flex justify-between items-start gap-2 pt-2 border-t border-white/10">
-                  <span id="summaryTransportLabel" class="text-sand/80">Biaya Transport Home Service</span>
-                  <span id="summaryTransportPrice" class="font-medium text-emerald-300 shrink-0">Gratis</span>
-                </div>
-              </div>
-
-              <!-- Promo Code Input -->
-              <div class="pt-3 border-t border-white/15">
-                <label for="promoCodeInput" class="block text-[11px]  tracking-normal text-sand/80 mb-1.5">Kode Voucher Promo (Coba: <strong class="text-white">GLOW2026</strong>)</label>
-                <div class="flex gap-2">
-                  <input id="promoCodeInput" type="text" placeholder="Masukkan kode voucher" class="flex-grow px-3.5 py-2 rounded-xl bg-white/10 border border-white/20 text-white text-xs placeholder:text-white/40 focus:outline-none focus:border-sand " />
-                  <button id="applyPromoBtn" type="button" class="px-4 py-2 rounded-xl bg-sand text-ink text-xs font-bold hover:bg-white transition-all">Pakai</button>
-                </div>
-                <p id="promoFeedbackText" class="text-[11px] text-emerald-300 mt-1 hidden"></p>
-              </div>
-
-              <!-- Total & DP -->
-              <div class="pt-4 border-t border-white/20 space-y-2">
-                <div class="flex justify-between items-baseline">
-                  <span class="text-xs  tracking-normal text-sand">Total Investasi</span>
-                  <span id="summaryTotalAmount" class="font-editorial text-3xl sm:text-4xl font-bold text-sand">Rp 4.500.000</span>
-                </div>
-                <div class="flex justify-between items-center text-xs text-white/75 bg-white/5 p-3 rounded-xl">
-                  <span>Minimal Down Payment (DP 30% Lock Tanggal):</span>
-                  <strong id="summaryDpAmount" class="text-white">Rp 1.350.000</strong>
-                </div>
-              </div>
-
-              <!-- Copy Quote Button -->
-              <button id="copyEstimateBtn" type="button" class="w-full py-2.5 rounded-xl border border-sand/40 hover:bg-white/10 text-sand text-xs font-semibold transition-all flex items-center justify-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                </svg>
-                <span>Salin Rincian Estimasi untuk Chat WhatsApp</span>
-              </button>
-            </div>
-          </div>
-
+        <div class="text-center mt-10">
+          <a href="booking.html" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-mauve hover:bg-mauveDark text-white font-medium text-sm sm:text-base shadow-lg transition-all">
+            <span>Booking & Simulasi Biaya Sekarang</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -491,15 +214,11 @@
           <div class="lg:col-span-5">
             <div class="relative max-w-md mx-auto">
               <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-white">
-                <img
-                  src="img/foto-2.jpg"
-                  alt="Aurelia Larasati - Lead Make-Up Artist"
-                  class="w-full h-auto object-cover"
-                />
+                <img src="FOTO-CHIRA/ARTIST 1.png" alt="Chira Larasati - Lead Make-Up Artist CHIRA Make Up" class="w-full h-auto object-cover" />
               </div>
               <div class="mt-4 bg-mist rounded-2xl p-4 border border-sand flex items-center justify-between">
                 <div>
-                  <p class="font-editorial text-xl font-bold text-ink">Aurelia Larasati, S.Sn.</p>
+                  <p class="font-editorial text-xl font-bold text-ink">Chira Larasati, S.Sn.</p>
                   <p class="text-xs text-mauveDark font-medium">Founder & Master Bridal Make-Up Artist</p>
                 </div>
                 <span class="px-3 py-1 rounded-lg bg-white text-ink text-xs font-semibold border border-sand">8+ Tahun Pengalaman</span>
@@ -508,12 +227,12 @@
           </div>
 
           <div class="lg:col-span-7 space-y-6">
-            <span class="text-xs  tracking-[0.2em] text-mauve font-semibold">Tentang Aurelia Artistry</span>
+            <span class="text-xs tracking-[0.2em] text-mauve font-semibold">Tentang CHIRA Make Up</span>
             <h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-ink leading-tight">
               Menonjolkan Karakter Terbaik Wajah Anda Tanpa Mengubah Jati Diri
             </h2>
             <p class="text-sm sm:text-base text-ink/75 leading-relaxed">
-              Berawal dari kecintaan pada seni rias pengantin Nusantara dan teknik <em>Korean Glass Skin</em>, Aurelia Artistry hadir untuk memberikan pengalaman rias yang menenangkan, higienis, dan tahan lama. Setiap sapuan kuas disesuaikan dengan anatomi tulang wajah Anda.
+              Berawal dari kecintaan pada seni rias pengantin Nusantara dan teknik <em>Korean Glass Skin</em>, CHIRA Make Up hadir untuk memberikan pengalaman rias yang menenangkan, higienis, dan tahan lama. Setiap sapuan kuas disesuaikan dengan anatomi tulang wajah Anda.
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -527,20 +246,140 @@
               </div>
             </div>
 
-            <!-- Client Testimonials Carousel / Cards -->
-            <div class="pt-4">
-              <h3 class="text-xs font-bold  tracking-normal text-mauveDark mb-3">Apa Kata Pengantin & Klien Kami</h3>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="p-4 rounded-2xl bg-mist/50 border border-sand">
-                  <div class="flex text-sage text-xs mb-1">★★★★★</div>
-                  <p class="text-xs text-ink/80 italic">"Makeup akad dari jam 4 subuh sampai resepsi jam 9 malam sama sekali nggak crack di garis senyum! Semua tamu muji pangling tapi tetap kelihatan natural."</p>
-                  <p class="text-xs font-bold text-ink mt-2">— dr. Nadia Kusuma, Bride (Semarang)</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-mist/50 border border-sand">
-                  <div class="flex text-sage text-xs mb-1">★★★★★</div>
-                  <p class="text-xs text-ink/80 italic">"Kulitku lagi breakout parah pas wisuda, tapi Kak Aurel berhasil nutup kemerahan dengan mulus banget tanpa dempul. Bulu matanya juga super nyaman!"</p>
-                  <p class="text-xs font-bold text-ink mt-2">— Sekar Arum, Wisuda UNDIP</p>
-                </div>
+            <!-- CTA -->
+            <div class="pt-2">
+              <a href="booking.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-ink hover:bg-mauveDark text-white font-medium text-sm shadow-md transition-all">
+                <span>Jadwalkan Konsultasi & Booking</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION (BARU) -->
+    <section id="testimoni" class="py-20 bg-mist/50 border-t border-sand/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs tracking-[0.2em] text-mauve font-semibold">Testimoni Klien</span>
+          <h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-ink mt-1">Kata Mereka Tentang CHIRA</h2>
+          <p class="text-sm sm:text-base text-ink/75 mt-3">Cerita nyata dari pengantin, wisudawati, dan klien yang telah merasakan sentuhan riasan kami.</p>
+
+          <!-- Aggregate Rating -->
+          <div class="mt-6 inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-white border border-sand shadow-sm">
+            <div class="text-left">
+              <div class="flex text-[#B8936E] text-lg leading-none">★★★★★</div>
+              <p class="text-[11px] text-ink/60 mt-1">Rata-rata Rating</p>
+            </div>
+            <div class="w-px h-10 bg-sand"></div>
+            <div class="text-left">
+              <p class="font-editorial text-2xl font-bold text-ink leading-none">4.9 <span class="text-sm text-ink/60 font-normal">/ 5.0</span></p>
+              <p class="text-[11px] text-ink/60 mt-1">dari <strong class="text-ink">850+</strong> klien puas</p>
+            </div>
+            <div class="w-px h-10 bg-sand hidden sm:block"></div>
+            <div class="text-left hidden sm:block">
+              <p class="font-editorial text-2xl font-bold text-ink leading-none">98%</p>
+              <p class="text-[11px] text-ink/60 mt-1">Repeat & Referral</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-white rounded-2xl p-6 border border-sand/80 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex text-[#B8936E] text-sm">★★★★★</div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">✓ Verified</span>
+            </div>
+            <p class="text-sm text-ink/80 italic leading-relaxed flex-grow">"Makeup akad dari jam 4 subuh sampai resepsi jam 9 malam sama sekali nggak crack di garis senyum! Semua tamu muji pangling tapi tetap kelihatan natural."</p>
+            <div class="mt-4 pt-4 border-t border-sand/60 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-mauve/15 text-mauveDark flex items-center justify-center font-editorial font-bold text-sm shrink-0">NK</div>
+              <div>
+                <p class="text-sm font-semibold text-ink">dr. Nadia Kusuma</p>
+                <p class="text-[11px] text-ink/60">Bride · Semarang</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-2xl p-6 border border-sand/80 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex text-[#B8936E] text-sm">★★★★★</div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">✓ Verified</span>
+            </div>
+            <p class="text-sm text-ink/80 italic leading-relaxed flex-grow">"Kulitku lagi breakout parah pas wisuda, tapi Kak Chira berhasil nutup kemerahan dengan mulus banget tanpa dempul. Bulu matanya juga super nyaman!"</p>
+            <div class="mt-4 pt-4 border-t border-sand/60 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-mauve/15 text-mauveDark flex items-center justify-center font-editorial font-bold text-sm shrink-0">SA</div>
+              <div>
+                <p class="text-sm font-semibold text-ink">Sekar Arum</p>
+                <p class="text-[11px] text-ink/60">Wisuda UNDIP · Semarang</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-2xl p-6 border border-sand/80 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex text-[#B8936E] text-sm">★★★★★</div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">✓ Verified</span>
+            </div>
+            <p class="text-sm text-ink/80 italic leading-relaxed flex-grow">"Sebagai ibu pengantin saya pengen tampil anggun tapi nggak berlebihan. Hasilnya pas banget, banyak yang bilang saya keliatan 10 tahun lebih muda!"</p>
+            <div class="mt-4 pt-4 border-t border-sand/60 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-mauve/15 text-mauveDark flex items-center justify-center font-editorial font-bold text-sm shrink-0">RW</div>
+              <div>
+                <p class="text-sm font-semibold text-ink">Ibu Ratna Wulandari</p>
+                <p class="text-[11px] text-ink/60">Ibu Pengantin · Solo</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-2xl p-6 border border-sand/80 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex text-[#B8936E] text-sm">★★★★★</div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">✓ Verified</span>
+            </div>
+            <p class="text-sm text-ink/80 italic leading-relaxed flex-grow">"Sesi prewedding outdoor di pantai, makeup tetap flawless walau kena angin dan panas. Hasil fotonya memuaskan banget, terima kasih CHIRA!"</p>
+            <div class="mt-4 pt-4 border-t border-sand/60 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-mauve/15 text-mauveDark flex items-center justify-center font-editorial font-bold text-sm shrink-0">VD</div>
+              <div>
+                <p class="text-sm font-semibold text-ink">Vina & Dimas</p>
+                <p class="text-[11px] text-ink/60">Prewedding · Yogyakarta</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white rounded-2xl p-6 border border-sand/80 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex text-[#B8936E] text-sm">★★★★★</div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">✓ Verified</span>
+            </div>
+            <p class="text-sm text-ink/80 italic leading-relaxed flex-grow">"Datang ke Semarang khusus buat rias sama CHIRA. Home service-nya profesional, alat steril, dan hasilnya sesuai referensi yang aku kasih."</p>
+            <div class="mt-4 pt-4 border-t border-sand/60 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-mauve/15 text-mauveDark flex items-center justify-center font-editorial font-bold text-sm shrink-0">CW</div>
+              <div>
+                <p class="text-sm font-semibold text-ink">Clara Wijaya</p>
+                <p class="text-[11px] text-ink/60">Bridesmaid · Jakarta</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white rounded-2xl p-6 border border-sand/80 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex text-[#B8936E] text-sm">★★★★★</div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">✓ Verified</span>
+            </div>
+            <p class="text-sm text-ink/80 italic leading-relaxed flex-grow">"Korean glass skin-nya beneran glowing seharian tanpa touch-up. Sudah 3 temenku ikut booking setelah lihat hasil fotoku!"</p>
+            <div class="mt-4 pt-4 border-t border-sand/60 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-mauve/15 text-mauveDark flex items-center justify-center font-editorial font-bold text-sm shrink-0">MP</div>
+              <div>
+                <p class="text-sm font-semibold text-ink">Maya Puspita</p>
+                <p class="text-[11px] text-ink/60">Wisuda UI · Depok</p>
               </div>
             </div>
           </div>
@@ -552,7 +391,7 @@
     <section class="py-14 bg-mist/40 border-t border-sand/60">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">
-          <span class="text-xs  tracking-[0.2em] text-mauve font-semibold">Informasi Penting</span>
+          <span class="text-xs tracking-[0.2em] text-mauve font-semibold">Informasi Penting</span>
           <h2 class="font-editorial text-3xl sm:text-4xl font-bold text-ink mt-1">Pertanyaan yang Sering Diajukan (FAQ)</h2>
         </div>
 
@@ -595,16 +434,16 @@
   <footer class="bg-ink text-sand py-12 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="text-center sm:text-left">
-        <span class="font-editorial text-2xl font-bold text-white tracking-tight">AURELIA ARTISTRY</span>
+        <span class="font-editorial text-2xl font-bold text-white tracking-tight">CHIRA MAKE UP</span>
         <p class="text-xs text-sand/70 mt-1">Studio Utama: Jl. Diponegoro No. 48, Semarang • Melayani Seluruh Indonesia</p>
       </div>
       <div class="flex flex-wrap items-center gap-4 text-xs text-sand/80">
         <a href="#portofolio" class="hover:text-white">Portofolio</a>
         <a href="#layanan" class="hover:text-white">Daftar Harga</a>
-        <a href="#konsultasi" class="hover:text-white">Skin Quiz</a>
-        <a href="#kalkulator" class="hover:text-white">Reservasi Online</a>
+        <a href="#testimoni" class="hover:text-white">Testimoni</a>
+        <a href="booking.html" class="hover:text-white">Reservasi Online</a>
       </div>
-      <p class="text-xs text-sand/60">© 2026 Aurelia Artistry MUA Studio. All rights reserved.</p>
+      <p class="text-xs text-sand/60">© 2026 CHIRA Make Up Studio. All rights reserved.</p>
     </div>
   </footer>
 
@@ -617,22 +456,22 @@
       </div>
       <div class="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-4">
         <div class="space-y-3">
-          <span id="modalLookCategory" class="px-3 py-1 rounded-lg bg-mist text-mauveDark text-xs font-semibold  tracking-normal">Bridal</span>
+          <span id="modalLookCategory" class="px-3 py-1 rounded-lg bg-mist text-mauveDark text-xs font-semibold tracking-normal">Bridal</span>
           <h3 id="modalLookTitle" class="font-editorial text-3xl font-bold text-ink">Judul Look</h3>
           <p id="modalLookDesc" class="text-xs sm:text-sm text-ink/75 leading-relaxed"></p>
           <div class="pt-2 border-t border-sand">
-            <p class="text-xs font-bold  tracking-normal text-ink mb-1">Produk Utama yang Digunakan:</p>
+            <p class="text-xs font-bold tracking-normal text-ink mb-1">Produk Utama yang Digunakan:</p>
             <p id="modalLookProducts" class="text-xs text-ink/75"></p>
           </div>
           <div>
-            <p class="text-xs font-bold  tracking-normal text-ink mb-1">Ketahanan & Finish:</p>
+            <p class="text-xs font-bold tracking-normal text-ink mb-1">Ketahanan & Finish:</p>
             <p id="modalLookFinish" class="text-xs text-mauveDark font-medium"></p>
           </div>
         </div>
         <div class="pt-4 flex items-center gap-3">
-          <button id="bookThisLookBtn" type="button" class="w-full py-3 rounded-full bg-mauve hover:bg-mauveDark text-white text-xs sm:text-sm font-semibold shadow-md  transition-all">
+          <a href="booking.html" id="bookThisLookBtn" class="w-full py-3 rounded-full bg-mauve hover:bg-mauveDark text-white text-xs sm:text-sm font-semibold shadow-md transition-all text-center">
             Booking Look Ini Sekarang
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -651,14 +490,14 @@
         </div>
 
         <div>
-          <h4 class="text-xs font-bold  tracking-normal text-mauveDark mb-2.5">Invoice Reservasi Anda</h4>
+          <h4 class="text-xs font-bold tracking-normal text-mauveDark mb-2.5">Invoice Reservasi Anda</h4>
           <div id="savedBookingsList" class="space-y-3">
             <!-- Populated via JS -->
           </div>
         </div>
 
         <div class="pt-4 border-t border-sand">
-          <h4 class="text-xs font-bold  tracking-normal text-mauveDark mb-2.5">Look Portofolio Favorit</h4>
+          <h4 class="text-xs font-bold tracking-normal text-mauveDark mb-2.5">Look Portofolio Favorit</h4>
           <div id="savedFavoritesList" class="space-y-2.5">
             <!-- Populated via JS -->
           </div>

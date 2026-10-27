@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking & Simulasi Biaya — CHIRA MAKE UP</title>
+  <meta name="description" content="Formulir reservasi online dan kalkulator estimasi biaya CHIRA Make Up. Kunci tanggal Anda sekarang." />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="Tailwind config.js"></script>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body class="min-h-screen flex flex-col selection:bg-mauve selection:text-white">
+
+  <!-- Minimal Header -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-sand/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-mauve hover:bg-mauveDark flex items-center justify-center text-white font-editorial text-2xl font-bold shadow-sm transition-colors">
+          C
+        </div>
+        <div>
+          <span class="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-ink block leading-none">CHIRA</span>
+          <span class="text-[10px] tracking-[0.25em] text-mauve font-semibold block mt-0.5">Make Up Artistry</span>
+        </div>
+      </a>
+
+      <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-mist hover:bg-sand/60 text-ink text-sm font-medium transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Kembali ke Beranda
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow py-12 sm:py-16 bg-mist/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Breadcrumb & Title -->
+      <div class="mb-10 text-center max-w-2xl mx-auto">
+        <span class="text-xs tracking-[0.2em] text-mauve font-semibold">Reservasi & Estimasi Instan</span>
+        <h1 class="font-editorial text-4xl sm:text-5xl font-bold text-ink mt-1">Kalkulator Biaya & Booking Jadwal</h1>
+        <p class="text-sm sm:text-base text-ink/70 mt-3">Hitung estimasi biaya sesuai kebutuhan acara Anda dan kunci tanggal secara instan.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+        <!-- Left Column: Calculator & Form -->
+        <div class="lg:col-span-7 bg-white rounded-3xl shadow-xl border border-sand/80 p-6 sm:p-8 space-y-6">
+          <form id="bookingForm" class="space-y-5">
+            <!-- Row 1: Client Details -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="clientName" class="block text-xs font-semibold text-ink mb-1.5">Nama Lengkap Anda *</label>
+                <input id="clientName" type="text" required placeholder="Contoh: Clarissa Putri" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60" />
+              </div>
+              <div>
+                <label for="clientPhone" class="block text-xs font-semibold text-ink mb-1.5">Nomor WhatsApp Aktif *</label>
+                <input id="clientPhone" type="tel" required placeholder="Contoh: 081234567890" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60" />
+              </div>
+            </div>
+
+            <!-- Row 2: Event Date & Time -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label for="eventDate" class="block text-xs font-semibold text-ink mb-1.5">Tanggal Acara *</label>
+                <input id="eventDate" type="date" required value="2026-11-15" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60" />
+              </div>
+              <div>
+                <label for="eventTime" class="block text-xs font-semibold text-ink mb-1.5">Jam Mulai Makeup *</label>
+                <select id="eventTime" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60">
+                  <option value="03:00">03:00 WIB (Subuh / Akad Pagi)</option>
+                  <option value="05:00" selected>05:00 WIB (Wisuda / Pagi)</option>
+                  <option value="09:00">09:00 WIB (Siang / Lamaran)</option>
+                  <option value="14:00">14:00 WIB (Resepsi Malam / Party)</option>
+                </select>
+              </div>
+              <div>
+                <label for="eventCity" class="block text-xs font-semibold text-ink mb-1.5">Lokasi / Kota Acara *</label>
+                <select id="eventCity" class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60">
+                  <option value="semarang" data-fee="0">Semarang Kota (Free Transport)</option>
+                  <option value="ungaran" data-fee="150000">Kab. Semarang / Ungaran (+Rp 150rb)</option>
+                  <option value="solo" data-fee="350000">Solo / Yogyakarta (+Rp 350rb)</option>
+                  <option value="jakarta" data-fee="1200000">Jakarta / Bandung / Surabaya (+Rp 1,2jt)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3: Main Package Selector -->
+            <div>
+              <label for="selectedPackageSelect" class="block text-xs font-semibold text-ink mb-1.5">Pilih Paket Utama *</label>
+              <select id="selectedPackageSelect" class="w-full px-4 py-3 rounded-xl border border-mauve bg-mist/40 font-medium text-sm text-ink focus:outline-none">
+                <option value="bridal" data-price="4500000">Royal Bridal Full-Day (Akad + Resepsi + Hairdo/Hijab) — Rp 4.500.000</option>
+                <option value="engagement" data-price="1650000">Intimate Engagement / Tunangan + Hairdo/Hijab — Rp 1.650.000</option>
+                <option value="graduation" data-price="850000">Flawless Graduation / Wisuda + Hairdo/Hijab — Rp 850.000</option>
+                <option value="party" data-price="750000">Red Carpet Party / Bridesmaid Glam — Rp 750.000</option>
+                <option value="masterclass" data-price="1950000">1-on-1 Private Self-Makeup Class (2 Sesi) — Rp 1.950.000</option>
+              </select>
+            </div>
+
+            <!-- Row 4: Additional Family / Bridesmaid Makeup -->
+            <div class="p-4 rounded-2xl bg-paper border border-sand space-y-3">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-ink block">Tambahan Rias Ibu / Keluarga / Bridesmaid</span>
+                  <span class="text-[11px] text-ink/65">Rp 450.000 / orang (Sudah termasuk Hairdo / Hijab Styling)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button type="button" id="decExtraPaxBtn" class="w-8 h-8 rounded-full bg-mist hover:bg-sand text-ink font-bold text-sm flex items-center justify-center">−</button>
+                  <span id="extraPaxCountDisplay" class="w-8 text-center font-bold text-sm">0</span>
+                  <button type="button" id="incExtraPaxBtn" class="w-8 h-8 rounded-full bg-mist hover:bg-sand text-ink font-bold text-sm flex items-center justify-center">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 5: Optional Add-ons -->
+            <div>
+              <span class="block text-xs font-semibold text-ink mb-2">Layanan Tambahan (Opsional)</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-sand hover:border-mauve cursor-pointer bg-paper/40">
+                  <input type="checkbox" class="addon-checkbox w-4 h-4 accent-mauve" value="airbrush" data-name="Upgrade HD Airbrush Complexion" data-price="350000" />
+                  <span class="text-xs text-ink flex-grow">HD Airbrush Complexion <strong class="text-mauveDark">(+Rp 350rb)</strong></span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-sand hover:border-mauve cursor-pointer bg-paper/40">
+                  <input type="checkbox" class="addon-checkbox w-4 h-4 accent-mauve" value="melati" data-name="Ronce Melati Segar & Siger/Aksesoris" data-price="550000" />
+                  <span class="text-xs text-ink flex-grow">Melati Segar & Aksesoris <strong class="text-mauveDark">(+Rp 550rb)</strong></span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-sand hover:border-mauve cursor-pointer bg-paper/40">
+                  <input type="checkbox" class="addon-checkbox w-4 h-4 accent-mauve" value="standby" data-name="Standby Touch-Up Ekstra (3 Jam)" data-price="500000" />
+                  <span class="text-xs text-ink flex-grow">Standby Touch-Up 3 Jam <strong class="text-mauveDark">(+Rp 500rb)</strong></span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-sand hover:border-mauve cursor-pointer bg-paper/40">
+                  <input type="checkbox" class="addon-checkbox w-4 h-4 accent-mauve" value="trial" data-name="Sesi Test Makeup Sebelum Hari-H" data-price="650000" />
+                  <span class="text-xs text-ink flex-grow">Sesi Test Makeup Studio <strong class="text-mauveDark">(+Rp 650rb)</strong></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Row 6: Special Notes -->
+            <div>
+              <label for="clientNotes" class="block text-xs font-semibold text-ink mb-1.5">Catatan Khusus (Warna Kebaya/Gaun, Riwayat Alergi, dll.)</label>
+              <textarea id="clientNotes" rows="2" placeholder="Contoh: Kebaya warna Dusty Rose, kulit agak sensitif di area pipi..." class="w-full px-4 py-2.5 rounded-xl border border-sand focus:border-mauve focus:outline-none text-sm bg-paper/60"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-full bg-mauve hover:bg-mauveDark text-white font-semibold text-sm sm:text-base shadow-lg transition-all">
+              Simpan Reservasi & Buat Invoice Booking
+            </button>
+          </form>
+        </div>
+
+        <!-- Right Column: Live Price Breakdown -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-ink text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-5 sticky top-28">
+            <div class="flex items-center justify-between border-b border-white/15 pb-4">
+              <div>
+                <span class="text-[11px] tracking-normal text-sand block">Ringkasan Estimasi Biaya</span>
+                <h3 class="font-editorial text-2xl font-bold text-white mt-0.5">CHIRA Make Up Invoice</h3>
+              </div>
+              <div id="dateStatusPill" class="px-3 py-1 rounded-lg bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold">
+                ✓ Slot Tersedia
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex justify-between items-start gap-2">
+                <span id="summaryMainPackageName" class="text-sand/90">Royal Bridal Full-Day</span>
+                <span id="summaryMainPackagePrice" class="font-semibold text-white shrink-0">Rp 4.500.000</span>
+              </div>
+              <div id="summaryExtraPaxRow" class="hidden justify-between items-start gap-2">
+                <span id="summaryExtraPaxLabel" class="text-sand/90">Tambahan Rias Keluarga (0 org)</span>
+                <span id="summaryExtraPaxPrice" class="font-semibold text-white shrink-0">Rp 0</span>
+              </div>
+              <div id="summaryAddonsContainer" class="space-y-2"></div>
+              <div class="flex justify-between items-start gap-2 pt-2 border-t border-white/10">
+                <span id="summaryTransportLabel" class="text-sand/80">Biaya Transport Home Service</span>
+                <span id="summaryTransportPrice" class="font-medium text-emerald-300 shrink-0">Gratis</span>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-white/15">
+              <label for="promoCodeInput" class="block text-[11px] tracking-normal text-sand/80 mb-1.5">Kode Voucher Promo (Coba: <strong class="text-white">GLOW2026</strong>)</label>
+              <div class="flex gap-2">
+                <input id="promoCodeInput" type="text" placeholder="Masukkan kode voucher" class="flex-grow px-3.5 py-2 rounded-xl bg-white/10 border border-white/20 text-white text-xs placeholder:text-white/40 focus:outline-none focus:border-sand" />
+                <button id="applyPromoBtn" type="button" class="px-4 py-2 rounded-xl bg-sand text-ink text-xs font-bold hover:bg-white transition-all">Pakai</button>
+              </div>
+              <p id="promoFeedbackText" class="text-[11px] text-emerald-300 mt-1 hidden"></p>
+            </div>
+
+            <div class="pt-4 border-t border-white/20 space-y-2">
+              <div class="flex justify-between items-baseline">
+                <span class="text-xs tracking-normal text-sand">Total Investasi</span>
+                <span id="summaryTotalAmount" class="font-editorial text-3xl sm:text-4xl font-bold text-sand">Rp 4.500.000</span>
+              </div>
+              <div class="flex justify-between items-center text-xs text-white/75 bg-white/5 p-3 rounded-xl">
+                <span>Minimal Down Payment (DP 30% Lock Tanggal):</span>
+                <strong id="summaryDpAmount" class="text-white">Rp 1.350.000</strong>
+              </div>
+            </div>
+
+            <button id="copyEstimateBtn" type="button" class="w-full py-2.5 rounded-xl border border-sand/40 hover:bg-white/10 text-sand text-xs font-semibold transition-all flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+              </svg>
+              <span>Salin Rincian Estimasi untuk Chat WhatsApp</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-sand py-8 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-sand/70">© 2026 CHIRA Make Up Studio. All rights reserved.</p>
+      <a href="index.html" class="text-xs text-sand/80 hover:text-white">← Kembali ke Beranda</a>
+    </div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastNotification" class="fixed bottom-5 right-5 z-50 hidden bg-ink text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-sage/40 flex items-center gap-3 max-w-sm">
+    <span class="w-6 h-6 rounded-full bg-mauve text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+    <p id="toastMessageText" class="text-xs sm:text-sm font-medium"></p>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
