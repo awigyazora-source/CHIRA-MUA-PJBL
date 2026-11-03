@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Chira Make Up</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fde9e6;
+            height: 100vh;
+            overflow: hidden; 
+        }
+
+        .login-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* BAGIAN FOTO KIRI */
+        .photo-section {
+            width: 42%;
+            height: 100vh;
+            overflow: hidden;
+            border-radius: 0 18px 18px 0;
+        }
+
+        .photo-section img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* BAGIAN FORM KANAN */
+        .form-section {
+            width: 58%;
+            height: 100vh;
+            /* Menggunakan clamp agar padding mengecil jika layar pendek */
+            padding: clamp(20px, 4vh, 35px) 40px clamp(15px, 2vh, 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            
+            /* Safety net: Hanya form kanan yang bisa scroll internal jika layar sangat kecil, tanpa memunculkan scrollbar */
+            overflow-y: auto;
+            scrollbar-width: none; /* Untuk Firefox */
+        }
+        
+        .form-section::-webkit-scrollbar {
+            display: none; /* Untuk Chrome, Safari, Edge */
+        }
+
+        /* LOGO */
+        .logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: clamp(5px, 1vh, 15px);
+        }
+
+        .logo img {
+            /* Ukuran logo otomatis menyesuaikan tinggi layar */
+            max-width: clamp(220px, 25vh, 300px); 
+            width: 60%;
+            height: auto;
+        }
+
+        /* FORM LOGIN */
+        .login-form {
+            width: 100%;
+            max-width: 380px;
+            /* Margin atas bawah fleksibel */
+            margin: clamp(15px, 3vh, 25px) 0; 
+        }
+
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: 100%;
+            height: clamp(42px, 6vh, 47px); /* Tinggi input fleksibel */
+            padding: 0 14px;
+            margin-bottom: clamp(10px, 2vh, 14px);
+            border: 1px solid #f2c8c3;
+            border-radius: 15px;
+            background-color: #ffffff;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .login-form input:focus {
+            border-color: #987a7a;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin: 0 12px clamp(15px, 2vh, 18px);
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .remember input {
+            width: 20px;
+            height: 20px;
+            accent-color: #927676;
+            cursor: pointer;
+        }
+
+        /* LOGIN SOSIAL */
+        .social-login {
+            text-align: center;
+        }
+
+        .social-login p {
+            font-size: 10px;
+            margin-bottom: 9px;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #111111;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .facebook {
+            border: 2px solid #111;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 21px !important;
+            overflow: hidden;
+        }
+
+        /* TOMBOL LOGIN */
+        .login-button {
+            display: block;
+            width: 68%;
+            min-width: 180px;
+            height: clamp(40px, 5vh, 43px);
+            margin: 0 auto;
+            border: none;
+            border-radius: 25px;
+            background-color: #927979;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 3px #00000020;
+            transition: 0.2s;
+        }
+
+        .login-button:hover {
+            background-color: #785f5f;
+            transform: translateY(-1px);
+        }
+
+        /* BAGIAN BAWAH */
+        .bottom-section {
+            text-align: center;
+            color: #999999;
+            line-height: 1.5; /* Dikurangi dari 1.7 agar lebih hemat tempat */
+            margin-top: clamp(10px, 2vh, 20px);
+            margin-bottom: 5px;
+        }
+
+        .bottom-section a {
+            color: #999999;
+            text-decoration: none;
+        }
+
+        .bottom-section a:hover {
+            color: #785f5f;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #222222;
+            margin-top: 5px;
+        }
+
+        /* RESPONSIVE UNTUK HP */
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                overflow-y: auto;
+            }
+
+            .login-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .photo-section {
+                width: 100%;
+                height: 35vh;
+                border-radius: 0 0 18px 18px;
+            }
+
+            .form-section {
+                width: 100%;
+                height: auto;
+                min-height: 65vh;
+                padding: 20px 24px 40px;
+                overflow-y: visible; /* Kembalikan normal di HP */
+            }
+
+            .logo img {
+                width: 50%;
+                max-width: 200px;
+            }
+
+            .login-form {
+                margin: 30px 0;
+            }
+
+            .bottom-section {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- FOTO PENGANTIN DI SEBELAH KIRI -->
+        <div class="photo-section">
+            <img src="img/FOTO-LOGIN.jpg" alt="Foto pengantin Chira Make Up">
+        </div>
+
+        <!-- FORM LOGIN DI SEBELAH KANAN -->
+        <main class="form-section">
+
+            <!-- LOGO CHIRA MAKE UP -->
+            <header class="logo"> 
+                <img src="img/CHIRA_LOGO-removebg-preview.png" alt="Chira Make Up Logo">
+            </header>
+
+            <!-- FORMULIR LOGIN -->
+            <form class="login-form" id="loginForm">
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email:"
+                    aria-label="Email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Password:"
+                    aria-label="Password"
+                    required
+                >
+
+                <div class="login-options">
+
+                    <label class="remember">
+                        <input type="checkbox" name="remember">
+                        <span>Remember Me</span>
+                    </label>
+
+                    <div class="social-login">
+                        <p>Log in Using the Following:</p>
+
+                        <div class="social-icons">
+                            <a href="#" aria-label="Google">G</a>
+                            <a href="#" class="facebook" aria-label="Facebook">f</a>
+                            <a href="#" aria-label="Meta">∞</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="login-button">
+                    <a href="index.html" style="text-decoration: none; color: white;">
+                    Login
+                    </a>
+                </button>
+
+            </form>
+
+            <!-- REGISTER DAN ADMIN -->
+            <footer class="bottom-section">
+                <p>
+                    Don't have an account?
+                    <a href="register.html">Register</a>
+                </p>
+
+                <p>
+                    <a href="admin-login.html">Login as Admin</a>
+                </p>
+
+                <p class="copyright">
+                    Copyright © 2026 Chira MUA Malang All Rights Reserved.
+                </p>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Mencegah form reload halaman
+
+            // 1. Simpan status login ke localStorage
+            localStorage.setItem("chira_login_status", "true");
+
+            // 2. Arahkan user ke halaman beranda
+            window.location.href = "index.html";
+        });
+    </script>
+
+</body>
+</html>
