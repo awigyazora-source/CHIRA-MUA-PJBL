@@ -234,14 +234,14 @@
             color: var(--white);
         }
 
-                /* --- OUR SERVICE (REVISI EDITORIAL + BACKGROUND BARU) --- */
+                      /* --- OUR SERVICE (REVISI EDITORIAL + BACKGROUND PINK) --- */
         .services {
-            background-color: #fcf4f4; /* Warna pink sangat lembut, beda dari bg utama */
-            padding: 120px 5% 100px; /* Padding atas ditambah untuk ruang gelombang */
-            position: relative; /* Wajib ditambahkan agar pembatas bisa diposisikan */
+            background-color: var(--primary-pink); /* Warna Pink sesuai Lampiran 3 */
+            padding: 120px 5% 100px; 
+            position: relative; 
         }
 
-                /* Pembatas Gelombang */
+        /* Pembatas Gelombang */
         .wave-divider {
             position: absolute;
             left: 0;
@@ -262,138 +262,12 @@
         .wave-divider svg {
             display: block;
             width: 100%;
-            height: 60px; /* Tinggi gelombang */
+            height: 60px; 
         }
 
         .wave-divider .shape-fill {
-            fill: #fff9f9; /* Warna ini HARUS SAMA dengan var(--bg-color) halaman utama */
+            fill: var(--bg-color); /* Warna krem/putih dari section sebelumnya */
         }
-
-        .services-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            gap: 40px;
-        }
-
-        .services-header-left {
-            max-width: 500px;
-        }
-
-        .services-eyebrow {
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-pink);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .services-title {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            line-height: 1.1;
-            color: var(--text-dark);
-        }
-
-        .services-header-right {
-            max-width: 400px;
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.8;
-            padding-bottom: 10px;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background-color: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
-        .service-img-wrapper {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .service-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .service-card:hover .service-img-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .service-content {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1; /* Agar tombol link selalu di bawah */
-        }
-
-        .service-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .service-content p {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 25px;
-            line-height: 1.7;
-            flex-grow: 1; /* Mendorong link ke bawah jika teks pendek */
-        }
-
-        .service-link {
-            display: inline-flex;
-            align-items: center;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-pink);
-            transition: color 0.3s;
-            margin-top: auto;
-        }
-
-        .service-link:hover {
-            color: var(--dark-pink);
-        }
-
-        .service-link span {
-            margin-left: 8px;
-            transition: margin-left 0.3s;
-            font-size: 16px;
-        }
-
-        .service-link:hover span {
-            margin-left: 12px;
-        }
-
         /* Responsive */
         @media (max-width: 900px) {
             .services-header {
@@ -899,11 +773,10 @@
         </div>
     </section>
 
-    <!-- OUR SERVICE -->
-            <!-- OUR SERVICE (REVISI EDITORIAL + PEMBATAS) -->
+        <!-- OUR SERVICE (UTUH DAN RAPI) -->
     <section id="service" class="services">
         
-        <!-- PEMBATAS ATAS (Gelombang dari atas ke bawah) -->
+        <!-- PEMBATAS ATAS -->
         <div class="wave-divider wave-divider-top">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
@@ -921,12 +794,84 @@
             </div>
         </div>
 
-        <!-- Grid Kartu Layanan (Biarin isinya sama seperti sebelumnya) -->
+        <!-- Grid Kartu Layanan -->
         <div class="service-grid">
-            <!-- ... Isi Kartu 1 sampai 6 ... -->
+            
+            <!-- Kartu 1: Wedding -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-wedding.jpg" alt="Bridal Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Pre-Wedding / Wedding</h3>
+                    <p>Riasan pengantin yang anggun, tahan lama, dan disesuaikan untuk akad, pemberkatan, maupun resepsi.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 2: Graduation -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-graduation.jpg" alt="Graduation Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Graduation</h3>
+                    <p>Tampilan segar dan bersih. Riasan natural yang menonjolkan kecantikan asli untuk hari kelulusanmu.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 3: Engagement -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-engagement.png" alt="Engagement Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Engagement</h3>
+                    <p>Tampilan segar dan lembut bernuansa romantis untuk momen lamaran, tunangan, atau acara sangjit.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 4: Birthday -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-birthday.png" alt="Birthday Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Birthday</h3>
+                    <p>Rayakan hari spesialmu dengan look cantik, bebas kilau, tahan lama, dan siap diabadikan di kamera.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 5: Photoshoot -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-photoshoot.png" alt="Photoshoot Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Photoshoot</h3>
+                    <p>Teknik complexion yang tampak halus di depan lensa kamera untuk prewedding, maternity, atau personal branding.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 6: Custom -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-custom.jpg" alt="Custom Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Custom Makeup</h3>
+                    <p>Punya konsep makeup impian? Konsultasikan dan ciptakan look impianmu bersama tim kami.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
         </div>
 
-        <!-- PEMBATAS BAWAH (Gelombang dari bawah ke atas) -->
+        <!-- PEMBATAS BAWAH -->
         <div class="wave-divider wave-divider-bottom">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
