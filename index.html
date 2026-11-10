@@ -234,14 +234,52 @@
             color: var(--white);
         }
 
-        /* --- OUR SERVICE --- */
+               /* --- OUR SERVICE (REVISI EDITORIAL) --- */
         .services {
-            background-color: var(--primary-pink);
+            background-color: var(--bg-color); /* Warna latar lebih bersih */
+            padding: 100px 5%;
+        }
+
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            gap: 40px;
+        }
+
+        .services-header-left {
+            max-width: 500px;
+        }
+
+        .services-eyebrow {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-pink);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .services-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--text-dark);
+        }
+
+        .services-header-right {
+            max-width: 400px;
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+            padding-bottom: 10px;
         }
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -249,56 +287,95 @@
 
         .service-card {
             background-color: var(--white);
-            padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
             overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: var(--accent-pink);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        .service-card h3 {
-            font-size: 1.6rem;
+        .service-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Agar tombol link selalu di bawah */
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--text-dark);
         }
 
-        .service-card p {
+        .service-content p {
             font-size: 14px;
             color: var(--text-light);
-            margin-bottom: 20px;
-            min-height: 60px;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            flex-grow: 1; /* Mendorong link ke bawah jika teks pendek */
         }
 
-        .service-price {
-            font-weight: 600;
-            color: var(--accent-pink);
-            font-size: 1.1rem;
-            display: flex;
+        .service-link {
+            display: inline-flex;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        .service-price span {
             font-size: 12px;
-            color: var(--text-light);
-            font-weight: 400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-pink);
+            transition: color 0.3s;
+            margin-top: auto;
         }
 
+        .service-link:hover {
+            color: var(--dark-pink);
+        }
+
+        .service-link span {
+            margin-left: 8px;
+            transition: margin-left 0.3s;
+            font-size: 16px;
+        }
+
+        .service-link:hover span {
+            margin-left: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .services-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .services-title {
+                font-size: 2.8rem;
+            }
+        }
         /* --- MEET OUR ARTIST --- */
         .artist-section {
             background-color: var(--bg-color);
@@ -795,47 +872,32 @@
 
     <!-- OUR SERVICE -->
     <section id="service" class="services">
-        <h2 class="section-title">Our Service</h2>
-        <p class="section-subtitle">Jasa Make Up Artist Profesional untuk Momen Spesialmu</p>
+    <div class="services-header">
+        <div class="services-header-left">
+            <p class="services-eyebrow">PILIHAN LAYANAN</p>
+            <h2 class="services-title">Layanan yang Kami Tawarkan</h2>
+        </div>
+        <div class="services-header-right">
+            <p>Setiap layanan dirancang dengan perhatian penuh pada kenyamanan kulit dan keselarasan riasan dengan tema acara Anda.</p>
+        </div>
+    </div>
 
-        <div class="service-grid">
-            <div class="service-card">
+    <div class="service-grid">
+        <!-- Card 1 -->
+        <div class="service-card">
+            <div class="service-img-wrapper">
+                <!-- Ganti src dengan foto Anda -->
+                <img src="img/service-wedding.jpg" alt="Bridal Makeup">
+            </div>
+            <div class="service-content">
                 <h3>Makeup Pre-Wedding / Wedding</h3>
                 <p>Riasan pengantin elegan dan tahan lama. Termasuk layanan trial, touch-up, dan penataan rambut (hairdo).</p>
-                <div class="service-price">Mulai 1.2jt <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Makeup Graduation</h3>
-                <p>Kulit terlihat sehatan dan bersih. Dengan riasan natural yang menonjolkan kecantikan asli wajahmu.</p>
-                <div class="service-price">Mulai 600rb <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Makeup Engagement</h3>
-                <p>Sentuhan natural, elegan, dan menyejukkan hati di hari pertunangan yang penuh kebahagiaan.</p>
-                <div class="service-price">Mulai 500rb <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Makeup Birthday</h3>
-                <p>Rayakan hari spesialmu dengan look cantik, bebas kilau, tahan lama, dan siap diabadikan di kamera.</p>
-                <div class="service-price">Mulai 1jt <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Makeup Photoshoot</h3>
-                <p>Makeup yang dirancang khusus dengan teknik-teknik fotogenik untuk hasil foto yang memukau.</p>
-                <div class="service-price">Mulai 700rb <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Custom Makeup</h3>
-                <p>Punya konsep makeup impian? Konsultasikan dan ciptakan look impianmu bersama kami.</p>
-                <div class="service-price">Mulai 600rb <span>/ sesi</span></div>
+                <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
             </div>
         </div>
-    </section>
+        <!-- ... 5 more cards ... -->
+    </div>
+</section>
 
     <!-- MEET OUR ARTIST -->
     <section id="artist" class="artist-section">
