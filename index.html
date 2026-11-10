@@ -110,24 +110,23 @@
             transform: translateY(-2px);
         }
 
-        /* --- HERO SECTION (DIPERBARUI) --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             width: 100%;
-            /* Gradient dari kiri gelap ke kanan transparan agar produk di kanan tetap terlihat */
             background: linear-gradient(to right, rgba(40, 25, 25, 0.6) 0%, rgba(40, 25, 25, 0.1) 60%), url('img/bg-hero.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Mengubah perataan flexbox ke kiri */
-            padding: 0 8%; /* Padding dari sisi kiri layar */
+            justify-content: flex-start;
+            padding: 0 8%;
             position: relative;
         }
 
         .hero-content {
-            max-width: 650px; /* Dibatasi agar tidak menabrak gambar makeup di kanan */
+            max-width: 650px;
             color: var(--white);
-            text-align: left; /* Teks condong ke kiri */
-            margin-top: 50px; /* Offset untuk navbar */
+            text-align: left;
+            margin-top: 50px;
             animation: fadeIn 1.5s ease-out;
         }
 
@@ -136,7 +135,7 @@
             color: var(--white);
             line-height: 1.1;
             margin-bottom: 20px;
-            text-shadow: 2px 4px 15px rgba(0,0,0,0.4); /* Shadow lebih tegas agar terbaca di background terang */
+            text-shadow: 2px 4px 15px rgba(0,0,0,0.4);
         }
 
         .hero-content p {
@@ -234,14 +233,82 @@
             color: var(--white);
         }
 
-        /* --- OUR SERVICE --- */
+        /* --- OUR SERVICE (REVISI EDITORIAL + BACKGROUND PINK) --- */
         .services {
-            background-color: var(--primary-pink);
+            background-color: var(--primary-pink); /* Warna Pink */
+            padding: 120px 5% 100px; 
+            position: relative; 
+        }
+
+        /* Pembatas Gelombang */
+        .wave-divider {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-divider-top {
+            top: 0;
+        }
+
+        .wave-divider-bottom {
+            bottom: 0;
+            transform: rotate(180deg);
+        }
+
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+            height: 60px; 
+        }
+
+        .wave-divider .shape-fill {
+            fill: var(--bg-color); /* Warna krem/putih dari section sebelumnya */
+        }
+
+        /* CSS UNTUK HEADER & CARD LAYANAN (YANG SEBELUMNYA HILANG) */
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            gap: 40px;
+        }
+
+        .services-header-left {
+            max-width: 500px;
+        }
+
+        .services-eyebrow {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-pink);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .services-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--text-dark);
+        }
+
+        .services-header-right {
+            max-width: 400px;
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+            padding-bottom: 10px;
         }
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -249,54 +316,82 @@
 
         .service-card {
             background-color: var(--white);
-            padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
             overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: var(--accent-pink);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        .service-card h3 {
-            font-size: 1.6rem;
+        .service-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--text-dark);
         }
 
-        .service-card p {
+        .service-content p {
             font-size: 14px;
             color: var(--text-light);
-            margin-bottom: 20px;
-            min-height: 60px;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            flex-grow: 1;
         }
 
-        .service-price {
-            font-weight: 600;
-            color: var(--accent-pink);
-            font-size: 1.1rem;
-            display: flex;
+        .service-link {
+            display: inline-flex;
             align-items: center;
-            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-pink);
+            transition: color 0.3s;
+            margin-top: auto;
         }
 
-        .service-price span {
-            font-size: 12px;
-            color: var(--text-light);
-            font-weight: 400;
+        .service-link:hover {
+            color: var(--dark-pink);
+        }
+
+        .service-link span {
+            margin-left: 8px;
+            transition: margin-left 0.3s;
+            font-size: 16px;
+        }
+
+        .service-link:hover span {
+            margin-left: 12px;
         }
 
         /* --- MEET OUR ARTIST --- */
@@ -472,9 +567,9 @@
             color: var(--text-light);
         }
 
-               /* --- FOOTER (REVISI PREMIUM) --- */
+        /* --- FOOTER (REVISI PREMIUM) --- */
         .site-footer {
-            background-color: #fdf5f6; /* Warna pink sangat muda sesuai referensi */
+            background-color: #fdf5f6;
             padding: 80px 8% 40px;
             border-top: 1px solid #f0e5e5;
             font-family: var(--font-sans);
@@ -488,7 +583,6 @@
             margin: 0 auto;
         }
 
-        /* Kolom 1: Brand & Sosial */
         .brand-col h2 {
             font-family: var(--font-serif);
             font-size: 1.8rem;
@@ -521,7 +615,7 @@
             font-weight: 500;
         }
 
-               .social-links {
+        .social-links {
             display: flex;
             gap: 12px;
             margin-bottom: 30px;
@@ -538,7 +632,7 @@
             border: 1px solid #ebdada;
             color: var(--text-dark);
             transition: all 0.3s ease;
-            font-size: 16px; /* Ukuran Ikon */
+            font-size: 16px;
         }
 
         .social-links a:hover {
@@ -547,14 +641,12 @@
             border-color: var(--accent-pink);
             transform: translateY(-3px);
         }
-        
 
         .copyright-text {
             font-size: 12px;
             color: #a89a9a;
         }
 
-        /* Kolom 2 & 3: Links */
         .footer-col h3 {
             font-family: var(--font-sans);
             font-size: 14px;
@@ -590,7 +682,6 @@
             color: var(--accent-pink);
         }
 
-        /* Kolom 4: Operasional & Studio */
         .op-item {
             display: flex;
             align-items: center;
@@ -660,12 +751,11 @@
             font-size: 13px;
         }
 
-        /* Bagian Bawah Footer */
         .footer-bottom-wrap {
             max-width: 1200px;
             margin: 40px auto 0;
             display: flex;
-            justify-content: flex-end; /* Rata Kanan */
+            justify-content: flex-end;
         }
 
         .made-with-love {
@@ -676,37 +766,28 @@
             gap: 5px;
         }
 
-        /* --- RESPONSIVE FOOTER --- */
-        @media (max-width: 992px) {
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .site-footer {
-                padding: 60px 5% 30px;
-            }
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .footer-bottom-wrap {
-                justify-content: center;
-                margin-top: 30px;
-            }
-            .brand-col .tagline {
-                max-width: 100%;
-            }
-        }
         /* --- ANIMASI --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- RESPONSIVE (MOBILE) --- */
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 900px) {
+            .services-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .services-title {
+                font-size: 2.8rem;
+            }
             .artist-card {
                 flex-direction: column;
             }
@@ -720,19 +801,16 @@
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Sembunyikan menu di HP */
+                display: none;
             }
-            
-            /* Penyesuaian Hero di HP */
             .hero {
                 background: linear-gradient(to bottom, rgba(40, 25, 25, 0.7) 0%, rgba(40, 25, 25, 0.4) 100%), url('img/bg-hero.jpg') center/cover no-repeat;
-                justify-content: center; /* Di HP, kembalikan ke tengah agar rapi */
+                justify-content: center;
                 padding: 0 20px;
             }
             .hero-content {
-                text-align: center; /* Di HP, teks jadi rata tengah */
+                text-align: center;
             }
-
             .section-title {
                 font-size: 2.2rem;
             }
@@ -742,6 +820,20 @@
             .artist-stats {
                 flex-wrap: wrap;
                 gap: 20px;
+            }
+            .site-footer {
+                padding: 60px 5% 30px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom-wrap {
+                justify-content: center;
+                margin-top: 30px;
+            }
+            .brand-col .tagline {
+                max-width: 100%;
             }
         }
     </style>
@@ -777,7 +869,6 @@
         <p class="section-subtitle">A glimpse of the beauty we've created</p>
         
         <div class="gallery-grid">
-            <!-- FOTO PORTFOLIO -->
             <div class="gallery-item">
                 <img src="img/Gallery-1.png" alt="Bridal Makeup">
             </div>
@@ -793,48 +884,111 @@
         </div>
     </section>
 
-    <!-- OUR SERVICE -->
+    <!-- OUR SERVICE (UTUH DAN RAPI) -->
     <section id="service" class="services">
-        <h2 class="section-title">Our Service</h2>
-        <p class="section-subtitle">Jasa Make Up Artist Profesional untuk Momen Spesialmu</p>
+        
+        <!-- PEMBATAS ATAS -->
+        <div class="wave-divider wave-divider-top">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
 
-        <div class="service-grid">
-            <div class="service-card">
-                <h3>Makeup Pre-Wedding / Wedding</h3>
-                <p>Riasan pengantin elegan dan tahan lama. Termasuk layanan trial, touch-up, dan penataan rambut (hairdo).</p>
-                <div class="service-price">Mulai 1.2jt <span>/ sesi</span></div>
+        <!-- Header Layanan -->
+        <div class="services-header">
+            <div class="services-header-left">
+                <p class="services-eyebrow">PILIHAN LAYANAN</p>
+                <h2 class="services-title">Layanan yang Kami Tawarkan</h2>
             </div>
-
-            <div class="service-card">
-                <h3>Makeup Graduation</h3>
-                <p>Kulit terlihat sehatan dan bersih. Dengan riasan natural yang menonjolkan kecantikan asli wajahmu.</p>
-                <div class="service-price">Mulai 600rb <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Makeup Engagement</h3>
-                <p>Sentuhan natural, elegan, dan menyejukkan hati di hari pertunangan yang penuh kebahagiaan.</p>
-                <div class="service-price">Mulai 500rb <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Makeup Birthday</h3>
-                <p>Rayakan hari spesialmu dengan look cantik, bebas kilau, tahan lama, dan siap diabadikan di kamera.</p>
-                <div class="service-price">Mulai 1jt <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Makeup Photoshoot</h3>
-                <p>Makeup yang dirancang khusus dengan teknik-teknik fotogenik untuk hasil foto yang memukau.</p>
-                <div class="service-price">Mulai 700rb <span>/ sesi</span></div>
-            </div>
-
-            <div class="service-card">
-                <h3>Custom Makeup</h3>
-                <p>Punya konsep makeup impian? Konsultasikan dan ciptakan look impianmu bersama kami.</p>
-                <div class="service-price">Mulai 600rb <span>/ sesi</span></div>
+            <div class="services-header-right">
+                <p>Setiap layanan dirancang dengan perhatian penuh pada kenyamanan kulit dan keselarasan riasan dengan tema acara Anda.</p>
             </div>
         </div>
+
+        <!-- Grid Kartu Layanan -->
+        <div class="service-grid">
+            
+            <!-- Kartu 1: Wedding -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-wedding.png" alt="Bridal Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Pre-Wedding / Wedding</h3>
+                    <p>Riasan pengantin yang anggun, tahan lama, dan disesuaikan untuk akad, pemberkatan, maupun resepsi.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 2: Graduation -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-graduation.jpg" alt="Graduation Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Graduation</h3>
+                    <p>Tampilan segar dan bersih. Riasan natural yang menonjolkan kecantikan asli untuk hari kelulusanmu.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 3: Engagement -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-engagement.png" alt="Engagement Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Engagement</h3>
+                    <p>Tampilan segar dan lembut bernuansa romantis untuk momen lamaran, tunangan, atau acara sangjit.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 4: Birthday -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-birthday.png" alt="Birthday Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Birthday</h3>
+                    <p>Rayakan hari spesialmu dengan look cantik, bebas kilau, tahan lama, dan siap diabadikan di kamera.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 5: Photoshoot -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-photoshoot.png" alt="Photoshoot Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Photoshoot</h3>
+                    <p>Teknik complexion yang tampak halus di depan lensa kamera untuk prewedding, maternity, atau personal branding.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Kartu 6: Custom -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="img/service-custom.jpg" alt="Custom Makeup">
+                </div>
+                <div class="service-content">
+                    <h3>Custom Makeup</h3>
+                    <p>Punya konsep makeup impian? Konsultasikan dan ciptakan look impianmu bersama tim kami.</p>
+                    <a href="#" class="service-link">Lihat Detail <span>&rarr;</span></a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PEMBATAS BAWAH -->
+        <div class="wave-divider wave-divider-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
     </section>
 
     <!-- MEET OUR ARTIST -->
@@ -845,7 +999,6 @@
         <div class="artist-card">
             <div class="artist-image">
                 <div class="artist-badge">Ready to book</div>
-                <!-- Ganti dengan foto MUA Anda -->
                 <img src="img/MUA-STAFF-1.png" alt="Nadine Muamlah Veronica">
             </div>
             <div class="artist-info">
@@ -920,7 +1073,7 @@
         </div>
     </section>
 
-       <!-- FOOTER (REVISI PREMIUM) -->
+    <!-- FOOTER (REVISI PREMIUM) -->
     <footer class="site-footer">
         <div class="footer-container">
             
@@ -930,17 +1083,14 @@
                 <div class="title-line"></div>
                 <p class="tagline">Menghadirkan riasan sempurna untuk momen istimewa di setiap langkahmu.</p>
                 
-                              <h4 class="connect-title">CONNECT WITH US</h4>
+                <h4 class="connect-title">CONNECT WITH US</h4>
                 <div class="social-links">
-                    <!-- Ikon Instagram -->
                     <a href="#" aria-label="Instagram" target="_blank">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <!-- Ikon TikTok -->
                     <a href="#" aria-label="TikTok" target="_blank">
                         <i class="fa-brands fa-tiktok"></i>
                     </a>
-                    <!-- Ikon Email -->
                     <a href="mailto:hello@chiramua.com" aria-label="Email">
                         <i class="fa-solid fa-envelope"></i>
                     </a>
@@ -980,7 +1130,6 @@
                 
                 <div class="op-item">
                     <div class="op-icon">
-                        <!-- Ikon Jam -->
                         <svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.929 6.434 5.45.815z"/></svg>
                     </div>
                     <div class="op-text">
@@ -991,7 +1140,6 @@
 
                 <div class="studio-box">
                     <div class="op-icon">
-                        <!-- Ikon Lokasi -->
                         <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
                     </div>
                     <div class="op-text">
@@ -1003,7 +1151,6 @@
 
         </div>
 
-        <!-- Bagian Bawah (Made with Love) -->
         <div class="footer-bottom-wrap">
             <div class="made-with-love">
                 Dibuat dengan <span style="color: #e74c3c; font-size: 16px;">❤</span> untuk senyum bahagiamu
@@ -1011,24 +1158,18 @@
         </div>
     </footer>
 
-        <!-- SCRIPT UNTUK CEK STATUS LOGIN -->
+    <!-- SCRIPT UNTUK CEK STATUS LOGIN -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Cek apakah user sudah login
             const isLoggedIn = localStorage.getItem("chira_login_status");
             const navLoginItem = document.getElementById("nav-login-item");
 
             if (isLoggedIn === "true") {
-                // Jika sudah login, ubah tombol menjadi "Logout" (atau bisa disembunyikan)
-                // Di sini saya ubah jadi tombol Logout agar kita bisa testing
                 navLoginItem.innerHTML = '<a href="#" class="nav-btn" id="logoutBtn" style="background-color: #d89a9a;">Logout</a>';
                 
-                // Tambahkan fungsi saat tombol Logout di-klik
                 document.getElementById("logoutBtn").addEventListener("click", function(e) {
                     e.preventDefault();
-                    // Hapus status login
                     localStorage.removeItem("chira_login_status");
-                    // Refresh halaman agar tombol kembali menjadi "Login"
                     window.location.reload(); 
                 });
             }
