@@ -110,24 +110,23 @@
             transform: translateY(-2px);
         }
 
-        /* --- HERO SECTION (DIPERBARUI) --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             width: 100%;
-            /* Gradient dari kiri gelap ke kanan transparan agar produk di kanan tetap terlihat */
             background: linear-gradient(to right, rgba(40, 25, 25, 0.6) 0%, rgba(40, 25, 25, 0.1) 60%), url('img/bg-hero.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Mengubah perataan flexbox ke kiri */
-            padding: 0 8%; /* Padding dari sisi kiri layar */
+            justify-content: flex-start;
+            padding: 0 8%;
             position: relative;
         }
 
         .hero-content {
-            max-width: 650px; /* Dibatasi agar tidak menabrak gambar makeup di kanan */
+            max-width: 650px;
             color: var(--white);
-            text-align: left; /* Teks condong ke kiri */
-            margin-top: 50px; /* Offset untuk navbar */
+            text-align: left;
+            margin-top: 50px;
             animation: fadeIn 1.5s ease-out;
         }
 
@@ -136,7 +135,7 @@
             color: var(--white);
             line-height: 1.1;
             margin-bottom: 20px;
-            text-shadow: 2px 4px 15px rgba(0,0,0,0.4); /* Shadow lebih tegas agar terbaca di background terang */
+            text-shadow: 2px 4px 15px rgba(0,0,0,0.4);
         }
 
         .hero-content p {
@@ -234,9 +233,9 @@
             color: var(--white);
         }
 
-                      /* --- OUR SERVICE (REVISI EDITORIAL + BACKGROUND PINK) --- */
+        /* --- OUR SERVICE (REVISI EDITORIAL + BACKGROUND PINK) --- */
         .services {
-            background-color: var(--primary-pink); /* Warna Pink sesuai Lampiran 3 */
+            background-color: var(--primary-pink); /* Warna Pink */
             padding: 120px 5% 100px; 
             position: relative; 
         }
@@ -268,17 +267,133 @@
         .wave-divider .shape-fill {
             fill: var(--bg-color); /* Warna krem/putih dari section sebelumnya */
         }
-        /* Responsive */
-        @media (max-width: 900px) {
-            .services-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-            .services-title {
-                font-size: 2.8rem;
-            }
+
+        /* CSS UNTUK HEADER & CARD LAYANAN (YANG SEBELUMNYA HILANG) */
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            gap: 40px;
         }
+
+        .services-header-left {
+            max-width: 500px;
+        }
+
+        .services-eyebrow {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-pink);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .services-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--text-dark);
+        }
+
+        .services-header-right {
+            max-width: 400px;
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+            padding-bottom: 10px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .service-content p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-pink);
+            transition: color 0.3s;
+            margin-top: auto;
+        }
+
+        .service-link:hover {
+            color: var(--dark-pink);
+        }
+
+        .service-link span {
+            margin-left: 8px;
+            transition: margin-left 0.3s;
+            font-size: 16px;
+        }
+
+        .service-link:hover span {
+            margin-left: 12px;
+        }
+
         /* --- MEET OUR ARTIST --- */
         .artist-section {
             background-color: var(--bg-color);
@@ -452,9 +567,9 @@
             color: var(--text-light);
         }
 
-               /* --- FOOTER (REVISI PREMIUM) --- */
+        /* --- FOOTER (REVISI PREMIUM) --- */
         .site-footer {
-            background-color: #fdf5f6; /* Warna pink sangat muda sesuai referensi */
+            background-color: #fdf5f6;
             padding: 80px 8% 40px;
             border-top: 1px solid #f0e5e5;
             font-family: var(--font-sans);
@@ -468,7 +583,6 @@
             margin: 0 auto;
         }
 
-        /* Kolom 1: Brand & Sosial */
         .brand-col h2 {
             font-family: var(--font-serif);
             font-size: 1.8rem;
@@ -501,7 +615,7 @@
             font-weight: 500;
         }
 
-               .social-links {
+        .social-links {
             display: flex;
             gap: 12px;
             margin-bottom: 30px;
@@ -518,7 +632,7 @@
             border: 1px solid #ebdada;
             color: var(--text-dark);
             transition: all 0.3s ease;
-            font-size: 16px; /* Ukuran Ikon */
+            font-size: 16px;
         }
 
         .social-links a:hover {
@@ -527,14 +641,12 @@
             border-color: var(--accent-pink);
             transform: translateY(-3px);
         }
-        
 
         .copyright-text {
             font-size: 12px;
             color: #a89a9a;
         }
 
-        /* Kolom 2 & 3: Links */
         .footer-col h3 {
             font-family: var(--font-sans);
             font-size: 14px;
@@ -570,7 +682,6 @@
             color: var(--accent-pink);
         }
 
-        /* Kolom 4: Operasional & Studio */
         .op-item {
             display: flex;
             align-items: center;
@@ -640,12 +751,11 @@
             font-size: 13px;
         }
 
-        /* Bagian Bawah Footer */
         .footer-bottom-wrap {
             max-width: 1200px;
             margin: 40px auto 0;
             display: flex;
-            justify-content: flex-end; /* Rata Kanan */
+            justify-content: flex-end;
         }
 
         .made-with-love {
@@ -656,37 +766,28 @@
             gap: 5px;
         }
 
-        /* --- RESPONSIVE FOOTER --- */
-        @media (max-width: 992px) {
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .site-footer {
-                padding: 60px 5% 30px;
-            }
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .footer-bottom-wrap {
-                justify-content: center;
-                margin-top: 30px;
-            }
-            .brand-col .tagline {
-                max-width: 100%;
-            }
-        }
         /* --- ANIMASI --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- RESPONSIVE (MOBILE) --- */
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 900px) {
+            .services-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .services-title {
+                font-size: 2.8rem;
+            }
             .artist-card {
                 flex-direction: column;
             }
@@ -700,19 +801,16 @@
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Sembunyikan menu di HP */
+                display: none;
             }
-            
-            /* Penyesuaian Hero di HP */
             .hero {
                 background: linear-gradient(to bottom, rgba(40, 25, 25, 0.7) 0%, rgba(40, 25, 25, 0.4) 100%), url('img/bg-hero.jpg') center/cover no-repeat;
-                justify-content: center; /* Di HP, kembalikan ke tengah agar rapi */
+                justify-content: center;
                 padding: 0 20px;
             }
             .hero-content {
-                text-align: center; /* Di HP, teks jadi rata tengah */
+                text-align: center;
             }
-
             .section-title {
                 font-size: 2.2rem;
             }
@@ -722,6 +820,20 @@
             .artist-stats {
                 flex-wrap: wrap;
                 gap: 20px;
+            }
+            .site-footer {
+                padding: 60px 5% 30px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom-wrap {
+                justify-content: center;
+                margin-top: 30px;
+            }
+            .brand-col .tagline {
+                max-width: 100%;
             }
         }
     </style>
@@ -757,7 +869,6 @@
         <p class="section-subtitle">A glimpse of the beauty we've created</p>
         
         <div class="gallery-grid">
-            <!-- FOTO PORTFOLIO -->
             <div class="gallery-item">
                 <img src="img/Gallery-1.png" alt="Bridal Makeup">
             </div>
@@ -773,7 +884,7 @@
         </div>
     </section>
 
-       <!-- OUR SERVICE (UTUH DAN RAPI) -->
+    <!-- OUR SERVICE (UTUH DAN RAPI) -->
     <section id="service" class="services">
         
         <!-- PEMBATAS ATAS -->
@@ -800,7 +911,7 @@
             <!-- Kartu 1: Wedding -->
             <div class="service-card">
                 <div class="service-img-wrapper">
-                    <img src="img/service-wedding.jpg" alt="Bridal Makeup">
+                    <img src="img/service-wedding.png" alt="Bridal Makeup">
                 </div>
                 <div class="service-content">
                     <h3>Makeup Pre-Wedding / Wedding</h3>
@@ -879,6 +990,7 @@
         </div>
 
     </section>
+
     <!-- MEET OUR ARTIST -->
     <section id="artist" class="artist-section">
         <h2 class="section-title">Meet Our Artist</h2>
@@ -887,7 +999,6 @@
         <div class="artist-card">
             <div class="artist-image">
                 <div class="artist-badge">Ready to book</div>
-                <!-- Ganti dengan foto MUA Anda -->
                 <img src="img/MUA-STAFF-1.png" alt="Nadine Muamlah Veronica">
             </div>
             <div class="artist-info">
@@ -962,7 +1073,7 @@
         </div>
     </section>
 
-       <!-- FOOTER (REVISI PREMIUM) -->
+    <!-- FOOTER (REVISI PREMIUM) -->
     <footer class="site-footer">
         <div class="footer-container">
             
@@ -972,17 +1083,14 @@
                 <div class="title-line"></div>
                 <p class="tagline">Menghadirkan riasan sempurna untuk momen istimewa di setiap langkahmu.</p>
                 
-                              <h4 class="connect-title">CONNECT WITH US</h4>
+                <h4 class="connect-title">CONNECT WITH US</h4>
                 <div class="social-links">
-                    <!-- Ikon Instagram -->
                     <a href="#" aria-label="Instagram" target="_blank">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <!-- Ikon TikTok -->
                     <a href="#" aria-label="TikTok" target="_blank">
                         <i class="fa-brands fa-tiktok"></i>
                     </a>
-                    <!-- Ikon Email -->
                     <a href="mailto:hello@chiramua.com" aria-label="Email">
                         <i class="fa-solid fa-envelope"></i>
                     </a>
@@ -1022,7 +1130,6 @@
                 
                 <div class="op-item">
                     <div class="op-icon">
-                        <!-- Ikon Jam -->
                         <svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.929 6.434 5.45.815z"/></svg>
                     </div>
                     <div class="op-text">
@@ -1033,7 +1140,6 @@
 
                 <div class="studio-box">
                     <div class="op-icon">
-                        <!-- Ikon Lokasi -->
                         <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
                     </div>
                     <div class="op-text">
@@ -1045,7 +1151,6 @@
 
         </div>
 
-        <!-- Bagian Bawah (Made with Love) -->
         <div class="footer-bottom-wrap">
             <div class="made-with-love">
                 Dibuat dengan <span style="color: #e74c3c; font-size: 16px;">❤</span> untuk senyum bahagiamu
@@ -1053,24 +1158,18 @@
         </div>
     </footer>
 
-        <!-- SCRIPT UNTUK CEK STATUS LOGIN -->
+    <!-- SCRIPT UNTUK CEK STATUS LOGIN -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Cek apakah user sudah login
             const isLoggedIn = localStorage.getItem("chira_login_status");
             const navLoginItem = document.getElementById("nav-login-item");
 
             if (isLoggedIn === "true") {
-                // Jika sudah login, ubah tombol menjadi "Logout" (atau bisa disembunyikan)
-                // Di sini saya ubah jadi tombol Logout agar kita bisa testing
                 navLoginItem.innerHTML = '<a href="#" class="nav-btn" id="logoutBtn" style="background-color: #d89a9a;">Logout</a>';
                 
-                // Tambahkan fungsi saat tombol Logout di-klik
                 document.getElementById("logoutBtn").addEventListener("click", function(e) {
                     e.preventDefault();
-                    // Hapus status login
                     localStorage.removeItem("chira_login_status");
-                    // Refresh halaman agar tombol kembali menjadi "Login"
                     window.location.reload(); 
                 });
             }
