@@ -658,29 +658,32 @@
             color: var(--text-light);
         }
 
-        /* --- FOOTER (100% Konsisten) --- */
+        /* --- FOOTER (REVISI PREMIUM) --- */
         .site-footer {
-            background-color: var(--primary-pink);
-            color: var(--text-dark);
-            padding: 60px 8% 20px;
-            border-top: 1px solid rgba(216, 154, 154, 0.3);
+            background-color: #fdf5f6;
+            padding: 80px 8% 40px;
+            border-top: 1px solid #f0e5e5;
+            font-family: var(--font-sans);
         }
 
         .footer-container {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 50px;
-            margin-bottom: 40px;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .brand-col h2 {
-            font-size: 24px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
         }
 
         .brand-col .title-line {
-            width: 40px;
+            width: 60px;
             height: 2px;
             background-color: var(--accent-pink);
             margin-bottom: 20px;
@@ -690,62 +693,66 @@
             font-size: 14px;
             color: var(--text-light);
             line-height: 1.8;
-            margin-bottom: 25px;
-            max-width: 320px;
+            margin-bottom: 30px;
+            max-width: 300px;
         }
 
-        .brand-col .connect-title {
+        .connect-title {
             font-size: 12px;
-            letter-spacing: 1.5px;
-            color: var(--dark-pink);
+            letter-spacing: 3px;
+            color: var(--text-light);
+            text-transform: uppercase;
             margin-bottom: 15px;
-            font-family: var(--font-sans);
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
         .social-links a {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: var(--white);
-            color: var(--text-dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 1px solid #ebdada;
+            color: var(--text-dark);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-size: 16px;
         }
 
         .social-links a:hover {
             background-color: var(--accent-pink);
             color: var(--white);
+            border-color: var(--accent-pink);
             transform: translateY(-3px);
         }
 
         .copyright-text {
-            font-size: 13px;
-            color: var(--text-light);
+            font-size: 12px;
+            color: #a89a9a;
         }
 
         .footer-col h3 {
-            font-size: 16px;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
         .footer-col .line {
-            width: 30px;
-            height: 2px;
-            background-color: var(--accent-pink);
-            margin-bottom: 20px;
+            width: 100%;
+            height: 1px;
+            background-color: #ebdada;
+            margin-bottom: 25px;
         }
 
         .footer-col ul {
@@ -753,36 +760,42 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .footer-col ul li a {
             font-size: 14px;
             color: var(--text-light);
-            transition: color 0.3s, padding-left 0.3s;
-            display: inline-block;
+            transition: color 0.3s ease;
         }
 
         .footer-col ul li a:hover {
-            color: var(--dark-pink);
-            padding-left: 5px;
+            color: var(--accent-pink);
         }
 
         .op-item {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
+            align-items: center;
+            gap: 15px;
             margin-bottom: 20px;
         }
 
         .op-icon {
-            color: var(--dark-pink);
-            margin-top: 3px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 1px solid #ebdada;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent-pink);
         }
 
         .op-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
         }
 
@@ -790,6 +803,7 @@
             display: block;
             font-size: 14px;
             color: var(--text-dark);
+            font-weight: 500;
         }
 
         .op-text span {
@@ -799,31 +813,48 @@
 
         .studio-box {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(216, 154, 154, 0.3);
+            align-items: center;
+            gap: 15px;
+            background-color: var(--white);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin-top: 25px;
         }
 
-        .studio-box .label {
-            font-size: 11px;
+        .studio-box .op-icon {
+            border: none;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+        }
+
+        .studio-box .op-text .label {
+            font-size: 10px;
             letter-spacing: 1px;
-            color: var(--dark-pink);
+            text-transform: uppercase;
+            color: #a89a9a;
             display: block;
-            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .studio-box .op-text strong {
+            font-size: 13px;
         }
 
         .footer-bottom-wrap {
-            border-top: 1px solid rgba(216, 154, 154, 0.3);
-            padding-top: 20px;
-            text-align: center;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: flex-end;
         }
 
         .made-with-love {
             font-size: 13px;
             color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         /* --- ANIMASI --- */
@@ -868,9 +899,19 @@
             .artists-grid {
                 grid-template-columns: 1fr;
             }
+            .site-footer {
+                padding: 60px 5% 30px;
+            }
             .footer-container {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
+            }
+            .footer-bottom-wrap {
+                justify-content: center;
+                margin-top: 30px;
+            }
+            .brand-col .tagline {
+                max-width: 100%;
             }
         }
     </style>
@@ -1063,7 +1104,7 @@
                 <div class="artist-photo-wrap">
                     <span class="artist-badge-status badge-full">Full Booked</span>
                     <span class="specialty-tag">Founder & Master Artist</span>
-                    <img src="img/FOTO-STAFF-LOGIN.png" alt="Chira Veronica">
+                    <img src="img/MUA-STAFF-Lisa.png" alt="Chira Veronica">
                 </div>
                 <div class="artist-profile-body">
                     <div class="artist-profile-info">
