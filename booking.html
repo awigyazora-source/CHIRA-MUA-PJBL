@@ -544,6 +544,40 @@
             box-shadow: 0 4px 12px rgba(216, 154, 154, 0.2);
         }
 
+        .staff-card.disabled {
+            opacity: 0.6;
+            background: #f7eded;
+            border-color: #ebdcdc;
+            cursor: not-allowed;
+        }
+
+        .staff-card.disabled:hover {
+            border-color: #ebdcdc;
+            box-shadow: none;
+        }
+
+        .staff-badge-status {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 3px;
+            letter-spacing: 0.5px;
+        }
+
+        .staff-badge-status.badge-full {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+
+        .staff-badge-status.badge-ready {
+            background: #e8f5e9;
+            color: var(--success-color);
+            border: 1px solid #c8e6c9;
+        }
+
         .staff-avatar {
             width: 48px;
             height: 48px;
@@ -1574,33 +1608,87 @@
                     <div class="form-group">
                         <label>Pilih Penata Rias (Staff MUA) <span class="required">*</span></label>
                         <div class="staff-grid">
+                            <!-- 1. Nadine (Ready to Book) -->
                             <div class="staff-card selected" data-staff="Nadine Muamlah Veronica" data-title="Senior Bridal & Glow Specialist" onclick="selectStaff(this)">
                                 <div class="staff-avatar">
                                     <img src="img/MUA-STAFF-Nadine.png" alt="Nadine Muamlah Veronica">
                                 </div>
                                 <div class="staff-info">
                                     <h5>Nadine Veronica</h5>
-                                    <p>Senior Bridal & Glow Specialist</p>
+                                    <p>Senior Bridal & Glow</p>
+                                    <span class="staff-badge-status badge-ready">● Ready</span>
                                 </div>
                             </div>
 
+                            <!-- 2. Aurora (Ready to Book) -->
+                            <div class="staff-card" data-staff="Aurora Clarissa" data-title="Graduation & Party Look Specialist" onclick="selectStaff(this)">
+                                <div class="staff-avatar">
+                                    <img src="img/MUA-STAFF-Aurora.png" alt="Aurora Clarissa">
+                                </div>
+                                <div class="staff-info">
+                                    <h5>Aurora Clarissa</h5>
+                                    <p>Graduation & Party</p>
+                                    <span class="staff-badge-status badge-ready">● Ready</span>
+                                </div>
+                            </div>
+
+                            <!-- 3. Draco (Ready to Book) -->
+                            <div class="staff-card" data-staff="Draco Sebastian" data-title="Commercial & Editorial Photoshoot MUA" onclick="selectStaff(this)">
+                                <div class="staff-avatar">
+                                    <img src="img/MUA-STAFF-Draco.png" alt="Draco Sebastian">
+                                </div>
+                                <div class="staff-info">
+                                    <h5>Draco Sebastian</h5>
+                                    <p>Photoshoot & Fashion</p>
+                                    <span class="staff-badge-status badge-ready">● Ready</span>
+                                </div>
+                            </div>
+
+                            <!-- 4. Lisa (Ready to Book) -->
+                            <div class="staff-card" data-staff="Lisa Anggraini" data-title="Engagement & Modern Hijab Specialist" onclick="selectStaff(this)">
+                                <div class="staff-avatar">
+                                    <img src="img/MUA-STAFF-Lisa.png" alt="Lisa Anggraini">
+                                </div>
+                                <div class="staff-info">
+                                    <h5>Lisa Anggraini</h5>
+                                    <p>Engagement & Hijab</p>
+                                    <span class="staff-badge-status badge-ready">● Ready</span>
+                                </div>
+                            </div>
+
+                            <!-- 5. Marco (Full Booked) -->
+                            <div class="staff-card disabled" data-staff="Marco Pratama" data-title="Senior Bridal & Airbrush Specialist" onclick="selectStaff(this)">
+                                <div class="staff-avatar">
+                                    <img src="img/MUA-STAFF-Marco.png" alt="Marco Pratama">
+                                </div>
+                                <div class="staff-info">
+                                    <h5>Marco Pratama</h5>
+                                    <p>Bridal & Airbrush</p>
+                                    <span class="staff-badge-status badge-full">■ Full Booked</span>
+                                </div>
+                            </div>
+
+                            <!-- 6. Thania (Ready to Book) -->
                             <div class="staff-card" data-staff="Thania Aurelia Putri" data-title="Editorial & High Glamour Specialist" onclick="selectStaff(this)">
                                 <div class="staff-avatar">
                                     <img src="img/MUA-STAFF-Thania.png" alt="Thania Aurelia Putri">
                                 </div>
                                 <div class="staff-info">
                                     <h5>Thania Aurelia</h5>
-                                    <p>Editorial & Glamour Specialist</p>
+                                    <p>Editorial & Glamour</p>
+                                    <span class="staff-badge-status badge-ready">● Ready</span>
                                 </div>
                             </div>
 
-                            <div class="staff-card" data-staff="Chira Veronica" data-title="Founder & Master Artist" onclick="selectStaff(this)">
+                            <!-- 7. Chira (Full Booked) -->
+                            <div class="staff-card disabled" data-staff="Chira Veronica" data-title="Founder & Master Artist" onclick="selectStaff(this)">
                                 <div class="staff-avatar">
                                     <img src="img/FOTO-STAFF-LOGIN.png" alt="Chira Veronica">
                                 </div>
                                 <div class="staff-info">
                                     <h5>Chira Veronica</h5>
-                                    <p>Founder & Master Artist</p>
+                                    <p>Master Artist</p>
+                                    <span class="staff-badge-status badge-full">■ Full Booked</span>
                                 </div>
                             </div>
                         </div>
@@ -2041,10 +2129,10 @@
             const artistParam = urlParams.get('artist');
             if (artistParam) {
                 const staffCards = document.querySelectorAll(".staff-card");
+                const decodedParam = decodeURIComponent(artistParam).toLowerCase();
                 staffCards.forEach(card => {
                     const sName = card.dataset.staff.toLowerCase();
-                    const pName = artistParam.toLowerCase();
-                    if (sName.includes(pName) || pName.includes(sName)) {
+                    if ((sName.includes(decodedParam) || decodedParam.includes(sName)) && !card.classList.contains("disabled")) {
                         selectStaff(card);
                     }
                 });
@@ -2090,6 +2178,10 @@
         }
 
         function selectStaff(element) {
+            if (element.classList.contains("disabled")) {
+                alert("Maaf, staf MUA ini berstatus Full Booked (jadwal penuh). Silakan pilih staf MUA lainnya yang berstatus Ready to Book.");
+                return;
+            }
             document.querySelectorAll(".staff-card").forEach(c => c.classList.remove("selected"));
             element.classList.add("selected");
             currentBooking.staffName = element.dataset.staff;
