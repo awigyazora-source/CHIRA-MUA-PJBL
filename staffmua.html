@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us & Meet Our Artists | Chira Make Up Malang</title>
+
+    <!-- Google Fonts: Playfair Display & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES (Konsisten dengan index.html) --- */
+        :root {
+            --bg-color: #fff9f9;
+            --primary-pink: #f4dada;
+            --accent-pink: #d89a9a;
+            --dark-pink: #9e6b6b;
+            --text-dark: #332222;
+            --text-light: #7a6666;
+            --white: #ffffff;
+            --card-border: #f0d5d5;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Poppins', sans-serif;
+            --success-green: #2e7d32;
+            --success-bg: #e8f5e9;
+        }
+
+        /* --- RESET & DASAR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: rgba(255, 249, 249, 0.96);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--accent-pink);
+        }
+
+        .nav-btn {
+            background-color: var(--text-dark);
+            color: var(--white) !important;
+            padding: 9px 24px;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+
+        /* --- 1. HERO BANNER (55vh) --- */
+        .hero-banner-section {
+            height: 55vh;
+            min-height: 420px;
+            width: 100%;
+            margin-top: 75px;
+            background: linear-gradient(to right, rgba(30, 18, 18, 0.82) 0%, rgba(30, 18, 18, 0.45) 55%, rgba(30, 18, 18, 0.25) 100%), 
+                        url('img/hero-banner-AboutUs.jpg');
+            background-position: center 25%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            position: relative;
+        }
+
+        .hero-banner-content {
+            max-width: 720px;
+            color: var(--white);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--dark-pink);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .hero-banner-content h1 {
+            font-size: clamp(2.3rem, 4.2vw, 3.6rem);
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 16px;
+            text-shadow: 2px 3px 12px rgba(0,0,0,0.5);
+        }
+
+        .hero-banner-content p {
+            font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+            font-weight: 300;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+            max-width: 620px;
+        }
+
+        /* --- 2. BRAND STORY SECTION (2 KOLOM) --- */
+        .story-section {
+            padding: 90px 8% 80px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-text-col .section-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-pink);
+            margin-bottom: 8px;
+        }
+
+        .story-text-col h2 {
+            font-size: clamp(2rem, 3vw, 2.7rem);
+            line-height: 1.25;
+            margin-bottom: 22px;
+        }
+
+        .story-text-col p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .story-text-col .quote-highlight {
+            border-left: 3px solid var(--accent-pink);
+            padding-left: 18px;
+            font-style: italic;
+            color: var(--dark-pink);
+            font-size: 15.5px;
+            margin-top: 25px;
+        }
+
+        /* Standar Kualitas Cards (Kolom Kanan) */
+        .standards-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .standard-card {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 22px 24px;
+            display: flex;
+            gap: 18px;
+            box-shadow: 0 8px 25px rgba(158, 107, 107, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .standard-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(158, 107, 107, 0.1);
+            border-color: var(--accent-pink);
+        }
+
+        .standard-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: var(--primary-pink);
+            color: var(--dark-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .standard-info h4 {
+            font-size: 17px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .standard-info p {
+            font-size: 13.5px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* --- 3. GRID MEET OUR ARTISTS --- */
+        .artists-section {
+            padding: 70px 8% 90px;
+            background: linear-gradient(180deg, rgba(255, 249, 249, 0) 0%, #fff2f2 100%);
+        }
+
+        .artists-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .artists-header .section-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-pink);
+            margin-bottom: 8px;
+        }
+
+        .artists-header h2 {
+            font-size: clamp(2rem, 3.2vw, 2.8rem);
+            margin-bottom: 12px;
+        }
+
+        .artists-header p {
+            font-size: 15px;
+            color: var(--text-light);
+        }
+
+        /* Filter Buttons */
+        .artist-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 45px;
+        }
+
+        .filter-pill {
+            background: var(--white);
+            border: 1.5px solid var(--primary-pink);
+            color: var(--text-dark);
+            padding: 9px 22px;
+            border-radius: 25px;
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-pill:hover,
+        .filter-pill.active {
+            background: var(--accent-pink);
+            color: var(--white);
+            border-color: var(--accent-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(216, 154, 154, 0.3);
+        }
+
+        /* Artists Grid */
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .artist-profile-card {
+            background: var(--white);
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px rgba(158, 107, 107, 0.07);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .artist-profile-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(158, 107, 107, 0.14);
+        }
+
+        /* Portrait Photo Frame */
+        .artist-photo-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            background: #f7ebeb;
+        }
+
+        .artist-photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.6s ease;
+        }
+
+        .artist-profile-card:hover .artist-photo-wrap img {
+            transform: scale(1.03);
+        }
+
+        /* Badges on Top of Photo */
+        .artist-badge-status {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            z-index: 2;
+        }
+
+        .badge-ready {
+            background: var(--white);
+            color: var(--success-green);
+            border: 1px solid #c8e6c9;
+        }
+
+        .badge-ready::before {
+            content: "● ";
+            color: var(--success-green);
+        }
+
+        .badge-full {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+
+        .badge-full::before {
+            content: "■ ";
+            color: #c62828;
+        }
+
+        .specialty-tag {
+            position: absolute;
+            bottom: 14px;
+            left: 16px;
+            background: rgba(34, 24, 24, 0.75);
+            backdrop-filter: blur(4px);
+            color: var(--white);
+            font-size: 11.5px;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Card Content */
+        .artist-profile-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .artist-profile-info h3 {
+            font-size: 1.45rem;
+            margin-bottom: 4px;
+            line-height: 1.25;
+        }
+
+        .artist-role {
+            font-size: 13px;
+            color: var(--accent-pink);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .artist-description {
+            font-size: 13.5px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Micro-Row */
+        .artist-mini-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            border-top: 1px solid #f2e1e1;
+            border-bottom: 1px solid #f2e1e1;
+            padding: 12px 0;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        .mini-stat strong {
+            display: block;
+            font-size: 16px;
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .mini-stat span {
+            font-size: 11.5px;
+            color: var(--text-light);
+        }
+
+        /* Action Buttons */
+        .btn-artist-book {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(51, 34, 34, 0.15);
+        }
+
+        .btn-artist-book:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(216, 154, 154, 0.35);
+        }
+
+        .btn-artist-disabled {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #ede7e7;
+            color: #998888;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 13.5px;
+            font-weight: 500;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* --- 4. STUDIO INFO & CTA SECTION --- */
+        .studio-cta-section {
+            padding: 70px 8% 90px;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .studio-cta-card {
+            background: linear-gradient(135deg, var(--white) 0%, #fff7f7 100%);
+            border: 2px solid var(--primary-pink);
+            border-radius: 26px;
+            padding: 50px 6%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 45px;
+            align-items: center;
+            box-shadow: 0 15px 45px rgba(216, 154, 154, 0.18);
+        }
+
+        .studio-cta-content h2 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .studio-cta-content p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 26px;
+            line-height: 1.7;
+        }
+
+        .studio-perks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .studio-perk-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .studio-perk-item i {
+            color: var(--accent-pink);
+            font-size: 16px;
+        }
+
+        .studio-cta-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14.5px;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(51, 34, 34, 0.2);
+        }
+
+        .btn-cta-primary:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+
+        .btn-cta-secondary {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--accent-pink);
+            padding: 13px 28px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-cta-secondary:hover {
+            background-color: var(--accent-pink);
+            color: var(--white);
+        }
+
+        /* Studio Right Info Box */
+        .studio-badge-box {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+        }
+
+        .studio-badge-box h4 {
+            font-size: 18px;
+            margin-bottom: 18px;
+            border-bottom: 1px dashed var(--primary-pink);
+            padding-bottom: 10px;
+        }
+
+        .studio-meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .studio-meta-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .studio-meta-icon {
+            color: var(--dark-pink);
+            font-size: 18px;
+            margin-top: 3px;
+        }
+
+        .studio-meta-text strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .studio-meta-text span {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* --- FOOTER (100% Konsisten) --- */
+        .site-footer {
+            background-color: var(--primary-pink);
+            color: var(--text-dark);
+            padding: 60px 8% 20px;
+            border-top: 1px solid rgba(216, 154, 154, 0.3);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .brand-col h2 {
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .brand-col .title-line {
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .brand-col .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            max-width: 320px;
+        }
+
+        .brand-col .connect-title {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-pink);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .copyright-text {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .footer-col h3 {
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .footer-col .line {
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--text-light);
+            transition: color 0.3s, padding-left 0.3s;
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--dark-pink);
+            padding-left: 5px;
+        }
+
+        .op-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .op-icon {
+            color: var(--dark-pink);
+            margin-top: 3px;
+        }
+
+        .op-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .op-text strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .op-text span {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .studio-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(216, 154, 154, 0.3);
+        }
+
+        .studio-box .label {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--dark-pink);
+            display: block;
+            font-weight: 600;
+        }
+
+        .footer-bottom-wrap {
+            border-top: 1px solid rgba(216, 154, 154, 0.3);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .made-with-love {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* --- ANIMASI --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .studio-cta-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 5%;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-banner-section {
+                height: 48vh;
+                min-height: 360px;
+                padding: 0 5%;
+            }
+            .story-section,
+            .artists-section,
+            .studio-cta-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+            .artists-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="img/CHIRA_LOGO-removebg-preview.png" alt="Chira Make Up Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#service">Service</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="staffmua.html" class="active">About Us</a></li>
+            <li id="nav-login-item">
+                <a href="login.html" class="nav-btn">Login</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 1. HERO BANNER (55vh) -->
+    <header class="hero-banner-section">
+        <div class="hero-banner-content">
+            <span class="hero-pill-badge">
+                <i class="fa-solid fa-sparkles"></i> The Heart Behind The Beauty
+            </span>
+            <h1>About Chira Make-Up & Our Artists</h1>
+            <p>Mengenal lebih dekat perjalanan estetika, standar kualitas internasional, dan penata rias profesional yang berdedikasi merayakan kecantikan autentik Anda di Kota Malang.</p>
+        </div>
+    </header>
+
+    <!-- 2. BRAND STORY (2 KOLOM) -->
+    <section class="story-section" id="about-story">
+        <div class="story-grid">
+            
+            <!-- Kolom Kiri: Kisah & Filosofi -->
+            <div class="story-text-col">
+                <p class="section-eyebrow">OUR STORY & PHILOSOPHY</p>
+                <h2>Menghadirkan Riasan yang Mengagungkan Keindahan Alami Anda</h2>
+                <p>
+                    Berakar di jantung Kota Malang, <strong>Chira Make-Up</strong> lahir dari keyakinan mendalam bahwa setiap wanita layak merasakan momen terbaiknya dengan tampilan yang mempesona sekaligus autentik. Bagi kami, riasan bukanlah topeng untuk mengubah siapa diri Anda, melainkan sebuah seni untuk mempertegas keanggunan, karakter, dan kilau alami yang telah ada.
+                </p>
+                <p>
+                    Selama lebih dari satu dekade melayani ratusan calon pengantin (bridal), wisudawati, hingga pemotretan profesional, kami konsisten mengedepankan sentuhan yang presisi, mendengarkan preferensi pribadi klien, serta menyelaraskan tema busana dengan palet riasan yang harmonis.
+                </p>
+                <div class="quote-highlight">
+                    "Because Every Bride Deserves to Feel Like a Queen — Kami merancang setiap guratan kuas dengan cinta dan ketelitian untuk senyum bahagiamu."
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: 3 Poin Standar Kualitas -->
+            <div class="standards-col">
+                <!-- Poin 1: Sterilisasi Alat -->
+                <div class="standard-card">
+                    <div class="standard-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="standard-info">
+                        <h4>100% Sanitized & Hygienic Tools</h4>
+                        <p>Setiap kuas, spons, dan palet kosmetik melalui proses pembersihan dan sterilisasi ketat sebelum digunakan demi menjaga kesehatan serta higienitas kulit Anda.</p>
+                    </div>
+                </div>
+
+                <!-- Poin 2: Kosmetik Ramah Kulit -->
+                <div class="standard-card">
+                    <div class="standard-icon">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <div class="standard-info">
+                        <h4>Premium & Skin-Friendly Cosmetics</h4>
+                        <p>Kami hanya mengaplikasikan produk original bersertifikasi, dermatologically tested, non-comedogenic, dan kaya nutrisi skincare yang nyaman untuk kulit sensitif.</p>
+                    </div>
+                </div>
+
+                <!-- Poin 3: Ketahanan Riasan -->
+                <div class="standard-card">
+                    <div class="standard-icon">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <div class="standard-info">
+                        <h4>All-Day Radiant Complexion</h4>
+                        <p>Teknik complexion eksklusif yang tahan kilau, anti-crack, tahan air mata bahagia, dan tetap flawless hingga 12+ jam tanpa terasa tebal atau berat di wajah.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. GRID MEET OUR ARTISTS -->
+    <section class="artists-section" id="artists-team">
+        <div class="artists-header">
+            <p class="section-eyebrow">PROFESSIONAL MUA TEAM</p>
+            <h2>Meet Our Professional Artists</h2>
+            <p>Pilih Make Up Artist berpengalaman kami yang memiliki keahlian khusus sesuai look impian acara Anda.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="artist-filters">
+            <button class="filter-pill active" data-filter="all">Semua Artist</button>
+            <button class="filter-pill" data-filter="bridal">Bridal Specialist</button>
+            <button class="filter-pill" data-filter="glamour">Glamour & Editorial</button>
+            <button class="filter-pill" data-filter="ready">Ready to Book</button>
+        </div>
+
+        <!-- Artists Grid Cards -->
+        <div class="artists-grid">
+            
+            <!-- ARTIST 1: NADINE MUAMLAH VERONICA (Ready to Book) -->
+            <div class="artist-profile-card" data-category="bridal ready">
+                <div class="artist-photo-wrap">
+                    <span class="artist-badge-status badge-ready">Ready to Book</span>
+                    <span class="specialty-tag">Bridal & Glow Specialist</span>
+                    <img src="img/MUA-STAFF-Nadine.png" alt="Nadine Muamlah Veronica">
+                </div>
+                <div class="artist-profile-body">
+                    <div class="artist-profile-info">
+                        <h3>Nadine Muamlah Veronica</h3>
+                        <div class="artist-role">Senior Bridal & Glow Specialist</div>
+                        <p class="artist-description">
+                            Spesialis riasan modern soft glam dan radiant glowing flawless. Piawai menciptakan tampilan pengantin anggun yang tahan lama untuk momen sakral akad maupun resepsi.
+                        </p>
+                        
+                        <div class="artist-mini-stats">
+                            <div class="mini-stat">
+                                <strong>9+</strong>
+                                <span>Tahun</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>650+</strong>
+                                <span>Brides</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>98%</strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="booking.html?artist=Nadine%20Muamlah%20Veronica" class="btn-artist-book">
+                        <i class="fa-solid fa-calendar-check"></i> Pilih Artist & Book
+                    </a>
+                </div>
+            </div>
+
+            <!-- ARTIST 2: THANIA AURELIA PUTRI (Ready to Book) -->
+            <div class="artist-profile-card" data-category="glamour ready">
+                <div class="artist-photo-wrap">
+                    <span class="artist-badge-status badge-ready">Ready to Book</span>
+                    <span class="specialty-tag">Editorial & High Glamour</span>
+                    <img src="img/MUA-STAFF-Thania.png" alt="Thania Aurelia Putri">
+                </div>
+                <div class="artist-profile-body">
+                    <div class="artist-profile-info">
+                        <h3>Thania Aurelia Putri</h3>
+                        <div class="artist-role">Editorial & High Glamour Specialist</div>
+                        <p class="artist-description">
+                            Ahli dalam riasan mata tajam elegan, dramatic look, dan glowing photoshoot complexion. Sangat direkomendasikan untuk wisuda, pesta malam, hingga commercial photoshoot.
+                        </p>
+                        
+                        <div class="artist-mini-stats">
+                            <div class="mini-stat">
+                                <strong>6+</strong>
+                                <span>Tahun</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>420+</strong>
+                                <span>Events</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>99%</strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="booking.html?artist=Thania%20Aurelia%20Putri" class="btn-artist-book">
+                        <i class="fa-solid fa-calendar-check"></i> Pilih Artist & Book
+                    </a>
+                </div>
+            </div>
+
+            <!-- ARTIST 3: CHIRA VERONICA (Full Booked) -->
+            <div class="artist-profile-card" data-category="bridal">
+                <div class="artist-photo-wrap">
+                    <span class="artist-badge-status badge-full">Full Booked</span>
+                    <span class="specialty-tag">Founder & Master Artist</span>
+                    <img src="img/FOTO-STAFF-LOGIN.png" alt="Chira Veronica">
+                </div>
+                <div class="artist-profile-body">
+                    <div class="artist-profile-info">
+                        <h3>Chira Veronica</h3>
+                        <div class="artist-role">Founder & Master Makeup Artist</div>
+                        <p class="artist-description">
+                            Pendiri Chira Make-Up Malang dengan pengalaman lebih dari satu dekade. Membimbing standar artistik studio dan menangani sesi eksklusif VIP Signature Wedding.
+                        </p>
+                        
+                        <div class="artist-mini-stats">
+                            <div class="mini-stat">
+                                <strong>12+</strong>
+                                <span>Tahun</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>1.200+</strong>
+                                <span>Brides</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>100%</strong>
+                                <span>Rating</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-artist-disabled">
+                        <i class="fa-solid fa-ban"></i> Full Booked (Jadwal Penuh)
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. STUDIO INFO & CTA SECTION -->
+    <section class="studio-cta-section">
+        <div class="studio-cta-card">
+            
+            <div class="studio-cta-content">
+                <h2>Kunjungi Studio Atelier Kami atau Pesan Home Service</h2>
+                <p>
+                    Nikmati sesi rias eksklusif di studio kami yang berkonsep nyaman dan dilengkapi pencahayaan berstandar profesional, atau undang staf MUA kami langsung ke kediaman maupun venue acara Anda.
+                </p>
+
+                <div class="studio-perks-list">
+                    <div class="studio-perk-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Private consultation room & complimentary beauty drink</span>
+                    </div>
+                    <div class="studio-perk-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Pencahayaan studio fotografi profesional untuk hasil dokumentasi maksimal</span>
+                    </div>
+                    <div class="studio-perk-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Layanan Home Service & On-Venue ke seluruh area Malang Raya</span>
+                    </div>
+                </div>
+
+                <div class="studio-cta-actions">
+                    <a href="booking.html" class="btn-cta-primary">
+                        <i class="fa-solid fa-calendar-plus"></i> Reservasi Jadwal Sekarang
+                    </a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Chira%20Make%20Up,%20saya%20ingin%20konsultasi%20layanan%20dan%20jadwal%20MUA" target="_blank" class="btn-cta-secondary">
+                        <i class="fa-brands fa-whatsapp"></i> Tanya Admin Studio
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Box: Operasional & Lokasi -->
+            <div class="studio-badge-box">
+                <h4>Informasi Studio Atelier</h4>
+
+                <div class="studio-meta-item">
+                    <div class="studio-meta-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="studio-meta-text">
+                        <strong>Jam Operasional</strong>
+                        <span>Setiap Hari: 08.00 - 20.00 WIB</span>
+                    </div>
+                </div>
+
+                <div class="studio-meta-item">
+                    <div class="studio-meta-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="studio-meta-text">
+                        <strong>Lokasi Studio</strong>
+                        <span>Kota Malang, Jawa Timur</span>
+                    </div>
+                </div>
+
+                <div class="studio-meta-item">
+                    <div class="studio-meta-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div class="studio-meta-text">
+                        <strong>Layanan Konsultasi</strong>
+                        <span>Online via WhatsApp / Langsung di Studio</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER (100% KONSISTEN DENGAN INDEX.HTML) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <!-- Kolom 1: Brand & Media Sosial -->
+            <div class="brand-col">
+                <h2>CHIRA MAKE-UP</h2>
+                <div class="title-line"></div>
+                <p class="tagline">Menghadirkan riasan sempurna untuk momen istimewa di setiap langkahmu.</p>
+                
+                <h4 class="connect-title">CONNECT WITH US</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="TikTok" target="_blank">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="mailto:hello@chiramua.com" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <p class="copyright-text">© 2026 CHIRA MAKE-UP. All rights reserved.</p>
+            </div>
+
+            <!-- Kolom 2: Layanan -->
+            <div class="footer-col">
+                <h3>LAYANAN KAMI</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="index.html#service">Bridal Make-Up</a></li>
+                    <li><a href="index.html#service">Engagement</a></li>
+                    <li><a href="index.html#service">Graduation</a></li>
+                    <li><a href="index.html#service">Party & Custom Events</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Bantuan -->
+            <div class="footer-col">
+                <h3>BANTUAN & INFO</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Reschedule</a></li>
+                    <li><a href="login.html">Login Pelanggan</a></li>
+                    <li><a href="register.html">Daftar Akun</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 4: Operasional -->
+            <div class="footer-col operation-col">
+                <h3>JAM OPERASIONAL</h3>
+                <div class="line"></div>
+                
+                <div class="op-item">
+                    <div class="op-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.929 6.434 5.45.815z"/></svg>
+                    </div>
+                    <div class="op-text">
+                        <strong>Setiap Hari</strong>
+                        <span>08.00 - 20.00 WIB</span>
+                    </div>
+                </div>
+
+                <div class="studio-box">
+                    <div class="op-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+                    </div>
+                    <div class="op-text">
+                        <span class="label">STUDIO ATELIER</span>
+                        <strong>Kota Malang, Jawa Timur</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom-wrap">
+            <div class="made-with-love">
+                Dibuat dengan <span style="color: #e74c3c; font-size: 16px;">❤</span> untuk senyum bahagiamu
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: FILTER & STATUS LOGIN -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Cek Status Login di Navbar
+            const isLoggedIn = localStorage.getItem("chira_login_status");
+            const navLoginItem = document.getElementById("nav-login-item");
+
+            if (isLoggedIn === "true") {
+                navLoginItem.innerHTML = '<a href="#" class="nav-btn" id="logoutBtn" style="background-color: #d89a9a;">Logout</a>';
+                
+                document.getElementById("logoutBtn").addEventListener("click", function(e) {
+                    e.preventDefault();
+                    if (confirm("Apakah Anda yakin ingin logout?")) {
+                        localStorage.removeItem("chira_login_status");
+                        window.location.reload();
+                    }
+                });
+            }
+
+            // 2. Filter Interaktif Artis
+            const filterBtns = document.querySelectorAll(".filter-pill");
+            const artistCards = document.querySelectorAll(".artist-profile-card");
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener("click", function() {
+                    filterBtns.forEach(b => b.classList.remove("active"));
+                    this.classList.add("active");
+
+                    const filterValue = this.getAttribute("data-filter");
+
+                    artistCards.forEach(card => {
+                        const categories = card.getAttribute("data-category");
+                        if (filterValue === "all" || categories.includes(filterValue)) {
+                            card.style.display = "flex";
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

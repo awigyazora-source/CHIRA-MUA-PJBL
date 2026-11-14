@@ -1327,7 +1327,7 @@
             <li><a href="index.html#service">Service</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="booking.html" class="active">Booking</a></li>
-            <li><a href="index.html#artist">About Us</a></li>
+            <li><a href="staffmua.html">About Us</a></li>
             <li id="nav-login-item">
                 <a href="#" class="nav-btn logout" id="logoutBtn">Logout</a>
             </li>
@@ -1535,11 +1535,21 @@
                         <div class="staff-grid">
                             <div class="staff-card selected" data-staff="Nadine Muamlah Veronica" data-title="Senior Bridal & Glow Specialist" onclick="selectStaff(this)">
                                 <div class="staff-avatar">
-                                    <img src="img/MUA-STAFF-1.png" alt="Nadine Muamlah Veronica">
+                                    <img src="img/MUA-STAFF-Nadine.png" alt="Nadine Muamlah Veronica">
                                 </div>
                                 <div class="staff-info">
                                     <h5>Nadine Veronica</h5>
                                     <p>Senior Bridal & Glow Specialist</p>
+                                </div>
+                            </div>
+
+                            <div class="staff-card" data-staff="Thania Aurelia Putri" data-title="Editorial & High Glamour Specialist" onclick="selectStaff(this)">
+                                <div class="staff-avatar">
+                                    <img src="img/MUA-STAFF-Thania.png" alt="Thania Aurelia Putri">
+                                </div>
+                                <div class="staff-info">
+                                    <h5>Thania Aurelia</h5>
+                                    <p>Editorial & Glamour Specialist</p>
                                 </div>
                             </div>
 
@@ -1984,6 +1994,20 @@
                     updateCalculations();
                 });
             });
+
+            // Pre-select Artist from URL parameter if present
+            const urlParams = new URLSearchParams(window.location.search);
+            const artistParam = urlParams.get('artist');
+            if (artistParam) {
+                const staffCards = document.querySelectorAll(".staff-card");
+                staffCards.forEach(card => {
+                    const sName = card.dataset.staff.toLowerCase();
+                    const pName = artistParam.toLowerCase();
+                    if (sName.includes(pName) || pName.includes(sName)) {
+                        selectStaff(card);
+                    }
+                });
+            }
 
             // Initial calculation run
             updateCalculations();

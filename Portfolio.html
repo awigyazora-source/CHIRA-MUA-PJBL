@@ -61,13 +61,38 @@
         /* --- PAGE HEADER --- */
         .page-header {
             margin-top: 75px;
-            padding: 80px 5% 60px;
+            padding: 55px 5% 45px;
             text-align: center;
-            background-color: var(--primary-pink);
+            background: linear-gradient(180deg, var(--primary-pink) 0%, rgba(255, 249, 249, 0) 100%);
             border-bottom: 1px solid rgba(216, 154, 154, 0.2);
         }
-        .page-header h1 { font-size: 3.5rem; margin-bottom: 15px; }
-        .page-header p { font-size: 1.1rem; color: var(--text-light); font-weight: 300; }
+
+        .page-header .badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--dark-pink);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto;
+        }
 
         /* --- PORTFOLIO GALLERY --- */
         .portfolio-section { padding: 60px 5% 100px; max-width: 1200px; margin: 0 auto; }
@@ -210,7 +235,6 @@
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .page-header h1 { font-size: 2.5rem; }
             .footer-container { grid-template-columns: 1fr; }
         }
     </style>
@@ -227,13 +251,14 @@
             <li><a href="index.html#service">Service</a></li>
             <li><a href="portfolio.html" class="active">Portfolio</a></li>
             <li><a href="booking.html">Booking</a></li>
-            <li><a href="index.html#artist">About Us</a></li>
+            <li><a href="staffmua.html">About Us</a></li>
             <li id="nav-login-item"><a href="login.html" class="nav-btn">Login</a></li>
         </ul>
     </nav>
 
     <!-- PAGE HEADER -->
     <header class="page-header">
+        <span class="badge"><i class="fa-solid fa-sparkles"></i> Curated Gallery</span>
         <h1>Our Masterpieces</h1>
         <p>Klik pada foto untuk melihat transformasi Before-After secara interaktif.</p>
     </header>
