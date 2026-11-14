@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pemesanan | Chira Make Up</title>
+
+    <!-- Google Fonts: Playfair Display & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SCRIPT PROTEKSI LOGIN (Eksekusi seawal mungkin) -->
+    <script>
+        (function() {
+            const loginStatus = localStorage.getItem("chira_login_status");
+            if (loginStatus !== "true") {
+                alert("Akses Terbatas! Silakan login terlebih dahulu untuk melakukan pemesanan.");
+                window.location.replace("login.html");
+            }
+        })();
+    </script>
+
+    <style>
+        /* --- CSS VARIABLES (100% Konsisten dengan index.html & portfolio.html) --- */
+        :root {
+            --bg-color: #fff9f9;
+            --primary-pink: #f4dada;
+            --accent-pink: #d89a9a;
+            --dark-pink: #9e6b6b;
+            --text-dark: #332222;
+            --text-light: #7a6666;
+            --white: #ffffff;
+            --card-border: #f0d5d5;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Poppins', sans-serif;
+            --success-color: #2e7d32;
+        }
+
+        /* --- RESET & DASAR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: rgba(255, 249, 249, 0.96);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--accent-pink);
+        }
+
+        .nav-btn {
+            background-color: var(--text-dark);
+            color: var(--white) !important;
+            padding: 9px 24px;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.logout {
+            background-color: var(--accent-pink);
+        }
+
+        .nav-btn.logout:hover {
+            background-color: var(--dark-pink);
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            margin-top: 75px;
+            padding: 55px 5% 45px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--primary-pink) 0%, rgba(255, 249, 249, 0) 100%);
+            border-bottom: 1px solid rgba(216, 154, 154, 0.2);
+        }
+
+        .page-header .badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--dark-pink);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* --- MAIN BOOKING CONTAINER --- */
+        .booking-section {
+            padding: 40px 5% 90px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .booking-layout {
+            display: grid;
+            grid-template-columns: 1fr 390px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* --- FORM CARD CONTAINER --- */
+        .booking-form-col {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .form-card {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(158, 107, 107, 0.05);
+            transition: box-shadow 0.3s;
+        }
+
+        .form-card:hover {
+            box-shadow: 0 10px 30px rgba(158, 107, 107, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+            border-bottom: 1px dashed var(--primary-pink);
+            padding-bottom: 14px;
+        }
+
+        .card-step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--accent-pink);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .card-header h3 {
+            font-size: 1.35rem;
+            margin: 0;
+        }
+
+        .card-header p {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* --- STEP 1: SERVICE GRID --- */
+        .service-selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 18px;
+        }
+
+        .service-select-item {
+            position: relative;
+            background: var(--bg-color);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-select-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-pink);
+            box-shadow: 0 8px 20px rgba(216, 154, 154, 0.2);
+        }
+
+        .service-select-item.selected {
+            border-color: var(--accent-pink);
+            background: #fffafa;
+            box-shadow: 0 8px 22px rgba(216, 154, 154, 0.25);
+        }
+
+        .service-select-item .check-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 26px;
+            height: 26px;
+            background: var(--accent-pink);
+            color: var(--white);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+
+        .service-select-item.selected .check-icon {
+            display: flex;
+        }
+
+        .service-thumb {
+            width: 100%;
+            height: 125px;
+            overflow: hidden;
+        }
+
+        .service-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-select-item:hover .service-thumb img {
+            transform: scale(1.05);
+        }
+
+        .service-details {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .service-details h4 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+        }
+
+        .service-meta {
+            font-size: 12px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .service-price-tag {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark-pink);
+        }
+
+        /* --- STEP 2: ORDER TYPE & BUNDLE PAX --- */
+        .order-type-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .order-type-btn {
+            background: var(--bg-color);
+            border: 2px solid var(--primary-pink);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .order-type-btn .type-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--dark-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .order-type-btn:hover {
+            border-color: var(--accent-pink);
+            background: #fffefe;
+        }
+
+        .order-type-btn.active {
+            border-color: var(--accent-pink);
+            background: #fff5f5;
+        }
+
+        .order-type-btn.active .type-icon {
+            background: var(--accent-pink);
+            color: var(--white);
+        }
+
+        .type-info h4 {
+            font-size: 15px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .type-info p {
+            font-size: 12px;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .bundle-pax-wrapper {
+            background: #fff8f8;
+            border: 1px dashed var(--accent-pink);
+            border-radius: 14px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .bundle-pax-text h5 {
+            font-size: 15px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .bundle-pax-text p {
+            font-size: 12px;
+            color: var(--text-light);
+            margin: 0;
+            max-width: 320px;
+        }
+
+        .pax-stepper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--white);
+            border: 1px solid var(--primary-pink);
+            border-radius: 30px;
+            padding: 6px 14px;
+        }
+
+        .stepper-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-pink);
+            color: var(--text-dark);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .stepper-btn:hover:not(:disabled) {
+            background: var(--accent-pink);
+            color: var(--white);
+        }
+
+        .stepper-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .pax-number {
+            font-size: 18px;
+            font-weight: 700;
+            min-width: 45px;
+            text-align: center;
+            color: var(--dark-pink);
+        }
+
+        /* --- STEP 3: SCHEDULE & ARTIST --- */
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group label .required {
+            color: #d32f2f;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-pink);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(216, 154, 154, 0.2);
+        }
+
+        /* Staff MUA Cards */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+            margin-bottom: 22px;
+        }
+
+        .staff-card {
+            border: 2px solid var(--primary-pink);
+            background: var(--bg-color);
+            border-radius: 14px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .staff-card:hover {
+            border-color: var(--accent-pink);
+        }
+
+        .staff-card.selected {
+            border-color: var(--accent-pink);
+            background: #fff6f6;
+            box-shadow: 0 4px 12px rgba(216, 154, 154, 0.2);
+        }
+
+        .staff-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #edd8d8;
+        }
+
+        .staff-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staff-info h5 {
+            font-size: 14px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .staff-info p {
+            font-size: 11px;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Locked Time Slot Highlight Box */
+        .locked-slot-box {
+            background: linear-gradient(135deg, #fff0f0 0%, #fff8f8 100%);
+            border: 1.5px solid var(--accent-pink);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: 0 4px 15px rgba(216, 154, 154, 0.15);
+        }
+
+        .slot-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: var(--accent-pink);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .slot-details h4 {
+            font-size: 15px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slot-range {
+            display: inline-block;
+            background: var(--text-dark);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .slot-note {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        /* --- STEP 4: CUSTOMER DETAILS --- */
+        .location-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .location-label {
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            background: var(--bg-color);
+            transition: all 0.2s;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .location-label i {
+            font-size: 18px;
+            color: var(--dark-pink);
+        }
+
+        .location-label input[type="radio"] {
+            display: none;
+        }
+
+        .location-label.active {
+            border-color: var(--accent-pink);
+            background: #fff5f5;
+            color: var(--dark-pink);
+            font-weight: 600;
+        }
+
+        /* --- STICKY BOOKING SUMMARY (KOLOM KANAN) --- */
+        .summary-card {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 26px;
+            box-shadow: 0 10px 30px rgba(158, 107, 107, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-header {
+            border-bottom: 1px solid var(--primary-pink);
+            padding-bottom: 16px;
+            margin-bottom: 18px;
+        }
+
+        .summary-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .summary-header p {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .summary-service-preview {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--bg-color);
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .summary-service-preview img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .summary-service-meta h4 {
+            font-size: 14px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .summary-service-meta span {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .summary-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 22px;
+            font-size: 13.5px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        .summary-row strong {
+            color: var(--text-dark);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .summary-divider {
+            height: 1px;
+            background: var(--primary-pink);
+            margin: 16px 0;
+        }
+
+        .total-price-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .total-price-box span {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .total-price-val {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-pink);
+            font-family: var(--font-serif);
+        }
+
+        .btn-booking-submit {
+            width: 100%;
+            background-color: var(--text-dark);
+            color: var(--white);
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(51, 34, 34, 0.2);
+        }
+
+        .btn-booking-submit:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(216, 154, 154, 0.35);
+        }
+
+        .security-badge {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 11.5px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* --- MODAL SIMULASI PEMBAYARAN QRIS --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-container {
+            background: var(--white);
+            border-radius: 24px;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            animation: modalSlide 0.3s ease-out;
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f0f0f0;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .qris-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .qris-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .qris-header p {
+            font-size: 12.5px;
+            color: var(--text-light);
+        }
+
+        .booking-code-pill {
+            display: inline-block;
+            background: var(--primary-pink);
+            color: var(--text-dark);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .qris-card {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 18px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .qris-logos {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .qris-tag {
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: #d32f2f;
+        }
+
+        .gpn-tag {
+            font-size: 13px;
+            font-weight: 700;
+            background: #1976d2;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .merchant-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: #222;
+        }
+
+        .merchant-nmid {
+            font-size: 11px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .qris-code-frame {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 15px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .qris-code-frame svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .timer-box {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-radius: 10px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #f57f17;
+            font-weight: 600;
+        }
+
+        .qris-summary-list {
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 12.5px;
+        }
+
+        .qris-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .qris-summary-item:last-child {
+            margin-bottom: 0;
+            padding-top: 6px;
+            border-top: 1px dashed var(--primary-pink);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark-pink);
+        }
+
+        .btn-confirm-pay {
+            width: 100%;
+            background-color: var(--success-color);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .btn-confirm-pay:hover {
+            background-color: #256629;
+            transform: translateY(-2px);
+        }
+
+        .btn-cancel-pay {
+            width: 100%;
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-cancel-pay:hover {
+            background: #f5f5f5;
+            color: var(--text-dark);
+        }
+
+        /* Success View inside Modal */
+        .success-box {
+            text-align: center;
+            padding: 20px 10px;
+            display: none;
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #e8f5e9;
+            color: var(--success-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            margin: 0 auto 18px;
+            animation: bounceIn 0.6s ease;
+        }
+
+        .success-box h3 {
+            font-size: 1.6rem;
+            color: var(--success-color);
+            margin-bottom: 8px;
+        }
+
+        .success-box p {
+            font-size: 13.5px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .success-details {
+            background: var(--bg-color);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: left;
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .btn-wa-admin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: #25d366;
+            color: white;
+            padding: 13px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: 0.2s;
+        }
+
+        .btn-wa-admin:hover {
+            background: #1ebd56;
+            color: white;
+        }
+
+        /* --- FOOTER (100% Konsisten dengan index.html) --- */
+        .site-footer {
+            background-color: var(--primary-pink);
+            color: var(--text-dark);
+            padding: 60px 8% 20px;
+            border-top: 1px solid rgba(216, 154, 154, 0.3);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .brand-col h2 {
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .brand-col .title-line {
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .brand-col .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            max-width: 320px;
+        }
+
+        .brand-col .connect-title {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-pink);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .copyright-text {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .footer-col h3 {
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .footer-col .line {
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--text-light);
+            transition: color 0.3s, padding-left 0.3s;
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--dark-pink);
+            padding-left: 5px;
+        }
+
+        .op-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .op-icon {
+            color: var(--dark-pink);
+            margin-top: 3px;
+        }
+
+        .op-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .op-text strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .op-text span {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .studio-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(216, 154, 154, 0.3);
+        }
+
+        .studio-box .label {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--dark-pink);
+            display: block;
+            font-weight: 600;
+        }
+
+        .footer-bottom-wrap {
+            border-top: 1px solid rgba(216, 154, 154, 0.3);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .made-with-love {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* --- ANIMASI --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- RESPONSIVE UNTUK TABLET & HP --- */
+        @media (max-width: 992px) {
+            .booking-layout {
+                grid-template-columns: 1fr;
+            }
+            .summary-card {
+                position: static;
+            }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 5%;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+            .nav-links li a {
+                font-size: 12px;
+            }
+            .order-type-tabs {
+                grid-template-columns: 1fr;
+            }
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .location-options {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="img/CHIRA_LOGO-removebg-preview.png" alt="Chira Make Up Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#service">Service</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="booking.html" class="active">Booking</a></li>
+            <li><a href="index.html#artist">About Us</a></li>
+            <li id="nav-login-item">
+                <a href="#" class="nav-btn logout" id="logoutBtn">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HEADER HALAMAN -->
+    <header class="page-header">
+        <span class="badge"><i class="fa-solid fa-sparkles"></i> Official Reservation</span>
+        <h1>Formulir Pemesanan MUA</h1>
+        <p>Pilih layanan impian, tentukan jadwal, dan nikmati sentuhan tata rias profesional berkelas dari Chira Make Up.</p>
+    </header>
+
+    <!-- FORMULIR & RINGKASAN PEMESANAN -->
+    <main class="booking-section">
+        <div class="booking-layout">
+
+            <!-- KOLOM KIRI: FORMULIR INPUT -->
+            <div class="booking-form-col">
+
+                <!-- STEP 1: PILIHAN LAYANAN -->
+                <section class="form-card" id="stepService">
+                    <div class="card-header">
+                        <div class="card-step-num">1</div>
+                        <div>
+                            <h3>Pilih Jenis Layanan Make Up</h3>
+                            <p>Tentukan kategori riasan yang sesuai dengan momen istimewa Anda</p>
+                        </div>
+                    </div>
+
+                    <div class="service-selection-grid" id="serviceGrid">
+                        <!-- Layanan 1: Wedding -->
+                        <div class="service-select-item selected" data-key="wedding" data-name="Makeup Wedding / Pre-Wedding" data-price="1500000" data-duration="150" data-img="img/service-wedding.png">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="service-thumb">
+                                <img src="img/service-wedding.png" alt="Wedding Makeup">
+                            </div>
+                            <div class="service-details">
+                                <div>
+                                    <h4>Wedding / Pre-Wedding</h4>
+                                    <div class="service-meta">
+                                        <i class="fa-regular fa-clock"></i> 150 mnt (2.5 jam) / pax
+                                    </div>
+                                </div>
+                                <div class="service-price-tag">Rp 1.500.000</div>
+                            </div>
+                        </div>
+
+                        <!-- Layanan 2: Graduation -->
+                        <div class="service-select-item" data-key="graduation" data-name="Makeup Graduation" data-price="450000" data-duration="60" data-img="img/service-graduation.jpg">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="service-thumb">
+                                <img src="img/service-graduation.jpg" alt="Graduation Makeup">
+                            </div>
+                            <div class="service-details">
+                                <div>
+                                    <h4>Makeup Graduation</h4>
+                                    <div class="service-meta">
+                                        <i class="fa-regular fa-clock"></i> 60 mnt (1 jam) / pax
+                                    </div>
+                                </div>
+                                <div class="service-price-tag">Rp 450.000</div>
+                            </div>
+                        </div>
+
+                        <!-- Layanan 3: Engagement -->
+                        <div class="service-select-item" data-key="engagement" data-name="Makeup Engagement" data-price="750000" data-duration="90" data-img="img/service-engagement.png">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="service-thumb">
+                                <img src="img/service-engagement.png" alt="Engagement Makeup">
+                            </div>
+                            <div class="service-details">
+                                <div>
+                                    <h4>Makeup Engagement</h4>
+                                    <div class="service-meta">
+                                        <i class="fa-regular fa-clock"></i> 90 mnt (1.5 jam) / pax
+                                    </div>
+                                </div>
+                                <div class="service-price-tag">Rp 750.000</div>
+                            </div>
+                        </div>
+
+                        <!-- Layanan 4: Birthday -->
+                        <div class="service-select-item" data-key="birthday" data-name="Makeup Birthday" data-price="400000" data-duration="60" data-img="img/service-birthday.png">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="service-thumb">
+                                <img src="img/service-birthday.png" alt="Birthday Makeup">
+                            </div>
+                            <div class="service-details">
+                                <div>
+                                    <h4>Makeup Birthday</h4>
+                                    <div class="service-meta">
+                                        <i class="fa-regular fa-clock"></i> 60 mnt (1 jam) / pax
+                                    </div>
+                                </div>
+                                <div class="service-price-tag">Rp 400.000</div>
+                            </div>
+                        </div>
+
+                        <!-- Layanan 5: Photoshoot -->
+                        <div class="service-select-item" data-key="photoshoot" data-name="Makeup Photoshoot" data-price="550000" data-duration="75" data-img="img/service-photoshoot.png">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="service-thumb">
+                                <img src="img/service-photoshoot.png" alt="Photoshoot Makeup">
+                            </div>
+                            <div class="service-details">
+                                <div>
+                                    <h4>Makeup Photoshoot</h4>
+                                    <div class="service-meta">
+                                        <i class="fa-regular fa-clock"></i> 75 mnt (1.25 jam) / pax
+                                    </div>
+                                </div>
+                                <div class="service-price-tag">Rp 550.000</div>
+                            </div>
+                        </div>
+
+                        <!-- Layanan 6: Custom -->
+                        <div class="service-select-item" data-key="custom" data-name="Custom Makeup" data-price="600000" data-duration="90" data-img="img/service-custom.jpg">
+                            <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                            <div class="service-thumb">
+                                <img src="img/service-custom.jpg" alt="Custom Makeup">
+                            </div>
+                            <div class="service-details">
+                                <div>
+                                    <h4>Custom Makeup</h4>
+                                    <div class="service-meta">
+                                        <i class="fa-regular fa-clock"></i> 90 mnt (1.5 jam) / pax
+                                    </div>
+                                </div>
+                                <div class="service-price-tag">Rp 600.000</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STEP 2: TIPE PESANAN (PERORANGAN VS BUNDLE) -->
+                <section class="form-card" id="stepPackage">
+                    <div class="card-header">
+                        <div class="card-step-num">2</div>
+                        <div>
+                            <h3>Pilih Tipe Pesanan & Jumlah Pax</h3>
+                            <p>Tersedia opsi personal maupun paket rombongan (bundle) teman / keluarga</p>
+                        </div>
+                    </div>
+
+                    <div class="order-type-tabs">
+                        <!-- Perorangan -->
+                        <div class="order-type-btn active" id="typeSingle" onclick="selectOrderType('single')">
+                            <div class="type-icon"><i class="fa-solid fa-user"></i></div>
+                            <div class="type-info">
+                                <h4>Perorangan</h4>
+                                <p>1 Orang (Exclusive Personal Session)</p>
+                            </div>
+                        </div>
+
+                        <!-- Bundle / Rame-rame -->
+                        <div class="order-type-btn" id="typeBundle" onclick="selectOrderType('bundle')">
+                            <div class="type-icon"><i class="fa-solid fa-users"></i></div>
+                            <div class="type-info">
+                                <h4>Bundle / Rame-rame</h4>
+                                <p>2 s/d 5 Orang (Wisuda / Bridesmaid)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pax Stepper (Muncul jika Bundle dipilih) -->
+                    <div class="bundle-pax-wrapper" id="bundleStepperWrapper" style="display: none;">
+                        <div class="bundle-pax-text">
+                            <h5>Jumlah Anggota Rombongan (Pax)</h5>
+                            <p>Dikerjakan bergantian secara berurutan oleh 1 staf MUA agar ketelitian dan higienitas tetap terjaga prima.</p>
+                        </div>
+                        <div class="pax-stepper">
+                            <button type="button" class="stepper-btn" id="btnMinusPax" onclick="adjustPax(-1)"><i class="fa-solid fa-minus"></i></button>
+                            <span class="pax-number" id="paxDisplay">2 Orang</span>
+                            <button type="button" class="stepper-btn" id="btnPlusPax" onclick="adjustPax(1)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STEP 3: JADWAL, JAM MULAI & STAFF MUA -->
+                <section class="form-card" id="stepSchedule">
+                    <div class="card-header">
+                        <div class="card-step-num">3</div>
+                        <div>
+                            <h3>Pilih Jadwal & Staff MUA</h3>
+                            <p>Tentukan tanggal, waktu mulai, dan penata rias profesional pilihan Anda</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="bookingDate">Tanggal Acara <span class="required">*</span></label>
+                            <input type="date" id="bookingDate" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="startTime">Jam Mulai Rias <span class="required">*</span></label>
+                            <input type="time" id="startTime" class="form-control" value="08:00" required>
+                        </div>
+                    </div>
+
+                    <!-- Staff MUA Selection -->
+                    <div class="form-group">
+                        <label>Pilih Penata Rias (Staff MUA) <span class="required">*</span></label>
+                        <div class="staff-grid">
+                            <div class="staff-card selected" data-staff="Nadine Muamlah Veronica" data-title="Senior Bridal & Glow Specialist" onclick="selectStaff(this)">
+                                <div class="staff-avatar">
+                                    <img src="img/MUA-STAFF-1.png" alt="Nadine Muamlah Veronica">
+                                </div>
+                                <div class="staff-info">
+                                    <h5>Nadine Veronica</h5>
+                                    <p>Senior Bridal & Glow Specialist</p>
+                                </div>
+                            </div>
+
+                            <div class="staff-card" data-staff="Chira Veronica" data-title="Founder & Master Artist" onclick="selectStaff(this)">
+                                <div class="staff-avatar">
+                                    <img src="img/FOTO-STAFF-LOGIN.png" alt="Chira Veronica">
+                                </div>
+                                <div class="staff-info">
+                                    <h5>Chira Veronica</h5>
+                                    <p>Founder & Master Artist</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Locked Time Slot Notice -->
+                    <div class="locked-slot-box">
+                        <div class="slot-icon-box">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div class="slot-details">
+                            <h4>
+                                Slot Waktu Terkunci: 
+                                <span class="slot-range" id="lockedSlotBadge">08:00 - 10:30 WIB</span>
+                            </h4>
+                            <p class="slot-note" id="lockedSlotNote">
+                                Total durasi pengerjaan: <strong>150 menit (2.5 jam)</strong>. Staf MUA akan didedikasikan secara eksklusif untuk sesi Anda sepanjang rentang waktu ini.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STEP 4: DATA PEMESAN & LOKASI -->
+                <section class="form-card" id="stepCustomer">
+                    <div class="card-header">
+                        <div class="card-step-num">4</div>
+                        <div>
+                            <h3>Data Pemesan & Lokasi Acara</h3>
+                            <p>Informasi kontak untuk koordinasi dan konfirmasi kedatangan tim</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="custName">Nama Lengkap Pemesan <span class="required">*</span></label>
+                            <input type="text" id="custName" class="form-control" placeholder="Contoh: Clarissa Putri" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="custPhone">Nomor WhatsApp Aktif <span class="required">*</span></label>
+                            <input type="tel" id="custPhone" class="form-control" placeholder="Contoh: 081234567890" required>
+                        </div>
+                    </div>
+
+                    <!-- Lokasi Pengerjaan -->
+                    <div class="form-group" style="margin-bottom: 18px;">
+                        <label>Pilihan Lokasi Sesi Make Up <span class="required">*</span></label>
+                        <div class="location-options">
+                            <label class="location-label active" onclick="selectLocation('studio', this)">
+                                <input type="radio" name="locationType" value="Studio Chira Malang" checked>
+                                <i class="fa-solid fa-store"></i>
+                                <span>Studio Chira Malang</span>
+                            </label>
+
+                            <label class="location-label" onclick="selectLocation('home', this)">
+                                <input type="radio" name="locationType" value="Home Service (Rumah)">
+                                <i class="fa-solid fa-house-chimney"></i>
+                                <span>Home Service (Rumah)</span>
+                            </label>
+
+                            <label class="location-label" onclick="selectLocation('venue', this)">
+                                <input type="radio" name="locationType" value="Venue Acara / Hotel">
+                                <i class="fa-solid fa-hotel"></i>
+                                <span>Venue / Gedung / Hotel</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="addressGroup" style="display: none; margin-bottom: 18px;">
+                        <label for="custAddress">Alamat Lengkap Lokasi Acara <span class="required">*</span></label>
+                        <textarea id="custAddress" class="form-control" rows="2" placeholder="Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota Malang..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="custNotes">Catatan Khusus / Permintaan Look (Opsional)</label>
+                        <textarea id="custNotes" class="form-control" rows="2" placeholder="Contoh: Warna tema baju sage green, jenis kulit berminyak, request soft glam eyes..."></textarea>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- KOLOM KANAN: STICKY BOOKING SUMMARY -->
+            <aside class="summary-col">
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <h3>Ringkasan Reservasi</h3>
+                        <p>Pastikan rincian pesanan Anda telah sesuai</p>
+                    </div>
+
+                    <!-- Pratinjau Layanan -->
+                    <div class="summary-service-preview">
+                        <img id="summaryThumb" src="img/service-wedding.png" alt="Service Thumbnail">
+                        <div class="summary-service-meta">
+                            <h4 id="summaryServiceName">Makeup Wedding / Pre-Wedding</h4>
+                            <span id="summaryDurationSingle">150 menit / pax</span>
+                        </div>
+                    </div>
+
+                    <!-- Breakdown Detail -->
+                    <div class="summary-rows">
+                        <div class="summary-row">
+                            <span>Tipe Pesanan</span>
+                            <strong id="summaryOrderType">Perorangan (1 Pax)</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Staff MUA</span>
+                            <strong id="summaryStaff">Nadine Veronica</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tanggal Acara</span>
+                            <strong id="summaryDate">- Belum Dipilih -</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Waktu Pengerjaan</span>
+                            <strong id="summaryTime">08:00 - 10:30 WIB</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Total Durasi</span>
+                            <strong id="summaryTotalDuration">150 menit (2.5 jam)</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Lokasi Sesi</span>
+                            <strong id="summaryLocation">Studio Chira Malang</strong>
+                        </div>
+
+                        <div class="summary-divider"></div>
+
+                        <div class="total-price-box">
+                            <div>
+                                <span>Total Tagihan</span>
+                                <div style="font-size: 11px; color: var(--text-light);">(Termasuk Konsultasi & Alur Lengkap)</div>
+                            </div>
+                            <div class="total-price-val" id="summaryTotalPrice">Rp 1.500.000</div>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Lanjut ke QRIS -->
+                    <button type="button" class="btn-booking-submit" id="btnProceedPayment" onclick="handleProceedPayment()">
+                        <i class="fa-solid fa-qrcode"></i> Lanjut Pembayaran QRIS
+                    </button>
+
+                    <div class="security-badge">
+                        <i class="fa-solid fa-shield-halved"></i> Pembayaran Terverifikasi & Aman 100%
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- MODAL SIMULASI PEMBAYARAN QRIS -->
+    <div class="modal-overlay" id="qrisModal">
+        <div class="modal-container">
+            <button type="button" class="modal-close-btn" onclick="closeQrisModal()">&times;</button>
+
+            <!-- Tampilan 1: Tagihan & Kode QRIS -->
+            <div id="qrisPaymentView">
+                <div class="qris-header">
+                    <h3>Simulasi Pembayaran QRIS</h3>
+                    <p>Pindai kode QR melalui aplikasi perbankan atau e-wallet Anda</p>
+                    <div class="booking-code-pill" id="qrisBookingCode">CHR-BOOKING-001</div>
+                </div>
+
+                <div class="qris-card">
+                    <div class="qris-logos">
+                        <span class="qris-tag">QRIS</span>
+                        <span class="gpn-tag">GPN</span>
+                    </div>
+
+                    <div class="merchant-name">CHIRA MAKE UP MALANG</div>
+                    <div class="merchant-nmid">NMID: ID1020268892100 | A01</div>
+
+                    <!-- QR Code Simulasi (SVG Bersih & Tajam) -->
+                    <div class="qris-code-frame">
+                        <svg viewBox="0 0 100 100" fill="#222">
+                            <!-- Background Frame & Alignment Targets -->
+                            <rect width="100" height="100" fill="#fff" />
+                            <!-- Top Left Target -->
+                            <rect x="5" y="5" width="28" height="28" fill="#111" />
+                            <rect x="9" y="9" width="20" height="20" fill="#fff" />
+                            <rect x="13" y="13" width="12" height="12" fill="#111" />
+                            <!-- Top Right Target -->
+                            <rect x="67" y="5" width="28" height="28" fill="#111" />
+                            <rect x="71" y="9" width="20" height="20" fill="#fff" />
+                            <rect x="75" y="13" width="12" height="12" fill="#111" />
+                            <!-- Bottom Left Target -->
+                            <rect x="5" y="67" width="28" height="28" fill="#111" />
+                            <rect x="9" y="71" width="20" height="20" fill="#fff" />
+                            <rect x="13" y="75" width="12" height="12" fill="#111" />
+                            <!-- Simulated Data Matrix Dots -->
+                            <rect x="38" y="8" width="5" height="5" />
+                            <rect x="48" y="12" width="6" height="5" />
+                            <rect x="40" y="22" width="5" height="6" />
+                            <rect x="52" y="24" width="7" height="5" />
+                            <rect x="10" y="40" width="6" height="6" />
+                            <rect x="22" y="44" width="5" height="5" />
+                            <rect x="38" y="38" width="8" height="8" />
+                            <rect x="52" y="40" width="5" height="6" />
+                            <rect x="68" y="42" width="6" height="5" />
+                            <rect x="80" y="44" width="8" height="6" />
+                            <rect x="14" y="54" width="5" height="5" />
+                            <rect x="30" y="52" width="6" height="7" />
+                            <rect x="42" y="54" width="7" height="6" />
+                            <rect x="60" y="55" width="6" height="5" />
+                            <rect x="78" y="58" width="5" height="6" />
+                            <rect x="40" y="70" width="6" height="6" />
+                            <rect x="54" y="72" width="8" height="5" />
+                            <rect x="48" y="84" width="7" height="6" />
+                            <rect x="68" y="78" width="7" height="7" />
+                            <rect x="84" y="80" width="6" height="6" />
+                            <!-- Center Emblem Logo -->
+                            <rect x="42" y="42" width="16" height="16" rx="3" fill="#d89a9a" />
+                            <circle cx="50" cy="50" r="5" fill="#fff" />
+                        </svg>
+                    </div>
+
+                    <!-- Countdown Timer -->
+                    <div class="timer-box">
+                        <i class="fa-regular fa-clock"></i> Selesaikan pembayaran dalam: <span id="qrisTimer">15:00</span>
+                    </div>
+                </div>
+
+                <!-- Rincian Singkat Tagihan -->
+                <div class="qris-summary-list">
+                    <div class="qris-summary-item">
+                        <span>Layanan:</span>
+                        <strong id="modalService">-</strong>
+                    </div>
+                    <div class="qris-summary-item">
+                        <span>Paket & Jadwal:</span>
+                        <strong id="modalSchedule">-</strong>
+                    </div>
+                    <div class="qris-summary-item">
+                        <span>Total Tagihan:</span>
+                        <span id="modalTotalPay" style="font-size: 15px; font-weight: 700; color: var(--dark-pink);">Rp 0</span>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-confirm-pay" onclick="simulatePaymentSuccess()">
+                    <i class="fa-solid fa-circle-check"></i> Saya Sudah Membayar
+                </button>
+                <button type="button" class="btn-cancel-pay" onclick="closeQrisModal()">
+                    Batal / Ubah Detail Reservasi
+                </button>
+            </div>
+
+            <!-- Tampilan 2: Status Sukses Pembayaran -->
+            <div id="qrisSuccessView" class="success-box">
+                <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3>Pembayaran Berhasil!</h3>
+                <p>Reservasi jadwal Anda telah terkonfirmasi dan slot waktu Anda telah resmi dikunci.</p>
+
+                <div class="success-details" id="successDetailText">
+                    <!-- Rincian di-generate via JavaScript -->
+                </div>
+
+                <a href="#" id="btnWaConfirmation" class="btn-wa-admin" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Konfirmasi ke WhatsApp Admin
+                </a>
+
+                <a href="index.html" class="btn-cancel-pay" style="display: block; text-align: center; text-decoration: none; margin-top: 10px;">
+                    Kembali ke Beranda
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER (100% KONSISTEN DENGAN INDEX.HTML) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <!-- Kolom 1: Brand & Media Sosial -->
+            <div class="brand-col">
+                <h2>CHIRA MAKE-UP</h2>
+                <div class="title-line"></div>
+                <p class="tagline">Menghadirkan riasan sempurna untuk momen istimewa di setiap langkahmu.</p>
+                
+                <h4 class="connect-title">CONNECT WITH US</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="TikTok" target="_blank">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="mailto:hello@chiramua.com" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <p class="copyright-text">© 2026 CHIRA MAKE-UP. All rights reserved.</p>
+            </div>
+
+            <!-- Kolom 2: Layanan -->
+            <div class="footer-col">
+                <h3>LAYANAN KAMI</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="index.html#service">Bridal Make-Up</a></li>
+                    <li><a href="index.html#service">Engagement</a></li>
+                    <li><a href="index.html#service">Graduation</a></li>
+                    <li><a href="index.html#service">Party & Custom Events</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Bantuan -->
+            <div class="footer-col">
+                <h3>BANTUAN & INFO</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Reschedule</a></li>
+                    <li><a href="login.html">Login Pelanggan</a></li>
+                    <li><a href="register.html">Daftar Akun</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 4: Operasional -->
+            <div class="footer-col operation-col">
+                <h3>JAM OPERASIONAL</h3>
+                <div class="line"></div>
+                
+                <div class="op-item">
+                    <div class="op-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.929 6.434 5.45.815z"/></svg>
+                    </div>
+                    <div class="op-text">
+                        <strong>Setiap Hari</strong>
+                        <span>08.00 - 20.00 WIB</span>
+                    </div>
+                </div>
+
+                <div class="studio-box">
+                    <div class="op-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+                    </div>
+                    <div class="op-text">
+                        <span class="label">STUDIO ATELIER</span>
+                        <strong>Kota Malang, Jawa Timur</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom-wrap">
+            <div class="made-with-love">
+                Dibuat dengan <span style="color: #e74c3c; font-size: 16px;">❤</span> untuk senyum bahagiamu
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC UNTUK BOOKING & SIMULASI QRIS -->
+    <script>
+        // --- 1. STATE MANAGEMENT ---
+        let currentBooking = {
+            serviceKey: 'wedding',
+            serviceName: 'Makeup Wedding / Pre-Wedding',
+            basePrice: 1500000,
+            baseDuration: 150, // dalam menit
+            serviceImg: 'img/service-wedding.png',
+            orderType: 'single', // 'single' atau 'bundle'
+            paxCount: 1,
+            selectedDate: '',
+            startTime: '08:00',
+            endTime: '10:30',
+            staffName: 'Nadine Muamlah Veronica',
+            locationType: 'Studio Chira Malang',
+            address: '',
+            custName: '',
+            custPhone: '',
+            custNotes: '',
+            totalPrice: 1500000,
+            totalDuration: 150,
+            bookingCode: ''
+        };
+
+        let timerInterval = null;
+
+        // --- 2. INITIALIZATION ON DOM READY ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Logout Button Handling
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    if (confirm("Apakah Anda yakin ingin keluar dari akun?")) {
+                        localStorage.removeItem("chira_login_status");
+                        window.location.href = "login.html";
+                    }
+                });
+            }
+
+            // Set Min Date to Today
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const minDateStr = `${yyyy}-${mm}-${dd}`;
+            
+            const dateInput = document.getElementById("bookingDate");
+            dateInput.min = minDateStr;
+            dateInput.value = minDateStr;
+            currentBooking.selectedDate = minDateStr;
+
+            // Event Listeners for Date and Time
+            dateInput.addEventListener("change", function(e) {
+                currentBooking.selectedDate = e.target.value;
+                updateCalculations();
+            });
+
+            document.getElementById("startTime").addEventListener("change", function(e) {
+                currentBooking.startTime = e.target.value || "08:00";
+                updateCalculations();
+            });
+
+            // Service Selection Click Listeners
+            const serviceCards = document.querySelectorAll(".service-select-item");
+            serviceCards.forEach(card => {
+                card.addEventListener("click", function() {
+                    serviceCards.forEach(c => c.classList.remove("selected"));
+                    this.classList.add("selected");
+
+                    currentBooking.serviceKey = this.dataset.key;
+                    currentBooking.serviceName = this.dataset.name;
+                    currentBooking.basePrice = parseInt(this.dataset.price);
+                    currentBooking.baseDuration = parseInt(this.dataset.duration);
+                    currentBooking.serviceImg = this.dataset.img;
+
+                    updateCalculations();
+                });
+            });
+
+            // Initial calculation run
+            updateCalculations();
+        });
+
+        // --- 3. SELECTION HANDLERS ---
+        function selectOrderType(type) {
+            currentBooking.orderType = type;
+            const singleBtn = document.getElementById("typeSingle");
+            const bundleBtn = document.getElementById("typeBundle");
+            const stepperWrapper = document.getElementById("bundleStepperWrapper");
+
+            if (type === 'single') {
+                singleBtn.classList.add("active");
+                bundleBtn.classList.remove("active");
+                stepperWrapper.style.display = "none";
+                currentBooking.paxCount = 1;
+            } else {
+                singleBtn.classList.remove("active");
+                bundleBtn.classList.add("active");
+                stepperWrapper.style.display = "flex";
+                if (currentBooking.paxCount < 2) {
+                    currentBooking.paxCount = 2; // Default bundle = 2 pax
+                }
+            }
+
+            updateCalculations();
+        }
+
+        function adjustPax(delta) {
+            let newPax = currentBooking.paxCount + delta;
+            if (newPax >= 2 && newPax <= 5) {
+                currentBooking.paxCount = newPax;
+                document.getElementById("paxDisplay").innerText = `${newPax} Orang`;
+                document.getElementById("btnMinusPax").disabled = (newPax === 2);
+                document.getElementById("btnPlusPax").disabled = (newPax === 5);
+                updateCalculations();
+            }
+        }
+
+        function selectStaff(element) {
+            document.querySelectorAll(".staff-card").forEach(c => c.classList.remove("selected"));
+            element.classList.add("selected");
+            currentBooking.staffName = element.dataset.staff;
+            document.getElementById("summaryStaff").innerText = element.dataset.staff;
+        }
+
+        function selectLocation(type, element) {
+            document.querySelectorAll(".location-label").forEach(l => l.classList.remove("active"));
+            element.classList.add("active");
+            
+            const radio = element.querySelector("input[type='radio']");
+            radio.checked = true;
+            currentBooking.locationType = radio.value;
+
+            const addressGroup = document.getElementById("addressGroup");
+            if (type === 'studio') {
+                addressGroup.style.display = "none";
+            } else {
+                addressGroup.style.display = "block";
+            }
+
+            document.getElementById("summaryLocation").innerText = radio.value;
+        }
+
+        // --- 4. ENGINE PERHITUNGAN OTOMATIS (WAKTU & BIAYA) ---
+        function updateCalculations() {
+            // A. Perhitungan Total Harga
+            currentBooking.totalPrice = currentBooking.basePrice * currentBooking.paxCount;
+
+            // B. Perhitungan Total Durasi (Jumlah Orang x Durasi per Orang)
+            currentBooking.totalDuration = currentBooking.baseDuration * currentBooking.paxCount;
+
+            // C. Hitung Jam Selesai
+            currentBooking.endTime = computeEndTime(currentBooking.startTime, currentBooking.totalDuration);
+
+            // D. Format Durasi Text (e.g. "180 menit (3.0 jam)")
+            const hours = (currentBooking.totalDuration / 60).toFixed(1).replace('.0', '');
+            const durationText = `${currentBooking.totalDuration} menit (${hours} jam)`;
+
+            // E. Update UI Ringkasan (Summary Widget)
+            document.getElementById("summaryThumb").src = currentBooking.serviceImg;
+            document.getElementById("summaryServiceName").innerText = currentBooking.serviceName;
+            document.getElementById("summaryDurationSingle").innerText = `${currentBooking.baseDuration} menit / pax`;
+            
+            if (currentBooking.orderType === 'single') {
+                document.getElementById("summaryOrderType").innerText = "Perorangan (1 Pax)";
+            } else {
+                document.getElementById("summaryOrderType").innerText = `Bundle (${currentBooking.paxCount} Pax)`;
+            }
+
+            document.getElementById("summaryTotalDuration").innerText = durationText;
+            document.getElementById("summaryTime").innerText = `${currentBooking.startTime} - ${currentBooking.endTime} WIB`;
+            document.getElementById("summaryDate").innerText = formatDateIndo(currentBooking.selectedDate);
+            document.getElementById("summaryTotalPrice").innerText = formatRupiah(currentBooking.totalPrice);
+
+            // F. Update Badge Penguncian Slot Waktu
+            document.getElementById("lockedSlotBadge").innerText = `${currentBooking.startTime} - ${currentBooking.endTime} WIB`;
+            document.getElementById("lockedSlotNote").innerHTML = 
+                `Total durasi pengerjaan: <strong>${durationText}</strong> untuk ${currentBooking.paxCount} orang. Staf MUA akan didedikasikan secara eksklusif untuk sesi Anda sepanjang rentang waktu ini.`;
+        }
+
+        // Utility: Hitung Jam Selesai dari Jam Mulai + Total Menit
+        function computeEndTime(startHHMM, addMinutes) {
+            const parts = startHHMM.split(":");
+            let h = parseInt(parts[0], 10);
+            let m = parseInt(parts[1], 10);
+
+            let totalM = (h * 60) + m + addMinutes;
+            let endH = Math.floor(totalM / 60) % 24;
+            let endM = totalM % 60;
+
+            const pad = (n) => String(n).padStart(2, '0');
+            return `${pad(endH)}:${pad(endM)}`;
+        }
+
+        // Utility: Format Rupiah
+        function formatRupiah(number) {
+            return "Rp " + number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        // Utility: Format Tanggal Indonesia
+        function formatDateIndo(dateStr) {
+            if (!dateStr) return "- Belum Dipilih -";
+            const parts = dateStr.split("-");
+            if (parts.length !== 3) return dateStr;
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            const d = parseInt(parts[2], 10);
+            const m = months[parseInt(parts[1], 10) - 1];
+            const y = parts[0];
+            return `${d} ${m} ${y}`;
+        }
+
+        // --- 5. MODAL QRIS & SIMULASI TRANSAKSI ---
+        function handleProceedPayment() {
+            // Validasi Input
+            const custName = document.getElementById("custName").value.trim();
+            const custPhone = document.getElementById("custPhone").value.trim();
+            const bookingDate = document.getElementById("bookingDate").value;
+
+            if (!custName) {
+                alert("Mohon lengkapi Nama Lengkap Pemesan pada Step 4.");
+                document.getElementById("custName").focus();
+                return;
+            }
+
+            if (!custPhone) {
+                alert("Mohon lengkapi Nomor WhatsApp Aktif pada Step 4.");
+                document.getElementById("custPhone").focus();
+                return;
+            }
+
+            if (!bookingDate) {
+                alert("Mohon tentukan Tanggal Acara pada Step 3.");
+                document.getElementById("bookingDate").focus();
+                return;
+            }
+
+            // Jika lokasi bukan studio, pastikan alamat terisi
+            if (currentBooking.locationType !== 'Studio Chira Malang') {
+                const address = document.getElementById("custAddress").value.trim();
+                if (!address) {
+                    alert("Mohon isi Alamat Lengkap untuk lokasi Home Service / Venue.");
+                    document.getElementById("custAddress").focus();
+                    return;
+                }
+                currentBooking.address = address;
+            }
+
+            currentBooking.custName = custName;
+            currentBooking.custPhone = custPhone;
+            currentBooking.custNotes = document.getElementById("custNotes").value.trim();
+
+            // Generate Kode Booking Acak yang Elegan
+            const randomCode = Math.floor(1000 + Math.random() * 9000);
+            currentBooking.bookingCode = `CHR-${bookingDate.replace(/-/g, '')}-${randomCode}`;
+
+            // Setup Konten Modal QRIS
+            document.getElementById("qrisBookingCode").innerText = currentBooking.bookingCode;
+            document.getElementById("modalService").innerText = currentBooking.serviceName;
+            document.getElementById("modalSchedule").innerText = `${formatDateIndo(currentBooking.selectedDate)} (${currentBooking.startTime} - ${currentBooking.endTime} WIB, ${currentBooking.paxCount} Pax)`;
+            document.getElementById("modalTotalPay").innerText = formatRupiah(currentBooking.totalPrice);
+
+            // Buka Modal
+            document.getElementById("qrisPaymentView").style.display = "block";
+            document.getElementById("qrisSuccessView").style.display = "none";
+            document.getElementById("qrisModal").classList.add("show");
+
+            // Mulai Countdown Timer 15 Menit
+            startQrisTimer(15 * 60);
+        }
+
+        function closeQrisModal() {
+            document.getElementById("qrisModal").classList.remove("show");
+            if (timerInterval) clearInterval(timerInterval);
+        }
+
+        function startQrisTimer(durationSeconds) {
+            if (timerInterval) clearInterval(timerInterval);
+            let timer = durationSeconds;
+            const timerElem = document.getElementById("qrisTimer");
+
+            function updateDisplay() {
+                const minutes = Math.floor(timer / 60);
+                const seconds = timer % 60;
+                timerElem.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                if (--timer < 0) {
+                    clearInterval(timerInterval);
+                    timerElem.innerText = "Kadaluarsa";
+                }
+            }
+
+            updateDisplay();
+            timerInterval = setInterval(updateDisplay, 1000);
+        }
+
+        function simulatePaymentSuccess() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            // Simpan riwayat booking ke localStorage
+            try {
+                const existingBookings = JSON.parse(localStorage.getItem("chira_bookings") || "[]");
+                existingBookings.push({
+                    ...currentBooking,
+                    timestamp: new Date().toISOString(),
+                    status: 'Confirmed'
+                });
+                localStorage.setItem("chira_bookings", JSON.stringify(existingBookings));
+            } catch (err) {
+                console.error("Gagal menyimpan ke localStorage:", err);
+            }
+
+            // Render Rincian Sukses
+            const successDetailText = document.getElementById("successDetailText");
+            successDetailText.innerHTML = `
+                <div style="margin-bottom: 6px;"><strong>Kode Reservasi:</strong> <span style="color: var(--dark-pink); font-weight:700;">${currentBooking.bookingCode}</span></div>
+                <div style="margin-bottom: 6px;"><strong>Nama Klien:</strong> ${currentBooking.custName} (${currentBooking.custPhone})</div>
+                <div style="margin-bottom: 6px;"><strong>Layanan:</strong> ${currentBooking.serviceName} (${currentBooking.paxCount} Pax)</div>
+                <div style="margin-bottom: 6px;"><strong>Jadwal Terkunci:</strong> ${formatDateIndo(currentBooking.selectedDate)}, Pukul ${currentBooking.startTime} - ${currentBooking.endTime} WIB</div>
+                <div style="margin-bottom: 6px;"><strong>Penata Rias:</strong> ${currentBooking.staffName}</div>
+                <div style="margin-bottom: 6px;"><strong>Lokasi:</strong> ${currentBooking.locationType}</div>
+                <div><strong>Total Pembayaran:</strong> <span style="font-weight:700; color:var(--success-color);">${formatRupiah(currentBooking.totalPrice)}</span> (Lunas via QRIS)</div>
+            `;
+
+            // Tautan WhatsApp Konfirmasi Otomatis
+            const waMessage = encodeURIComponent(
+                `Halo Chira Make Up, saya telah menyelesaikan pembayaran via QRIS untuk reservasi:\n\n` +
+                `Kode Booking: ${currentBooking.bookingCode}\n` +
+                `Nama: ${currentBooking.custName}\n` +
+                `Layanan: ${currentBooking.serviceName} (${currentBooking.paxCount} Orang)\n` +
+                `Tanggal: ${formatDateIndo(currentBooking.selectedDate)}\n` +
+                `Waktu: ${currentBooking.startTime} - ${currentBooking.endTime} WIB\n` +
+                `Staff MUA: ${currentBooking.staffName}\n` +
+                `Total: ${formatRupiah(currentBooking.totalPrice)}\n\n` +
+                `Mohon konfirmasi pesanan saya. Terima kasih!`
+            );
+
+            const waBtn = document.getElementById("btnWaConfirmation");
+            waBtn.href = `https://wa.me/6281234567890?text=${waMessage}`;
+
+            // Ganti Tampilan Modal ke State Sukses
+            document.getElementById("qrisPaymentView").style.display = "none";
+            document.getElementById("qrisSuccessView").style.display = "block";
+        }
+    </script>
+</body>
+</html>
