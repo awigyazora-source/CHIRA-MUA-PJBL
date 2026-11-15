@@ -116,13 +116,12 @@
             transform: translateY(-2px);
         }
 
-        /* --- 1. HERO BANNER (55vh) --- */
+        /* --- 1. HERO BANNER (3/4 LAYAR: 75vh) --- */
         .hero-banner-section {
-            height: 55vh;
-            min-height: 420px;
+            min-height: 75vh;
             width: 100%;
             margin-top: 75px;
-            background: linear-gradient(to right, rgba(30, 18, 18, 0.82) 0%, rgba(30, 18, 18, 0.45) 55%, rgba(30, 18, 18, 0.25) 100%), 
+            background: linear-gradient(to right, rgba(255, 249, 249, 0.95) 0%, rgba(244, 218, 218, 0.75) 50%, rgba(244, 218, 218, 0.1) 100%), 
                         url('img/hero-banner-AboutUs.jpg');
             background-position: center 25%;
             background-size: cover;
@@ -134,16 +133,17 @@
         }
 
         .hero-banner-content {
-            max-width: 720px;
-            color: var(--white);
-            animation: fadeIn 1s ease-out;
+            max-width: 650px;
+            color: var(--text-dark);
+            text-align: left;
+            animation: fadeIn 1.5s ease-out;
         }
 
         .hero-pill-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--white);
             color: var(--dark-pink);
             font-size: 12px;
             font-weight: 600;
@@ -151,24 +151,27 @@
             letter-spacing: 2px;
             padding: 6px 18px;
             border-radius: 20px;
-            margin-bottom: 18px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            border: 1px solid var(--primary-pink);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
         .hero-banner-content h1 {
-            font-size: clamp(2.3rem, 4.2vw, 3.6rem);
-            color: var(--white);
-            line-height: 1.15;
-            margin-bottom: 16px;
-            text-shadow: 2px 3px 12px rgba(0,0,0,0.5);
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin-bottom: 20px;
         }
 
         .hero-banner-content p {
-            font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+            font-family: var(--font-sans);
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
             font-weight: 300;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+            color: var(--text-light);
+            line-height: 1.6;
+            letter-spacing: 1.5px;
             max-width: 620px;
         }
 
@@ -886,9 +889,16 @@
                 display: none;
             }
             .hero-banner-section {
-                height: 48vh;
-                min-height: 360px;
-                padding: 0 5%;
+                min-height: 65vh;
+                padding: 40px 5%;
+                background: linear-gradient(to bottom, rgba(255, 249, 249, 0.95) 0%, rgba(244, 218, 218, 0.75) 55%, rgba(244, 218, 218, 0.15) 100%), 
+                            url('img/hero-banner-AboutUs.jpg') center 20%/cover no-repeat;
+            }
+            .hero-banner-content {
+                text-align: center;
+            }
+            .hero-banner-content h1 {
+                font-size: 2.8rem;
             }
             .story-section,
             .artists-section,
@@ -928,7 +938,7 @@
         <ul class="nav-links">
             <li><a href="index.html#home">Home</a></li>
             <li><a href="index.html#service">Service</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="Portfolio.html">Portfolio</a></li>
             <li><a href="booking.html">Booking</a></li>
             <li><a href="staffmua.html" class="active">About Us</a></li>
             <li id="nav-login-item">
@@ -1249,13 +1259,7 @@
                 </div>
             </div>
 
-            
-
-                    <button type="button" class="btn-artist-disabled">
-                        <i class="fa-solid fa-ban"></i> Full Booked (Jadwal Penuh)
-                    </button>
-                </div>
-            </div>
+           
 
         </div>
     </section>
