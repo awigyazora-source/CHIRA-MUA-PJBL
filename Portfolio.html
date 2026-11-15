@@ -61,13 +61,38 @@
         /* --- PAGE HEADER --- */
         .page-header {
             margin-top: 75px;
-            padding: 80px 5% 60px;
+            padding: 55px 5% 45px;
             text-align: center;
-            background-color: var(--primary-pink);
+            background: linear-gradient(180deg, var(--primary-pink) 0%, rgba(255, 249, 249, 0) 100%);
             border-bottom: 1px solid rgba(216, 154, 154, 0.2);
         }
-        .page-header h1 { font-size: 3.5rem; margin-bottom: 15px; }
-        .page-header p { font-size: 1.1rem; color: var(--text-light); font-weight: 300; }
+
+        .page-header .badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--dark-pink);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto;
+        }
 
         /* --- PORTFOLIO GALLERY --- */
         .portfolio-section { padding: 60px 5% 100px; max-width: 1200px; margin: 0 auto; }
@@ -177,31 +202,204 @@
             text-align: center; font-family: var(--font-serif); font-size: 1.2rem;
         }
 
-        /* --- FOOTER (Sama dengan index.html) --- */
+        /* --- FOOTER (REVISI PREMIUM) --- */
         .site-footer {
-            background-color: #fdf5f6; padding: 80px 8% 40px; border-top: 1px solid #f0e5e5; font-family: var(--font-sans);
+            background-color: #fdf5f6;
+            padding: 80px 8% 40px;
+            border-top: 1px solid #f0e5e5;
+            font-family: var(--font-sans);
         }
-        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .brand-col h2 { font-family: var(--font-serif); font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 5px; }
-        .brand-col .title-line { width: 60px; height: 2px; background-color: var(--accent-pink); margin-bottom: 20px; }
-        .brand-col .tagline { font-size: 14px; color: var(--text-light); line-height: 1.8; margin-bottom: 30px; max-width: 300px; }
-        .connect-title { font-size: 12px; letter-spacing: 3px; color: var(--text-light); text-transform: uppercase; margin-bottom: 15px; font-weight: 500; }
-        .social-links { display: flex; gap: 12px; margin-bottom: 30px; }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-col h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .brand-col .title-line {
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .brand-col .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 300px;
+        }
+
+        .connect-title {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
         .social-links a {
-            display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
-            border-radius: 50%; background-color: var(--white); border: 1px solid #ebdada;
-            color: var(--text-dark); transition: all 0.3s ease; font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 1px solid #ebdada;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            font-size: 16px;
         }
-        .social-links a:hover { background-color: var(--accent-pink); color: var(--white); transform: translateY(-3px); }
-        .copyright-text { font-size: 12px; color: #a89a9a; }
-        .footer-col h3 { font-family: var(--font-sans); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
-        .footer-col .line { width: 100%; height: 1px; background-color: #ebdada; margin-bottom: 25px; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 15px; }
-        .footer-col ul li a { font-size: 14px; color: var(--text-light); transition: color 0.3s ease; }
-        .footer-col ul li a:hover { color: var(--accent-pink); }
-        .footer-bottom-wrap { max-width: 1200px; margin: 40px auto 0; display: flex; justify-content: flex-end; }
-        .made-with-love { font-size: 13px; color: var(--text-light); display: flex; align-items: center; gap: 5px; }
+
+        .social-links a:hover {
+            background-color: var(--accent-pink);
+            color: var(--white);
+            border-color: var(--accent-pink);
+            transform: translateY(-3px);
+        }
+
+        .copyright-text {
+            font-size: 12px;
+            color: #a89a9a;
+        }
+
+        .footer-col h3 {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .footer-col .line {
+            width: 100%;
+            height: 1px;
+            background-color: #ebdada;
+            margin-bottom: 25px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-pink);
+        }
+
+        .op-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .op-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 1px solid #ebdada;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent-pink);
+        }
+
+        .op-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .op-text strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .op-text span {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .studio-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: var(--white);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin-top: 25px;
+        }
+
+        .studio-box .op-icon {
+            border: none;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+        }
+
+        .studio-box .op-text .label {
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #a89a9a;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .studio-box .op-text strong {
+            font-size: 13px;
+        }
+
+        .footer-bottom-wrap {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .made-with-love {
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
@@ -210,8 +408,20 @@
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .page-header h1 { font-size: 2.5rem; }
-            .footer-container { grid-template-columns: 1fr; }
+            .site-footer {
+                padding: 60px 5% 30px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom-wrap {
+                justify-content: center;
+                margin-top: 30px;
+            }
+            .brand-col .tagline {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -226,13 +436,15 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#service">Service</a></li>
             <li><a href="portfolio.html" class="active">Portfolio</a></li>
-            <li><a href="index.html#artist">About Us</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="staffmua.html">About Us</a></li>
             <li id="nav-login-item"><a href="login.html" class="nav-btn">Login</a></li>
         </ul>
     </nav>
 
     <!-- PAGE HEADER -->
     <header class="page-header">
+        <span class="badge"><i class="fa-solid fa-sparkles"></i> Curated Gallery</span>
         <h1>Our Masterpieces</h1>
         <p>Klik pada foto untuk melihat transformasi Before-After secara interaktif.</p>
     </header>
@@ -248,6 +460,7 @@
             <button class="filter-btn" data-filter="graduation">Graduation</button>
             <button class="filter-btn" data-filter="birthday">Birthday</button>
             <button class="filter-btn" data-filter="photoshoot">Photoshoot</button>
+            <button class="filter-btn" data-filter="custom">Custom Event</button>
         </div>
 
         <!-- Grid Galeri -->
@@ -257,10 +470,38 @@
             <!-- Perhatikan data-before dan data-after, isinya URL foto sebelum dan sesudah -->
             <div class="portfolio-item" 
                  data-category="bridal" 
-                 data-before="img/Portfolio-Wedding1-Before.jpg" 
-                 data-after="img/Portfolio-Wedding1.jpg"
+                 data-before="img/Portfolio-Wedding1-before.png" 
+                 data-after="img/Portfolio-wedding1-after.png"
                  data-title="Classic Elegance Bridal">
-                <img src="img/Portfolio-Wedding1.jpg" alt="Bridal Makeup">
+                <img src="img/Portfolio-Wedding1-after.png" alt="Bridal Makeup">
+                <div class="portfolio-overlay">
+                    <h4>Classic Elegance</h4>
+                    <p>Bridal Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+        
+            <!-- ITEM 2 (BRIDAL) -->
+            <div class="portfolio-item" 
+                 data-category="bridal" 
+                 data-before="img/Portfolio-Wedding1-Before.png" 
+                 data-after="img/Portfolio-Wedding1-after.png"
+                 data-title="Classic Elegance Bridal">
+                <img src="img/Portfolio-Wedding1-after.png" alt="Bridal Makeup">
+                <div class="portfolio-overlay">
+                    <h4>Classic Elegance</h4>
+                    <p>Bridal Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+            
+            <!-- ITEM 3 (BRIDAL) -->
+            <div class="portfolio-item" 
+                 data-category="bridal" 
+                 data-before="img/Portfolio-wedding1-before.png" 
+                 data-after="img/Portfolio-wedding1-after.png"
+                 data-title="Classic Elegance Bridal">
+                <img src="img/Portfolio-wedding1-after.png" alt="Bridal Makeup">
                 <div class="portfolio-overlay">
                     <h4>Classic Elegance</h4>
                     <p>Bridal Makeup</p>
@@ -269,6 +510,32 @@
             </div>
 
             <!-- CONTOH ITEM 2 (GRADUATION) -->
+            <div class="portfolio-item" 
+                 data-category="graduation" 
+                 data-before="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" 
+                 data-after="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop"
+                 data-title="Fresh & Glow Graduation">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop" alt="Graduation Look">
+                <div class="portfolio-overlay">
+                    <h4>Fresh & Glow</h4>
+                    <p>Graduation Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" 
+                 data-category="graduation" 
+                 data-before="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" 
+                 data-after="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop"
+                 data-title="Fresh & Glow Graduation">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop" alt="Graduation Look">
+                <div class="portfolio-overlay">
+                    <h4>Fresh & Glow</h4>
+                    <p>Graduation Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
             <div class="portfolio-item" 
                  data-category="graduation" 
                  data-before="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" 
@@ -296,7 +563,61 @@
                 </div>
             </div>
 
+            <div class="portfolio-item" 
+                 data-category="engagement" 
+                 data-before="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=800&auto=format&fit=crop" 
+                 data-after="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop"
+                 data-title="Soft Romantic Engagement">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop" alt="Engagement Look">
+                <div class="portfolio-overlay">
+                    <h4>Soft Romantic</h4>
+                    <p>Engagement Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" 
+                 data-category="engagement" 
+                 data-before="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=800&auto=format&fit=crop" 
+                 data-after="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop"
+                 data-title="Soft Romantic Engagement">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop" alt="Engagement Look">
+                <div class="portfolio-overlay">
+                    <h4>Soft Romantic</h4>
+                    <p>Engagement Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
+
+
             <!-- CONTOH ITEM 4 (PHOTOSHOOT) -->
+            <div class="portfolio-item" 
+                 data-category="photoshoot" 
+                 data-before="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" 
+                 data-after="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop"
+                 data-title="Editorial Photoshoot">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=600&auto=format&fit=crop" alt="Photoshoot Look">
+                <div class="portfolio-overlay">
+                    <h4>Editorial Beauty</h4>
+                    <p>Photoshoot Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" 
+                 data-category="photoshoot" 
+                 data-before="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" 
+                 data-after="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop"
+                 data-title="Editorial Photoshoot">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=600&auto=format&fit=crop" alt="Photoshoot Look">
+                <div class="portfolio-overlay">
+                    <h4>Editorial Beauty</h4>
+                    <p>Photoshoot Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
             <div class="portfolio-item" 
                  data-category="photoshoot" 
                  data-before="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" 
@@ -324,8 +645,20 @@
                 </div>
             </div>
 
-            <!-- CONTOH ITEM 6 (BIRTHDAY) -->
-            <div class="portfolio-item" 
+             <div class="portfolio-item" 
+                 data-category="birthday" 
+                 data-before="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop" 
+                 data-after="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=800&auto=format&fit=crop"
+                 data-title="Sweet Birthday Glam">
+                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=600&auto=format&fit=crop" alt="Birthday Look">
+                <div class="portfolio-overlay">
+                    <h4>Sweet Glam</h4>
+                    <p>Birthday Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
+             <div class="portfolio-item" 
                  data-category="birthday" 
                  data-before="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop" 
                  data-after="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=800&auto=format&fit=crop"
@@ -371,21 +704,33 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (REVISI PREMIUM) -->
     <footer class="site-footer">
         <div class="footer-container">
+            
+            <!-- Kolom 1: Brand & Media Sosial -->
             <div class="brand-col">
                 <h2>CHIRA MAKE-UP</h2>
                 <div class="title-line"></div>
                 <p class="tagline">Menghadirkan riasan sempurna untuk momen istimewa di setiap langkahmu.</p>
+                
                 <h4 class="connect-title">CONNECT WITH US</h4>
                 <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="mailto:hello@chiramua.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="#" aria-label="Instagram" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="TikTok" target="_blank">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="mailto:hello@chiramua.com" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
                 </div>
+                
                 <p class="copyright-text">© 2026 CHIRA MAKE-UP. All rights reserved.</p>
             </div>
+
+            <!-- Kolom 2: Layanan -->
             <div class="footer-col">
                 <h3>LAYANAN KAMI</h3>
                 <div class="line"></div>
@@ -396,6 +741,8 @@
                     <li><a href="index.html#service">Party & Custom Events</a></li>
                 </ul>
             </div>
+
+            <!-- Kolom 3: Bantuan -->
             <div class="footer-col">
                 <h3>BANTUAN & INFO</h3>
                 <div class="line"></div>
@@ -406,19 +753,35 @@
                     <li><a href="register.html">Daftar Akun</a></li>
                 </ul>
             </div>
+
+            <!-- Kolom 4: Operasional -->
             <div class="footer-col operation-col">
                 <h3>JAM OPERASIONAL</h3>
                 <div class="line"></div>
+                
                 <div class="op-item">
-                    <div class="op-icon"><i class="fa-regular fa-clock"></i></div>
-                    <div class="op-text"><strong>Setiap Hari</strong><span>08.00 - 20.00 WIB</span></div>
+                    <div class="op-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.929 6.434 5.45.815z"/></svg>
+                    </div>
+                    <div class="op-text">
+                        <strong>Setiap Hari</strong>
+                        <span>08.00 - 20.00 WIB</span>
+                    </div>
                 </div>
-                <div class="op-item" style="margin-top: 20px;">
-                    <div class="op-icon"><i class="fa-solid fa-location-dot"></i></div>
-                    <div class="op-text"><strong>Studio Atelier</strong><span>Kota Malang, Jawa Timur</span></div>
+
+                <div class="studio-box">
+                    <div class="op-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+                    </div>
+                    <div class="op-text">
+                        <span class="label">STUDIO ATELIER</span>
+                        <strong>Kota Malang, Jawa Timur</strong>
+                    </div>
                 </div>
             </div>
+
         </div>
+
         <div class="footer-bottom-wrap">
             <div class="made-with-love">
                 Dibuat dengan <span style="color: #e74c3c; font-size: 16px;">❤</span> untuk senyum bahagiamu
