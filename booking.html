@@ -520,6 +520,78 @@
         }
 
         /* --- STEP 3: SCHEDULE & ARTIST --- */
+        /* Alert Banner Batas Waktu Pemesanan (Lead Time) */
+        .booking-leadtime-alert {
+            background-color: #fff0f0;
+            border: 1.5px solid #e74c3c;
+            border-left: 5px solid #e74c3c;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .booking-leadtime-alert .alert-icon {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .booking-leadtime-alert .alert-content h4 {
+            font-family: var(--font-sans);
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #c0392b;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .booking-leadtime-alert .alert-content p {
+            font-size: 13px;
+            color: #553333;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .booking-leadtime-alert .alert-content ul {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 12.5px;
+            color: #553333;
+            line-height: 1.6;
+        }
+
+        .booking-leadtime-alert .alert-content li strong {
+            color: #962d22;
+        }
+
+        .date-hint-text {
+            margin-top: 7px;
+            font-size: 11.5px;
+            color: var(--dark-pink);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
+            background: #fff5f5;
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px dashed var(--accent-pink);
+        }
+
+        .date-hint-text i {
+            font-size: 13px;
+            color: var(--accent-pink);
+            flex-shrink: 0;
+        }
+
         .form-grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1679,10 +1751,29 @@
                         </div>
                     </div>
 
+                    <!-- ALERT BANNER: BATAS WAKTU PEMESANAN (LEAD TIME) -->
+                    <div class="booking-leadtime-alert">
+                        <div class="alert-icon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4><i class="fa-solid fa-circle-exclamation"></i> PENTING: BATAS WAKTU PEMESANAN</h4>
+                            <p>Demi menjaga kualitas riasan dan kesiapan matang tim MUA, <strong>pemesanan mendadak (hari H / H-1) tidak dilayani</strong>. Batas pemesanan resmi:</p>
+                            <ul>
+                                <li><strong>Wedding & Engagement:</strong> Wajib dipesan minimal <strong>30 hari (1 bulan)</strong> s/d maksimal <strong>150 hari (5 bulan)</strong> sebelum hari H.</li>
+                                <li><strong>Graduation, Birthday, Photoshoot, Custom:</strong> Wajib dipesan minimal <strong>7 hari (1 minggu)</strong> s/d maksimal <strong>30 hari (1 bulan)</strong> sebelum hari H.</li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="form-grid-2">
                         <div class="form-group">
                             <label for="bookingDate">Tanggal Acara <span class="required">*</span></label>
                             <input type="date" id="bookingDate" class="form-control" required>
+                            <div class="date-hint-text" id="dateLeadTimeHint">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span id="dateHintContent">Menghitung rentang tanggal valid...</span>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -2033,7 +2124,7 @@
                 <h3>BANTUAN & INFO</h3>
                 <div class="line"></div>
                 <ul>
-                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="syarat-ketentuan.html">Syarat & Ketentuan</a></li>
                     <li><a href="#">Kebijakan Reschedule</a></li>
                     <li><a href="login.html">Login Pelanggan</a></li>
                     <li><a href="register.html">Daftar Akun</a></li>
@@ -2116,21 +2207,26 @@
                 });
             }
 
-            // Set Min Date to Today
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            const minDateStr = `${yyyy}-${mm}-${dd}`;
-            
+            // Inisialisasi Validasi Batas Waktu Pemesanan (Lead Time)
             const dateInput = document.getElementById("bookingDate");
-            dateInput.min = minDateStr;
-            dateInput.value = minDateStr;
-            currentBooking.selectedDate = minDateStr;
+            applyDateLeadTimeValidation();
 
             // Event Listeners for Date and Time
             dateInput.addEventListener("change", function(e) {
-                currentBooking.selectedDate = e.target.value;
+                const val = e.target.value;
+                if (!val) return;
+
+                if (dateInput.min && val < dateInput.min) {
+                    alert(`Tanggal yang Anda pilih (${formatDateIndo(val)}) terlalu dekat!\nUntuk layanan ${currentBooking.serviceName}, pemesanan wajib minimal dilakukan pada ${formatDateIndo(dateInput.min)}.`);
+                    e.target.value = dateInput.min;
+                    currentBooking.selectedDate = dateInput.min;
+                } else if (dateInput.max && val > dateInput.max) {
+                    alert(`Tanggal yang Anda pilih (${formatDateIndo(val)}) melebihi batas waktu reservasi!\nUntuk layanan ${currentBooking.serviceName}, pemesanan maksimal dilakukan pada ${formatDateIndo(dateInput.max)}.`);
+                    e.target.value = dateInput.max;
+                    currentBooking.selectedDate = dateInput.max;
+                } else {
+                    currentBooking.selectedDate = val;
+                }
                 updateCalculations();
             });
 
@@ -2152,6 +2248,8 @@
                     currentBooking.baseDuration = parseInt(this.dataset.duration);
                     currentBooking.serviceImg = this.dataset.img;
 
+                    // Otomatis perbarui rentang validasi tanggal min & max sesuai layanan baru
+                    applyDateLeadTimeValidation();
                     updateCalculations();
                 });
             });
@@ -2239,6 +2337,65 @@
             }
 
             document.getElementById("summaryLocation").innerText = radio.value;
+        }
+
+        // Utility: Tambah Hari pada Objek Tanggal
+        function addDays(baseDate, days) {
+            const d = new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate());
+            d.setDate(d.getDate() + days);
+            return d;
+        }
+
+        // Utility: Format Date ke YYYY-MM-DD
+        function toISODateString(d) {
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${y}-${m}-${day}`;
+        }
+
+        // --- SISTEM VALIDASI LEAD TIME (BATAS WAKTU PEMESANAN) ---
+        function applyDateLeadTimeValidation() {
+            const dateInput = document.getElementById("bookingDate");
+            const hintContent = document.getElementById("dateHintContent");
+            if (!dateInput) return;
+
+            const now = new Date();
+            const serviceKey = currentBooking.serviceKey || 'wedding';
+
+            let minDays = 7;
+            let maxDays = 30;
+            let serviceLabel = "Layanan Reguler";
+
+            if (serviceKey === 'wedding' || serviceKey === 'engagement') {
+                minDays = 30;
+                maxDays = 150; // 5 bulan (150 hari)
+                serviceLabel = (serviceKey === 'wedding') ? "Wedding / Pre-Wedding" : "Engagement";
+            } else {
+                serviceLabel = currentBooking.serviceName || "Reguler";
+            }
+
+            const minDateObj = addDays(now, minDays);
+            const maxDateObj = addDays(now, maxDays);
+
+            const minDateStr = toISODateString(minDateObj);
+            const maxDateStr = toISODateString(maxDateObj);
+
+            dateInput.min = minDateStr;
+            dateInput.max = maxDateStr;
+
+            // Jika tanggal yang terpilih kosong atau di luar rentang valid, auto-select ke minDateStr
+            if (!currentBooking.selectedDate || currentBooking.selectedDate < minDateStr || currentBooking.selectedDate > maxDateStr) {
+                dateInput.value = minDateStr;
+                currentBooking.selectedDate = minDateStr;
+            } else {
+                dateInput.value = currentBooking.selectedDate;
+            }
+
+            // Update teks keterangan dinamis di bawah kalender
+            if (hintContent) {
+                hintContent.innerHTML = `Rentang tanggal valid [<strong>${serviceLabel}</strong>]: <strong>${formatDateIndo(minDateStr)}</strong> s/d <strong>${formatDateIndo(maxDateStr)}</strong> (H+${minDays} s/d H+${maxDays}).`;
+            }
         }
 
         // --- 4. ENGINE PERHITUNGAN OTOMATIS (WAKTU & BIAYA) ---
@@ -2331,6 +2488,19 @@
             if (!bookingDate) {
                 alert("Mohon tentukan Tanggal Acara pada Step 3.");
                 document.getElementById("bookingDate").focus();
+                return;
+            }
+
+            const dateInput = document.getElementById("bookingDate");
+            if (dateInput.min && bookingDate < dateInput.min) {
+                alert(`Pemesanan tidak dapat diproses: Tanggal acara (${formatDateIndo(bookingDate)}) terlalu dekat!\nUntuk layanan ${currentBooking.serviceName}, pemesanan minimal dilakukan pada ${formatDateIndo(dateInput.min)}.`);
+                dateInput.focus();
+                return;
+            }
+
+            if (dateInput.max && bookingDate > dateInput.max) {
+                alert(`Pemesanan tidak dapat diproses: Tanggal acara (${formatDateIndo(bookingDate)}) melebihi batas waktu reservasi!\nUntuk layanan ${currentBooking.serviceName}, pemesanan maksimal dilakukan pada ${formatDateIndo(dateInput.max)}.`);
+                dateInput.focus();
                 return;
             }
 

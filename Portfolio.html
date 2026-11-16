@@ -169,12 +169,12 @@
         }
         .ba-container img { width: 100%; height: 100%; object-fit: contain; background: #111; }
         
-        .ba-image-before { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .ba-image-after {
+        .ba-image-after { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .ba-image-before {
             position: absolute; top: 0; left: 0; width: 50%; height: 100%;
             overflow: hidden; border-right: 3px solid var(--white);
         }
-        .ba-image-after img { width: 100vw; max-width: 800px; height: 100%; object-fit: contain; }
+        .ba-image-before img { width: 100vw; max-width: 800px; height: 100%; object-fit: contain; }
         
         .ba-slider {
             position: absolute; top: 0; left: 50%; width: 4px; height: 100%;
@@ -437,7 +437,7 @@
             <li><a href="index.html#service">Service</a></li>
             <li><a href="Portfolio.html" class="active">Portfolio</a></li>
             <li><a href="booking.html">Booking</a></li>
-            <li><a href="staffmua.html">About Us</a></.li>
+            <li><a href="staffmua.html">About Us</a></li>
             <li id="nav-login-item"><a href="login.html" class="nav-btn">Login</a></li>
         </ul>
     </nav>
@@ -681,11 +681,11 @@
             <span class="close-btn" id="closeModal">&times;</span>
             
             <div class="ba-container">
-                <div class="ba-image-before">
-                    <img id="modalImgBefore" src="" alt="Before Makeup">
-                </div>
-                <div class="ba-image-after" id="modalAfterContainer">
+                <div class="ba-image-after">
                     <img id="modalImgAfter" src="" alt="After Makeup">
+                </div>
+                <div class="ba-image-before" id="modalBeforeContainer">
+                    <img id="modalImgBefore" src="" alt="Before Makeup">
                 </div>
                 
                 <div class="ba-labels">
@@ -747,7 +747,7 @@
                 <h3>BANTUAN & INFO</h3>
                 <div class="line"></div>
                 <ul>
-                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="syarat-ketentuan.html">Syarat & Ketentuan</a></li>
                     <li><a href="#">Kebijakan Reschedule</a></li>
                     <li><a href="login.html">Login Pelanggan</a></li>
                     <li><a href="register.html">Daftar Akun</a></li>
@@ -821,8 +821,9 @@
             const modalImgBefore = document.getElementById("modalImgBefore");
             const modalImgAfter = document.getElementById("modalImgAfter");
             const modalTitle = document.getElementById("modalTitle");
-            const modalAfterContainer = document.getElementById("modalAfterContainer");
+            const modalBeforeContainer = document.getElementById("modalBeforeContainer");
             const modalSlider = document.getElementById("modalSlider");
+            const baContainer = document.querySelector(".ba-container");
 
             portfolioItems.forEach(item => {
                 item.addEventListener("click", () => {
@@ -841,7 +842,7 @@
 
                     // Reset posisi slider ke tengah setiap kali dibuka
                     modalSlider.style.left = "50%";
-                    modalAfterContainer.style.width = "50%";
+                    modalBeforeContainer.style.width = "50%";
                 });
             });
 
@@ -862,14 +863,14 @@
             let isDragging = false;
 
             const moveSlider = (clientX) => {
-                const rect = modalImgBefore.getBoundingClientRect(); // Gunakan batas gambar before
+                const rect = baContainer.getBoundingClientRect(); // Gunakan batas container modal
                 let position = ((clientX - rect.left) / rect.width) * 100;
                 
                 if (position < 0) position = 0;
                 if (position > 100) position = 100;
 
                 modalSlider.style.left = position + "%";
-                modalAfterContainer.style.width = position + "%";
+                modalBeforeContainer.style.width = position + "%";
             };
 
             // Mouse Events

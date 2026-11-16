@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syarat & Ketentuan Layanan - Chira Make Up</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #fff9f9;
+            --primary-pink: #f4dada;
+            --accent-pink: #d89a9a;
+            --dark-pink: #a36363;
+            --text-dark: #332222;
+            --text-light: #7a6666;
+            --white: #ffffff;
+            --card-border: #f0dede;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            color: var(--text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 249, 249, 0.95);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(216, 154, 154, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--accent-pink);
+        }
+
+        .nav-btn {
+            background-color: var(--text-dark);
+            color: var(--white) !important;
+            padding: 9px 24px;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.2s !important;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            margin-top: 78px;
+            padding: 55px 5% 45px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--primary-pink) 0%, rgba(255, 249, 249, 0) 100%);
+            border-bottom: 1px solid rgba(216, 154, 154, 0.2);
+        }
+
+        .page-header .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--white);
+            color: var(--dark-pink);
+            font-size: 11.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+            color: var(--text-light);
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* --- SECTION POLICY CARDS --- */
+        .policy-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 55px 5% 65px;
+        }
+
+        .policy-intro-note {
+            background: #fff6f6;
+            border: 1px dashed var(--accent-pink);
+            border-radius: 16px;
+            padding: 18px 24px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .policy-intro-note i {
+            font-size: 24px;
+            color: var(--accent-pink);
+            flex-shrink: 0;
+        }
+
+        .policy-intro-note p {
+            font-size: 13px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .policy-card-full {
+            grid-column: span 2;
+        }
+
+        .policy-card {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 32px 30px;
+            box-shadow: 0 8px 25px rgba(158, 107, 107, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(216, 154, 154, 0.2);
+            border-color: var(--accent-pink);
+        }
+
+        .policy-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .policy-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: #fff0f0;
+            color: var(--dark-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .policy-card:hover .policy-icon-wrapper {
+            background: var(--accent-pink);
+            color: var(--white);
+        }
+
+        .policy-pasal {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: var(--primary-pink);
+            color: var(--dark-pink);
+        }
+
+        .policy-card h3 {
+            font-size: 1.25rem;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .policy-card p {
+            font-size: 13.5px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .policy-highlight {
+            margin-top: 18px;
+            padding: 10px 14px;
+            background: var(--bg-color);
+            border-left: 3px solid var(--accent-pink);
+            border-radius: 0 10px 10px 0;
+            font-size: 12px;
+            color: var(--dark-pink);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- CTA BOX --- */
+        .policy-cta-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 90px;
+        }
+
+        .policy-cta-box {
+            background: linear-gradient(135deg, #fff2f2 0%, #ffecee 100%);
+            border: 2px dashed var(--accent-pink);
+            border-radius: 24px;
+            padding: 48px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(216, 154, 154, 0.12);
+        }
+
+        .cta-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--accent-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 16px;
+            box-shadow: 0 4px 15px rgba(216, 154, 154, 0.2);
+        }
+
+        .policy-cta-box h3 {
+            font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+            margin-bottom: 8px;
+        }
+
+        .policy-cta-box p {
+            font-size: 14px;
+            color: var(--text-light);
+            max-width: 580px;
+            margin: 0 auto 28px;
+        }
+
+        .btn-agree-booking {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--text-dark);
+            color: var(--white) !important;
+            padding: 15px 36px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(51, 34, 34, 0.2);
+        }
+
+        .btn-agree-booking:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(216, 154, 154, 0.4);
+        }
+
+        /* --- FOOTER (REVISI PREMIUM) --- */
+        .site-footer {
+            background-color: #fdf5f6;
+            padding: 80px 8% 40px;
+            border-top: 1px solid #f0e5e5;
+            font-family: var(--font-sans);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-col h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .brand-col .title-line {
+            width: 40px;
+            height: 2px;
+            background-color: var(--dark-pink);
+            margin-bottom: 20px;
+        }
+
+        .brand-col .tagline {
+            font-size: 13.5px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            max-width: 300px;
+        }
+
+        .connect-title {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 1px solid #ebdada;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-pink);
+            color: var(--white);
+            border-color: var(--accent-pink);
+            transform: translateY(-3px);
+        }
+
+        .copyright-text {
+            font-size: 12px;
+            color: #a89a9a;
+        }
+
+        .footer-col h3 {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .footer-col .line {
+            width: 25px;
+            height: 2px;
+            background-color: var(--primary-pink);
+            margin-bottom: 25px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-pink);
+        }
+
+        .op-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .op-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 1px solid #ebdada;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent-pink);
+        }
+
+        .op-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .op-text strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .op-text span {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .studio-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: var(--white);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            margin-top: 25px;
+        }
+
+        .studio-box .op-icon {
+            border: none;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+        }
+
+        .studio-box .op-text .label {
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #a89a9a;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .studio-box .op-text strong {
+            font-size: 13px;
+        }
+
+        .footer-bottom-wrap {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .made-with-love {
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            .policy-grid {
+                grid-template-columns: 1fr;
+            }
+            .policy-card-full {
+                grid-column: span 1;
+            }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 5%;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+            .nav-links li a {
+                font-size: 12px;
+            }
+            .site-footer {
+                padding: 60px 5% 30px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom-wrap {
+                justify-content: center;
+                margin-top: 30px;
+            }
+            .brand-col .tagline {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="img/CHIRA_LOGO-removebg-preview.png" alt="Chira Make Up Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#service">Service</a></li>
+            <li><a href="Portfolio.html">Portfolio</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="staffmua.html">About Us</a></li>
+            <li id="nav-login-item"><a href="login.html" class="nav-btn">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <span class="badge"><i class="fa-solid fa-shield-halved"></i> Policies & Guidelines</span>
+        <h1>Syarat & Ketentuan Layanan</h1>
+        <p>Panduan resmi dan komitmen bersama untuk memastikan kelancaran, kenyamanan, serta kesempurnaan sesi tata rias profesional Anda bersama Chira Make Up.</p>
+    </header>
+
+    <!-- SECTION POLICY CARDS -->
+    <main class="policy-section">
+        
+        <div class="policy-intro-note">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>Seluruh reservasi yang telah disepakati tunduk pada syarat dan ketentuan di bawah ini. Harap membaca setiap klausul dengan saksama sebelum mengonfirmasi pemesanan jadwal rias Anda.</p>
+        </div>
+
+        <div class="policy-grid">
+            
+            <!-- Pasal 1: Kesesuaian Paket & Anti-Manipulasi -->
+            <div class="policy-card">
+                <div>
+                    <div class="policy-header">
+                        <div class="policy-icon-wrapper">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <span class="policy-pasal">Pasal 01</span>
+                    </div>
+                    <h3>Kesesuaian Paket & Kebijakan Anti-Manipulasi Layanan</h3>
+                    <p>Klien wajib memilih jenis paket riasan yang sesuai dengan agenda acara yang dihadiri. Jika klien memesan paket bertarif lebih rendah (seperti Makeup Engagement, Photoshoot, atau Graduation), namun pada catatan permintaan atau saat sesi rias di lokasi meminta tampilan, ketahanan, atau perlengkapan berstandar pengantin (Wedding / Bridal Look), staf MUA berhak secara sepihak menyesuaikan tagihan ke tarif Wedding resmi di lokasi atau membatalkan sesi tanpa pengembalian dana.</p>
+                </div>
+                <div class="policy-highlight">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Tidak menerima kompromi penurunan tarif untuk standar riasan pengantin.
+                </div>
+            </div>
+
+            <!-- Pasal 2: Biaya Transportasi -->
+            <div class="policy-card">
+                <div>
+                    <div class="policy-header">
+                        <div class="policy-icon-wrapper">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <span class="policy-pasal">Pasal 02</span>
+                    </div>
+                    <h3>Biaya Transportasi (Studio vs Home Service)</h3>
+                    <p>Sesi tata rias yang diselenggarakan langsung di Studio Atelier Malang dibebaskan dari biaya sewa tempat (Gratis). Bagi pemesanan layanan Home Service (kunjungan ke rumah) atau Venue Acara / Hotel, seluruh biaya akomodasi transportasi pulang-pergi (PP) staf MUA menggunakan tarif resmi transportasi online dari studio ditanggung penuh oleh klien.</p>
+                </div>
+                <div class="policy-highlight">
+                    <i class="fa-solid fa-location-dot"></i> Studio Atelier Malang bebas biaya transport; Home Service dihitung tarif PP.
+                </div>
+            </div>
+
+            <!-- Pasal 3: Pembayaran QRIS & Paket Bundle -->
+            <div class="policy-card">
+                <div>
+                    <div class="policy-header">
+                        <div class="policy-icon-wrapper">
+                            <i class="fa-solid fa-qrcode"></i>
+                        </div>
+                        <span class="policy-pasal">Pasal 03</span>
+                    </div>
+                    <h3>Pembayaran QRIS & Ketentuan Paket Bundle</h3>
+                    <p>Jadwal reservasi dan staf MUA pilihan Anda resmi terkunci setelah simulasi pembayaran QRIS berhasil terkonfirmasi. Pada Paket Bundle / Rame-rame (2–5 orang), seluruh pengerjaan dilakukan bergantian secara berurutan oleh 1 staf MUA perorangan sesuai akumulasi total durasi (Jumlah Pax × Durasi per Pax) guna menjamin higienitas alat dan kualitas riasan tetap prima.</p>
+                </div>
+                <div class="policy-highlight">
+                    <i class="fa-solid fa-lock"></i> Jadwal terkunci setelah lunas; pengerjaan bundle berurutan oleh 1 staf MUA.
+                </div>
+            </div>
+
+            <!-- Pasal 4: Ketepatan Waktu -->
+            <div class="policy-card">
+                <div>
+                    <div class="policy-header">
+                        <div class="policy-icon-wrapper">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <span class="policy-pasal">Pasal 04</span>
+                    </div>
+                    <h3>Ketepatan Waktu & Toleransi Keterlambatan</h3>
+                    <p>Mengingat padatnya jadwal antar-klien, batas toleransi keterlambatan kehadiran klien maksimal adalah 20 menit dari jam mulai yang telah disepakati. Keterlambatan melebihi batas toleransi akan berakibat pada penyesuaian/pemadatan durasi makeup mengikuti sisa slot waktu yang ada, atau dikenakan biaya kompensasi keterlambatan (overtime fee).</p>
+                </div>
+                <div class="policy-highlight">
+                    <i class="fa-solid fa-hourglass-half"></i> Toleransi keterlambatan 20 menit agar tidak mengganggu jadwal klien berikutnya.
+                </div>
+            </div>
+
+            <!-- Pasal 5: Kesiapan Kulit & Alergi -->
+            <div class="policy-card">
+                <div>
+                    <div class="policy-header">
+                        <div class="policy-icon-wrapper">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <span class="policy-pasal">Pasal 05</span>
+                    </div>
+                    <h3>Kesiapan Kulit, Higienitas, & Alergi Kosmetik</h3>
+                    <p>Klien diwajibkan telah mencuci muka hingga bersih (bare face) serta terbebas dari sisa makeup atau skincare tebal sebelum sesi dimulai. Klien wajib menginformasikan kondisi alergi kulit tertentu, sensitivitas terhadap bahan kosmetik, atau penggunaan lensa kontak pada kolom catatan formulir pemesanan agar tim MUA dapat menyiapkan produk yang higienis dan aman.</p>
+                </div>
+                <div class="policy-highlight">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Wajah bersih sebelum sesi & wajib cantumkan info alergi pada formulir.
+                </div>
+            </div>
+
+            <!-- Pasal 6: Reschedule & Pembatalan -->
+            <div class="policy-card">
+                <div>
+                    <div class="policy-header">
+                        <div class="policy-icon-wrapper">
+                            <i class="fa-solid fa-calendar-xmark"></i>
+                        </div>
+                        <span class="policy-pasal">Pasal 06</span>
+                    </div>
+                    <h3>Ketentuan Reschedule & Pembatalan (Refund)</h3>
+                    <p>Pengajuan perubahan tanggal reservasi (reschedule) dapat dilayani maksimal H-3 sebelum tanggal acara (berlaku maksimal 1 kali perubahan tanggal, selama slot staf MUA yang dituju masih tersedia). Pembatalan sepihak secara mendadak di bawah H-2 (kurang dari 48 jam) dari waktu acara mengakibatkan pembayaran dinyatakan hangus dan tidak dapat dikembalikan (non-refundable).</p>
+                </div>
+                <div class="policy-highlight">
+                    <i class="fa-solid fa-rotate-left"></i> Reschedule maksimal H-3 (1x kesempatan); pembatalan di bawah H-2 hangus.
+                </div>
+            </div>
+
+            <!-- Pasal 7: Ketentuan Waktu Pemesanan (Lead Time) & Persiapan Tim -->
+            <div class="policy-card policy-card-full">
+                <div>
+                    <div class="policy-header">
+                        <div class="policy-icon-wrapper" style="background: #fff0f0; color: #e74c3c;">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <span class="policy-pasal" style="background: #ffe3e3; color: #c0392b;">Pasal 07</span>
+                    </div>
+                    <h3>Ketentuan Batas Waktu Pemesanan (Lead Time) & Persiapan Tim</h3>
+                    <p>Demi menjaga kualitas riasan, sterilisasi higienis alat-alat kosmetik, koordinasi jadwal, serta kesiapan prima tim penata rias, kami <strong>tidak melayani pemesanan mendadak (hari H atau H-1)</strong>. Setiap klien wajib mematuhi ketentuan batas waktu pemesanan resmi sebagai berikut:</p>
+                    <ul style="font-size: 13.5px; color: var(--text-light); line-height: 1.8; margin: 12px 0 0 20px;">
+                        <li><strong>Jasa Wedding & Engagement:</strong> Wajib dipesan minimal <strong>1 bulan (30 hari)</strong> dan maksimal <strong>5–6 bulan (150–180 hari)</strong> sebelum hari H acara.</li>
+                        <li><strong>Jasa Reguler (Graduation, Birthday, Photoshoot, Custom):</strong> Wajib dipesan minimal <strong>1 minggu (7 hari)</strong> dan maksimal <strong>1 bulan (30 hari)</strong> sebelum hari H acara.</li>
+                    </ul>
+                </div>
+                <div class="policy-highlight" style="background: #fff5f5; border-left-color: #e74c3c; color: #c0392b;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Pemesanan mendadak hari H / H-1 tidak dilayani agar tim MUA memiliki persiapan yang matang.
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- CTA SECTION -->
+    <section class="policy-cta-section">
+        <div class="policy-cta-box">
+            <div class="cta-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Sudah Memahami Seluruh Ketentuan?</h3>
+            <p>Kunci jadwal reservasi Anda sekarang dan biarkan tim penata rias profesional Chira Make Up menyempurnakan hari istimewa Anda.</p>
+            <a href="booking.html" class="btn-agree-booking">
+                <i class="fa-solid fa-calendar-check"></i> Saya Setuju & Lanjut Booking
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER (100% KONSISTEN DENGAN INDEX.HTML) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <!-- Kolom 1: Brand & Media Sosial -->
+            <div class="brand-col">
+                <h2>CHIRA MAKE-UP</h2>
+                <div class="title-line"></div>
+                <p class="tagline">Menghadirkan riasan sempurna untuk momen istimewa di setiap langkahmu.</p>
+                
+                <h4 class="connect-title">CONNECT WITH US</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="TikTok" target="_blank">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="mailto:hello@chiramua.com" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <p class="copyright-text">© 2026 CHIRA MAKE-UP. All rights reserved.</p>
+            </div>
+
+            <!-- Kolom 2: Layanan -->
+            <div class="footer-col">
+                <h3>LAYANAN KAMI</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="index.html#service">Bridal Make-Up</a></li>
+                    <li><a href="index.html#service">Engagement</a></li>
+                    <li><a href="index.html#service">Graduation</a></li>
+                    <li><a href="index.html#service">Party & Custom Events</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Bantuan -->
+            <div class="footer-col">
+                <h3>BANTUAN & INFO</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><a href="syarat-ketentuan.html" style="color: var(--accent-pink); font-weight: 600;">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Reschedule</a></li>
+                    <li><a href="login.html">Login Pelanggan</a></li>
+                    <li><a href="register.html">Daftar Akun</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 4: Operasional -->
+            <div class="footer-col operation-col">
+                <h3>JAM OPERASIONAL</h3>
+                <div class="line"></div>
+                
+                <div class="op-item">
+                    <div class="op-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.929 6.434 5.45.815z"/></svg>
+                    </div>
+                    <div class="op-text">
+                        <strong>Setiap Hari</strong>
+                        <span>08.00 - 20.00 WIB</span>
+                    </div>
+                </div>
+
+                <div class="studio-box">
+                    <div class="op-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+                    </div>
+                    <div class="op-text">
+                        <span class="label">STUDIO ATELIER</span>
+                        <strong>Kota Malang, Jawa Timur</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom-wrap">
+            <div class="made-with-love">
+                Dibuat dengan <span style="color: #e74c3c; font-size: 16px;">❤</span> untuk senyum bahagiamu
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT UNTUK CEK STATUS LOGIN -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const isLoggedIn = localStorage.getItem("chira_login_status");
+            const navLoginItem = document.getElementById("nav-login-item");
+
+            if (isLoggedIn === "true") {
+                navLoginItem.innerHTML = '<a href="#" class="nav-btn" id="logoutBtn" style="background-color: #d89a9a;">Logout</a>';
+                
+                document.getElementById("logoutBtn").addEventListener("click", function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem("chira_login_status");
+                    window.location.reload(); 
+                });
+            }
+        });
+    </script>
+</body>
+</html>
