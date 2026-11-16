@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin| Chira Make Up</title>
+    <title>Login Admin & MUA Artist | Chira Make Up</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        :root {
+            --bg-color: #fde9e6;
+            --primary-pink: #f4dada;
+            --accent-pink: #d89a9a;
+            --dark-pink: #927979;
+            --dark-pink-hover: #785f5f;
+            --text-dark: #332222;
+            --text-light: #7a6666;
+            --white: #ffffff;
+            --danger-bg: #fff0f0;
+            --danger-border: #e74c3c;
+            --danger-text: #c0392b;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Poppins', Arial, sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,10 +35,11 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #fde9e6;
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
             height: 100vh;
             overflow: hidden; 
+            color: var(--text-dark);
         }
 
         .login-container {
@@ -30,7 +53,8 @@
             width: 42%;
             height: 100vh;
             overflow: hidden;
-            border-radius: 0 18px 18px 0;
+            border-radius: 0 24px 24px 0;
+            position: relative;
         }
 
         .photo-section img {
@@ -41,178 +65,664 @@
             object-position: center;
         }
 
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(51, 34, 34, 0.7) 0%, rgba(51, 34, 34, 0.1) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            color: #ffffff;
+        }
+
+        .photo-overlay h2 {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .photo-overlay p {
+            font-size: 14px;
+            color: #f4dada;
+            letter-spacing: 0.5px;
+        }
+
         /* BAGIAN FORM KANAN */
         .form-section {
             width: 58%;
             height: 100vh;
-            /* Menggunakan clamp agar padding mengecil jika layar pendek */
-            padding: clamp(20px, 4vh, 35px) 40px clamp(15px, 2vh, 20px);
+            padding: clamp(15px, 3vh, 30px) 40px clamp(15px, 2vh, 25px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            
-            /* Safety net: Hanya form kanan yang bisa scroll internal jika layar sangat kecil, tanpa memunculkan scrollbar */
             overflow-y: auto;
             scrollbar-width: none; 
         }
         
         .form-section::-webkit-scrollbar {
-            display: none; /* Untuk Chrome, Safari, Edge */
+            display: none;
         }
 
-        /* LOGO */
-        .logo {
-            width: 100%;
+        /* LOGO & BADGE */
+        .header-wrap {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            margin-top: clamp(5px, 1vh, 15px);
+            margin-top: clamp(2px, 1vh, 10px);
         }
 
         .logo img {
-            /* Ukuran logo otomatis menyesuaikan tinggi layar */
-            max-width: clamp(220px, 25vh, 300px); 
-            width: 60%;
+            max-width: clamp(180px, 20vh, 240px); 
             height: auto;
+            display: block;
+        }
+
+        .portal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(146, 121, 121, 0.12);
+            color: #6d4b4b;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-top: 8px;
+            border: 1px solid rgba(146, 121, 121, 0.25);
+        }
+
+        /* ALERT BOX */
+        .alert-box {
+            width: 100%;
+            max-width: 390px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-size: 13px;
+            line-height: 1.5;
+            display: none;
+            align-items: flex-start;
+            gap: 10px;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        .alert-danger {
+            background-color: var(--danger-bg);
+            border: 1px solid var(--danger-border);
+            color: var(--danger-text);
+        }
+
+        .alert-success {
+            background-color: #edfbf0;
+            border: 1px solid #27ae60;
+            color: #1e824c;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
         }
 
         /* FORM LOGIN */
         .login-form {
             width: 100%;
-            max-width: 380px;
-            /* Margin atas bawah fleksibel */
-            margin: clamp(15px, 3vh, 25px) 0; 
+            max-width: 390px;
+            margin: clamp(10px, 2vh, 18px) 0; 
+        }
+
+        .form-group {
+            margin-bottom: clamp(10px, 1.8vh, 14px);
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            letter-spacing: 0.3px;
         }
 
         .login-form input[type="email"],
         .login-form input[type="password"] {
             width: 100%;
-            height: clamp(42px, 6vh, 47px); /* Tinggi input fleksibel */
-            padding: 0 14px;
-            margin-bottom: clamp(10px, 2vh, 14px);
+            height: clamp(42px, 5.5vh, 46px);
+            padding: 0 16px;
             border: 1px solid #f2c8c3;
-            border-radius: 15px;
-            background-color: #ffffff;
-            font-size: 16px;
+            border-radius: 14px;
+            background-color: var(--white);
+            font-size: 14px;
+            font-family: inherit;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
+            color: var(--text-dark);
         }
 
         .login-form input:focus {
-            border-color: #987a7a;
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 3px rgba(216, 154, 154, 0.2);
         }
 
         .login-options {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            margin: 0 12px clamp(15px, 2vh, 18px);
+            margin: 6px 4px clamp(12px, 2vh, 16px);
         }
 
         .remember {
             display: flex;
             align-items: center;
             gap: 7px;
-            font-size: 14px;
+            font-size: 13px;
             white-space: nowrap;
+            color: var(--text-dark);
         }
 
         .remember input {
-            width: 20px;
-            height: 20px;
-            accent-color: #927676;
+            width: 17px;
+            height: 17px;
+            accent-color: var(--dark-pink);
             cursor: pointer;
         }
 
-        /* LOGIN SOSIAL */
-        .social-login {
-            text-align: center;
+        .forgot-link {
+            font-size: 12px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .social-login p {
-            font-size: 10px;
-            margin-bottom: 9px;
+        .forgot-link:hover {
+            color: var(--text-dark);
+            text-decoration: underline;
         }
 
-        .social-icons {
+        /* TOMBOL UTAMA */
+        .login-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-        }
-
-        .social-icons a {
-            color: #111111;
-            text-decoration: none;
-            font-size: 25px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .facebook {
-            border: 2px solid #111;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-            font-size: 21px !important;
-            overflow: hidden;
-        }
-
-        /* TOMBOL LOGIN */
-        .login-button {
-            display: block;
-            width: 68%;
-            min-width: 180px;
-            height: clamp(40px, 5vh, 43px);
-            margin: 0 auto;
+            width: 100%;
+            height: clamp(42px, 5.5vh, 46px);
             border: none;
-            border-radius: 25px;
-            background-color: #927979;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
+            border-radius: 50px;
+            background-color: var(--dark-pink);
+            color: var(--white);
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
             cursor: pointer;
-            box-shadow: 0 3px 3px #00000020;
-            transition: 0.2s;
+            box-shadow: 0 3px 8px rgba(146, 121, 121, 0.25);
+            transition: all 0.25s ease;
+            gap: 8px;
         }
 
-        .login-button:hover {
-            background-color: #785f5f;
+        .login-button:hover:not(:disabled) {
+            background-color: var(--dark-pink-hover);
             transform: translateY(-1px);
+            box-shadow: 0 5px 14px rgba(146, 121, 121, 0.35);
+        }
+
+        .login-button:disabled {
+            background-color: #c7b6b6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* DIVIDER */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: clamp(12px, 2vh, 16px) 0;
+            color: #8c7878;
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ebd4cf;
+        }
+
+        .divider span {
+            padding: 0 12px;
+            text-transform: lowercase;
+        }
+
+        /* TOMBOL GOOGLE ADMIN */
+        .google-btn {
+            width: 100%;
+            height: clamp(42px, 5.5vh, 46px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--white);
+            color: var(--text-dark);
+            border: 1px solid #ebd4cf;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
+        }
+
+        .google-btn:hover:not(:disabled) {
+            background-color: #fff9f9;
+            border-color: var(--accent-pink);
+            box-shadow: 0 4px 12px rgba(158, 107, 107, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .google-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .google-btn svg {
+            width: 19px;
+            height: 19px;
+            flex-shrink: 0;
+        }
+
+        /* ACCORDION PETUNJUK DEMO */
+        .demo-credentials-card {
+            width: 100%;
+            max-width: 390px;
+            margin-top: 10px;
+            background: #ffffff;
+            border: 1px solid #f2c8c3;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .demo-toggle-btn {
+            width: 100%;
+            padding: 8px 14px;
+            background: #fff9f9;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--dark-pink);
+            font-family: inherit;
+        }
+
+        .demo-toggle-btn:hover {
+            background: #fde9e6;
+        }
+
+        .demo-content {
+            display: none;
+            padding: 10px 14px;
+            font-size: 11px;
+            color: #554444;
+            max-height: 160px;
+            overflow-y: auto;
+            border-top: 1px dashed #ebd4cf;
+            line-height: 1.5;
+        }
+
+        .demo-content table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .demo-content td {
+            padding: 4px 2px;
+            vertical-align: top;
+        }
+
+        .demo-pin-badge {
+            background: #f4dada;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
         }
 
         /* BAGIAN BAWAH */
         .bottom-section {
             text-align: center;
-            color: #999999;
-            line-height: 1.5; /* Dikurangi dari 1.7 agar lebih hemat tempat */
-            margin-top: clamp(10px, 2vh, 20px);
-            margin-bottom: 5px;
+            color: #8c7878;
+            font-size: 12px;
+            line-height: 1.5;
+            margin-top: 10px;
         }
 
         .bottom-section a {
-            color: #999999;
+            color: var(--dark-pink);
+            font-weight: 600;
             text-decoration: none;
         }
 
         .bottom-section a:hover {
-            color: #785f5f;
             text-decoration: underline;
         }
 
         .copyright {
-            font-size: 12px;
-            color: #222222;
-            margin-top: 5px;
+            font-size: 11px;
+            color: #aa9999;
+            margin-top: 4px;
         }
 
-        /* RESPONSIVE UNTUK HP */
+        /* --- MODAL DIALOGS --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(30, 20, 20, 0.65);
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 15px;
+        }
+
+        .modal-box {
+            background-color: var(--white);
+            width: 100%;
+            max-width: 440px;
+            border-radius: 20px;
+            padding: 26px 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .modal-icon-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--danger-bg);
+            color: var(--danger-text);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 10px;
+            border: 2px solid #ffd5d5;
+        }
+
+        .modal-icon-badge.shield {
+            background: #fff6eb;
+            color: #d35400;
+            border-color: #fcd9b5;
+        }
+
+        .modal-title {
+            font-family: var(--font-serif);
+            font-size: 21px;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .modal-subtitle {
+            font-size: 12px;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .admin-auth-info {
+            background: #fff9f9;
+            border: 1px solid #ebd4cf;
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-pink);
+            color: var(--dark-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .admin-text-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .admin-text-details .name {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .admin-text-details .role {
+            font-size: 11px;
+            color: #8c7878;
+        }
+
+        .pin-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+
+        .pin-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .pin-group label span.hint {
+            font-weight: 400;
+            font-size: 11px;
+            color: #8c7878;
+        }
+
+        .pin-input-wrap {
+            position: relative;
+        }
+
+        .pin-input-wrap input {
+            width: 100%;
+            height: 44px;
+            padding: 0 40px 0 14px;
+            border: 1.5px solid #f2c8c3;
+            border-radius: 12px;
+            font-size: 18px;
+            letter-spacing: 6px;
+            font-weight: 700;
+            text-align: center;
+            outline: none;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .pin-input-wrap input:focus {
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 3px rgba(216, 154, 154, 0.2);
+        }
+
+        .pin-toggle-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999999;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .attempts-counter {
+            text-align: center;
+            font-size: 12px;
+            color: #e74c3c;
+            margin-bottom: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            height: 44px;
+            border: 1px solid #ebd4cf;
+            background: #ffffff;
+            color: var(--text-dark);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-cancel:hover {
+            background: #fff9f9;
+        }
+
+        .btn-verify {
+            flex: 1.5;
+            height: 44px;
+            border: none;
+            background: var(--dark-pink);
+            color: #ffffff;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: inherit;
+            box-shadow: 0 3px 10px rgba(146, 121, 121, 0.3);
+        }
+
+        .btn-verify:hover {
+            background: var(--dark-pink-hover);
+        }
+
+        /* GOOGLE ACCOUNT SELECTOR MODAL */
+        .google-account-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 14px;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+
+        .google-account-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border: 1px solid #f2c8c3;
+            border-radius: 12px;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            width: 100%;
+        }
+
+        .google-account-item:hover {
+            background: #fff9f9;
+            border-color: var(--accent-pink);
+            transform: translateX(3px);
+        }
+
+        .google-account-item .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f4dada;
+            color: #927979;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .google-account-item .info {
+            flex: 1;
+        }
+
+        .google-account-item .info strong {
+            display: block;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .google-account-item .info span {
+            font-size: 11px;
+            color: #8c7878;
+        }
+
+        .test-unauthorized-btn {
+            width: 100%;
+            padding: 9px;
+            background: #fff2f2;
+            border: 1px dashed #e74c3c;
+            color: #c0392b;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .test-unauthorized-btn:hover {
+            background: #ffe4e4;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             body {
                 height: auto;
@@ -226,29 +736,24 @@
 
             .photo-section {
                 width: 100%;
-                height: 35vh;
-                border-radius: 0 0 18px 18px;
+                height: 32vh;
+                border-radius: 0 0 20px 20px;
+            }
+
+            .photo-overlay {
+                padding: 20px;
+            }
+
+            .photo-overlay h2 {
+                font-size: 22px;
             }
 
             .form-section {
                 width: 100%;
                 height: auto;
-                min-height: 65vh;
-                padding: 20px 24px 40px;
-                overflow-y: visible; /* Kembalikan normal di HP */
-            }
-
-            .logo img {
-                width: 50%;
-                max-width: 200px;
-            }
-
-            .login-form {
-                margin: 30px 0;
-            }
-
-            .bottom-section {
-                margin-top: 20px;
+                min-height: 68vh;
+                padding: 20px 20px 35px;
+                overflow-y: visible;
             }
         }
     </style>
@@ -258,80 +763,147 @@
 
     <div class="login-container">
 
-        <!-- FOTO PENGANTIN DI SEBELAH KIRI -->
+        <!-- FOTO PANEL KIRI -->
         <div class="photo-section">
-            <img src="img/FOTO-STAFF-LOGIN.png" alt="Foto pengantin Chira Make Up">
+            <img src="img/FOTO-STAFF-LOGIN.png" alt="Staff MUA Atelier Chira">
+            <div class="photo-overlay">
+                <h2>Portal Admin & Artist</h2>
+                <p>Otoritas Khusus Tim MUA & Manajemen Chira Make-Up Malang</p>
+            </div>
         </div>
 
-        <!-- FORM LOGIN DI SEBELAH KANAN -->
+        <!-- FORM LOGIN KANAN -->
         <main class="form-section">
 
-            <!-- LOGO CHIRA MAKE UP -->
-            <header class="logo"> 
-                <img src="img/CHIRA_LOGO-removebg-preview.png" alt="Chira Make Up Logo">
+            <!-- LOGO & BADGE -->
+            <header class="header-wrap"> 
+                <div class="logo">
+                    <img src="img/CHIRA_LOGO-removebg-preview.png" alt="Chira Make Up Logo">
+                </div>
+                <div class="portal-badge">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Official Admin Portal</span>
+                </div>
             </header>
 
-            <!-- FORMULIR LOGIN -->
-            <form class="login-form" id="loginForm">
+            <!-- KOTAK NOTIFIKASI ERROR / LOCKOUT -->
+            <div id="alertBox" class="alert-box alert-danger">
+                <i class="fa-solid fa-triangle-exclamation" style="margin-top: 2px;"></i>
+                <div id="alertMsg">Akses Ditolak</div>
+            </div>
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email:"
-                    aria-label="Email"
-                    required
-                >
+            <!-- FORMULIR LOGIN ADMIN -->
+            <form class="login-form" id="adminLoginForm">
 
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Password:"
-                    aria-label="Password"
-                    required
-                >
-
-                <div class="login-options">
-
-                    <label class="remember">
-                        <input type="checkbox" name="remember">
-                        <span>Remember Me</span>
-                    </label>
-
-                    <div class="social-login">
-                        <p>Log in Using the Following:</p>
-
-                        <div class="social-icons">
-                            <a href="#" aria-label="Google">G</a>
-                            <a href="#" class="facebook" aria-label="Facebook">f</a>
-                            <a href="#" aria-label="Meta">∞</a>
-                        </div>
-                    </div>
-
+                <div class="form-group">
+                    <label for="adminEmail">Email Resmi Artist / Admin:</label>
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        name="email"
+                        placeholder="contoh: nadine@chiramua.com"
+                        aria-label="Email Admin"
+                        required
+                        autocomplete="email"
+                    >
                 </div>
 
-                <button type="submit" class="login-button">
-                   
-                    Login Admin 
-                    <a href="index.html" style="text-decoration: none; color: white;"></a>
+                <div class="form-group">
+                    <label for="adminPassword">Kata Sandi Akun:</label>
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        name="password"
+                        placeholder="Masukkan kata sandi..."
+                        aria-label="Kata Sandi Admin"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <div class="login-options">
+                    <label class="remember">
+                        <input type="checkbox" name="remember" id="rememberMe">
+                        <span>Ingat Perangkat Ini</span>
+                    </label>
+                    <a href="#" class="forgot-link" onclick="alert('Untuk reset akun Admin/Artist, silakan hubungi Lead MUA / Super Admin (Nadine Veronica).'); return false;">Lupa Sandi?</a>
+                </div>
+
+                <button type="submit" class="login-button" id="submitLoginBtn">
+                    <i class="fa-solid fa-key"></i>
+                    <span>Verifikasi Kredensial</span>
+                </button>
+
+                <!-- DIVIDER -->
+                <div class="divider">
+                    <span>atau masuk dengan akun terdaftar</span>
+                </div>
+
+                <!-- GOOGLE SIGN-IN RESMI ADMIN -->
+                <button type="button" class="google-btn" id="googleAdminBtn">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    <span>Masuk sebagai Admin dengan Google</span>
                 </button>
 
             </form>
 
-            <!-- Login DAN ADMIN -->
+            <!-- PETUNJUK KREDENSIAL DEMO UNTUK PENGUJIAN / PRESENTASI -->
+            <div class="demo-credentials-card">
+                <button type="button" class="demo-toggle-btn" id="toggleDemoBtn">
+                    <span><i class="fa-solid fa-circle-info"></i> Petunjuk Akun & PIN Demo (Klik)</span>
+                    <i class="fa-solid fa-chevron-down" id="demoChevron"></i>
+                </button>
+                <div class="demo-content" id="demoContent">
+                    <p style="margin-bottom: 6px;"><strong>PIN Studio (Master):</strong> <span class="demo-pin-badge">889900</span> (Semua akun)</p>
+                    <table>
+                        <tr>
+                            <td><strong>1. Nadine (Lead)</strong></td>
+                            <td>nadine@chiramua.com</td>
+                            <td>PIN: <span class="demo-pin-badge">112233</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Aurora</strong></td>
+                            <td>aurora@chiramua.com</td>
+                            <td>PIN: <span class="demo-pin-badge">223344</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Draco</strong></td>
+                            <td>draco@chiramua.com</td>
+                            <td>PIN: <span class="demo-pin-badge">334455</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Lisa</strong></td>
+                            <td>lisa@chiramua.com</td>
+                            <td>PIN: <span class="demo-pin-badge">445566</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Marco</strong></td>
+                            <td>marco@chiramua.com</td>
+                            <td>PIN: <span class="demo-pin-badge">556677</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. Thania</strong></td>
+                            <td>thania@chiramua.com</td>
+                            <td>PIN: <span class="demo-pin-badge">667788</span></td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 6px; color: #887777;">* Password standar: <code>password123</code></p>
+                </div>
+            </div>
+
+            <!-- FOOTER BAWAH -->
             <footer class="bottom-section">
                 <p>
-                    Already have an account?
-                    <a href="login.html">Login</a>
+                    Bukan Admin atau MUA Artist?
+                    <a href="login.html">Kembali ke Login Pelanggan</a>
                 </p>
-
-                <p>
-                    <a href="admin-login.html">Login as Admin</a>
-                </p>
-
                 <p class="copyright">
-                    Copyright © 2026 Chira MUA Malang All Rights Reserved.
+                    Copyright © 2026 Chira MUA Malang. Sistem Keamanan Multi-Lapisan.
                 </p>
             </footer>
 
@@ -339,17 +911,430 @@
 
     </div>
 
-    <script>
-        document.getElementById("loginForm").addEventListener(
-            "submit", function(event) {
-                event.preventDefault();
+    <!-- MODAL 1: PEMILIHAN AKUN GOOGLE KHUSUS ADMIN -->
+    <div class="modal-overlay" id="googleSelectModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-icon-badge" style="background:#f0f4ff; color:#4285f4; border-color:#d4e2ff;">
+                    <i class="fa-brands fa-google"></i>
+                </div>
+                <h3 class="modal-title">Pilih Akun Google Admin</h3>
+                <p class="modal-subtitle">Gunakan email Google yang terdaftar dalam hak otoritas Chira Atelier</p>
+            </div>
 
-                alert(
-                    "Form Login berhasil diisi. " +
-                    "Sistem autentikasi perlu dihubungkan."
-                );
+            <div class="google-account-list" id="googleAccountsList">
+                <!-- Diisi otomatis oleh JavaScript -->
+            </div>
+
+            <button type="button" class="test-unauthorized-btn" id="testFakeAccountBtn">
+                <i class="fa-solid fa-user-xmark"></i> Uji Coba Akun Google Luar (Simulasi Akses Ditolak)
+            </button>
+
+            <div style="margin-top: 14px;">
+                <button type="button" class="btn-cancel" style="width: 100%;" id="closeGoogleModalBtn">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: TAHAP VERIFIKASI 2x PIN KEAMANAN KETAT -->
+    <div class="modal-overlay" id="pinVerifyModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-icon-badge shield">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="modal-title">Verifikasi 2-Lapis PIN</h3>
+                <p class="modal-subtitle">Otorisasi tahap kedua sebelum akses dashboard diberikan</p>
+            </div>
+
+            <!-- INFORMASI ARTIST YANG DIOTENTIKASI -->
+            <div class="admin-auth-info">
+                <div class="admin-avatar" id="authAvatar">NV</div>
+                <div class="admin-text-details">
+                    <div class="name" id="authArtistName">Nadine Muamlah Veronica</div>
+                    <div class="role" id="authArtistRole">Lead MUA / Super Admin</div>
+                </div>
+            </div>
+
+            <form id="pinForm">
+                <!-- PIN 1: MASTER PIN STUDIO -->
+                <div class="pin-group">
+                    <label for="masterPin">
+                        <span>1. PIN Utama Studio:</span>
+                        <span class="hint">Demo: 889900</span>
+                    </label>
+                    <div class="pin-input-wrap">
+                        <input
+                            type="password"
+                            id="masterPin"
+                            maxlength="6"
+                            placeholder="••••••"
+                            required
+                            autocomplete="off"
+                            inputmode="numeric"
+                        >
+                        <i class="fa-solid fa-eye pin-toggle-icon" onclick="togglePinVisibility('masterPin', this)"></i>
+                    </div>
+                </div>
+
+                <!-- PIN 2: PERSONAL ARTIST PIN -->
+                <div class="pin-group">
+                    <label for="artistPin">
+                        <span>2. PIN Pribadi Artist:</span>
+                        <span class="hint" id="personalPinHint">Demo: 112233</span>
+                    </label>
+                    <div class="pin-input-wrap">
+                        <input
+                            type="password"
+                            id="artistPin"
+                            maxlength="6"
+                            placeholder="••••••"
+                            required
+                            autocomplete="off"
+                            inputmode="numeric"
+                        >
+                        <i class="fa-solid fa-eye pin-toggle-icon" onclick="togglePinVisibility('artistPin', this)"></i>
+                    </div>
+                </div>
+
+                <!-- INDIKATOR PERCOBAAN -->
+                <div class="attempts-counter" id="attemptsCounter">
+                    <i class="fa-solid fa-shield-virus"></i>
+                    <span id="attemptsText">Percobaan tersisa: 3 kali</span>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="cancelPinBtn">Batal</button>
+                    <button type="submit" class="btn-verify" id="submitPinBtn">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Buka Dashboard</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- LOGIKA JAVASCRIPT: WHITELIST, 2x PIN & ANTI BRUTE-FORCE -->
+    <script>
+        // 1. MASTER STUDIO PIN (6-Digit)
+        const MASTER_STUDIO_PIN = "889900";
+
+        // 2. WHITELIST 6 AKUN RESMI MUA ARTIST & ADMIN DARI @staffmua.html
+        const ADMIN_WHITELIST = [
+            {
+                email: "nadine@chiramua.com",
+                googleEmail: "nadine.mua@gmail.com",
+                nama: "Nadine Muamlah Veronica",
+                inisial: "NV",
+                role: "Lead MUA / Super Admin",
+                personalPin: "112233"
+            },
+            {
+                email: "aurora@chiramua.com",
+                googleEmail: "aurora.mua@gmail.com",
+                nama: "Aurora Clarissa",
+                inisial: "AC",
+                role: "Staff MUA (Graduation & Party Look)",
+                personalPin: "223344"
+            },
+            {
+                email: "draco@chiramua.com",
+                googleEmail: "draco.mua@gmail.com",
+                nama: "Draco Sebastian",
+                inisial: "DS",
+                role: "Staff MUA (Fashion & Photoshoot)",
+                personalPin: "334455"
+            },
+            {
+                email: "lisa@chiramua.com",
+                googleEmail: "lisa.mua@gmail.com",
+                nama: "Lisa Anggraini",
+                inisial: "LA",
+                role: "Staff MUA (Engagement & Modern Hijab)",
+                personalPin: "445566"
+            },
+            {
+                email: "marco@chiramua.com",
+                googleEmail: "marco.mua@gmail.com",
+                nama: "Marco Pratama",
+                inisial: "MP",
+                role: "Staff MUA (Bridal & Airbrush Specialist)",
+                personalPin: "556677"
+            },
+            {
+                email: "thania@chiramua.com",
+                googleEmail: "thania.mua@gmail.com",
+                nama: "Thania Aurelia Putri",
+                inisial: "TP",
+                role: "Staff MUA (Editorial & High Glamour)",
+                personalPin: "667788"
             }
-        );
+        ];
+
+        // Tampilkan info kredensial di console agar mudah diuji oleh penguji/guru
+        console.group("🔑 [CHIRA MAKE-UP] DAFTAR KREDENSIAL RESMI ADMIN & MUA ARTIST");
+        console.log("PIN Utama Studio:", MASTER_STUDIO_PIN);
+        console.table(ADMIN_WHITELIST.map(a => ({
+            "Nama Artist": a.nama,
+            "Role Otoritas": a.role,
+            "Email Resmi": a.email,
+            "PIN Pribadi": a.personalPin
+        })));
+        console.groupEnd();
+
+        // STATE KEAMANAN
+        let currentAuthenticatedAdmin = null;
+        let failedPinAttempts = 0;
+        let lockoutTimer = null;
+        let lockoutSeconds = 0;
+
+        // DOM ELEMENTS
+        const alertBox = document.getElementById("alertBox");
+        const alertMsg = document.getElementById("alertMsg");
+        const adminLoginForm = document.getElementById("adminLoginForm");
+        const adminEmailInput = document.getElementById("adminEmail");
+        const adminPasswordInput = document.getElementById("adminPassword");
+        const submitLoginBtn = document.getElementById("submitLoginBtn");
+        const googleAdminBtn = document.getElementById("googleAdminBtn");
+
+        const googleSelectModal = document.getElementById("googleSelectModal");
+        const googleAccountsList = document.getElementById("googleAccountsList");
+        const closeGoogleModalBtn = document.getElementById("closeGoogleModalBtn");
+        const testFakeAccountBtn = document.getElementById("testFakeAccountBtn");
+
+        const pinVerifyModal = document.getElementById("pinVerifyModal");
+        const pinForm = document.getElementById("pinForm");
+        const masterPinInput = document.getElementById("masterPin");
+        const artistPinInput = document.getElementById("artistPin");
+        const authAvatar = document.getElementById("authAvatar");
+        const authArtistName = document.getElementById("authArtistName");
+        const authArtistRole = document.getElementById("authArtistRole");
+        const personalPinHint = document.getElementById("personalPinHint");
+        const attemptsText = document.getElementById("attemptsText");
+        const cancelPinBtn = document.getElementById("cancelPinBtn");
+
+        // ACCORDION TOGGLE
+        const toggleDemoBtn = document.getElementById("toggleDemoBtn");
+        const demoContent = document.getElementById("demoContent");
+        const demoChevron = document.getElementById("demoChevron");
+        toggleDemoBtn.addEventListener("click", function() {
+            const isVisible = demoContent.style.display === "block";
+            demoContent.style.display = isVisible ? "none" : "block";
+            demoChevron.classList.toggle("fa-chevron-down", isVisible);
+            demoChevron.classList.toggle("fa-chevron-up", !isVisible);
+        });
+
+        // FUNGSI TAMPILKAN ALERT
+        function showAlert(msg, isSuccess = false) {
+            alertMsg.innerText = msg;
+            alertBox.className = "alert-box " + (isSuccess ? "alert-success" : "alert-danger");
+            alertBox.style.display = "flex";
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function hideAlert() {
+            alertBox.style.display = "none";
+        }
+
+        // CARI ADMIN DARI WHITELIST (Berdasarkan Email Resmi atau Google Email)
+        function findAdminByEmail(rawEmail) {
+            if (!rawEmail) return null;
+            const cleaned = rawEmail.trim().toLowerCase();
+            return ADMIN_WHITELIST.find(item => 
+                item.email.toLowerCase() === cleaned || 
+                item.googleEmail.toLowerCase() === cleaned
+            );
+        }
+
+        // 3. SUBMIT FORM KREDENSIAL MANUAL (LANGKAH 1)
+        adminLoginForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            if (lockoutSeconds > 0) return;
+
+            hideAlert();
+            const emailValue = adminEmailInput.value;
+            const admin = findAdminByEmail(emailValue);
+
+            if (!admin) {
+                // TAMPILKAN ALERT MERAH TEGAS SESUAI PERMINTAAN
+                showAlert("Akses Ditolak: Akun Anda tidak terdaftar dalam otoritas Admin Chira Make-Up.");
+                return;
+            }
+
+            // Kredensial Langkah 1 Lolos -> Buka Modal PIN (Langkah 2)
+            openPinModal(admin);
+        });
+
+        // 4. GOOGLE SIGN-IN RESMI (LANGKAH 1)
+        googleAdminBtn.addEventListener("click", function() {
+            if (lockoutSeconds > 0) return;
+            hideAlert();
+            renderGoogleAccounts();
+            googleSelectModal.style.display = "flex";
+        });
+
+        closeGoogleModalBtn.addEventListener("click", function() {
+            googleSelectModal.style.display = "none";
+        });
+
+        // RENDER 6 AKUN GOOGLE ADMIN DALAM MODAL
+        function renderGoogleAccounts() {
+            googleAccountsList.innerHTML = "";
+            ADMIN_WHITELIST.forEach(admin => {
+                const item = document.createElement("button");
+                item.type = "button";
+                item.className = "google-account-item";
+                item.innerHTML = `
+                    <div class="avatar">${admin.inisial}</div>
+                    <div class="info">
+                        <strong>${admin.nama}</strong>
+                        <span>${admin.googleEmail} • <em>${admin.role}</em></span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right" style="color:#d89a9a; font-size:12px;"></i>
+                `;
+                item.addEventListener("click", function() {
+                    googleSelectModal.style.display = "none";
+                    openPinModal(admin);
+                });
+                googleAccountsList.appendChild(item);
+            });
+        }
+
+        // SIMULASI AKUN LUAR (UNTUK MENGUJI "AKSES DITOLAK")
+        testFakeAccountBtn.addEventListener("click", function() {
+            googleSelectModal.style.display = "none";
+            showAlert("Akses Ditolak: Akun Anda tidak terdaftar dalam otoritas Admin Chira Make-Up.");
+        });
+
+        // 5. BUKA MODAL TAHAP 2 (2x PIN KEAMANAN)
+        function openPinModal(admin) {
+            currentAuthenticatedAdmin = admin;
+            authAvatar.innerText = admin.inisial;
+            authArtistName.innerText = admin.nama;
+            authArtistRole.innerText = admin.role;
+            personalPinHint.innerText = `Demo: ${admin.personalPin}`;
+
+            masterPinInput.value = "";
+            artistPinInput.value = "";
+            updateAttemptsUI();
+
+            pinVerifyModal.style.display = "flex";
+            setTimeout(() => masterPinInput.focus(), 200);
+        }
+
+        cancelPinBtn.addEventListener("click", function() {
+            pinVerifyModal.style.display = "none";
+            currentAuthenticatedAdmin = null;
+        });
+
+        // TOGGLE VISIBILITY PIN
+        window.togglePinVisibility = function(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        };
+
+        // 6. VALIDASI 2x PIN KEAMANAN & ANTI BRUTE-FORCE
+        pinForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            if (lockoutSeconds > 0) return;
+
+            const enteredMasterPin = masterPinInput.value.trim();
+            const enteredArtistPin = artistPinInput.value.trim();
+
+            const isMasterValid = (enteredMasterPin === MASTER_STUDIO_PIN);
+            const isArtistValid = (enteredArtistPin === currentAuthenticatedAdmin.personalPin);
+
+            if (isMasterValid && isArtistValid) {
+                // SEMUA VERIFIKASI BERHASIL!
+                pinVerifyModal.style.display = "none";
+                showAlert(`Verifikasi Berhasil! Selamat datang, ${currentAuthenticatedAdmin.nama}. Mengarahkan ke Dashboard...`, true);
+
+                // SIMPAN DATA SESI ADMIN LENGKAP KE LOCALSTORAGE
+                const adminSession = {
+                    email: currentAuthenticatedAdmin.email,
+                    namaArtist: currentAuthenticatedAdmin.nama,
+                    role: currentAuthenticatedAdmin.role,
+                    isAdmin: true,
+                    loginAt: new Date().toISOString()
+                };
+
+                localStorage.setItem("chira_admin_session", JSON.stringify(adminSession));
+                localStorage.setItem("chira_login_status", "true");
+                localStorage.setItem("chira_user_name", currentAuthenticatedAdmin.nama);
+
+                // REDIRECT KE admin-dashboard.html
+                setTimeout(() => {
+                    window.location.href = "admin-dashboard.html";
+                }, 1200);
+
+            } else {
+                // PIN SALAH -> HITUNG ATTEMPTS
+                failedPinAttempts++;
+                const remaining = 3 - failedPinAttempts;
+
+                if (failedPinAttempts >= 3) {
+                    // PICU ANTI BRUTE-FORCE LOCKOUT 30 DETIK
+                    pinVerifyModal.style.display = "none";
+                    triggerLockout(30);
+                } else {
+                    let errMsg = "Kombinasi PIN tidak sesuai.";
+                    if (!isMasterValid && !isArtistValid) errMsg = "PIN Studio dan PIN Pribadi keduanya salah.";
+                    else if (!isMasterValid) errMsg = "PIN Utama Studio tidak valid.";
+                    else if (!isArtistValid) errMsg = "PIN Pribadi Artist tidak sesuai.";
+
+                    alert(`${errMsg}\nSisa percobaan: ${remaining} kali sebelum sistem dikunci.`);
+                    updateAttemptsUI();
+                    masterPinInput.value = "";
+                    artistPinInput.value = "";
+                    masterPinInput.focus();
+                }
+            }
+        });
+
+        function updateAttemptsUI() {
+            const remaining = Math.max(0, 3 - failedPinAttempts);
+            attemptsText.innerText = `Percobaan tersisa: ${remaining} kali`;
+        }
+
+        // 7. SISTEM LOCKOUT ANTI BRUTE-FORCE (30 DETIK DENGAN COUNTDOWN)
+        function triggerLockout(duration) {
+            lockoutSeconds = duration;
+            failedPinAttempts = 0;
+
+            submitLoginBtn.disabled = true;
+            googleAdminBtn.disabled = true;
+            adminEmailInput.disabled = true;
+            adminPasswordInput.disabled = true;
+
+            updateLockoutMessage();
+
+            lockoutTimer = setInterval(() => {
+                lockoutSeconds--;
+                if (lockoutSeconds <= 0) {
+                    clearInterval(lockoutTimer);
+                    lockoutTimer = null;
+                    submitLoginBtn.disabled = false;
+                    googleAdminBtn.disabled = false;
+                    adminEmailInput.disabled = false;
+                    adminPasswordInput.disabled = false;
+                    showAlert("Sistem telah dibuka kembali. Silakan coba masukkan kredensial dengan benar.", true);
+                } else {
+                    updateLockoutMessage();
+                }
+            }, 1000);
+        }
+
+        function updateLockoutMessage() {
+            showAlert(`🚨 Akun dikunci sementara karena 3x salah memasukkan PIN keamanan. Silakan tunggu ${lockoutSeconds} detik sebelum mencoba kembali.`);
+        }
     </script>
 
 </body>
