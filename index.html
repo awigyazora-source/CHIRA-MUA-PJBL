@@ -567,6 +567,52 @@
             color: var(--text-light);
         }
 
+        .testi-handled {
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--primary-pink);
+            display: flex;
+            align-items: center;
+        }
+
+        .testi-artist-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            border: 1px solid var(--primary-pink);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .testi-artist-pill i {
+            color: var(--accent-pink);
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .testi-artist-pill strong {
+            color: var(--dark-pink);
+            font-weight: 600;
+        }
+
+        .testi-artist-pill:hover {
+            background-color: #fff0f0;
+            border-color: var(--accent-pink);
+            color: var(--dark-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(216, 154, 154, 0.2);
+        }
+
+        .testi-artist-pill:hover i {
+            transform: rotate(-15deg);
+        }
+
         /* --- FOOTER (REVISI PREMIUM) --- */
         .site-footer {
             background-color: #fdf5f6;
@@ -1049,6 +1095,11 @@
                         <p>Wedding Client</p>
                     </div>
                 </div>
+                <div class="testi-handled">
+                    <a href="staffmua.html#artists-team" class="testi-artist-pill" title="Lihat profil MUA Artist">
+                        <i class="fa-solid fa-paintbrush"></i> MUA: <strong>Nadine Muamlah Veronica</strong>
+                    </a>
+                </div>
             </div>
 
             <div class="testi-card">
@@ -1061,6 +1112,11 @@
                         <p>Graduate Client</p>
                     </div>
                 </div>
+                <div class="testi-handled">
+                    <a href="staffmua.html#artists-team" class="testi-artist-pill" title="Lihat profil MUA Artist">
+                        <i class="fa-solid fa-paintbrush"></i> MUA: <strong>Aurora Clarissa</strong>
+                    </a>
+                </div>
             </div>
 
             <div class="testi-card">
@@ -1072,6 +1128,11 @@
                         <h5>Amelia</h5>
                         <p>Engagement Client</p>
                     </div>
+                </div>
+                <div class="testi-handled">
+                    <a href="staffmua.html#artists-team" class="testi-artist-pill" title="Lihat profil MUA Artist">
+                        <i class="fa-solid fa-paintbrush"></i> MUA: <strong>Lisa Anggraini</strong>
+                    </a>
                 </div>
             </div>
         </div>
