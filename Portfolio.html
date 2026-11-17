@@ -12,6 +12,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- CSS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <link rel="stylesheet" href="css/customer-profile.css">
+
     <style>
         /* --- CSS VARIABLES (Sama dengan index.html) --- */
         :root {
@@ -670,6 +673,45 @@
                     <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
                 </div>
             </div>
+
+            <div class="portfolio-item" 
+                 data-category="custom" 
+                 data-before="img/Portfolio-custom1-before.png" 
+                 data-after="img/Portfolio-custom1-after.png"
+                 data-title="Custom Event Glam">
+                <img src="img/Portfolio-custom1-after.png" alt="Birthday Look">
+                <div class="portfolio-overlay">
+                    <h4>Custom Event Glam</h4>
+                    <p>Custom Cosplay Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" 
+                 data-category="custom" 
+                 data-before="img/Portfolio-custom2-before.png" 
+                 data-after="img/Portfolio-custom2-after.png"
+                 data-title="Custom Event Glam">
+                <img src="img/Portfolio-custom2-after.png" alt="Birthday Look">
+                <div class="portfolio-overlay">
+                    <h4>Custom Event Glam</h4>
+                    <p>Custom Halloween Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
+
+            <div class="portfolio-item" 
+                 data-category="custom" 
+                 data-before="img/Portfolio-custom3-before.png" 
+                 data-after="img/Portfolio-custom3-after.png"
+                 data-title="Custom Event Glam">
+                <img src="img/Portfolio-custom3-after.png" alt="Birthday Look">
+                <div class="portfolio-overlay">
+                    <h4>Custom Event Glam</h4>
+                    <p>Custom Christmas Makeup</p>
+                    <span class="click-hint"><i class="fa-solid fa-magnifying-glass"></i> Klik untuk lihat Before-After</span>
+                </div>
+            </div>
             <!-- Anda bisa menambahkan banyak foto lagi di sini dengan format yang sama -->
             
         </div>
@@ -882,21 +924,10 @@
             modalSlider.addEventListener("touchstart", (e) => { e.preventDefault(); isDragging = true; });
             window.addEventListener("touchend", () => isDragging = false);
             window.addEventListener("touchmove", (e) => { if (isDragging) moveSlider(e.touches[0].clientX); });
-
-
-            // --- 4. LOGIKA LOGIN NAVBAR ---
-            const isLoggedIn = localStorage.getItem("chira_login_status");
-            const navLoginItem = document.getElementById("nav-login-item");
-
-            if (isLoggedIn === "true") {
-                navLoginItem.innerHTML = '<a href="#" class="nav-btn" id="logoutBtn" style="background-color: #d89a9a;">Logout</a>';
-                document.getElementById("logoutBtn").addEventListener("click", function(e) {
-                    e.preventDefault();
-                    localStorage.removeItem("chira_login_status");
-                    window.location.reload(); 
-                });
-            }
         });
     </script>
+
+    <!-- JS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <script src="js/customer-profile.js"></script>
 </body>
 </html>

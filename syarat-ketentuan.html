@@ -13,6 +13,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- CSS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <link rel="stylesheet" href="css/customer-profile.css">
+
     <style>
         :root {
             --bg-color: #fff9f9;
@@ -643,7 +646,7 @@
             </div>
 
             <!-- Pasal 3: Pembayaran QRIS & Paket Bundle -->
-            <div class="policy-card" id="reschedule">
+            <div class="policy-card">
                 <div>
                     <div class="policy-header">
                         <div class="policy-icon-wrapper">
@@ -651,16 +654,16 @@
                         </div>
                         <span class="policy-pasal">Pasal 03</span>
                     </div>
-                    <h3>Pembayaran QRIS & Ketentuan Paket Bundle</h3>
-                    <p>Jadwal reservasi dan staf MUA pilihan Anda resmi terkunci setelah simulasi pembayaran QRIS berhasil terkonfirmasi. Pada Paket Bundle / Rame-rame (2–5 orang), seluruh pengerjaan dilakukan bergantian secara berurutan oleh 1 staf MUA perorangan sesuai akumulasi total durasi (Jumlah Pax × Durasi per Pax) guna menjamin higienitas alat dan kualitas riasan tetap prima.</p>
+                    <h3>Sistem Pembayaran DP 50% & Ketentuan Paket Bundle</h3>
+                    <p>Jadwal reservasi dan penata rias (MUA) pilihan Anda resmi terkunci setelah pembayaran Down Payment (DP) sebesar 50% melalui QRIS berhasil terkonfirmasi. Sisa pelunasan (50%) dapat dibayarkan langsung di lokasi pada Hari H setelah sesi riasan selesai. Pada Paket Bundle / Rame-rame (2–5 orang), seluruh pengerjaan dilakukan bergantian secara berurutan oleh 1 staf MUA perorangan sesuai akumulasi total durasi (Jumlah Pax × Durasi per Pax) guna menjamin higienitas alat dan kualitas riasan tetap prima.</p>
                 </div>
                 <div class="policy-highlight">
-                    <i class="fa-solid fa-lock"></i> Jadwal terkunci setelah lunas; pengerjaan bundle berurutan oleh 1 staf MUA.
+                    <i class="fa-solid fa-lock"></i> Jadwal terkunci via DP 50% QRIS; sisa pelunasan 50% di Hari H.
                 </div>
             </div>
 
             <!-- Pasal 4: Ketepatan Waktu -->
-            <div class="policy-card" id="reschedule">
+            <div class="policy-card">
                 <div>
                     <div class="policy-header">
                         <div class="policy-icon-wrapper">
@@ -677,7 +680,7 @@
             </div>
 
             <!-- Pasal 5: Kesiapan Kulit & Alergi -->
-            <div class="policy-card" id="reschedule">
+            <div class="policy-card">
                 <div>
                     <div class="policy-header">
                         <div class="policy-icon-wrapper">
@@ -703,10 +706,10 @@
                         <span class="policy-pasal">Pasal 06</span>
                     </div>
                     <h3>Ketentuan Reschedule & Pembatalan (Refund)</h3>
-                    <p>Pengajuan perubahan tanggal reservasi (reschedule) dapat dilayani maksimal H-3 sebelum tanggal acara (berlaku maksimal 1 kali perubahan tanggal, selama slot staf MUA yang dituju masih tersedia). Pembatalan sepihak secara mendadak di bawah H-2 (kurang dari 48 jam) dari waktu acara mengakibatkan pembayaran dinyatakan hangus dan tidak dapat dikembalikan (non-refundable).</p>
+                    <p>Pengajuan perubahan tanggal reservasi (reschedule) dapat dilayani maksimal H-3 sebelum tanggal acara (berlaku maksimal 1 kali perubahan tanggal, selama slot staf MUA yang dituju masih tersedia). Pembatalan sepihak secara mendadak di bawah H-2 (kurang dari 48 jam) dari waktu acara mengakibatkan pembayaran Down Payment (DP) 50% dinyatakan hangus dan tidak dapat dikembalikan (non-refundable).</p>
                 </div>
                 <div class="policy-highlight">
-                    <i class="fa-solid fa-rotate-left"></i> Reschedule maksimal H-3 (1x kesempatan); pembatalan di bawah H-2 hangus.
+                    <i class="fa-solid fa-rotate-left"></i> Reschedule maksimal H-3 (1x kesempatan); pembatalan di bawah H-2 DP hangus.
                 </div>
             </div>
 
@@ -834,22 +837,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT UNTUK CEK STATUS LOGIN -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const isLoggedIn = localStorage.getItem("chira_login_status");
-            const navLoginItem = document.getElementById("nav-login-item");
-
-            if (isLoggedIn === "true") {
-                navLoginItem.innerHTML = '<a href="#" class="nav-btn" id="logoutBtn" style="background-color: #d89a9a;">Logout</a>';
-                
-                document.getElementById("logoutBtn").addEventListener("click", function(e) {
-                    e.preventDefault();
-                    localStorage.removeItem("chira_login_status");
-                    window.location.reload(); 
-                });
-            }
-        });
-    </script>
+    <!-- JS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <script src="js/customer-profile.js"></script>
 </body>
 </html>

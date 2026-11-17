@@ -13,6 +13,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- CSS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <link rel="stylesheet" href="css/customer-profile.css">
+
     <style>
         /* --- CSS VARIABLES (Konsisten dengan index.html) --- */
         :root {
@@ -1020,7 +1023,7 @@
     <section class="artists-section" id="artists-team">
         <div class="artists-header">
             <p class="section-eyebrow">PROFESSIONAL MUA TEAM</p>
-            <h2>Meet Our Professional Artists</h2>
+            <h2>Meet Our Professional MUA</h2>
             <p>Pilih Make Up Artist berpengalaman kami yang memiliki keahlian khusus sesuai look impian acara Anda.</p>
         </div>
 
@@ -1422,24 +1425,12 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT: FILTER & STATUS LOGIN -->
+    <!-- JS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <script src="js/customer-profile.js"></script>
+
+    <!-- JAVASCRIPT: FILTER & INTERAKSI -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 1. Cek Status Login di Navbar
-            const isLoggedIn = localStorage.getItem("chira_login_status");
-            const navLoginItem = document.getElementById("nav-login-item");
-
-            if (isLoggedIn === "true") {
-                navLoginItem.innerHTML = '<a href="#" class="nav-btn" id="logoutBtn" style="background-color: #d89a9a;">Logout</a>';
-                
-                document.getElementById("logoutBtn").addEventListener("click", function(e) {
-                    e.preventDefault();
-                    if (confirm("Apakah Anda yakin ingin logout?")) {
-                        localStorage.removeItem("chira_login_status");
-                        window.location.reload();
-                    }
-                });
-            }
 
             // 2. Filter Interaktif Artis
             const filterBtns = document.querySelectorAll(".filter-pill");

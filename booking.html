@@ -13,11 +13,23 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- CSS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <link rel="stylesheet" href="css/customer-profile.css">
+
     <!-- SCRIPT PROTEKSI LOGIN (Eksekusi seawal mungkin) -->
     <script>
         (function() {
             const loginStatus = localStorage.getItem("chira_login_status");
-            if (loginStatus !== "true") {
+            let hasAdminSession = false;
+            try {
+                const adminRaw = localStorage.getItem("chira_admin_session");
+                if (adminRaw) {
+                    const parsed = JSON.parse(adminRaw);
+                    if (parsed && parsed.isAdmin) hasAdminSession = true;
+                }
+            } catch (e) {}
+
+            if (loginStatus !== "true" && !hasAdminSession) {
                 alert("Akses Terbatas! Silakan login terlebih dahulu untuk melakukan pemesanan.");
                 window.location.replace("login.html");
             }
@@ -573,21 +585,24 @@
         }
 
         .date-hint-text {
-            margin-top: 7px;
-            font-size: 11.5px;
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 22px;
+            font-size: 12.5px;
             color: var(--dark-pink);
             display: flex;
             align-items: center;
-            gap: 6px;
-            line-height: 1.4;
+            gap: 10px;
+            line-height: 1.5;
             background: #fff5f5;
-            padding: 6px 10px;
-            border-radius: 8px;
+            padding: 11px 16px;
+            border-radius: 12px;
             border: 1px dashed var(--accent-pink);
+            box-sizing: border-box;
         }
 
         .date-hint-text i {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--accent-pink);
             flex-shrink: 0;
         }
@@ -1548,9 +1563,7 @@
             <li><a href="Portfolio.html">Portfolio</a></li>
             <li><a href="booking.html" class="active">Booking</a></li>
             <li><a href="staffmua.html">About Us</a></li>
-            <li id="nav-login-item">
-                <a href="#" class="nav-btn logout" id="logoutBtn">Logout</a>
-            </li>
+            <li id="nav-login-item"><a href="login.html" class="nav-btn">Login</a></li>
         </ul>
     </nav>
 
@@ -1766,20 +1779,22 @@
                         </div>
                     </div>
 
-                    <div class="form-grid-2">
+                    <div class="form-grid-2" style="margin-bottom: 12px;">
                         <div class="form-group">
                             <label for="bookingDate">Tanggal Acara <span class="required">*</span></label>
                             <input type="date" id="bookingDate" class="form-control" required>
-                            <div class="date-hint-text" id="dateLeadTimeHint">
-                                <i class="fa-solid fa-circle-info"></i>
-                                <span id="dateHintContent">Menghitung rentang tanggal valid...</span>
-                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="startTime">Jam Mulai Rias <span class="required">*</span></label>
                             <input type="time" id="startTime" class="form-control" value="08:00" required>
                         </div>
+                    </div>
+
+                    <!-- KOTAK KETERANGAN RENTANG TANGGAL FULL-WIDTH -->
+                    <div class="date-hint-text" id="dateLeadTimeHint">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span id="dateHintContent">Menghitung rentang tanggal valid...</span>
                     </div>
 
                     <!-- Staff MUA Selection -->
@@ -1978,18 +1993,28 @@
 
                         <div class="summary-divider"></div>
 
-                        <div class="total-price-box">
+                        <div class="summary-row" style="margin-bottom: 6px;">
+                            <span>Total Harga Layanan</span>
+                            <strong id="summaryTotalPrice" style="font-size: 15px; color: var(--text-dark);">Rp 1.500.000</strong>
+                        </div>
+
+                        <div class="summary-row" style="margin-bottom: 12px; font-size: 12.5px;">
+                            <span><i class="fa-solid fa-clock-rotate-left" style="color: var(--accent-pink);"></i> Sisa Pelunasan di Hari H (50%)</span>
+                            <strong id="summaryRemainingPay" style="color: var(--text-light); font-weight: 600;">Rp 750.000</strong>
+                        </div>
+
+                        <div class="total-price-box" style="background: linear-gradient(135deg, #fff5f5 0%, #fff 100%); border: 1.5px solid var(--accent-pink); border-radius: 12px; padding: 12px 14px; margin-bottom: 20px;">
                             <div>
-                                <span>Total Tagihan</span>
-                                <div style="font-size: 11px; color: var(--text-light);">(Termasuk Konsultasi & Alur Lengkap)</div>
+                                <span style="font-weight: 700; color: var(--dark-pink);"><i class="fa-solid fa-receipt"></i> DP 50% (Dibayar Sekarang via QRIS)</span>
+                                <div style="font-size: 11px; color: var(--text-light);">Wajib untuk kunci jadwal & slot MUA</div>
                             </div>
-                            <div class="total-price-val" id="summaryTotalPrice">Rp 1.500.000</div>
+                            <div class="total-price-val" id="summaryDpPrice" style="color: var(--dark-pink); font-size: 22px;">Rp 750.000</div>
                         </div>
                     </div>
 
                     <!-- Tombol Lanjut ke QRIS -->
                     <button type="button" class="btn-booking-submit" id="btnProceedPayment" onclick="handleProceedPayment()">
-                        <i class="fa-solid fa-qrcode"></i> Lanjut Pembayaran QRIS
+                        <i class="fa-solid fa-qrcode"></i> Lanjut Pembayaran DP 50% (QRIS)
                     </button>
 
                     <div class="security-badge">
@@ -2045,8 +2070,16 @@
                         <strong id="modalSchedule">-</strong>
                     </div>
                     <div class="qris-summary-item">
-                        <span>Total Tagihan:</span>
-                        <span id="modalTotalPay" style="font-size: 15px; font-weight: 700; color: var(--dark-pink);">Rp 0</span>
+                        <span>Total Harga Paket:</span>
+                        <span id="modalTotalPackage" style="font-size: 14px; font-weight: 600; color: var(--text-dark);">Rp 0</span>
+                    </div>
+                    <div class="qris-summary-item" style="background: #fff5f5; padding: 8px 12px; border-radius: 8px; border-left: 3px solid var(--accent-pink); margin-top: 4px;">
+                        <span><strong style="color: var(--dark-pink);"><i class="fa-solid fa-receipt"></i> DP 50% (Ditagihkan Sekarang):</strong></span>
+                        <span id="modalTotalPay" style="font-size: 16px; font-weight: 700; color: var(--dark-pink);">Rp 0</span>
+                    </div>
+                    <div class="qris-summary-item" style="font-size: 12px; color: var(--text-light); margin-top: 3px;">
+                        <span>Sisa Pelunasan di Hari H (50%):</span>
+                        <span id="modalRemainingPay" style="font-weight: 600; color: var(--text-light);">Rp 0</span>
                     </div>
                 </div>
 
@@ -2166,6 +2199,9 @@
         </div>
     </footer>
 
+    <!-- JS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <script src="js/customer-profile.js"></script>
+
     <!-- JAVASCRIPT LOGIC UNTUK BOOKING & SIMULASI QRIS -->
     <script>
         // --- 1. STATE MANAGEMENT ---
@@ -2187,6 +2223,8 @@
             custPhone: '',
             custNotes: '',
             totalPrice: 1500000,
+            dpAmount: 750000,
+            remainingAmount: 750000,
             totalDuration: 150,
             bookingCode: ''
         };
@@ -2195,16 +2233,9 @@
 
         // --- 2. INITIALIZATION ON DOM READY ---
         document.addEventListener("DOMContentLoaded", function() {
-            // Logout Button Handling
-            const logoutBtn = document.getElementById("logoutBtn");
-            if (logoutBtn) {
-                logoutBtn.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    if (confirm("Apakah Anda yakin ingin keluar dari akun?")) {
-                        localStorage.removeItem("chira_login_status");
-                        window.location.href = "login.html";
-                    }
-                });
+            // Auto-fill Profil Customer ke Form Pemesanan
+            if (window.ChiraCustomerProfile) {
+                window.ChiraCustomerProfile.autoFillBooking();
             }
 
             // Inisialisasi Validasi Batas Waktu Pemesanan (Lead Time)
@@ -2400,8 +2431,10 @@
 
         // --- 4. ENGINE PERHITUNGAN OTOMATIS (WAKTU & BIAYA) ---
         function updateCalculations() {
-            // A. Perhitungan Total Harga
+            // A. Perhitungan Total Harga & DP 50%
             currentBooking.totalPrice = currentBooking.basePrice * currentBooking.paxCount;
+            currentBooking.dpAmount = Math.round(currentBooking.totalPrice * 0.5);
+            currentBooking.remainingAmount = currentBooking.totalPrice - currentBooking.dpAmount;
 
             // B. Perhitungan Total Durasi (Jumlah Orang x Durasi per Orang)
             currentBooking.totalDuration = currentBooking.baseDuration * currentBooking.paxCount;
@@ -2427,7 +2460,11 @@
             document.getElementById("summaryTotalDuration").innerText = durationText;
             document.getElementById("summaryTime").innerText = `${currentBooking.startTime} - ${currentBooking.endTime} WIB`;
             document.getElementById("summaryDate").innerText = formatDateIndo(currentBooking.selectedDate);
+            
+            // Total Harga & DP 50% (Dibayar Sekarang vs Hari H)
             document.getElementById("summaryTotalPrice").innerText = formatRupiah(currentBooking.totalPrice);
+            document.getElementById("summaryDpPrice").innerText = formatRupiah(currentBooking.dpAmount);
+            document.getElementById("summaryRemainingPay").innerText = formatRupiah(currentBooking.remainingAmount);
 
             // F. Update Badge Penguncian Slot Waktu
             document.getElementById("lockedSlotBadge").innerText = `${currentBooking.startTime} - ${currentBooking.endTime} WIB`;
@@ -2527,7 +2564,9 @@
             document.getElementById("qrisBookingCode").innerText = currentBooking.bookingCode;
             document.getElementById("modalService").innerText = currentBooking.serviceName;
             document.getElementById("modalSchedule").innerText = `${formatDateIndo(currentBooking.selectedDate)} (${currentBooking.startTime} - ${currentBooking.endTime} WIB, ${currentBooking.paxCount} Pax)`;
-            document.getElementById("modalTotalPay").innerText = formatRupiah(currentBooking.totalPrice);
+            document.getElementById("modalTotalPackage").innerText = formatRupiah(currentBooking.totalPrice);
+            document.getElementById("modalTotalPay").innerText = formatRupiah(currentBooking.dpAmount);
+            document.getElementById("modalRemainingPay").innerText = formatRupiah(currentBooking.remainingAmount);
 
             // Buka Modal
             document.getElementById("qrisPaymentView").style.display = "block";
@@ -2570,8 +2609,11 @@
                 const existingBookings = JSON.parse(localStorage.getItem("chira_bookings") || "[]");
                 existingBookings.push({
                     ...currentBooking,
+                    paidAmount: currentBooking.dpAmount, // Nominal DP 50% yang dibayarkan via QRIS
+                    remainingAmount: currentBooking.remainingAmount, // Sisa pelunasan di Hari H
+                    paymentType: 'DP 50%',
                     timestamp: new Date().toISOString(),
-                    status: 'Confirmed'
+                    status: 'DP 50% Paid (Slot Locked)'
                 });
                 localStorage.setItem("chira_bookings", JSON.stringify(existingBookings));
             } catch (err) {
@@ -2587,19 +2629,25 @@
                 <div style="margin-bottom: 6px;"><strong>Jadwal Terkunci:</strong> ${formatDateIndo(currentBooking.selectedDate)}, Pukul ${currentBooking.startTime} - ${currentBooking.endTime} WIB</div>
                 <div style="margin-bottom: 6px;"><strong>Penata Rias:</strong> ${currentBooking.staffName}</div>
                 <div style="margin-bottom: 6px;"><strong>Lokasi:</strong> ${currentBooking.locationType}</div>
-                <div><strong>Total Pembayaran:</strong> <span style="font-weight:700; color:var(--success-color);">${formatRupiah(currentBooking.totalPrice)}</span> (Lunas via QRIS)</div>
+                <div style="margin-bottom: 6px;"><strong>Total Biaya Layanan:</strong> ${formatRupiah(currentBooking.totalPrice)}</div>
+                <div style="margin-bottom: 6px;"><strong>DP 50% Terbayar:</strong> <span style="font-weight:700; color:var(--success-color);">${formatRupiah(currentBooking.dpAmount)}</span> (Lunas via QRIS)</div>
+                <div style="background: #fdf5f5; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: var(--text-dark); border-left: 3px solid var(--accent-pink); margin-top: 6px;">
+                    <i class="fa-solid fa-circle-info" style="color: var(--accent-pink);"></i> <strong>Sisa Pelunasan (50%):</strong> ${formatRupiah(currentBooking.remainingAmount)} dibayarkan langsung di lokasi pada Hari H.
+                </div>
             `;
 
             // Tautan WhatsApp Konfirmasi Otomatis
             const waMessage = encodeURIComponent(
-                `Halo Chira Make Up, saya telah menyelesaikan pembayaran via QRIS untuk reservasi:\n\n` +
+                `Halo Chira Make Up, saya telah menyelesaikan pembayaran DP 50% via QRIS untuk reservasi:\n\n` +
                 `Kode Booking: ${currentBooking.bookingCode}\n` +
                 `Nama: ${currentBooking.custName}\n` +
                 `Layanan: ${currentBooking.serviceName} (${currentBooking.paxCount} Orang)\n` +
                 `Tanggal: ${formatDateIndo(currentBooking.selectedDate)}\n` +
                 `Waktu: ${currentBooking.startTime} - ${currentBooking.endTime} WIB\n` +
                 `Staff MUA: ${currentBooking.staffName}\n` +
-                `Total: ${formatRupiah(currentBooking.totalPrice)}\n\n` +
+                `Total Harga: ${formatRupiah(currentBooking.totalPrice)}\n` +
+                `DP 50% Terbayar: ${formatRupiah(currentBooking.dpAmount)}\n` +
+                `Sisa Pelunasan Hari H: ${formatRupiah(currentBooking.remainingAmount)}\n\n` +
                 `Mohon konfirmasi pesanan saya. Terima kasih!`
             );
 

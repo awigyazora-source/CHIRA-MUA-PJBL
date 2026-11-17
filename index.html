@@ -13,6 +13,9 @@
     <!-- FONT AWESOME (Untuk Ikon Media Sosial) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- CSS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <link rel="stylesheet" href="css/customer-profile.css">
+
     <style>
         /* --- CSS VARIABLES (Color Palet) --- */
         :root {
@@ -1044,7 +1047,7 @@
                 <img src="img/Gallery-2.png" alt="Graduation Makeup">
             </div>
             <div class="gallery-item">
-                <img src="img/Gallery-3.png" alt="Photoshoot Makeup">
+                <img src="img/Portfolio-custom1-after.png" alt="Photoshoot Makeup">
             </div>
         </div>
         <div class="gallery-action">
@@ -1161,7 +1164,7 @@
 
     <!-- MEET OUR ARTIST -->
     <section id="artist" class="artist-section">
-        <h2 class="section-title">Meet Our Artist</h2>
+        <h2 class="section-title">Meet Our MUA</h2>
         <p class="section-subtitle">Pilih Make Up Artist Profesional Kami</p>
 
         <div class="artist-card">
@@ -1491,22 +1494,12 @@
         </div>
     </footer>
 
-    <!-- SCRIPT UNTUK CEK STATUS LOGIN -->
+    <!-- JS PROFIL CUSTOMER & DROPDOWN NAVBAR -->
+    <script src="js/customer-profile.js"></script>
+
+    <!-- SCRIPT UTAMA HALAMAN -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const isLoggedIn = localStorage.getItem("chira_login_status");
-            const navLoginItem = document.getElementById("nav-login-item");
-
-            if (isLoggedIn === "true") {
-                navLoginItem.innerHTML = '<a href="#" class="nav-btn" id="logoutBtn" style="background-color: #d89a9a;">Logout</a>';
-                
-                document.getElementById("logoutBtn").addEventListener("click", function(e) {
-                    e.preventDefault();
-                    localStorage.removeItem("chira_login_status");
-                    window.location.reload(); 
-                });
-            }
-
             // --- CAROUSEL TESTIMONIALS ---
             const track = document.getElementById("testiTrack");
             const prevBtn = document.getElementById("testiPrevBtn");
