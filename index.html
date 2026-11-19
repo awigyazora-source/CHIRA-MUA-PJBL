@@ -401,6 +401,23 @@
         /* --- MEET OUR ARTIST --- */
         .artist-section {
             background-color: var(--bg-color);
+            padding: 100px 5% 55px;
+        }
+
+        /* --- PEMBATAS VISUAL PINK CURVED WAVE & PINK LINE (MEET OUR MUA -> STUDIO) --- */
+        .artist-studio-divider {
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            background-color: var(--bg-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .artist-studio-divider svg {
+            display: block;
+            width: 100%;
+            height: 60px;
         }
 
         .artist-card {
@@ -900,6 +917,16 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
             margin-top: 25px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .studio-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(158, 107, 107, 0.15);
+            background-color: #fffafb;
         }
 
         .studio-box .op-icon {
@@ -1007,6 +1034,290 @@
                 max-width: 100%;
             }
         }
+
+        /* --- SECTION STUDIO ATELIER & INTERACTIVE GOOGLE MAPS --- */
+        .studio-section {
+            background: linear-gradient(180deg, #fff1f2 0%, #ffffff 40%, var(--bg-color) 100%);
+            padding: 65px 5% 100px;
+            position: relative;
+        }
+
+        .studio-section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .studio-header-wrap {
+            text-align: center;
+        }
+
+        .studio-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fff;
+            color: var(--dark-pink);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(158, 107, 107, 0.1);
+            margin-bottom: 16px;
+            border: 1px solid rgba(216, 154, 154, 0.3);
+        }
+
+        .studio-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 35px;
+            align-items: stretch;
+            margin-top: 40px;
+        }
+
+        .studio-info-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(158, 107, 107, 0.08);
+            border: 1px solid var(--primary-pink);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .studio-badge-soft {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--accent-pink);
+            margin-bottom: 10px;
+        }
+
+        .studio-info-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .studio-desc {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .studio-meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .studio-meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .studio-meta-icon {
+            width: 36px;
+            height: 36px;
+            background: #fff2f2;
+            color: var(--dark-pink);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .studio-meta-item strong {
+            display: block;
+            font-size: 13px;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .studio-meta-item span {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .studio-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .studio-chip {
+            background: #fdf5f6;
+            color: var(--text-dark);
+            font-size: 11.5px;
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(216, 154, 154, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .studio-chip i {
+            color: var(--accent-pink);
+        }
+
+        .studio-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .btn-gmaps-direct {
+            background: var(--dark-pink);
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(146, 121, 121, 0.25);
+        }
+
+        .btn-gmaps-direct:hover {
+            background: #7d6363;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(146, 121, 121, 0.35);
+        }
+
+        .btn-studio-booking {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1.5px solid var(--accent-pink);
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-studio-booking:hover {
+            background: var(--accent-pink);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .studio-map-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(158, 107, 107, 0.1);
+            border: 1px solid var(--primary-pink);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-card-header {
+            padding: 14px 20px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #f3e6e6;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: 0.5px;
+        }
+
+        .map-expand-btn {
+            margin-left: auto;
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-size: 11.5px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .map-expand-btn:hover {
+            color: var(--dark-pink);
+            text-decoration: underline;
+        }
+
+        .map-iframe-wrapper {
+            position: relative;
+            flex: 1;
+            min-height: 380px;
+        }
+
+        .map-iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-card-footer {
+            padding: 12px 20px;
+            background: #faf4f5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-dark);
+            border-top: 1px solid #f3e6e6;
+        }
+
+        .zone-tag {
+            background: #eafaf1;
+            color: #27ae60;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+        }
+
+        @media (max-width: 900px) {
+            .artist-section {
+                padding-bottom: 40px;
+            }
+            .artist-studio-divider svg {
+                height: 40px;
+            }
+            .studio-section {
+                padding-top: 50px;
+            }
+            .studio-content-grid {
+                grid-template-columns: 1fr;
+            }
+            .map-iframe-wrapper {
+                min-height: 320px;
+            }
+            .map-card-footer {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1021,6 +1332,7 @@
             <li><a href="#service">Service</a></li>
             <li><a href="Portfolio.html">Portfolio</a></li>
             <li><a href="booking.html">Booking</a></li>
+            <li><a href="#studio-location">Lokasi Studio</a></li>
             <li><a href="staffmua.html">About Us</a></li>
             <li id="nav-login-item"><a href="login.html" class="nav-btn">Login</a></li>
         </ul>
@@ -1201,6 +1513,125 @@
         </div>
         <div class="gallery-action">
             <a href="staffmua.html" class="btn-outline">See All Artists</a>
+        </div>
+    </section>
+
+    <!-- PEMBATAS VISUAL ELEGAN: PINK LINE & CURVED WAVE DIVIDER (MEET OUR MUA -> STUDIO ATELIER) -->
+    <div class="artist-studio-divider" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="pinkWaveFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#f8dede" stop-opacity="0.85" />
+                    <stop offset="45%" stop-color="#fae7e8" stop-opacity="0.9" />
+                    <stop offset="100%" stop-color="#fff1f2" stop-opacity="1" />
+                </linearGradient>
+                <linearGradient id="pinkWaveLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--accent-pink)" stop-opacity="0.15" />
+                    <stop offset="20%" stop-color="var(--accent-pink)" stop-opacity="0.75" />
+                    <stop offset="50%" stop-color="var(--dark-pink)" stop-opacity="0.95" />
+                    <stop offset="80%" stop-color="var(--accent-pink)" stop-opacity="0.75" />
+                    <stop offset="100%" stop-color="var(--accent-pink)" stop-opacity="0.15" />
+                </linearGradient>
+            </defs>
+            <!-- Gelombang Lembut Berisi Soft Blush Pink -->
+            <path d="M0,27.35A600.21,600.21,0,0,0,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3L1200,120L0,120Z" fill="url(#pinkWaveFill)"></path>
+            <!-- Garis Lengkung Pink Berkelas (Pink Line Accent) -->
+            <path d="M0,27.35A600.21,600.21,0,0,0,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3" fill="none" stroke="url(#pinkWaveLine)" stroke-width="2.5" stroke-linecap="round"></path>
+        </svg>
+    </div>
+
+    <!-- SECTION STUDIO ATELIER & INTERACTIVE GOOGLE MAPS -->
+    <section id="studio-location" class="studio-section">
+        <div class="studio-section-container">
+            <div class="studio-header-wrap">
+                <span class="studio-badge"><i class="fa-solid fa-gem"></i> STUDIO ATELIER</span>
+                <h2 class="section-title" style="margin-bottom: 12px;">Kunjungi Studio Rias Privat Kami</h2>
+                <p class="section-subtitle" style="max-width: 680px; margin: 0 auto 10px;">
+                    Nikmati suasana salon privat eksklusif dengan fasilitas ber-AC, pencahayaan studio pro, dan fitting room pengantin di pusat Kota Malang, Jawa Timur.
+                </p>
+            </div>
+
+            <div class="studio-content-grid">
+                <!-- Info Kolom Kiri -->
+                <div class="studio-info-card">
+                    <div>
+                        <div class="studio-badge-soft"><i class="fa-solid fa-location-dot"></i> LOKASI STRATEGIS MALANG</div>
+                        <h3>Chira Make-Up Atelier Malang</h3>
+                        <p class="studio-desc">
+                            Studio tata rias modern yang dirancang khusus untuk kenyamanan Anda dan keluarga saat persiapan pernikahan, wisuda, pertunangan, maupun sesi photoshoot profesional.
+                        </p>
+
+                        <div class="studio-meta-list">
+                            <div class="studio-meta-item">
+                                <div class="studio-meta-icon"><i class="fa-solid fa-map-pin"></i></div>
+                                <div>
+                                    <strong>Alamat Studio</strong>
+                                    <span>Jl. Ijen No. 88, Oro-oro Dowo, Kec. Klojen, Kota Malang, Jawa Timur 65119</span>
+                                </div>
+                            </div>
+
+                            <div class="studio-meta-item">
+                                <div class="studio-meta-icon"><i class="fa-solid fa-clock"></i></div>
+                                <div>
+                                    <strong>Jam Operasional Studio</strong>
+                                    <span>Senin – Minggu: 08.00 – 20.00 WIB (Berdasarkan Jadwal Reservasi)</span>
+                                </div>
+                            </div>
+
+                            <div class="studio-meta-item">
+                                <div class="studio-meta-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+                                <div>
+                                    <strong>Fasilitas Unggulan</strong>
+                                    <div class="studio-chips">
+                                        <span class="studio-chip"><i class="fa-solid fa-snowflake"></i> Full AC Room</span>
+                                        <span class="studio-chip"><i class="fa-solid fa-lightbulb"></i> Pro Ring Light CRI 95+</span>
+                                        <span class="studio-chip"><i class="fa-solid fa-vest-patches"></i> Fitting Room</span>
+                                        <span class="studio-chip"><i class="fa-solid fa-wifi"></i> Free High-Speed Wi-Fi</span>
+                                        <span class="studio-chip"><i class="fa-solid fa-mug-hot"></i> Welcome Drink</span>
+                                        <span class="studio-chip"><i class="fa-solid fa-square-parking"></i> Parkir Luas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="studio-actions">
+                        <a href="https://maps.google.com/?q=Kota+Malang,+Jawa+Timur" target="_blank" rel="noopener noreferrer" class="btn-gmaps-direct" title="Buka Rute Navigasi Google Maps">
+                            <i class="fa-solid fa-diamond-turn-right"></i> Buka Rute di Google Maps
+                        </a>
+                        <a href="booking.html" class="btn-studio-booking">
+                            <i class="fa-solid fa-calendar-check"></i> Reservasi Sesi Studio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Peta Kolom Kanan (Google Maps Embed) -->
+                <div class="studio-map-card">
+                    <div class="map-card-header">
+                        <i class="fa-solid fa-location-dot" style="color: var(--accent-pink); font-size: 13px;"></i>
+                        <span>PETA INTERAKTIF LIVE STUDIO</span>
+                        <a href="https://maps.google.com/?q=Kota+Malang,+Jawa+Timur" target="_blank" rel="noopener noreferrer" class="map-expand-btn" title="Buka Google Maps di Tab Baru">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Perbesar Peta
+                        </a>
+                    </div>
+                    <div class="map-iframe-wrapper">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Kota+Malang,+Jawa+Timur&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Peta Interaktif Studio Atelier Chira Make-Up Malang">
+                        </iframe>
+                    </div>
+                    <div class="map-card-footer">
+                        <span><i class="fa-solid fa-car"></i> Akses mudah & strategis di pusat Kota Malang</span>
+                        <span class="zone-tag">Zona 1: Bebas Biaya Transport (Rp 0)</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1475,15 +1906,15 @@
                     </div>
                 </div>
 
-                <div class="studio-box">
+                <a href="https://maps.google.com/?q=Kota+Malang,+Jawa+Timur" target="_blank" rel="noopener noreferrer" class="studio-box" title="Buka Lokasi Studio Atelier di Google Maps">
                     <div class="op-icon">
                         <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
                     </div>
                     <div class="op-text">
                         <span class="label">STUDIO ATELIER</span>
-                        <strong>Kota Malang, Jawa Timur</strong>
+                        <strong>Kota Malang, Jawa Timur <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px; margin-left: 4px; color: var(--accent-pink);"></i></strong>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>

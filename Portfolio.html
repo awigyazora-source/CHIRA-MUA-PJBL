@@ -368,6 +368,16 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
             margin-top: 25px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .studio-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(158, 107, 107, 0.15);
+            background-color: #fffafb;
         }
 
         .studio-box .op-icon {
@@ -812,15 +822,15 @@
                     </div>
                 </div>
 
-                <div class="studio-box">
+                <a href="https://maps.google.com/?q=Kota+Malang,+Jawa+Timur" target="_blank" rel="noopener noreferrer" class="studio-box" title="Buka Lokasi Studio Atelier di Google Maps">
                     <div class="op-icon">
                         <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
                     </div>
                     <div class="op-text">
                         <span class="label">STUDIO ATELIER</span>
-                        <strong>Kota Malang, Jawa Timur</strong>
+                        <strong>Kota Malang, Jawa Timur <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px; margin-left: 4px; color: var(--accent-pink);"></i></strong>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>

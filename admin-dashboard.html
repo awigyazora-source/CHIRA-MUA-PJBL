@@ -1177,6 +1177,117 @@
             color: var(--text-dark);
         }
 
+        /* --- STYLES ZONA LAYANAN & NAVIGASI GOOGLE MAPS PADA MODAL DETAIL --- */
+        .badge-zone {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-zone-studio {
+            background: #eafaf1;
+            color: #27ae60;
+            border: 1px solid #c3e6cb;
+        }
+
+        .badge-zone-local {
+            background: #fdf2e9;
+            color: #d35400;
+            border: 1px solid #fadbd8;
+        }
+
+        .badge-zone-intercity {
+            background: #fcf3cf;
+            color: #b7950b;
+            border: 1px solid #f9e79f;
+        }
+
+        .badge-zone-destination {
+            background: #ebf5fb;
+            color: #2980b9;
+            border: 1px solid #d4e6f1;
+        }
+
+        .location-route-card {
+            background: #fff;
+            border: 1.5px solid #ebd4cf;
+            border-radius: 14px;
+            padding: 14px;
+            margin-top: 12px;
+            box-shadow: 0 4px 12px rgba(158, 107, 107, 0.05);
+        }
+
+        .mini-map-preview-wrap {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #ebd4cf;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            background: #fdf5f5;
+            height: 190px;
+            position: relative;
+        }
+
+        .mini-map-preview-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .btn-gmaps-nav-large {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            color: #fff !important;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(39, 174, 96, 0.28);
+            transition: all 0.25s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-gmaps-nav-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(39, 174, 96, 0.45);
+            background: linear-gradient(135deg, #219653 0%, #1e8449 100%);
+        }
+
+        .gps-coords-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            color: #27ae60;
+            background: #f0fdf4;
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid #bbf7d0;
+            margin-top: 8px;
+        }
+
+        .destination-admin-alert {
+            background: #f0f9ff;
+            border-left: 3.5px solid #0284c7;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #0c4a6e;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
         .modal-footer {
             padding: 16px 24px;
             background: #faf4f4;
@@ -2530,13 +2641,18 @@
                 endTime: "10:30",
                 totalDuration: 150,
                 staffName: "Nadine Queen Reina",
-                locationType: "Home Service (Rumah)",
-                address: "Jl. Ijen No. 45, Klojen, Kota Malang",
+                transportZone: "zona2",
+                transportZoneLabel: "Zona 2 — Kota Malang & Batu",
+                transportFee: 50000,
+                locationType: "Home Service Kota Malang & Batu",
+                address: "Jl. Ijen No. 45, Oro-oro Dowo, Kec. Klojen, Kota Malang",
+                gmapsLink: "https://maps.google.com/?q=-7.971234,112.628901",
+                gpsCoordinates: { lat: -7.971234, lng: 112.628901, accuracy: 12 },
                 custNotes: "Kulit sensitif sedikit kemerahan di pipi. Request riasan glowing natural tahan lama untuk prosesi akad.",
-                totalPrice: 1500000,
-                dpAmount: 750000,
-                paidAmount: 750000,
-                remainingAmount: 750000,
+                totalPrice: 1550000,
+                dpAmount: 775000,
+                paidAmount: 775000,
+                remainingAmount: 775000,
                 paymentType: "DP 50%",
                 status: "Confirmed",
                 timestamp: new Date(Date.now() - 3600000 * 24).toISOString()
@@ -2554,8 +2670,12 @@
                 endTime: "09:00",
                 totalDuration: 180,
                 staffName: "Aurora Clarissa",
-                locationType: "Studio Chira Malang",
-                address: "Studio Atelier Chira Kota Malang",
+                transportZone: "zona1",
+                transportZoneLabel: "Zona 1 — Studio Chira Malang",
+                transportFee: 0,
+                locationType: "Studio Chira Make-Up (Malang)",
+                address: "Studio Atelier Chira Malang — Jl. Ijen No. 88, Oro-oro Dowo, Klojen, Kota Malang",
+                gmapsLink: "https://maps.google.com/?q=Kota+Malang,+Jawa+Timur",
                 custNotes: "Wisuda rombongan 3 orang. Request warna lipstik nude rose dan perataan tone hijab.",
                 totalPrice: 1350000,
                 dpAmount: 675000,
@@ -2578,16 +2698,51 @@
                 endTime: "14:30",
                 totalDuration: 90,
                 staffName: "Lisa Anggraini",
-                locationType: "Venue Acara / Hotel",
-                address: "Hotel Tugu Malang, Ruang Majapahit Lt. 2",
+                transportZone: "zona2",
+                transportZoneLabel: "Zona 2 — Kota Malang & Batu",
+                transportFee: 50000,
+                locationType: "Home Service Kota Malang & Batu",
+                address: "Hotel Tugu Malang, Ruang Majapahit Lt. 2, Jl. Tugu No. 3, Klojen, Kota Malang",
+                gmapsLink: "https://maps.google.com/?q=Hotel+Tugu+Malang",
+                gpsCoordinates: { lat: -7.977234, lng: 112.633901, accuracy: 8 },
                 custNotes: "Acara tunangan modern hijab. Mohon dibantu pemasangan softlens sebelum riasan mata.",
-                totalPrice: 750000,
-                dpAmount: 375000,
-                paidAmount: 375000,
-                remainingAmount: 375000,
+                totalPrice: 800000,
+                dpAmount: 400000,
+                paidAmount: 400000,
+                remainingAmount: 400000,
                 paymentType: "DP 50%",
                 status: "Confirmed",
                 timestamp: new Date(Date.now() - 3600000 * 6).toISOString()
+            },
+            {
+                bookingCode: "CHR-20261220-7719",
+                custName: "Valerie Anastasya",
+                custPhone: "081198765432",
+                serviceKey: "wedding",
+                serviceName: "Makeup Wedding / Pre-Wedding",
+                orderType: "single",
+                paxCount: 1,
+                selectedDate: "2026-12-20",
+                startTime: "09:00",
+                endTime: "11:30",
+                totalDuration: 150,
+                staffName: "Thania Aurelia Putri",
+                transportZone: "zona4",
+                transportZoneLabel: "Zona 4 — Worldwide Destination",
+                transportFee: 0,
+                isDestinationService: true,
+                locationType: "Luar Pulau / Luar Negeri (Worldwide Destination)",
+                address: "The Mulia Resort & Villas, Nusa Dua, Bali",
+                gmapsLink: "https://maps.google.com/?q=The+Mulia+Nusa+Dua+Bali",
+                gpsCoordinates: { lat: -8.8021, lng: 115.2212, accuracy: 15 },
+                custNotes: "Destination wedding Bali. Tiket PP penerbangan Garuda & akomodasi resort suite sudah disiapkan untuk tim MUA.",
+                totalPrice: 1500000,
+                dpAmount: 750000,
+                paidAmount: 750000,
+                remainingAmount: 750000,
+                paymentType: "DP 50%",
+                status: "DP 50% Paid (Slot Locked)",
+                timestamp: new Date(Date.now() - 3600000 * 2).toISOString()
             },
             {
                 bookingCode: "CHR-20261125-9011",
@@ -2602,8 +2757,12 @@
                 endTime: "11:15",
                 totalDuration: 75,
                 staffName: "Draco Sebastian",
-                locationType: "Studio Chira Malang",
-                address: "Studio Atelier Chira Kota Malang",
+                transportZone: "zona1",
+                transportZoneLabel: "Zona 1 — Studio Chira Malang",
+                transportFee: 0,
+                locationType: "Studio Chira Make-Up (Malang)",
+                address: "Studio Atelier Chira Malang — Jl. Ijen No. 88, Oro-oro Dowo, Klojen, Kota Malang",
+                gmapsLink: "https://maps.google.com/?q=Kota+Malang,+Jawa+Timur",
                 custNotes: "Konsep pemotretan editorial studio brand pakaian, bold eye & clean complexion.",
                 totalPrice: 550000,
                 dpAmount: 275000,
@@ -2863,6 +3022,7 @@
                 const tr = document.createElement("tr");
                 const dpNominal = item.dpAmount || (item.totalPrice * 0.5) || 0;
                 const statusBadge = getStatusBadge(item.status);
+                const zoneInfo = getOrderZoneInfo(item);
 
                 tr.innerHTML = `
                     <td>
@@ -2878,9 +3038,14 @@
                     </td>
                     <td>
                         <div><strong>${escapeHtml(item.serviceName || "Layanan MUA")}</strong></div>
-                        <span class="service-badge">
-                            <i class="fa-solid fa-users"></i> ${item.orderType === 'bundle' ? 'Bundle ' + item.paxCount + ' Pax' : 'Perorangan (1 Pax)'}
-                        </span>
+                        <div style="display: flex; gap: 5px; align-items: center; flex-wrap: wrap; margin-top: 3px;">
+                            <span class="service-badge">
+                                <i class="fa-solid fa-users"></i> ${item.orderType === 'bundle' ? 'Bundle ' + item.paxCount + ' Pax' : '1 Pax'}
+                            </span>
+                            <span class="badge-zone ${zoneInfo.badgeClass}" style="font-size: 10px; padding: 2px 7px;">
+                                <i class="${zoneInfo.icon}"></i> ${zoneInfo.short}
+                            </span>
+                        </div>
                     </td>
                     <td>
                         <div><strong>${formatDateIndo(item.selectedDate)}</strong></div>
@@ -2939,6 +3104,113 @@
             }
         }
 
+        // --- HELPER METADATA ZONA LAYANAN & TRANSPORTASI ---
+        function getOrderZoneInfo(order) {
+            if (order.transportZone) {
+                if (order.transportZone === 'zona1') {
+                    return {
+                        id: 'zona1',
+                        name: 'Zona 1 — Studio Chira Malang',
+                        short: 'Studio Malang',
+                        fee: 0,
+                        feeLabel: 'Bebas Transport (Rp 0)',
+                        isOnSite: false,
+                        isDestination: false,
+                        icon: 'fa-solid fa-store',
+                        badgeClass: 'badge-zone-studio'
+                    };
+                } else if (order.transportZone === 'zona2') {
+                    return {
+                        id: 'zona2',
+                        name: 'Zona 2 — Home Service Malang & Batu',
+                        short: 'Malang & Batu',
+                        fee: order.transportFee || 50000,
+                        feeLabel: formatRupiah(order.transportFee || 50000),
+                        isOnSite: true,
+                        isDestination: false,
+                        icon: 'fa-solid fa-house-chimney',
+                        badgeClass: 'badge-zone-local'
+                    };
+                } else if (order.transportZone === 'zona3') {
+                    return {
+                        id: 'zona3',
+                        name: 'Zona 3 — Luar Kota (Area Jawa Timur)',
+                        short: 'Luar Kota (Jatim)',
+                        fee: order.transportFee || 300000,
+                        feeLabel: formatRupiah(order.transportFee || 300000),
+                        isOnSite: true,
+                        isDestination: false,
+                        icon: 'fa-solid fa-car-side',
+                        badgeClass: 'badge-zone-intercity'
+                    };
+                } else if (order.transportZone === 'zona4' || order.isDestinationService) {
+                    return {
+                        id: 'zona4',
+                        name: 'Zona 4 — Worldwide Destination Service',
+                        short: 'Worldwide Destination',
+                        fee: 0,
+                        feeLabel: 'Ditanggung Klien 100% (Tiket & Hotel)',
+                        isOnSite: true,
+                        isDestination: true,
+                        icon: 'fa-solid fa-plane-departure',
+                        badgeClass: 'badge-zone-destination'
+                    };
+                }
+            }
+
+            // Fallback berbasis string locationType
+            const locLower = (order.locationType || '').toLowerCase();
+            if (locLower.includes('luar negeri') || locLower.includes('destination') || locLower.includes('luar pulau')) {
+                return {
+                    id: 'zona4',
+                    name: 'Zona 4 — Worldwide Destination Service',
+                    short: 'Worldwide Destination',
+                    fee: 0,
+                    feeLabel: 'Ditanggung Klien 100% (Tiket & Hotel)',
+                    isOnSite: true,
+                    isDestination: true,
+                    icon: 'fa-solid fa-plane-departure',
+                    badgeClass: 'badge-zone-destination'
+                };
+            } else if (locLower.includes('luar kota') || locLower.includes('jatim')) {
+                return {
+                    id: 'zona3',
+                    name: 'Zona 3 — Luar Kota (Area Jawa Timur)',
+                    short: 'Luar Kota (Jatim)',
+                    fee: order.transportFee || 300000,
+                    feeLabel: formatRupiah(order.transportFee || 300000),
+                    isOnSite: true,
+                    isDestination: false,
+                    icon: 'fa-solid fa-car-side',
+                    badgeClass: 'badge-zone-intercity'
+                };
+            } else if (locLower.includes('home') || locLower.includes('venue') || locLower.includes('hotel') || locLower.includes('rumah')) {
+                return {
+                    id: 'zona2',
+                    name: 'Zona 2 — Home Service Malang & Batu',
+                    short: 'Malang & Batu',
+                    fee: order.transportFee || 50000,
+                    feeLabel: formatRupiah(order.transportFee || 50000),
+                    isOnSite: true,
+                    isDestination: false,
+                    icon: 'fa-solid fa-house-chimney',
+                    badgeClass: 'badge-zone-local'
+                };
+            } else {
+                return {
+                    id: 'zona1',
+                    name: 'Zona 1 — Studio Chira Malang',
+                    short: 'Studio Malang',
+                    fee: 0,
+                    feeLabel: 'Bebas Transport (Rp 0)',
+                    isOnSite: false,
+                    isDestination: false,
+                    icon: 'fa-solid fa-store',
+                    badgeClass: 'badge-zone-studio'
+                };
+            }
+        }
+
         // ==========================================================================
         // 6. MODAL LEMBAR KERJA KLIEN & AKSI STATUS REAL-TIME
         // ==========================================================================
@@ -2950,8 +3222,31 @@
             const modalBody = document.getElementById("orderDetailModalBody");
             const modalActions = document.getElementById("modalActionButtons");
 
+            const zoneInfo = getOrderZoneInfo(order);
+
+            // Tentukan query navigasi Google Maps yang presisi
+            let navQuery = "";
+            if (order.gpsCoordinates && order.gpsCoordinates.lat && order.gpsCoordinates.lng) {
+                navQuery = `${order.gpsCoordinates.lat},${order.gpsCoordinates.lng}`;
+            } else if (order.gmapsLink) {
+                const match = order.gmapsLink.match(/[?&]q=([^&]+)/);
+                if (match) {
+                    navQuery = decodeURIComponent(match[1]);
+                } else {
+                    navQuery = order.address || "Kota Malang, Jawa Timur";
+                }
+            } else if (order.address) {
+                navQuery = order.address;
+            } else {
+                navQuery = "Kota Malang, Jawa Timur";
+            }
+
+            const gmapsNavUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(navQuery)}`;
+            const gmapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(navQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+
             const dpVal = order.dpAmount || (order.totalPrice * 0.5) || 0;
             const remVal = order.remainingAmount || (order.totalPrice - dpVal) || 0;
+            const baseMakeupTarif = order.totalPrice - (zoneInfo.fee || 0);
 
             modalBody.innerHTML = `
                 <!-- BAGIAN 1: STATUS & KODE -->
@@ -3012,16 +3307,70 @@
                             <span>Jam & Durasi:</span>
                             <strong>${order.startTime} - ${order.endTime} WIB (${order.totalDuration} menit)</strong>
                         </div>
+                        <div class="info-item">
+                            <span>Zona Layanan:</span>
+                            <div style="margin-top: 3px;">
+                                <span class="badge-zone ${zoneInfo.badgeClass}">
+                                    <i class="${zoneInfo.icon}"></i> ${escapeHtml(zoneInfo.name)}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span>Biaya Transportasi:</span>
+                            <strong style="color: ${zoneInfo.id === 'zona1' ? 'var(--success)' : (zoneInfo.isDestination ? '#2980b9' : 'var(--text-dark)')};">
+                                ${zoneInfo.feeLabel}
+                            </strong>
+                        </div>
                     </div>
-                    <div style="margin-top: 10px;">
-                        <span style="font-size: 11px; color: var(--text-light);">Tipe Lokasi & Alamat:</span>
-                        <div style="font-weight: 600; color: var(--text-dark); margin-top: 2px;">
-                            <i class="fa-solid fa-location-dot" style="color: var(--dark-pink); margin-right: 4px;"></i>
-                            ${order.locationType}
+
+                    <div style="margin-top: 12px;">
+                        <span style="font-size: 11px; color: var(--text-light);"><i class="fa-solid fa-location-dot" style="color: var(--dark-pink);"></i> Alamat Lengkap Acara:</span>
+                        <div style="font-size: 13px; font-weight: 600; color: var(--text-dark); margin-top: 2px; line-height: 1.4;">
+                            ${escapeHtml(order.address || (zoneInfo.id === 'zona1' ? "Studio Atelier Chira Malang — Jl. Ijen No. 88, Oro-oro Dowo, Klojen, Kota Malang" : "Alamat belum dilengkapi klien"))}
                         </div>
-                        <div style="font-size: 12px; color: #665555; margin-top: 2px;">
-                            ${escapeHtml(order.address || "Studio Atelier Chira Kota Malang")}
-                        </div>
+
+                        ${order.gpsCoordinates && order.gpsCoordinates.lat ? `
+                        <div class="gps-coords-indicator">
+                            <i class="fa-solid fa-crosshairs"></i> Titik GPS Terkunci: <strong>${order.gpsCoordinates.lat}, ${order.gpsCoordinates.lng}</strong> ${order.gpsCoordinates.accuracy ? `(Akurasi ±${order.gpsCoordinates.accuracy}m)` : ''}
+                        </div>` : ''}
+
+                        ${zoneInfo.isDestination ? `
+                        <div class="destination-admin-alert">
+                            <i class="fa-solid fa-plane-circle-check"></i> <strong>Worldwide Destination Service:</strong> Tiket perjalanan PP (pesawat/kereta), akomodasi hotel bintang 3+ (minimal 1 kamar), dan penjemputan bandara-venue ditanggung 100% oleh klien. Mohon segera hubungi WhatsApp pemesan di atas untuk tiket keberangkatan tim MUA.
+                        </div>` : ''}
+
+                        ${zoneInfo.isOnSite ? `
+                        <div class="location-route-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <strong style="font-size: 12px; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+                                    <i class="fa-solid fa-map-location-dot" style="color: var(--accent-pink);"></i> Pratinjau Peta Lokasi Acara
+                                </strong>
+                                <span style="font-size: 10.5px; color: var(--text-light);">Navigasi GPS Staff MUA</span>
+                            </div>
+                            <div class="mini-map-preview-wrap">
+                                <iframe 
+                                    src="${gmapsEmbedUrl}" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Peta Lokasi Acara Klien">
+                                </iframe>
+                            </div>
+                            <a href="${gmapsNavUrl}" target="_blank" rel="noopener noreferrer" class="btn-gmaps-nav-large">
+                                <i class="fa-solid fa-diamond-turn-right" style="font-size: 16px;"></i>
+                                <span>Buka Navigasi Rute di Google Maps</span>
+                            </a>
+                        </div>` : `
+                        <div style="margin-top: 10px; background: #faf4f5; border: 1px solid #ebd4cf; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                            <div>
+                                <div style="font-size: 11px; color: var(--text-light);"><i class="fa-solid fa-store" style="color: var(--accent-pink);"></i> Sesi Studio:</div>
+                                <strong style="font-size: 12.5px; color: var(--text-dark);">Studio Atelier Chira Malang</strong>
+                                <div style="font-size: 11px; color: #776666;">Jl. Ijen No. 88, Oro-oro Dowo, Kec. Klojen, Kota Malang (Bebas Transport)</div>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kota+Malang,+Jawa+Timur" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #fff; color: var(--dark-pink); border: 1px solid var(--accent-pink); padding: 7px 12px; border-radius: 8px; font-size: 11.5px; font-weight: 600; text-decoration: none;">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Peta Studio
+                            </a>
+                        </div>`}
                     </div>
                 </div>
 
@@ -3030,8 +3379,18 @@
                     <div class="section-heading"><i class="fa-solid fa-receipt"></i> Rincian Finansial (Sistem DP 50%)</div>
                     <div class="finance-card">
                         <div class="finance-row">
-                            <span>Total Tarif Layanan:</span>
-                            <strong>${formatRupiah(order.totalPrice)}</strong>
+                            <span>Harga Layanan Makeup:</span>
+                            <strong>${formatRupiah(baseMakeupTarif > 0 ? baseMakeupTarif : order.totalPrice)}</strong>
+                        </div>
+                        <div class="finance-row">
+                            <span>Biaya Transportasi (${zoneInfo.short}):</span>
+                            <strong style="color: ${zoneInfo.id === 'zona1' ? 'var(--success)' : (zoneInfo.isDestination ? '#2980b9' : 'var(--text-dark)')};">
+                                ${zoneInfo.feeLabel}
+                            </strong>
+                        </div>
+                        <div class="finance-row" style="border-top: 1px dashed #ebd4cf; padding-top: 6px; margin-top: 4px;">
+                            <span style="font-weight: 600;">Total Tarif Reservasi:</span>
+                            <strong style="font-size: 14px; color: var(--text-dark);">${formatRupiah(order.totalPrice)}</strong>
                         </div>
                         <div class="finance-row" style="color: var(--success); font-weight: 600;">
                             <span><i class="fa-solid fa-qrcode"></i> DP 50% (Terbayar via QRIS):</span>
@@ -3187,7 +3546,46 @@
             const randomCodeNum = Math.floor(1000 + Math.random() * 9000);
             const bookingCode = `CHR-${dateStr.replace(/-/g, '')}-${randomCodeNum}`;
 
-            const totalPrice = service.price * service.pax;
+            // Simulasi Zona Transportasi
+            const zoneRoll = Math.random();
+            let simZone = 'zona1';
+            let simZoneLabel = 'Zona 1 — Studio Chira Malang';
+            let simLocType = 'Studio Chira Make-Up (Malang)';
+            let simTransportFee = 0;
+            let simAddress = 'Studio Atelier Chira Malang — Jl. Ijen No. 88, Oro-oro Dowo, Klojen, Kota Malang';
+            let simGmaps = 'https://maps.google.com/?q=Kota+Malang,+Jawa+Timur';
+            let simGps = null;
+            let simIsDest = false;
+
+            if (zoneRoll > 0.65) {
+                simZone = 'zona2';
+                simZoneLabel = 'Zona 2 — Kota Malang & Batu';
+                simLocType = 'Home Service Kota Malang & Batu';
+                simTransportFee = 50000;
+                simAddress = 'Jl. Soekarno Hatta No. ' + (Math.floor(Math.random() * 80) + 1) + ', Lowokwaru, Kota Malang';
+                simGmaps = 'https://maps.google.com/?q=-7.9421,112.6152';
+                simGps = { lat: -7.9421, lng: 112.6152, accuracy: 10 };
+            } else if (zoneRoll > 0.40) {
+                simZone = 'zona3';
+                simZoneLabel = 'Zona 3 — Luar Kota (Jawa Timur)';
+                simLocType = 'Luar Kota (Area Jawa Timur & Sekitarnya)';
+                simTransportFee = 300000;
+                simAddress = 'Hotel JW Marriott Surabaya, Jl. Embong Malang No. 85-89, Surabaya';
+                simGmaps = 'https://maps.google.com/?q=JW+Marriott+Hotel+Surabaya';
+                simGps = { lat: -7.2598, lng: 112.7381, accuracy: 14 };
+            } else if (zoneRoll > 0.25) {
+                simZone = 'zona4';
+                simZoneLabel = 'Zona 4 — Worldwide Destination';
+                simLocType = 'Luar Pulau / Luar Negeri (Worldwide Destination)';
+                simTransportFee = 0;
+                simIsDest = true;
+                simAddress = 'The Mulia Resort & Villas, Nusa Dua, Bali';
+                simGmaps = 'https://maps.google.com/?q=The+Mulia+Nusa+Dua+Bali';
+                simGps = { lat: -8.8021, lng: 115.2212, accuracy: 18 };
+            }
+
+            const baseTarif = service.price * service.pax;
+            const totalPrice = baseTarif + simTransportFee;
             const dpAmount = Math.round(totalPrice * 0.5);
 
             const newBooking = {
@@ -3203,8 +3601,14 @@
                 endTime: endTime,
                 totalDuration: service.duration,
                 staffName: staff.nama,
-                locationType: Math.random() > 0.4 ? "Studio Chira Malang" : "Home Service (Rumah)",
-                address: "Jl. Soekarno Hatta No. " + (Math.floor(Math.random() * 80) + 1) + ", Kota Malang",
+                transportZone: simZone,
+                transportZoneLabel: simZoneLabel,
+                transportFee: simTransportFee,
+                isDestinationService: simIsDest,
+                locationType: simLocType,
+                address: simAddress,
+                gmapsLink: simGmaps,
+                gpsCoordinates: simGps,
                 custNotes: client.notes,
                 totalPrice: totalPrice,
                 dpAmount: dpAmount,

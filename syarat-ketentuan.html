@@ -499,6 +499,16 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
             margin-top: 25px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .studio-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(158, 107, 107, 0.15);
+            background-color: #fffafb;
         }
 
         .studio-box .op-icon {
@@ -735,6 +745,65 @@
                 </div>
             </div>
 
+            <!-- Pasal 8: Kebijakan Zona Layanan On-Site, Transportasi & Akomodasi -->
+            <div class="policy-card policy-card-full" id="transport-policy">
+                <div>
+                    <div class="policy-header">
+                        <div class="policy-icon-wrapper" style="background: #eef7fc; color: #2980b9;">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <span class="policy-pasal" style="background: #e0f2fe; color: #0369a1;">Pasal 08</span>
+                    </div>
+                    <h3>Kebijakan Sistem 4 Zona Layanan On-Site, Transportasi & Akomodasi Destinasi</h3>
+                    <p>Untuk menjamin kepastian jadwal, persiapan logistik kosmetik, dan transparansi pembiayaan mobilitas staf penata rias (MUA), Chira Make-Up memberlakukan sistem 4 zona jangkauan layanan resmi:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 16px 0;">
+                        <div style="background: #fdf5f6; padding: 14px; border-radius: 12px; border: 1px solid rgba(216, 154, 154, 0.3);">
+                            <strong style="color: var(--dark-pink); display: block; font-size: 13.5px; margin-bottom: 4px;">
+                                <i class="fa-solid fa-store"></i> Zona 1: Studio Chira Malang
+                            </strong>
+                            <span style="font-size: 12.5px; color: var(--text-light); line-height: 1.5; display: block;">
+                                Sesi privat diselenggarakan di Studio Atelier Malang. <strong>Bebas biaya transportasi (Rp 0)</strong> serta fasilitas AC, lighting pro, dan fitting room pengantin.
+                            </span>
+                        </div>
+
+                        <div style="background: #fef9f4; padding: 14px; border-radius: 12px; border: 1px solid rgba(230, 126, 34, 0.3);">
+                            <strong style="color: #d35400; display: block; font-size: 13.5px; margin-bottom: 4px;">
+                                <i class="fa-solid fa-house-chimney"></i> Zona 2: Malang Raya & Kota Batu
+                            </strong>
+                            <span style="font-size: 12.5px; color: var(--text-light); line-height: 1.5; display: block;">
+                                Home service kunjungan ke kediaman / hotel / venue acara di Malang & Batu. Dikenakan biaya transportasi flat <strong>Rp 50.000</strong> per penugasan tim.
+                            </span>
+                        </div>
+
+                        <div style="background: #fefde8; padding: 14px; border-radius: 12px; border: 1px solid rgba(202, 138, 4, 0.3);">
+                            <strong style="color: #a16207; display: block; font-size: 13.5px; margin-bottom: 4px;">
+                                <i class="fa-solid fa-car-side"></i> Zona 3: Luar Kota (Jawa Timur)
+                            </strong>
+                            <span style="font-size: 12.5px; color: var(--text-light); line-height: 1.5; display: block;">
+                                Area Surabaya, Sidoarjo, Kediri, Pasuruan, Blitar, Probolinggo & sekitarnya. Dikenakan biaya transportasi & operasional flat <strong>Rp 300.000</strong> (termasuk tol PP).
+                            </span>
+                        </div>
+
+                        <div style="background: #f0f9ff; padding: 14px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
+                            <strong style="color: #0369a1; display: block; font-size: 13.5px; margin-bottom: 4px;">
+                                <i class="fa-solid fa-plane-departure"></i> Zona 4: Worldwide Destination
+                            </strong>
+                            <span style="font-size: 12.5px; color: var(--text-light); line-height: 1.5; display: block;">
+                                Layanan luar pulau & luar negeri. <strong>Biaya sistem saat checkout Rp 0</strong>. Klien wajib menanggung 100% tiket PP transportasi & akomodasi hotel (min. bintang 3) via koordinasi WhatsApp resmi.
+                            </span>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 13px; color: var(--text-light); line-height: 1.6; margin-top: 10px;">
+                        Pada pemesanan on-site (Zona 2, 3, dan 4), pemesan diwajibkan menyertakan alamat lengkap yang jelas atau menyematkan titik koordinat/link Google Maps menggunakan fitur GPS Geolocation pada sistem reservasi agar tim MUA hadir tepat waktu tanpa kendala rute.
+                    </p>
+                </div>
+                <div class="policy-highlight" style="background: #eef7fc; border-left-color: #2980b9; color: #1b4f72;">
+                    <i class="fa-solid fa-circle-check"></i> Kebijakan zona transportasi dan ketentuan destination service berlaku sah dan mengikat sejak Down Payment (DP) 50% terverifikasi.
+                </div>
+            </div>
+
         </div>
 
     </main>
@@ -818,15 +887,15 @@
                     </div>
                 </div>
 
-                <div class="studio-box">
+                <a href="https://maps.google.com/?q=Kota+Malang,+Jawa+Timur" target="_blank" rel="noopener noreferrer" class="studio-box" title="Buka Lokasi Studio Atelier di Google Maps">
                     <div class="op-icon">
                         <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
                     </div>
                     <div class="op-text">
                         <span class="label">STUDIO ATELIER</span>
-                        <strong>Kota Malang, Jawa Timur</strong>
+                        <strong>Kota Malang, Jawa Timur <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px; margin-left: 4px; color: var(--accent-pink);"></i></strong>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>

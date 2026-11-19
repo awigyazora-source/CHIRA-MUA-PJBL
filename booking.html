@@ -753,44 +753,204 @@
             text-overflow: ellipsis;
         }
 
-        /* --- STEP 4: CUSTOMER DETAILS --- */
-        .location-options {
+        /* --- STEP 4: CUSTOMER DETAILS & 4-TIER SERVICE/TRANSPORT ZONES --- */
+        .zone-options-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
         }
 
-        .location-label {
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
+        .zone-card {
+            border: 1.5px solid var(--card-border);
+            border-radius: 16px;
+            padding: 16px 18px;
             cursor: pointer;
-            background: var(--bg-color);
-            transition: all 0.2s;
-            font-size: 13px;
-            font-weight: 500;
+            background: var(--white);
+            transition: all 0.25s ease;
+            position: relative;
             display: flex;
             flex-direction: column;
+            gap: 8px;
+        }
+
+        .zone-card:hover {
+            border-color: var(--accent-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(158, 107, 107, 0.08);
+        }
+
+        .zone-card.active {
+            border-color: var(--dark-pink);
+            background: linear-gradient(135deg, #fff9f9 0%, #fff 100%);
+            box-shadow: 0 6px 20px rgba(158, 107, 107, 0.12);
+        }
+
+        .zone-card.active::after {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            color: var(--dark-pink);
+            font-size: 17px;
+        }
+
+        .zone-card-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .zone-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #fff0f0;
+            color: var(--dark-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            transition: all 0.25s ease;
+        }
+
+        .zone-card.active .zone-icon {
+            background: var(--dark-pink);
+            color: #fff;
+        }
+
+        .zone-header-meta {
+            padding-right: 24px;
+        }
+
+        .zone-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.3;
+            margin-bottom: 3px;
+        }
+
+        .zone-fee-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        .zone-fee-free {
+            background: #eafaf1;
+            color: #27ae60;
+        }
+
+        .zone-fee-local {
+            background: #fdf2e9;
+            color: #d35400;
+        }
+
+        .zone-fee-intercity {
+            background: #fcf3cf;
+            color: #b7950b;
+        }
+
+        .zone-fee-destination {
+            background: #ebf5fb;
+            color: #2980b9;
+        }
+
+        .zone-card p {
+            font-size: 12px;
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        /* Input Tambahan Alamat & Google Maps */
+        .location-extra-box {
+            background: #faf4f5;
+            border: 1px solid var(--primary-pink);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+
+        .gps-input-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .btn-gps-locate {
+            background: #fff;
+            color: var(--dark-pink);
+            border: 1.5px solid var(--accent-pink);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
+            transition: all 0.2s ease;
         }
 
-        .location-label i {
-            font-size: 18px;
-            color: var(--dark-pink);
+        .btn-gps-locate:hover {
+            background: var(--dark-pink);
+            color: #fff;
+            border-color: var(--dark-pink);
         }
 
-        .location-label input[type="radio"] {
+        .gps-status-feedback {
+            font-size: 11.5px;
+            margin-top: 6px;
             display: none;
+            line-height: 1.4;
         }
 
-        .location-label.active {
-            border-color: var(--accent-pink);
-            background: #fff5f5;
-            color: var(--dark-pink);
-            font-weight: 600;
+        .destination-notice-box {
+            background: linear-gradient(135deg, #eef7fc 0%, #ffffff 100%);
+            border: 1.5px solid #bddbf5;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .destination-notice-box i {
+            color: #2980b9;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        .destination-notice-box h5 {
+            font-size: 13.5px;
+            color: #1b4f72;
+            margin: 0 0 4px 0;
+            font-weight: 700;
+        }
+
+        .destination-notice-box p {
+            font-size: 12px;
+            color: #2c3e50;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 640px) {
+            .zone-options-grid {
+                grid-template-columns: 1fr;
+            }
+            .gps-input-group {
+                flex-direction: column;
+            }
         }
 
         /* --- STICKY BOOKING SUMMARY (KOLOM KANAN) --- */
@@ -1428,6 +1588,16 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
             margin-top: 25px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .studio-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(158, 107, 107, 0.15);
+            background-color: #fffafb;
         }
 
         .studio-box .op-icon {
@@ -1899,33 +2069,91 @@
                         </div>
                     </div>
 
-                    <!-- Lokasi Pengerjaan -->
+                    <!-- Lokasi & Zona Layanan -->
                     <div class="form-group" style="margin-bottom: 18px;">
-                        <label>Pilihan Lokasi Sesi Make Up <span class="required">*</span></label>
-                        <div class="location-options">
-                            <label class="location-label active" onclick="selectLocation('studio', this)">
-                                <input type="radio" name="locationType" value="Studio Chira Malang" checked>
-                                <i class="fa-solid fa-store"></i>
-                                <span>Studio Chira Malang</span>
-                            </label>
+                        <label>Pilihan Zona Lokasi & Transportasi Sesi Make Up <span class="required">*</span></label>
+                        
+                        <div class="zone-options-grid">
+                            <!-- Zona 1: Studio Chira Malang -->
+                            <div class="zone-card active" data-zone="zona1" onclick="selectZone('zona1', this)">
+                                <input type="radio" name="transportZone" value="zona1" checked style="display:none;">
+                                <div class="zone-card-top">
+                                    <div class="zone-icon"><i class="fa-solid fa-store"></i></div>
+                                    <div class="zone-header-meta">
+                                        <div class="zone-title">Zona 1 — Studio Chira Malang</div>
+                                        <span class="zone-fee-badge zone-fee-free">Bebas Transport (Rp 0)</span>
+                                    </div>
+                                </div>
+                                <p>Sesi makeup privat di Studio Atelier Chira Kota Malang dengan fasilitas AC & lighting pro.</p>
+                            </div>
 
-                            <label class="location-label" onclick="selectLocation('home', this)">
-                                <input type="radio" name="locationType" value="Home Service (Rumah)">
-                                <i class="fa-solid fa-house-chimney"></i>
-                                <span>Home Service (Rumah)</span>
-                            </label>
+                            <!-- Zona 2: Home Service Malang & Batu -->
+                            <div class="zone-card" data-zone="zona2" onclick="selectZone('zona2', this)">
+                                <input type="radio" name="transportZone" value="zona2" style="display:none;">
+                                <div class="zone-card-top">
+                                    <div class="zone-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                                    <div class="zone-header-meta">
+                                        <div class="zone-title">Zona 2 — Kota Malang & Batu</div>
+                                        <span class="zone-fee-badge zone-fee-local">+ Rp 50.000 (Flat)</span>
+                                    </div>
+                                </div>
+                                <p>Home Service ke kediaman / hotel / venue acara di wilayah Malang Raya & Kota Batu.</p>
+                            </div>
 
-                            <label class="location-label" onclick="selectLocation('venue', this)">
-                                <input type="radio" name="locationType" value="Venue Acara / Hotel">
-                                <i class="fa-solid fa-hotel"></i>
-                                <span>Venue / Gedung / Hotel</span>
-                            </label>
+                            <!-- Zona 3: Luar Kota Jawa Timur -->
+                            <div class="zone-card" data-zone="zona3" onclick="selectZone('zona3', this)">
+                                <input type="radio" name="transportZone" value="zona3" style="display:none;">
+                                <div class="zone-card-top">
+                                    <div class="zone-icon"><i class="fa-solid fa-car-side"></i></div>
+                                    <div class="zone-header-meta">
+                                        <div class="zone-title">Zona 3 — Luar Kota (Jawa Timur)</div>
+                                        <span class="zone-fee-badge zone-fee-intercity">+ Rp 300.000 (Flat)</span>
+                                    </div>
+                                </div>
+                                <p>Surabaya, Sidoarjo, Kediri, Pasuruan, Blitar, Probolinggo & sekitarnya (Transport & tol PP).</p>
+                            </div>
+
+                            <!-- Zona 4: Worldwide Destination -->
+                            <div class="zone-card" data-zone="zona4" onclick="selectZone('zona4', this)">
+                                <input type="radio" name="transportZone" value="zona4" style="display:none;">
+                                <div class="zone-card-top">
+                                    <div class="zone-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                                    <div class="zone-header-meta">
+                                        <div class="zone-title">Zona 4 — Luar Pulau / Luar Negeri</div>
+                                        <span class="zone-fee-badge zone-fee-destination"><i class="fa-solid fa-earth-americas"></i> Destination Service</span>
+                                    </div>
+                                </div>
+                                <p>Worldwide Destination MUA. Tiket PP pesawat/kereta & akomodasi hotel ditanggung 100% klien.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group" id="addressGroup" style="display: none; margin-bottom: 18px;">
-                        <label for="custAddress">Alamat Lengkap Lokasi Acara <span class="required">*</span></label>
-                        <textarea id="custAddress" class="form-control" rows="2" placeholder="Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota Malang..."></textarea>
+                    <!-- KOTAK INFORMASI KHUSUS ZONA 4 -->
+                    <div class="destination-notice-box" id="destinationNoticeBox" style="display: none;">
+                        <i class="fa-solid fa-plane-circle-check"></i>
+                        <div>
+                            <h5>Worldwide Destination Service (Luar Pulau / Luar Negeri)</h5>
+                            <p>Tim MUA bersedia terbang ke kota tujuan Anda di seluruh Indonesia maupun luar negeri. Tagihan web ini hanya memproses jasa makeup & DP 50%. Tiket PP transportasi (pesawat/kereta), akomodasi hotel (min. bintang 3 / 1 kamar), dan konsumsi disediakan langsung oleh pemesan dengan konfirmasi via WhatsApp resmi.</p>
+                        </div>
+                    </div>
+
+                    <!-- FORM ALAMAT LENGKAP & GPS GOOGLE MAPS (ZONA 2, 3, 4) -->
+                    <div class="location-extra-box" id="locationDetailsWrapper" style="display: none;">
+                        <div class="form-group" style="margin-bottom: 14px;">
+                            <label for="custAddress"><i class="fa-solid fa-location-dot" style="color: var(--accent-pink);"></i> Alamat Lengkap Lokasi Acara <span class="required">*</span></label>
+                            <textarea id="custAddress" class="form-control" rows="2" placeholder="Nama Jalan, No. Rumah/Gedung/Nama Hotel, RT/RW, Kelurahan, Kecamatan, Kota / Provinsi..."></textarea>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 4px;">
+                            <label for="custGmapsLink"><i class="fa-solid fa-map-location-dot" style="color: var(--accent-pink);"></i> Tautan Google Maps / Titik Koordinat (Opsional)</label>
+                            <div class="gps-input-group">
+                                <input type="url" id="custGmapsLink" class="form-control" placeholder="Contoh: https://maps.app.goo.gl/... atau koordinat GPS">
+                                <button type="button" class="btn-gps-locate" id="btnDetectGps" onclick="detectUserGps()">
+                                    <i class="fa-solid fa-crosshairs"></i> Gunakan Titik GPS Saya
+                                </button>
+                            </div>
+                            <div class="gps-status-feedback" id="gpsFeedback"></div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -1988,14 +2216,28 @@
                             <strong id="summaryTotalDuration">150 menit (2.5 jam)</strong>
                         </div>
                         <div class="summary-row">
-                            <span>Lokasi Sesi</span>
-                            <strong id="summaryLocation">Studio Chira Malang</strong>
+                            <span>Zona Lokasi Sesi</span>
+                            <strong id="summaryLocation">Zona 1: Studio Chira Malang</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Biaya Transportasi</span>
+                            <strong id="summaryTransportFee"><span style="color: #27ae60; font-weight: 700;">Rp 0 (Gratis Studio)</span></strong>
+                        </div>
+
+                        <!-- Special Alert for Destination Service in Summary -->
+                        <div id="summaryDestinationBadge" style="display:none; background: #eef6fc; border: 1px solid #bddbf5; border-radius: 10px; padding: 10px 12px; font-size: 11.5px; color: #1b4f72; margin-top: 8px; margin-bottom: 8px; line-height: 1.45;">
+                            <i class="fa-solid fa-plane" style="color: #2980b9;"></i> <strong>Worldwide Destination Service:</strong> Tiket PP (pesawat/kereta) & hotel ditanggung 100% oleh pemesan (koordinasi via WhatsApp).
                         </div>
 
                         <div class="summary-divider"></div>
 
                         <div class="summary-row" style="margin-bottom: 6px;">
-                            <span>Total Harga Layanan</span>
+                            <span>Harga Layanan Makeup</span>
+                            <strong id="summaryBasePackagePrice" style="font-size: 13.5px; color: var(--text-dark);">Rp 1.500.000</strong>
+                        </div>
+
+                        <div class="summary-row" style="margin-bottom: 6px;">
+                            <span>Total Tagihan Reservasi</span>
                             <strong id="summaryTotalPrice" style="font-size: 15px; color: var(--text-dark);">Rp 1.500.000</strong>
                         </div>
 
@@ -2184,15 +2426,15 @@
                     </div>
                 </div>
 
-                <div class="studio-box">
+                <a href="https://maps.google.com/?q=Kota+Malang,+Jawa+Timur" target="_blank" rel="noopener noreferrer" class="studio-box" title="Buka Lokasi Studio Atelier di Google Maps">
                     <div class="op-icon">
                         <svg viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
                     </div>
                     <div class="op-text">
                         <span class="label">STUDIO ATELIER</span>
-                        <strong>Kota Malang, Jawa Timur</strong>
+                        <strong>Kota Malang, Jawa Timur <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px; margin-left: 4px; color: var(--accent-pink);"></i></strong>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>
@@ -2222,8 +2464,14 @@
             startTime: '08:00',
             endTime: '10:30',
             staffName: 'Nadine Queen Reina',
-            locationType: 'Studio Chira Malang',
-            address: '',
+            transportZone: 'zona1',
+            transportZoneLabel: 'Zona 1 — Studio Chira Malang',
+            transportFee: 0,
+            locationType: 'Studio Chira Make-Up (Malang)',
+            address: 'Studio Atelier Chira Make-Up Malang — Jl. Ijen No. 88, Oro-oro Dowo, Klojen, Kota Malang',
+            gmapsLink: 'https://maps.google.com/?q=Kota+Malang,+Jawa+Timur',
+            gpsCoordinates: null,
+            isDestinationService: false,
             custName: '',
             custPhone: '',
             custNotes: '',
@@ -2375,6 +2623,110 @@
             document.getElementById("summaryLocation").innerText = radio.value;
         }
 
+        // --- SISTEM ZONA TRANSPORTASI & LOKASI ---
+        function selectZone(zoneId, element) {
+            document.querySelectorAll(".zone-card").forEach(c => c.classList.remove("active"));
+            element.classList.add("active");
+            const radio = element.querySelector("input[type='radio']");
+            if (radio) radio.checked = true;
+
+            currentBooking.transportZone = zoneId;
+
+            const locationDetails = document.getElementById("locationDetailsWrapper");
+            const destinationNotice = document.getElementById("destinationNoticeBox");
+            const addressInput = document.getElementById("custAddress");
+
+            if (zoneId === 'zona1') {
+                currentBooking.transportFee = 0;
+                currentBooking.transportZoneLabel = 'Zona 1 — Studio Chira Malang';
+                currentBooking.locationType = 'Studio Chira Make-Up (Malang)';
+                currentBooking.isDestinationService = false;
+                if (locationDetails) locationDetails.style.display = 'none';
+                if (destinationNotice) destinationNotice.style.display = 'none';
+                currentBooking.address = 'Studio Atelier Chira Make-Up Malang — Jl. Ijen No. 88, Oro-oro Dowo, Klojen, Kota Malang';
+                currentBooking.gmapsLink = 'https://maps.google.com/?q=Kota+Malang,+Jawa+Timur';
+            } else if (zoneId === 'zona2') {
+                currentBooking.transportFee = 50000;
+                currentBooking.transportZoneLabel = 'Zona 2 — Kota Malang & Batu';
+                currentBooking.locationType = 'Home Service Kota Malang & Batu';
+                currentBooking.isDestinationService = false;
+                if (locationDetails) locationDetails.style.display = 'block';
+                if (destinationNotice) destinationNotice.style.display = 'none';
+                if (addressInput) addressInput.placeholder = 'Nama Jalan, No. Rumah/Hotel, RT/RW, Kelurahan, Kecamatan, Kota Malang / Kota Batu...';
+            } else if (zoneId === 'zona3') {
+                currentBooking.transportFee = 300000;
+                currentBooking.transportZoneLabel = 'Zona 3 — Luar Kota (Jawa Timur)';
+                currentBooking.locationType = 'Luar Kota (Area Jawa Timur & Sekitarnya)';
+                currentBooking.isDestinationService = false;
+                if (locationDetails) locationDetails.style.display = 'block';
+                if (destinationNotice) destinationNotice.style.display = 'none';
+                if (addressInput) addressInput.placeholder = 'Nama Gedung/Hotel/Rumah, Jalan, Kota/Kabupaten di Jawa Timur (Surabaya, Sidoarjo, Kediri, Pasuruan, dll)...';
+            } else if (zoneId === 'zona4') {
+                currentBooking.transportFee = 0; // Biaya di sistem Rp 0, tiket & hotel ditanggung klien
+                currentBooking.transportZoneLabel = 'Zona 4 — Worldwide Destination';
+                currentBooking.locationType = 'Luar Pulau / Luar Negeri (Worldwide Destination)';
+                currentBooking.isDestinationService = true;
+                if (locationDetails) locationDetails.style.display = 'block';
+                if (destinationNotice) destinationNotice.style.display = 'flex';
+                if (addressInput) addressInput.placeholder = 'Nama Venue / Hotel, Kota, Provinsi / Negara Tujuan (Luar Pulau / Luar Negeri)...';
+            }
+
+            updateCalculations();
+        }
+
+        // --- SISTEM GEOLOCATION GPS (HTML5 PINPOINT LOKASI MAPS) ---
+        function detectUserGps() {
+            const feedbackEl = document.getElementById("gpsFeedback");
+            const linkInput = document.getElementById("custGmapsLink");
+            const btn = document.getElementById("btnDetectGps");
+
+            if (!navigator.geolocation) {
+                feedbackEl.style.display = "block";
+                feedbackEl.style.color = "#c0392b";
+                feedbackEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Browser Anda tidak mendukung sensor GPS Geolocation.';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mendeteksi GPS...';
+            feedbackEl.style.display = "block";
+            feedbackEl.style.color = "#d35400";
+            feedbackEl.innerHTML = '<i class="fa-solid fa-satellite-dish fa-fade"></i> Mengontak satelit GPS untuk mendapatkan titik lokasi perangkat Anda...';
+
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> GPS Terkunci';
+                    const lat = position.coords.latitude.toFixed(6);
+                    const lng = position.coords.longitude.toFixed(6);
+                    const accuracy = Math.round(position.coords.accuracy || 0);
+                    const mapsUrl = `https://maps.google.com/?q=${lat},${lng}`;
+
+                    linkInput.value = mapsUrl;
+                    currentBooking.gmapsLink = mapsUrl;
+                    currentBooking.gpsCoordinates = { lat: parseFloat(lat), lng: parseFloat(lng), accuracy: accuracy };
+
+                    feedbackEl.style.color = "#27ae60";
+                    feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Titik koordinat berhasil dikunci: <strong>${lat}, ${lng}</strong> (Akurasi ±${accuracy}m). Disematkan ke link Google Maps.`;
+                },
+                function(error) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-crosshairs"></i> Gunakan Titik GPS Saya';
+                    feedbackEl.style.color = "#c0392b";
+                    let msg = "Gagal mengambil titik GPS.";
+                    if (error.code === 1) {
+                        msg = "Izin akses lokasi ditolak oleh browser. Anda dapat menyalin link Google Maps secara manual.";
+                    } else if (error.code === 2) {
+                        msg = "Sinyal GPS perangkat tidak tersedia.";
+                    } else if (error.code === 3) {
+                        msg = "Waktu pencarian sinyal GPS habis (timeout).";
+                    }
+                    feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> ${msg}`;
+                },
+                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+            );
+        }
+
         // Utility: Tambah Hari pada Objek Tanggal
         function addDays(baseDate, days) {
             const d = new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate());
@@ -2436,8 +2788,9 @@
 
         // --- 4. ENGINE PERHITUNGAN OTOMATIS (WAKTU & BIAYA) ---
         function updateCalculations() {
-            // A. Perhitungan Total Harga & DP 50%
-            currentBooking.totalPrice = currentBooking.basePrice * currentBooking.paxCount;
+            // A. Perhitungan Total Harga & DP 50% (Termasuk Transportasi)
+            const serviceTotal = currentBooking.basePrice * currentBooking.paxCount;
+            currentBooking.totalPrice = serviceTotal + currentBooking.transportFee;
             currentBooking.dpAmount = Math.round(currentBooking.totalPrice * 0.5);
             currentBooking.remainingAmount = currentBooking.totalPrice - currentBooking.dpAmount;
 
@@ -2466,6 +2819,35 @@
             document.getElementById("summaryTime").innerText = `${currentBooking.startTime} - ${currentBooking.endTime} WIB`;
             document.getElementById("summaryDate").innerText = formatDateIndo(currentBooking.selectedDate);
             
+            // Lokasi Sesi & Biaya Transportasi
+            const summaryLoc = document.getElementById("summaryLocation");
+            if (summaryLoc) {
+                summaryLoc.innerText = currentBooking.transportZoneLabel;
+            }
+
+            const summaryTransport = document.getElementById("summaryTransportFee");
+            if (summaryTransport) {
+                if (currentBooking.transportZone === 'zona1') {
+                    summaryTransport.innerHTML = '<span style="color: #27ae60; font-weight: 700;">Rp 0 (Gratis Studio)</span>';
+                } else if (currentBooking.transportZone === 'zona2') {
+                    summaryTransport.innerHTML = '<span style="color: var(--text-dark); font-weight: 600;">Rp 50.000</span>';
+                } else if (currentBooking.transportZone === 'zona3') {
+                    summaryTransport.innerHTML = '<span style="color: var(--text-dark); font-weight: 600;">Rp 300.000</span>';
+                } else if (currentBooking.transportZone === 'zona4') {
+                    summaryTransport.innerHTML = '<span style="color: #2980b9; font-weight: 700;">Rp 0 (Tiket & Hotel via Klien)</span>';
+                }
+            }
+
+            const summaryBasePrice = document.getElementById("summaryBasePackagePrice");
+            if (summaryBasePrice) {
+                summaryBasePrice.innerText = formatRupiah(serviceTotal);
+            }
+
+            const destBadge = document.getElementById("summaryDestinationBadge");
+            if (destBadge) {
+                destBadge.style.display = currentBooking.isDestinationService ? 'block' : 'none';
+            }
+
             // Total Harga & DP 50% (Dibayar Sekarang vs Hari H)
             document.getElementById("summaryTotalPrice").innerText = formatRupiah(currentBooking.totalPrice);
             document.getElementById("summaryDpPrice").innerText = formatRupiah(currentBooking.dpAmount);
@@ -2546,15 +2928,24 @@
                 return;
             }
 
-            // Jika lokasi bukan studio, pastikan alamat terisi
-            if (currentBooking.locationType !== 'Studio Chira Malang') {
+            // Jika lokasi bukan studio (Zona 2, 3, 4), pastikan alamat terisi
+            if (currentBooking.transportZone !== 'zona1') {
                 const address = document.getElementById("custAddress").value.trim();
                 if (!address) {
-                    alert("Mohon isi Alamat Lengkap untuk lokasi Home Service / Venue.");
+                    alert(`Mohon lengkapi Alamat Lengkap Lokasi Acara untuk ${currentBooking.transportZoneLabel}.`);
                     document.getElementById("custAddress").focus();
                     return;
                 }
                 currentBooking.address = address;
+                const gmapsInput = document.getElementById("custGmapsLink").value.trim();
+                if (gmapsInput) {
+                    currentBooking.gmapsLink = gmapsInput;
+                }
+            } else {
+                currentBooking.address = 'Studio Atelier Chira Make-Up Malang — Jl. Ijen No. 88, Oro-oro Dowo, Klojen, Kota Malang';
+                if (!currentBooking.gmapsLink) {
+                    currentBooking.gmapsLink = 'https://maps.google.com/?q=Kota+Malang,+Jawa+Timur';
+                }
             }
 
             currentBooking.custName = custName;
@@ -2569,7 +2960,14 @@
             document.getElementById("qrisBookingCode").innerText = currentBooking.bookingCode;
             document.getElementById("modalService").innerText = currentBooking.serviceName;
             document.getElementById("modalSchedule").innerText = `${formatDateIndo(currentBooking.selectedDate)} (${currentBooking.startTime} - ${currentBooking.endTime} WIB, ${currentBooking.paxCount} Pax)`;
-            document.getElementById("modalTotalPackage").innerText = formatRupiah(currentBooking.totalPrice);
+            
+            let packageDesc = formatRupiah(currentBooking.totalPrice);
+            if (currentBooking.transportFee > 0) {
+                packageDesc += ` (Termasuk Transport: ${formatRupiah(currentBooking.transportFee)})`;
+            } else if (currentBooking.isDestinationService) {
+                packageDesc += ` (Transport & Hotel via Klien)`;
+            }
+            document.getElementById("modalTotalPackage").innerText = packageDesc;
             document.getElementById("modalTotalPay").innerText = formatRupiah(currentBooking.dpAmount);
             document.getElementById("modalRemainingPay").innerText = formatRupiah(currentBooking.remainingAmount);
 
@@ -2624,6 +3022,14 @@
                     custEmail: ownerEmail,
                     ownerName: ownerName,
                     isUserOrder: true,
+                    transportZone: currentBooking.transportZone,
+                    transportZoneLabel: currentBooking.transportZoneLabel,
+                    transportFee: currentBooking.transportFee,
+                    locationType: currentBooking.locationType,
+                    address: currentBooking.address,
+                    gmapsLink: currentBooking.gmapsLink || '',
+                    gpsCoordinates: currentBooking.gpsCoordinates || null,
+                    isDestinationService: currentBooking.isDestinationService,
                     paidAmount: currentBooking.dpAmount, // Nominal DP 50% yang dibayarkan via QRIS
                     remainingAmount: currentBooking.remainingAmount, // Sisa pelunasan di Hari H
                     paymentType: 'DP 50%',
@@ -2644,8 +3050,11 @@
                 <div style="margin-bottom: 6px;"><strong>Layanan:</strong> ${currentBooking.serviceName} (${currentBooking.paxCount} Pax)</div>
                 <div style="margin-bottom: 6px;"><strong>Jadwal Terkunci:</strong> ${formatDateIndo(currentBooking.selectedDate)}, Pukul ${currentBooking.startTime} - ${currentBooking.endTime} WIB</div>
                 <div style="margin-bottom: 6px;"><strong>Penata Rias:</strong> ${currentBooking.staffName}</div>
-                <div style="margin-bottom: 6px;"><strong>Lokasi:</strong> ${currentBooking.locationType}</div>
-                <div style="margin-bottom: 6px;"><strong>Total Biaya Layanan:</strong> ${formatRupiah(currentBooking.totalPrice)}</div>
+                <div style="margin-bottom: 6px;"><strong>Zona & Lokasi:</strong> ${currentBooking.transportZoneLabel}</div>
+                <div style="margin-bottom: 6px;"><strong>Alamat / Titik:</strong> ${currentBooking.address}</div>
+                ${currentBooking.gmapsLink ? `<div style="margin-bottom: 6px;"><strong>Google Maps:</strong> <a href="${currentBooking.gmapsLink}" target="_blank" style="color: var(--dark-pink); text-decoration: underline;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Tautan Peta</a></div>` : ''}
+                ${currentBooking.isDestinationService ? `<div style="margin-bottom: 6px; background: #eef6fc; padding: 6px 10px; border-radius: 6px; font-size: 11.5px; color: #1b4f72;"><i class="fa-solid fa-plane"></i> <strong>Destination Service:</strong> Tiket PP & penginapan tim MUA ditanggung klien.</div>` : ''}
+                <div style="margin-bottom: 6px;"><strong>Total Biaya Tagihan:</strong> ${formatRupiah(currentBooking.totalPrice)}</div>
                 <div style="margin-bottom: 6px;"><strong>DP 50% Terbayar:</strong> <span style="font-weight:700; color:var(--success-color);">${formatRupiah(currentBooking.dpAmount)}</span> (Lunas via QRIS)</div>
                 <div style="background: #fdf5f5; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: var(--text-dark); border-left: 3px solid var(--accent-pink); margin-top: 6px;">
                     <i class="fa-solid fa-circle-info" style="color: var(--accent-pink);"></i> <strong>Sisa Pelunasan (50%):</strong> ${formatRupiah(currentBooking.remainingAmount)} dibayarkan langsung di lokasi pada Hari H.
@@ -2661,7 +3070,11 @@
                 `Tanggal: ${formatDateIndo(currentBooking.selectedDate)}\n` +
                 `Waktu: ${currentBooking.startTime} - ${currentBooking.endTime} WIB\n` +
                 `Staff MUA: ${currentBooking.staffName}\n` +
-                `Total Harga: ${formatRupiah(currentBooking.totalPrice)}\n` +
+                `Zona: ${currentBooking.transportZoneLabel}\n` +
+                `Alamat: ${currentBooking.address}\n` +
+                (currentBooking.gmapsLink ? `Google Maps: ${currentBooking.gmapsLink}\n` : '') +
+                (currentBooking.isDestinationService ? `*Ketentuan Destination: Tiket PP & Hotel ditanggung klien*\n` : '') +
+                `Total Tagihan: ${formatRupiah(currentBooking.totalPrice)}\n` +
                 `DP 50% Terbayar: ${formatRupiah(currentBooking.dpAmount)}\n` +
                 `Sisa Pelunasan Hari H: ${formatRupiah(currentBooking.remainingAmount)}\n\n` +
                 `Mohon konfirmasi pesanan saya. Terima kasih!`
