@@ -234,6 +234,10 @@
                         <i class="fa-solid fa-calendar-check"></i>
                         <span>Formulir Pemesanan</span>
                     </a>
+                    <a href="pesanan-saya.html" class="dropdown-item">
+                        <i class="fa-solid fa-receipt"></i>
+                        <span>Pesanan Saya</span>
+                    </a>
                     <a href="staffmua.html" class="dropdown-item">
                         <i class="fa-solid fa-users"></i>
                         <span>Lihat Profil Tim MUA</span>
@@ -307,9 +311,13 @@
                         <i class="fa-solid fa-user-pen"></i>
                         <span>Kelola Profil</span>
                     </button>
-                    <a href="booking.html" class="dropdown-item">
-                        <i class="fa-solid fa-calendar-check"></i>
+                    <a href="pesanan-saya.html" class="dropdown-item">
+                        <i class="fa-solid fa-receipt"></i>
                         <span>Pesanan Saya</span>
+                    </a>
+                    <a href="booking.html" class="dropdown-item">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <span>Buat Reservasi</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <button type="button" class="dropdown-item dropdown-logout" id="navLogoutBtn">

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulir Pemesanan | Chira Make Up</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
 
     <!-- Google Fonts: Playfair Display & Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +38,7 @@
     </script>
 
     <style>
-        /* --- CSS VARIABLES (100% Konsisten dengan index.html & portfolio.html) --- */
+        /* --- CSS VARIABLES (100% Konsisten dengan index.html & Portfolio.html) --- */
         :root {
             --bg-color: #fff9f9;
             --primary-pink: #f4dada;
@@ -1802,12 +1803,12 @@
                         <label>Pilih Penata Rias (Staff MUA) <span class="required">*</span></label>
                         <div class="staff-grid">
                             <!-- 1. Nadine (Ready to Book) -->
-                            <div class="staff-card selected" data-staff="Nadine Muamlah Veronica" data-title="Senior Bridal & Glow Specialist" onclick="selectStaff(this)">
+                            <div class="staff-card selected" data-staff="Nadine Queen Reina" data-title="Senior Bridal & Glow Specialist" onclick="selectStaff(this)">
                                 <div class="staff-avatar">
-                                    <img src="img/MUA-STAFF-Nadine.png" alt="Nadine Muamlah Veronica">
+                                    <img src="img/MUA-STAFF-Nadine.png" alt="Nadine Queen Reina">
                                 </div>
                                 <div class="staff-info">
-                                    <h5>Nadine Muamlah Veronica</h5>
+                                    <h5>Nadine Queen Reina</h5>
                                     <p>Senior Bridal & Glow</p>
                                     <span class="staff-badge-status badge-ready">● Ready</span>
                                 </div>
@@ -1972,7 +1973,7 @@
                         </div>
                         <div class="summary-row">
                             <span>Staff MUA</span>
-                            <strong id="summaryStaff">Nadine Muamlah Veronica</strong>
+                            <strong id="summaryStaff">Nadine Queen Reina</strong>
                         </div>
                         <div class="summary-row">
                             <span>Tanggal Acara</span>
@@ -2107,7 +2108,11 @@
                     <i class="fa-brands fa-whatsapp"></i> Konfirmasi ke WhatsApp Admin
                 </a>
 
-                <a href="index.html" class="btn-cancel-pay" style="display: block; text-align: center; text-decoration: none; margin-top: 10px;">
+                <a href="pesanan-saya.html" class="btn-confirm-pay" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; margin-top: 10px; background: #332222;">
+                    <i class="fa-solid fa-receipt"></i> Pantau Status di Pesanan Saya
+                </a>
+
+                <a href="index.html" class="btn-cancel-pay" style="display: block; text-align: center; text-decoration: none; margin-top: 8px;">
                     Kembali ke Beranda
                 </a>
             </div>
@@ -2216,7 +2221,7 @@
             selectedDate: '',
             startTime: '08:00',
             endTime: '10:30',
-            staffName: 'Nadine Muamlah Veronica',
+            staffName: 'Nadine Queen Reina',
             locationType: 'Studio Chira Malang',
             address: '',
             custName: '',
@@ -2606,12 +2611,23 @@
 
             // Simpan riwayat booking ke localStorage
             try {
+                let activeProfile = null;
+                try {
+                    activeProfile = JSON.parse(localStorage.getItem("chira_customer_profile") || "null");
+                } catch (e) {}
+                const ownerEmail = (activeProfile && activeProfile.email) || "";
+                const ownerName = (activeProfile && activeProfile.name) || localStorage.getItem("chira_user_name") || currentBooking.custName;
+
                 const existingBookings = JSON.parse(localStorage.getItem("chira_bookings") || "[]");
-                existingBookings.push({
+                existingBookings.unshift({
                     ...currentBooking,
+                    custEmail: ownerEmail,
+                    ownerName: ownerName,
+                    isUserOrder: true,
                     paidAmount: currentBooking.dpAmount, // Nominal DP 50% yang dibayarkan via QRIS
                     remainingAmount: currentBooking.remainingAmount, // Sisa pelunasan di Hari H
                     paymentType: 'DP 50%',
+                    alasanPenolakan: '',
                     timestamp: new Date().toISOString(),
                     status: 'DP 50% Paid (Slot Locked)'
                 });

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Operasional Admin | Chira Make Up</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
 
     <!-- Google Fonts: Playfair Display & Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -280,6 +281,15 @@
             font-size: 13px;
             border: 1.5px solid var(--accent-pink);
             flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .artist-avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
         }
 
         .artist-meta {
@@ -364,8 +374,10 @@
         }
 
         .dashboard-title-box h1 {
-            font-family: var(--font-serif);
-            font-size: 28px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
             color: var(--text-dark);
             margin-bottom: 4px;
         }
@@ -484,9 +496,11 @@
         }
 
         .kpi-info .kpi-number {
-            font-family: var(--font-serif);
-            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 25px;
             font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.3px;
             color: var(--text-dark);
             line-height: 1.1;
         }
@@ -943,8 +957,10 @@
         }
 
         .staff-card-meta h4 {
-            font-family: var(--font-serif);
-            font-size: 17px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
             color: var(--text-dark);
             margin-bottom: 2px;
         }
@@ -1050,8 +1066,10 @@
         }
 
         .modal-header h3 {
-            font-family: var(--font-serif);
-            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
             color: var(--text-dark);
             display: flex;
             align-items: center;
@@ -1235,7 +1253,568 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
+        /* ==========================================================================
+           TAB 4: EDITOR PROFIL & PORTOFOLIO MUA
+           ========================================================================== */
+        .profile-editor-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: var(--white);
+            border: 1px solid #f2e1e1;
+            border-radius: 18px;
+            padding: 18px 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 18px rgba(51, 34, 34, 0.04);
+        }
+
+        .editor-selector-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .editor-selector-wrap label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .editor-artist-select {
+            padding: 9px 16px;
+            border-radius: 25px;
+            border: 1.5px solid #e6c6c6;
+            background: #fffafa;
+            color: var(--text-dark);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .editor-artist-select:focus {
+            border-color: var(--accent-pink);
+        }
+
+        .editor-artist-select:disabled {
+            background: #f5eded;
+            color: var(--text-light);
+            cursor: not-allowed;
+        }
+
+        .editor-access-pill {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 11px;
+            border-radius: 20px;
+            background: #fdf0f0;
+            color: var(--dark-pink);
+            border: 1px solid #ecd1d1;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-preview-public {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px;
+            border-radius: 25px;
+            background: #fff4f4;
+            color: var(--dark-pink);
+            border: 1.5px solid #e7c5c5;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .btn-preview-public:hover {
+            background: var(--accent-pink);
+            color: var(--white);
+            border-color: var(--accent-pink);
+            transform: translateY(-1px);
+        }
+
+        .profile-editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .editor-card {
+            background: var(--white);
+            border: 1px solid #f2e1e1;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 6px 24px rgba(51, 34, 34, 0.04);
+        }
+
+        .editor-card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f7e9e9;
+        }
+
+        .editor-card-title i {
+            color: var(--accent-pink);
+            font-size: 17px;
+        }
+
+        .editor-card-title h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16.5px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        /* Photo Upload Section */
+        .profile-photo-upload-box {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 16px;
+            background: #fffafa;
+            border: 1.5px dashed #e7c7c7;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        .profile-photo-preview-wrap {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent-pink);
+            background: var(--primary-pink);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(216, 154, 154, 0.25);
+        }
+
+        .profile-photo-preview-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .profile-photo-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .profile-photo-actions p {
+            font-size: 11.5px;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .photo-btn-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-upload-photo {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 14px;
+            border-radius: 20px;
+            background: var(--dark-pink);
+            color: var(--white);
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-upload-photo:hover {
+            background: var(--accent-pink);
+        }
+
+        .btn-reset-photo {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 13px;
+            border-radius: 20px;
+            background: var(--white);
+            color: var(--text-light);
+            border: 1px solid #e4cece;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-reset-photo:hover {
+            border-color: var(--accent-pink);
+            color: var(--text-dark);
+        }
+
+        /* Editor Form Fields */
+        .editor-form-group {
+            margin-bottom: 16px;
+        }
+
+        .editor-form-group label {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .editor-form-control {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1.5px solid #ead6d6;
+            background: #fffdfd;
+            font-family: inherit;
+            font-size: 13px;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .editor-form-control:focus {
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 3px rgba(216, 154, 154, 0.16);
+        }
+
+        textarea.editor-form-control {
+            min-height: 98px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .editor-form-row-2 {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 14px;
+        }
+
+        .editor-live-stats-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #fff5f5 0%, #fffafa 100%);
+            border: 1px solid #f0d7d7;
+        }
+
+        .live-stat-pill {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .live-stat-pill span {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .live-stat-pill strong {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-variant-numeric: tabular-nums;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 3 Portfolio Slots */
+        .portfolio-slots-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .portfolio-slot-card {
+            display: grid;
+            grid-template-columns: 155px 1fr;
+            gap: 16px;
+            padding: 14px;
+            border-radius: 16px;
+            border: 1.5px solid #f1dfdf;
+            background: #fffdfd;
+            align-items: center;
+            transition: border-color 0.2s;
+        }
+
+        .portfolio-slot-card:hover {
+            border-color: var(--accent-pink);
+        }
+
+        .portfolio-slot-thumb {
+            position: relative;
+            width: 155px;
+            height: 116px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f8ecec;
+            border: 1px solid #ead4d4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-slot-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-slot-empty {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 11px;
+            padding: 8px;
+        }
+
+        .portfolio-slot-empty i {
+            display: block;
+            font-size: 22px;
+            color: var(--accent-pink);
+            margin-bottom: 5px;
+        }
+
+        .portfolio-slot-badge {
+            position: absolute;
+            top: 7px;
+            left: 7px;
+            background: rgba(51, 34, 34, 0.78);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .portfolio-slot-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .portfolio-slot-fields-row {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 10px;
+        }
+
+        .portfolio-slot-btns {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-slot-upload {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 18px;
+            background: #fff2f2;
+            color: var(--dark-pink);
+            border: 1px solid #e6c4c4;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-slot-upload:hover {
+            background: var(--accent-pink);
+            color: #fff;
+            border-color: var(--accent-pink);
+        }
+
+        .btn-slot-clear {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 11px;
+            border-radius: 18px;
+            background: #fff;
+            color: var(--danger);
+            border: 1px solid #f7d2d2;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-slot-clear:hover {
+            background: #fff0f0;
+        }
+
+        .editor-footer-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid #f5e6e6;
+            flex-wrap: wrap;
+        }
+
+        .btn-save-profile {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 26px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--accent-pink), var(--dark-pink));
+            color: var(--white);
+            border: none;
+            font-size: 13.5px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 5px 16px rgba(146, 121, 121, 0.28);
+            transition: all 0.25s;
+        }
+
+        .btn-save-profile:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(146, 121, 121, 0.36);
+        }
+
+        .btn-quick-edit-staff {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #fff3f3;
+            color: var(--dark-pink);
+            border: 1px solid #e7c5c5;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-quick-edit-staff:hover {
+            background: var(--accent-pink);
+            color: var(--white);
+            border-color: var(--accent-pink);
+        }
+
+        /* --- MODAL ALASAN PENOLAKAN / PEMBATALAN --- */
+        .reject-preset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            margin-bottom: 16px;
+        }
+
+        .reject-preset-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 14px;
+            border-radius: 12px;
+            border: 1.5px solid #f0dada;
+            background: #fffdfd;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.2s;
+        }
+
+        .reject-preset-option:hover {
+            border-color: #e74c3c;
+            background: #fff5f5;
+        }
+
+        .reject-preset-option input[type="radio"] {
+            accent-color: var(--danger);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .reject-custom-textarea {
+            width: 100%;
+            min-height: 82px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1.5px solid #ebd4d4;
+            font-family: inherit;
+            font-size: 13px;
+            color: var(--text-dark);
+            resize: vertical;
+            outline: none;
+        }
+
+        .reject-custom-textarea:focus {
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.12);
+        }
+
+        .admin-reject-alert-box {
+            margin-top: 14px;
+            padding: 12px 15px;
+            background: #fff1f1;
+            border: 1.5px solid #f5b7b1;
+            border-left: 4px solid var(--danger);
+            border-radius: 12px;
+            color: #922b21;
+            font-size: 12.5px;
+            line-height: 1.55;
+        }
+
         /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 1024px) {
+            .profile-editor-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-slot-card {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-slot-thumb {
+                width: 100%;
+                height: 165px;
+            }
+            .portfolio-slot-fields-row,
+            .editor-form-row-2 {
+                grid-template-columns: 1fr;
+            }
+        }
         @media (max-width: 900px) {
             .admin-navbar {
                 flex-direction: column;
@@ -1324,9 +1903,9 @@
 
             <!-- Info Profil Admin yang sedang Login -->
             <div class="artist-badge-info">
-                <div class="artist-avatar-circle" id="topAdminInitials">NV</div>
+                <div class="artist-avatar-circle" id="topAdminInitials">NQ</div>
                 <div class="artist-meta">
-                    <div class="artist-name" id="topAdminName">Nadine Muamlah Veronica</div>
+                    <div class="artist-name" id="topAdminName">Nadine Queen Reina</div>
                     <div class="artist-role">
                         <span id="topAdminRole">Lead MUA / Super Admin</span>
                         <span class="duty-status-badge" id="dutyToggleBtn" title="Klik untuk ubah status tugas">
@@ -1366,6 +1945,10 @@
                     <i class="fa-solid fa-users-gear"></i>
                     <span>Kelola 6 Staff MUA</span>
                 </button>
+                <button type="button" class="tab-btn" data-tab="tabProfileEditor">
+                    <i class="fa-solid fa-id-card-clip"></i>
+                    <span>Kelola Profil & Portofolio</span>
+                </button>
             </nav>
         </div>
 
@@ -1391,7 +1974,7 @@
                 <div class="kpi-info">
                     <h4>Menunggu Verifikasi DP</h4>
                     <div class="kpi-number" id="kpiPendingVerify">0</div>
-                    <div class="kpi-subtext">Perlu validasi pembayaran QRIS</div>
+                    <div class="kpi-subtext">Sudah bayar QRIS, cek mutasi rekening</div>
                 </div>
             </div>
 
@@ -1478,7 +2061,7 @@
             <div class="timeline-card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <div>
-                        <h3 style="font-family: var(--font-serif); font-size: 20px;">Pemetaan Slot Waktu Terkunci</h3>
+                        <h3 style="font-family: 'Poppins', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-dark);">Pemetaan Slot Waktu Terkunci</h3>
                         <p style="font-size: 13px; color: var(--text-light);">Memantau alokasi sesi masing-masing dari 6 staf MUA agar tidak terjadi jadwal bentrok.</p>
                     </div>
                 </div>
@@ -1492,13 +2075,123 @@
         <!-- TAB 3: KELOLA 6 STAFF MUA -->
         <section class="tab-pane" id="tabStaff">
             <div style="margin-bottom: 20px;">
-                <h3 style="font-family: var(--font-serif); font-size: 22px;">Daftar 6 MUA Artist Resmi Atelier</h3>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-dark);">Daftar 6 MUA Artist Resmi Atelier</h3>
                 <p style="font-size: 13.5px; color: var(--text-light);">Sinkron dengan profil di halaman publik dan sistem keamanan login whitelist.</p>
             </div>
 
             <div class="staff-cards-grid" id="staffCardsGrid">
                 <!-- Diisi dinamis oleh JavaScript -->
             </div>
+        </section>
+
+        <!-- TAB 4: KELOLA PROFIL & PORTOFOLIO MUA -->
+        <section class="tab-pane" id="tabProfileEditor">
+            <div class="profile-editor-topbar">
+                <div>
+                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-dark); margin-bottom: 4px;">Kelola Profil &amp; 3 Portofolio Terbaik</h3>
+                    <p style="font-size: 13px; color: var(--text-light); margin: 0;">Perubahan otomatis tersinkronisasi ke halaman publik <strong>Staff MUA</strong> melalui localStorage.</p>
+                </div>
+
+                <div class="editor-selector-wrap">
+                    <label for="editorArtistSelect"><i class="fa-solid fa-user-pen" style="color: var(--accent-pink);"></i> Pilih Artist:</label>
+                    <select id="editorArtistSelect" class="editor-artist-select">
+                        <!-- Diisi dinamis oleh JS -->
+                    </select>
+                    <span class="editor-access-pill" id="editorAccessBadge">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Super Admin</span>
+                    </span>
+                    <a href="staffmua.html" target="_blank" class="btn-preview-public" title="Lihat tampilan terbaru di halaman publik Staff MUA">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>Lihat di Staff MUA</span>
+                    </a>
+                </div>
+            </div>
+
+            <form id="staffProfileEditorForm">
+                <div class="profile-editor-grid">
+                    <!-- KOLOM KIRI: FOTO PROFIL dan IDENTITAS PROFESIONAL -->
+                    <div class="editor-card">
+                        <div class="editor-card-title">
+                            <i class="fa-solid fa-address-card"></i>
+                            <h4>Identitas &amp; Biodata Artist</h4>
+                        </div>
+
+                        <div class="profile-photo-upload-box">
+                            <div class="profile-photo-preview-wrap">
+                                <img id="editProfilePhotoPreview" src="img/MUA-STAFF-Nadine.png" alt="Preview Foto Profil">
+                            </div>
+                            <div class="profile-photo-actions">
+                                <strong style="font-size: 13px; color: var(--text-dark);" id="editPhotoArtistTitle">Foto Profil Artist</strong>
+                                <p>Format JPG/PNG/WebP. Gambar otomatis dioptimalkan untuk penyimpanan lokal.</p>
+                                <div class="photo-btn-row">
+                                    <button type="button" class="btn-upload-photo" id="btnTriggerProfileUpload">
+                                        <i class="fa-solid fa-camera"></i> Ganti Foto
+                                    </button>
+                                    <button type="button" class="btn-reset-photo" id="btnResetProfilePhoto">
+                                        <i class="fa-solid fa-rotate-left"></i> Reset Default
+                                    </button>
+                                </div>
+                                <input type="file" id="editProfilePhotoInput" accept="image/*" hidden>
+                            </div>
+                        </div>
+
+                        <div class="editor-form-group">
+                            <label for="editArtistName">Nama Lengkap Artist</label>
+                            <input type="text" id="editArtistName" class="editor-form-control" required placeholder="Nama lengkap MUA">
+                        </div>
+
+                        <div class="editor-form-row-2">
+                            <div class="editor-form-group">
+                                <label for="editArtistSpecialty">Gelar Spesialisasi</label>
+                                <input type="text" id="editArtistSpecialty" class="editor-form-control" required placeholder="Contoh: Senior Bridal & Glow Specialist">
+                            </div>
+                            <div class="editor-form-group">
+                                <label for="editArtistExp">Pengalaman (Tahun)</label>
+                                <input type="number" id="editArtistExp" class="editor-form-control" min="1" max="50" required>
+                            </div>
+                        </div>
+
+                        <div class="editor-form-group">
+                            <label for="editArtistBio">Bio Profesional</label>
+                            <textarea id="editArtistBio" class="editor-form-control" required placeholder="Deskripsikan keahlian tata rias, gaya khas, dan pengalaman artist..."></textarea>
+                        </div>
+
+                        <div class="editor-live-stats-banner">
+                            <div class="live-stat-pill">
+                                <span>Total Klien Dilayani (Sinkron)</span>
+                                <strong id="editorLiveClientsStat">650+ <i class="fa-solid fa-circle-check" style="color: var(--success); font-size: 13px;"></i></strong>
+                            </div>
+                            <div class="live-stat-pill">
+                                <span>Rating Kepuasan Dinamis</span>
+                                <strong id="editorLiveRatingStat">98% <i class="fa-solid fa-star" style="color: #f39c12; font-size: 13px;"></i></strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KOLOM KANAN: 3 PORTOFOLIO TERBAIK -->
+                    <div class="editor-card">
+                        <div class="editor-card-title">
+                            <i class="fa-solid fa-images"></i>
+                            <h4>3 Karya Portofolio Terbaik (Tampil di Staff MUA)</h4>
+                        </div>
+
+                        <div class="portfolio-slots-grid" id="portfolioSlotsContainer">
+                            <!-- 3 Slot Portofolio di-render dinamis oleh JS -->
+                        </div>
+
+                        <div class="editor-footer-actions">
+                            <button type="button" class="btn-reset-demo" id="btnReloadEditorData">
+                                <i class="fa-solid fa-rotate-left"></i> Batalkan Perubahan
+                            </button>
+                            <button type="submit" class="btn-save-profile" id="btnSaveStaffProfile">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <span>Simpan Profil</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </section>
 
     </main>
@@ -1527,6 +2220,62 @@
         </div>
     </div>
 
+    <!-- MODAL INPUT ALASAN PENOLAKAN / PEMBATALAN PESANAN -->
+    <div class="modal-overlay" id="rejectReasonModal">
+        <div class="modal-card" style="max-width: 510px;">
+            <div class="modal-header" style="background: #fff5f5; border-bottom-color: #fadbd8;">
+                <h3 style="color: #922b21;">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: var(--danger);"></i>
+                    <span>Tolak / Batalkan Pesanan</span>
+                </h3>
+                <button type="button" class="modal-close-btn" id="closeRejectModalBtn">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p style="font-size: 13px; color: var(--text-light); margin-bottom: 14px;">
+                    Pilih atau tuliskan alasan penolakan untuk pesanan <strong id="rejectOrderCodeLabel" style="color: var(--text-dark);">-</strong>. Keterangan ini akan langsung tampil pada halaman <strong>Pesanan Saya</strong> milik customer.
+                </p>
+
+                <div class="reject-preset-list" id="rejectPresetList">
+                    <label class="reject-preset-option">
+                        <input type="radio" name="rejectPreset" value="Dana DP 50% tidak ditemukan di mutasi QRIS" checked>
+                        <span>Dana DP 50% tidak ditemukan di mutasi QRIS</span>
+                    </label>
+                    <label class="reject-preset-option">
+                        <input type="radio" name="rejectPreset" value="Jadwal bentrok / slot waktu artist sudah penuh">
+                        <span>Jadwal bentrok / slot waktu artist sudah penuh</span>
+                    </label>
+                    <label class="reject-preset-option">
+                        <input type="radio" name="rejectPreset" value="Lokasi Home Service berada di luar jangkauan layanan Malang Raya">
+                        <span>Lokasi Home Service berada di luar jangkauan layanan Malang Raya</span>
+                    </label>
+                    <label class="reject-preset-option">
+                        <input type="radio" name="rejectPreset" value="Permintaan pembatalan langsung oleh klien">
+                        <span>Permintaan pembatalan langsung oleh klien</span>
+                    </label>
+                    <label class="reject-preset-option">
+                        <input type="radio" name="rejectPreset" value="CUSTOM">
+                        <span>Alasan kustom (tuliskan detail di bawah)</span>
+                    </label>
+                </div>
+
+                <div>
+                    <label for="rejectCustomInput" style="display: block; font-size: 12px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px;">
+                        Catatan Tambahan / Alasan Kustom:
+                    </label>
+                    <textarea id="rejectCustomInput" class="reject-custom-textarea" placeholder="Opsional: Tambahkan rincian atau tuliskan alasan khusus penolakan..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-reset-demo" id="cancelRejectModalBtn">Batal</button>
+                <button type="button" class="btn-status-act" id="confirmRejectOrderBtn" style="background: var(--danger); color: #ffffff;">
+                    <i class="fa-solid fa-ban"></i> Konfirmasi Penolakan
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- TOAST NOTIFIKASI -->
     <div class="toast-notify" id="adminToast">
         <i class="fa-solid fa-circle-check"></i>
@@ -1536,58 +2285,235 @@
     <!-- JAVASCRIPT DASHBOARD LOGIC -->
     <script>
         // ==========================================================================
-        // 1. DATA MASTER 6 STAFF MUA ATELIER (SINKRON DENGAN staffmua.html)
+        // 1. DATA MASTER PROFIL 6 STAFF MUA (chira_staff_profiles di localStorage)
         // ==========================================================================
-        const OFFICIAL_STAFF_MUA = [
+        const STAFF_PROFILES_KEY = "chira_staff_profiles";
+
+        const DEFAULT_STAFF_PROFILES = [
             {
-                name: "Nadine Muamlah Veronica",
-                role: "Lead MUA / Super Admin",
-                title: "Senior Bridal & Glow Specialist",
+                id: "nadine",
+                nama: "Nadine Queen Reina",
                 email: "nadine@chiramua.com",
-                photo: "img/MUA-STAFF-Nadine.png",
-                status: "Ready on Duty"
+                role: "Lead MUA / Super Admin",
+                spesialisasi: "Senior Bridal & Glow Specialist",
+                specialtyTag: "Bridal & Glow Specialist",
+                category: "bridal ready",
+                status: "Ready on Duty",
+                isReady: true,
+                bio: "Spesialis riasan modern soft glam dan radiant glowing flawless. Piawai menciptakan tampilan pengantin anggun yang tahan lama untuk momen sakral akad maupun resepsi.",
+                pengalamanTahun: 9,
+                fotoProfil: "img/MUA-STAFF-Nadine.png",
+                defaultFoto: "img/MUA-STAFF-Nadine.png",
+                baseKlien: 650,
+                baseKlienLabel: "Brides",
+                baseRating: 98,
+                portofolioTerbaik: [
+                    { judul: "Radiant Akad Bridal", kategori: "Wedding", gambar: "img/Portfolio-wedding1-after.png" },
+                    { judul: "Soft Glam Reception", kategori: "Wedding", gambar: "img/Portfolio-wedding2-after.png" },
+                    { judul: "Flawless Glass Skin", kategori: "Wedding", gambar: "img/Portfolio-wedding3-after.png" }
+                ]
             },
             {
-                name: "Aurora Clarissa",
-                role: "Staff MUA",
-                title: "Graduation & Party Look Specialist",
+                id: "aurora",
+                nama: "Aurora Clarissa",
                 email: "aurora@chiramua.com",
-                photo: "img/MUA-STAFF-Aurora.png",
-                status: "Ready on Duty"
+                role: "Staff MUA",
+                spesialisasi: "Graduation & Party Look Specialist",
+                specialtyTag: "Graduation & Party Look",
+                category: "graduation ready",
+                status: "Ready on Duty",
+                isReady: true,
+                bio: "Ahli dalam riasan wisuda fresh, youthful, dan natural glow yang tahan kilau seharian untuk momen kelulusan, prom night, hingga party semi-formal yang ceria.",
+                pengalamanTahun: 5,
+                fotoProfil: "img/MUA-STAFF-Aurora.png",
+                defaultFoto: "img/MUA-STAFF-Aurora.png",
+                baseKlien: 380,
+                baseKlienLabel: "Clients",
+                baseRating: 98,
+                portofolioTerbaik: [
+                    { judul: "Fresh Youthful Grad", kategori: "Graduation", gambar: "img/Portfolio-graduation1-after.jpg" },
+                    { judul: "Sweet Peach Birthday", kategori: "Birthday", gambar: "img/Portfolio-birthday1-after.png" },
+                    { judul: "Glowing Party Look", kategori: "Birthday", gambar: "img/Portfolio-birthday2-after.png" }
+                ]
             },
             {
-                name: "Draco Sebastian",
-                role: "Staff MUA",
-                title: "Fashion & Photoshoot MUA",
+                id: "draco",
+                nama: "Draco Sebastian",
                 email: "draco@chiramua.com",
-                photo: "img/MUA-STAFF-Draco.png",
-                status: "Ready on Duty"
+                role: "Staff MUA",
+                spesialisasi: "Fashion & Photoshoot MUA",
+                specialtyTag: "Commercial & Photoshoot",
+                category: "glamour ready",
+                status: "Ready on Duty",
+                isReady: true,
+                bio: "Pakar complexion berdimensi tegas dan eye-artistry untuk prewedding outdoor, fashion editorial, campaign komersial, serta video beresolusi tinggi 4K.",
+                pengalamanTahun: 7,
+                fotoProfil: "img/MUA-STAFF-Draco.png",
+                defaultFoto: "img/MUA-STAFF-Draco.png",
+                baseKlien: 510,
+                baseKlienLabel: "Shoots",
+                baseRating: 99,
+                portofolioTerbaik: [
+                    { judul: "Editorial High-Def 4K", kategori: "Photoshoot", gambar: "img/Portfolio-photoshoot1-after.png" },
+                    { judul: "Commercial Campaign", kategori: "Photoshoot", gambar: "img/Portfolio-photoshoot2-after.png" },
+                    { judul: "Sculpted Studio Look", kategori: "Photoshoot", gambar: "img/Portfolio-photoshoot3-after.png" }
+                ]
             },
             {
-                name: "Lisa Anggraini",
-                role: "Staff MUA",
-                title: "Engagement & Modern Hijab Specialist",
+                id: "lisa",
+                nama: "Lisa Anggraini",
                 email: "lisa@chiramua.com",
-                photo: "img/MUA-STAFF-Lisa.png",
-                status: "Ready on Duty"
+                role: "Staff MUA",
+                spesialisasi: "Engagement & Modern Hijab Specialist",
+                specialtyTag: "Engagement & Modern Hijab",
+                category: "engagement bridal ready",
+                status: "Ready on Duty",
+                isReady: true,
+                bio: "Spesialis perpaduan makeup lembut romantis untuk prosesi lamaran/sangjit dengan kreasi modern hijab styling yang rapi, mewah, dan menonjolkan inner beauty.",
+                pengalamanTahun: 6,
+                fotoProfil: "img/MUA-STAFF-Lisa.png",
+                defaultFoto: "img/MUA-STAFF-Lisa.png",
+                baseKlien: 450,
+                baseKlienLabel: "Events",
+                baseRating: 98,
+                portofolioTerbaik: [
+                    { judul: "Romantic Sangjit Look", kategori: "Engagement", gambar: "img/Portfolio-engagement1-after.jpg" },
+                    { judul: "Modern Hijab Glam", kategori: "Engagement", gambar: "img/service-engagement.png" },
+                    { judul: "Soft Dewy Bridal", kategori: "Wedding", gambar: "img/Portfolio-wedding1-after.png" }
+                ]
             },
             {
-                name: "Marco Pratama",
-                role: "Staff MUA",
-                title: "Senior Bridal & Airbrush Specialist",
+                id: "marco",
+                nama: "Marco Pratama",
                 email: "marco@chiramua.com",
-                photo: "img/MUA-STAFF-Marco.png",
-                status: "Ready on Duty"
+                role: "Staff MUA",
+                spesialisasi: "Senior Bridal & Airbrush Specialist",
+                specialtyTag: "Bridal & Airbrush Specialist",
+                category: "bridal glamour",
+                status: "Busy in Session",
+                isReady: false,
+                bio: "Master riasan pengantin modern dengan teknik airbrush ultra-flawless, anti-crack, dan tahan 14+ jam untuk pesta pernikahan megah dan intimate wedding.",
+                pengalamanTahun: 8,
+                fotoProfil: "img/MUA-STAFF-Marco.png",
+                defaultFoto: "img/MUA-STAFF-Marco.png",
+                baseKlien: 600,
+                baseKlienLabel: "Brides",
+                baseRating: 99,
+                portofolioTerbaik: [
+                    { judul: "Airbrush Grand Bridal", kategori: "Wedding", gambar: "img/Portfolio-wedding2-after.png" },
+                    { judul: "Intimate Luxury Bride", kategori: "Wedding", gambar: "img/Portfolio-wedding3-after.png" },
+                    { judul: "Signature Custom Look", kategori: "Custom", gambar: "img/Portfolio-custom2-after.png" }
+                ]
             },
             {
-                name: "Thania Aurelia Putri",
-                role: "Staff MUA",
-                title: "Editorial & High Glamour Specialist",
+                id: "thania",
+                nama: "Thania Aurelia Putri",
                 email: "thania@chiramua.com",
-                photo: "img/MUA-STAFF-Thania.png",
-                status: "Ready on Duty"
+                role: "Staff MUA",
+                spesialisasi: "Editorial & High Glamour Specialist",
+                specialtyTag: "Editorial & High Glamour",
+                category: "glamour ready",
+                status: "Ready on Duty",
+                isReady: true,
+                bio: "Ahli dalam riasan mata tajam elegan, dramatic look, dan glowing photoshoot complexion. Sangat direkomendasikan untuk wisuda, pesta malam, hingga commercial photoshoot.",
+                pengalamanTahun: 6,
+                fotoProfil: "img/MUA-STAFF-Thania.png",
+                defaultFoto: "img/MUA-STAFF-Thania.png",
+                baseKlien: 420,
+                baseKlienLabel: "Events",
+                baseRating: 99,
+                portofolioTerbaik: [
+                    { judul: "Dramatic Evening Glam", kategori: "Custom", gambar: "img/Portfolio-custom1-after.png" },
+                    { judul: "Bold Eye Editorial", kategori: "Custom", gambar: "img/Portfolio-custom3-after.png" },
+                    { judul: "Sparkling Night Party", kategori: "Birthday", gambar: "img/Portfolio-birthday3-after.png" }
+                ]
             }
         ];
+
+        let staffProfiles = [];
+
+        function cloneDefaultStaffProfiles() {
+            return JSON.parse(JSON.stringify(DEFAULT_STAFF_PROFILES));
+        }
+
+        function loadStaffProfiles() {
+            try {
+                const raw = localStorage.getItem(STAFF_PROFILES_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        // Pastikan seluruh field wajib lengkap terhadap skema default
+                        staffProfiles = DEFAULT_STAFF_PROFILES.map(def => {
+                            const found = parsed.find(p => p.id === def.id || p.email === def.email);
+                            if (!found) return JSON.parse(JSON.stringify(def));
+                            return {
+                                ...JSON.parse(JSON.stringify(def)),
+                                ...found,
+                                portofolioTerbaik: Array.isArray(found.portofolioTerbaik)
+                                    ? found.portofolioTerbaik.slice(0, 3)
+                                    : JSON.parse(JSON.stringify(def.portofolioTerbaik))
+                            };
+                        });
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.error("Gagal memuat chira_staff_profiles:", e);
+            }
+            staffProfiles = cloneDefaultStaffProfiles();
+            saveStaffProfiles();
+        }
+
+        function saveStaffProfiles() {
+            try {
+                localStorage.setItem(STAFF_PROFILES_KEY, JSON.stringify(staffProfiles));
+                return true;
+            } catch (e) {
+                console.error("Gagal menyimpan chira_staff_profiles:", e);
+                showToast("Gagal menyimpan: Ukuran gambar terlalu besar untuk memori browser!");
+                return false;
+            }
+        }
+
+        function calculateArtistPerformance(artist) {
+            const artistNameLower = (artist.nama || "").trim().toLowerCase();
+            const artistFirstLower = artistNameLower.split(" ")[0];
+            const relatedOrders = bookingsData.filter(b => {
+                const bStaff = (b.staffName || "").trim().toLowerCase();
+                return bStaff === artistNameLower || (artistFirstLower && bStaff.startsWith(artistFirstLower + " "));
+            });
+
+            const completedOrders = relatedOrders.filter(b => b.status === "Completed");
+            const cancelledOrders = relatedOrders.filter(b => b.status === "Cancelled");
+
+            const completedPax = completedOrders.reduce((sum, b) => sum + Math.max(1, parseInt(b.paxCount, 10) || 1), 0);
+            const totalClients = (Number(artist.baseKlien) || 0) + completedPax;
+
+            const baseRating = Number(artist.baseRating) || 98;
+            const compCount = completedOrders.length;
+            const cancCount = cancelledOrders.length;
+            let dynamicRating = baseRating;
+
+            if (compCount > 0 || cancCount > 0) {
+                const baseWeight = 10;
+                dynamicRating = ((baseRating * baseWeight) + (compCount * 100) + (cancCount * 0)) / (baseWeight + compCount + cancCount);
+                dynamicRating = Math.max(50, Math.min(100, dynamicRating));
+            }
+
+            const ratingText = Number.isInteger(Number(dynamicRating.toFixed(1)))
+                ? `${Math.round(dynamicRating)}%`
+                : `${dynamicRating.toFixed(1)}%`;
+
+            return {
+                totalOrders: relatedOrders.length,
+                activeConfirmed: relatedOrders.filter(b => b.status === "Confirmed").length,
+                completedCount: compCount,
+                cancelledCount: cancCount,
+                completedPax,
+                totalClients,
+                ratingText
+            };
+        }
 
         // 4 DATA PESANAN DUMMY REALISTIS
         const INITIAL_DEMO_BOOKINGS = [
@@ -1603,7 +2529,7 @@
                 startTime: "08:00",
                 endTime: "10:30",
                 totalDuration: 150,
-                staffName: "Nadine Muamlah Veronica",
+                staffName: "Nadine Queen Reina",
                 locationType: "Home Service (Rumah)",
                 address: "Jl. Ijen No. 45, Klojen, Kota Malang",
                 custNotes: "Kulit sensitif sedikit kemerahan di pipi. Request riasan glowing natural tahan lama untuk prosesi akad.",
@@ -1707,11 +2633,94 @@
         ];
 
         // ==========================================================================
-        // 2. PROTEKSI SESI LOGIN ADMIN & INISIALISASI PROFIL
+        // 2. MIGRASI DATA LAMA (MENGGANTI NAMA LAMA NADINE DI LOCALSTORAGE)
+        // ==========================================================================
+        function migrateLegacyNadineData() {
+            try {
+                // 1. Migrasi Sesi Admin di localStorage
+                const adminRaw = localStorage.getItem("chira_admin_session");
+                if (adminRaw && (adminRaw.includes("Nadine Muamlah Veronica") || adminRaw.includes("Muamlah") || adminRaw.includes("Veronica"))) {
+                    const updatedAdminRaw = adminRaw.replace(/Nadine Muamlah Veronica/g, "Nadine Queen Reina")
+                                                   .replace(/Nadine Veronica/g, "Nadine Queen Reina");
+                    localStorage.setItem("chira_admin_session", updatedAdminRaw);
+                }
+
+                // 2. Migrasi Riwayat Bookings di localStorage
+                const bookingsRaw = localStorage.getItem("chira_bookings");
+                if (bookingsRaw && (bookingsRaw.includes("Nadine Muamlah Veronica") || bookingsRaw.includes("Muamlah") || bookingsRaw.includes("Veronica"))) {
+                    const updatedBookingsRaw = bookingsRaw.replace(/Nadine Muamlah Veronica/g, "Nadine Queen Reina")
+                                                         .replace(/Nadine Veronica/g, "Nadine Queen Reina");
+                    localStorage.setItem("chira_bookings", updatedBookingsRaw);
+                }
+
+                // 3. Migrasi User Name & Profil Customer jika ada
+                const userName = localStorage.getItem("chira_user_name");
+                if (userName && (userName.includes("Nadine Muamlah Veronica") || userName.includes("Veronica"))) {
+                    localStorage.setItem("chira_user_name", userName.replace(/Nadine Muamlah Veronica/g, "Nadine Queen Reina").replace(/Nadine Veronica/g, "Nadine Queen Reina"));
+                }
+
+                const custProfileRaw = localStorage.getItem("chira_customer_profile");
+                if (custProfileRaw && custProfileRaw.includes("Nadine Muamlah Veronica")) {
+                    localStorage.setItem("chira_customer_profile", custProfileRaw.replace(/Nadine Muamlah Veronica/g, "Nadine Queen Reina"));
+                }
+
+                // 4. Migrasi Staff Profiles jika ada
+                const staffProfilesRaw = localStorage.getItem(STAFF_PROFILES_KEY);
+                if (staffProfilesRaw && (staffProfilesRaw.includes("Nadine Muamlah Veronica") || staffProfilesRaw.includes("Veronica"))) {
+                    localStorage.setItem(STAFF_PROFILES_KEY, staffProfilesRaw.replace(/Nadine Muamlah Veronica/g, "Nadine Queen Reina").replace(/Nadine Veronica/g, "Nadine Queen Reina"));
+                }
+            } catch (e) {
+                console.warn("Pemeriksaan migrasi legacy data:", e);
+            }
+        }
+
+        // ==========================================================================
+        // 3. PROTEKSI SESI LOGIN ADMIN & INISIALISASI PROFIL
         // ==========================================================================
         let currentAdminSession = null;
         let bookingsData = [];
         let activeModalOrder = null;
+
+        function isSuperAdminSession() {
+            if (!currentAdminSession) return false;
+            const roleStr = (currentAdminSession.role || "").toLowerCase();
+            const emailStr = (currentAdminSession.email || "").toLowerCase();
+            return roleStr.includes("super admin") || roleStr.includes("lead mua") || emailStr === "nadine@chiramua.com";
+        }
+
+        function findLoggedInStaffProfile() {
+            if (!currentAdminSession || !staffProfiles.length) return null;
+            const emailLower = (currentAdminSession.email || "").toLowerCase();
+            const nameLower = (currentAdminSession.namaArtist || "").toLowerCase();
+            return staffProfiles.find(p => (p.email || "").toLowerCase() === emailLower)
+                || staffProfiles.find(p => (p.nama || "").toLowerCase() === nameLower)
+                || null;
+        }
+
+        function syncAdminHeaderProfile() {
+            if (!currentAdminSession) return;
+            const matchedProfile = findLoggedInStaffProfile();
+            const name = (matchedProfile && matchedProfile.nama) || currentAdminSession.namaArtist || "Nadine Queen Reina";
+            const role = currentAdminSession.role || (matchedProfile && matchedProfile.role) || "Lead MUA / Super Admin";
+
+            document.getElementById("topAdminName").innerText = name;
+            document.getElementById("topAdminRole").innerText = role;
+            document.getElementById("welcomeGreeting").innerText = `Selamat Bertugas, ${name.split(" ")[0]}!`;
+
+            const avatarEl = document.getElementById("topAdminInitials");
+            if (avatarEl) {
+                const parts = name.trim().split(" ");
+                let initials = "AD";
+                if (parts.length >= 2) initials = (parts[0][0] + parts[1][0]).toUpperCase();
+                else if (parts.length === 1) initials = parts[0].slice(0, 2).toUpperCase();
+
+                if (matchedProfile && matchedProfile.fotoProfil) {
+                    avatarEl.innerHTML = `<img src="${matchedProfile.fotoProfil}" alt="${escapeHtml(name)}" onerror="this.parentElement.innerText='${initials}'">`;
+                } else {
+                    avatarEl.innerText = initials;
+                }
+            }
+        }
 
         function checkAdminAuth() {
             try {
@@ -1723,28 +2732,14 @@
                 console.error("Gagal membaca chira_admin_session", e);
             }
 
-            // Jika sesi admin tidak ada atau bukan admin, arahkan ke login-admin.html
+            // Jika sesi admin tidak ada atau bukan admin, arahkan ke admin-login.html
             if (!currentAdminSession || !currentAdminSession.isAdmin) {
                 alert("Akses Terbatas Otoritas Admin! Silakan masuk melalui Portal Admin Chira Make-Up.");
                 window.location.replace("admin-login.html");
                 return false;
             }
 
-            // Render Info Admin pada Header
-            const name = currentAdminSession.namaArtist || "Nadine Muamlah Veronica";
-            const role = currentAdminSession.role || "Lead MUA / Super Admin";
-            
-            document.getElementById("topAdminName").innerText = name;
-            document.getElementById("topAdminRole").innerText = role;
-            document.getElementById("welcomeGreeting").innerText = `Selamat Bertugas, ${name.split(" ")[0]}!`;
-
-            // Buat inisial 2 huruf
-            const parts = name.trim().split(" ");
-            let initials = "AD";
-            if (parts.length >= 2) initials = (parts[0][0] + parts[1][0]).toUpperCase();
-            else if (parts.length === 1) initials = parts[0].slice(0, 2).toUpperCase();
-            document.getElementById("topAdminInitials").innerText = initials;
-
+            syncAdminHeaderProfile();
             return true;
         }
 
@@ -1759,6 +2754,18 @@
                 }
             } catch (e) {
                 console.error("Gagal memuat chira_bookings", e);
+            }
+
+            // Sanitasi data jika masih ada nama artis lama yang lolos di memori
+            if (Array.isArray(bookingsData) && bookingsData.length > 0) {
+                let hasLegacy = false;
+                bookingsData.forEach(b => {
+                    if (b.staffName && (b.staffName.includes("Muamlah") || b.staffName.includes("Veronica"))) {
+                        b.staffName = "Nadine Queen Reina";
+                        hasLegacy = true;
+                    }
+                });
+                if (hasLegacy) saveBookingsToStorage();
             }
 
             // Jika data masih kosong atau kurang dari 1, isi dengan demo awal
@@ -2036,11 +3043,16 @@
                         </div>
                         <div class="finance-row total">
                             <span>Status Finansial Sesi:</span>
-                            <span style="color: ${order.status === 'Completed' ? 'var(--info)' : (order.status === 'Confirmed' ? 'var(--success)' : 'var(--warning)')};">
-                                ${order.status === 'Completed' ? 'LUNAS 100%' : 'DP 50% Terverifikasi'}
+                            <span style="color: ${order.status === 'Completed' ? 'var(--info)' : (order.status === 'Confirmed' ? 'var(--success)' : (order.status === 'Cancelled' ? 'var(--danger)' : 'var(--warning)'))};">
+                                ${order.status === 'Completed' ? 'LUNAS 100%' : (order.status === 'Cancelled' ? 'DITOLAK / DIBATALKAN' : 'DP 50% Terverifikasi')}
                             </span>
                         </div>
                     </div>
+                    ${order.status === 'Cancelled' ? `
+                    <div class="admin-reject-alert-box">
+                        <div style="font-weight: 700; margin-bottom: 4px;"><i class="fa-solid fa-circle-exclamation"></i> Alasan Penolakan / Pembatalan:</div>
+                        <div>${escapeHtml(order.alasanPenolakan || "Dibatalkan oleh Admin Studio.")}</div>
+                    </div>` : ''}
                 </div>
             `;
 
@@ -2065,12 +3077,8 @@
             if (order.status !== "Cancelled" && order.status !== "Completed") {
                 const btnCancel = document.createElement("button");
                 btnCancel.className = "btn-status-act btn-act-cancel";
-                btnCancel.innerHTML = `<i class="fa-solid fa-xmark"></i> Batalkan Sesi`;
-                btnCancel.onclick = () => {
-                    if (confirm(`Yakin ingin membatalkan pesanan ${order.bookingCode}? Sesuai ketentuan, DP dinyatakan hangus.`)) {
-                        updateOrderStatus(order.bookingCode, "Cancelled");
-                    }
-                };
+                btnCancel.innerHTML = `<i class="fa-solid fa-xmark"></i> Tolak / Batalkan`;
+                btnCancel.onclick = () => openRejectModal(order.bookingCode);
                 modalActions.appendChild(btnCancel);
             }
 
@@ -2082,23 +3090,79 @@
             activeModalOrder = null;
         }
 
+        let pendingRejectCode = null;
+
+        function openRejectModal(bookingCode) {
+            pendingRejectCode = bookingCode;
+            const codeLabel = document.getElementById("rejectOrderCodeLabel");
+            if (codeLabel) codeLabel.innerText = bookingCode;
+
+            // Reset radio preset ke pilihan pertama & kosongkan textarea
+            const firstRadio = document.querySelector('input[name="rejectPreset"]');
+            if (firstRadio) firstRadio.checked = true;
+            const customInput = document.getElementById("rejectCustomInput");
+            if (customInput) customInput.value = "";
+
+            document.getElementById("rejectReasonModal").style.display = "flex";
+        }
+
+        function closeRejectModal() {
+            document.getElementById("rejectReasonModal").style.display = "none";
+            pendingRejectCode = null;
+        }
+
+        function submitRejectOrder() {
+            if (!pendingRejectCode) return;
+
+            const selectedRadio = document.querySelector('input[name="rejectPreset"]:checked');
+            const customText = (document.getElementById("rejectCustomInput").value || "").trim();
+            let finalReason = "";
+
+            if (selectedRadio && selectedRadio.value === "CUSTOM") {
+                if (!customText) {
+                    alert("Mohon tuliskan alasan penolakan kustom terlebih dahulu.");
+                    document.getElementById("rejectCustomInput").focus();
+                    return;
+                }
+                finalReason = customText;
+            } else {
+                const basePreset = selectedRadio ? selectedRadio.value : "Dana DP 50% tidak ditemukan di mutasi QRIS";
+                finalReason = customText ? `${basePreset} — ${customText}` : basePreset;
+            }
+
+            const codeToReject = pendingRejectCode;
+            closeRejectModal();
+            updateOrderStatus(codeToReject, "Cancelled", finalReason);
+        }
+
         function quickChangeStatus(bookingCode, newStatus) {
             if (newStatus === "Cancelled") {
-                if (!confirm(`Batalkan pesanan ${bookingCode}?`)) return;
+                openRejectModal(bookingCode);
+                return;
             }
             updateOrderStatus(bookingCode, newStatus);
         }
 
-        function updateOrderStatus(bookingCode, newStatus) {
+        function updateOrderStatus(bookingCode, newStatus, rejectReason) {
             const index = bookingsData.findIndex(b => b.bookingCode === bookingCode);
             if (index !== -1) {
                 bookingsData[index].status = newStatus;
+                if (newStatus === "Cancelled") {
+                    bookingsData[index].alasanPenolakan = rejectReason || "Pesanan ditolak/dibatalkan oleh Admin Studio.";
+                    bookingsData[index].rejectedAt = new Date().toISOString();
+                    bookingsData[index].rejectedBy = (currentAdminSession && currentAdminSession.namaArtist) || "Admin Chira";
+                }
                 saveBookingsToStorage();
                 updateKPIs();
                 renderOrdersTable();
                 renderArtistTimeline();
+                renderStaffCards();
+                refreshEditorLiveStats();
 
-                showToast(`Status pesanan ${bookingCode} diubah menjadi: ${newStatus}`);
+                const msg = newStatus === "Cancelled"
+                    ? `Pesanan ${bookingCode} ditolak & alasan tersimpan ke halaman Customer.`
+                    : `Status pesanan ${bookingCode} diubah menjadi: ${newStatus}`;
+                showToast(msg);
                 closeDetailModal();
             }
         }
@@ -2109,7 +3173,7 @@
         function generateSimulatedBooking() {
             const client = SIMULATION_CLIENT_POOL[Math.floor(Math.random() * SIMULATION_CLIENT_POOL.length)];
             const service = SIMULATION_SERVICE_POOL[Math.floor(Math.random() * SIMULATION_SERVICE_POOL.length)];
-            const staff = OFFICIAL_STAFF_MUA[Math.floor(Math.random() * OFFICIAL_STAFF_MUA.length)];
+            const staff = staffProfiles[Math.floor(Math.random() * staffProfiles.length)];
 
             // Tanggal simulasi 10 s/d 45 hari ke depan
             const futureDays = Math.floor(10 + Math.random() * 35);
@@ -2138,7 +3202,7 @@
                 startTime: startTime,
                 endTime: endTime,
                 totalDuration: service.duration,
-                staffName: staff.name,
+                staffName: staff.nama,
                 locationType: Math.random() > 0.4 ? "Studio Chira Malang" : "Home Service (Rumah)",
                 address: "Jl. Soekarno Hatta No. " + (Math.floor(Math.random() * 80) + 1) + ", Kota Malang",
                 custNotes: client.notes,
@@ -2157,6 +3221,7 @@
             updateKPIs();
             renderOrdersTable();
             renderArtistTimeline();
+            renderStaffCards();
 
             showToast(`Pesanan Baru Berhasil Masuk! (${bookingCode} - ${client.name})`);
         }
@@ -2168,10 +3233,10 @@
             const grid = document.getElementById("artistTimelineGrid");
             grid.innerHTML = "";
 
-            OFFICIAL_STAFF_MUA.forEach(artist => {
+            staffProfiles.forEach(artist => {
                 // Ambil jadwal aktif artis ini
-                const artistBookings = bookingsData.filter(b => 
-                    b.staffName === artist.name && 
+                const artistBookings = bookingsData.filter(b =>
+                    b.staffName === artist.nama &&
                     b.status !== "Cancelled"
                 );
 
@@ -2198,10 +3263,10 @@
 
                 box.innerHTML = `
                     <div class="artist-timeline-header">
-                        <img src="${artist.photo}" alt="${artist.name}" onerror="this.src='img/CHIRA_LOGO-removebg-preview.png'">
+                        <img src="${artist.fotoProfil}" alt="${escapeHtml(artist.nama)}" onerror="this.src='img/CHIRA_LOGO-removebg-preview.png'">
                         <div>
-                            <strong style="color: var(--text-dark); font-size: 14px;">${artist.name}</strong>
-                            <div style="font-size: 11px; color: var(--text-light);">${artist.title}</div>
+                            <strong style="color: var(--text-dark); font-size: 14px;">${escapeHtml(artist.nama)}</strong>
+                            <div style="font-size: 11px; color: var(--text-light);">${escapeHtml(artist.spesialisasi)}</div>
                         </div>
                     </div>
                     <div>
@@ -2218,15 +3283,18 @@
         }
 
         // ==========================================================================
-        // 9. RENDER TAB KELOLA 6 STAFF MUA
+        // 9. RENDER TAB KELOLA 6 STAFF MUA (TERHUBUNG DENGAN chira_staff_profiles)
         // ==========================================================================
         function renderStaffCards() {
             const grid = document.getElementById("staffCardsGrid");
             grid.innerHTML = "";
 
-            OFFICIAL_STAFF_MUA.forEach((artist, idx) => {
-                const totalHandled = bookingsData.filter(b => b.staffName === artist.name).length;
-                const activeHandled = bookingsData.filter(b => b.staffName === artist.name && b.status === "Confirmed").length;
+            const isSuper = isSuperAdminSession();
+            const loggedEmail = (currentAdminSession && currentAdminSession.email || "").toLowerCase();
+
+            staffProfiles.forEach((artist, idx) => {
+                const perf = calculateArtistPerformance(artist);
+                const canEditThisArtist = isSuper || (artist.email || "").toLowerCase() === loggedEmail;
 
                 const card = document.createElement("div");
                 card.className = "staff-admin-card";
@@ -2234,37 +3302,43 @@
                 card.innerHTML = `
                     <div>
                         <div class="staff-card-top">
-                            <img src="${artist.photo}" alt="${artist.name}" onerror="this.src='img/CHIRA_LOGO-removebg-preview.png'">
+                            <img src="${artist.fotoProfil}" alt="${escapeHtml(artist.nama)}" onerror="this.src='img/CHIRA_LOGO-removebg-preview.png'">
                             <div class="staff-card-meta">
-                                <span class="role-pill">${artist.role}</span>
-                                <h4>${artist.name}</h4>
-                                <p><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-pink);"></i> ${artist.title}</p>
-                                <p style="margin-top: 3px;"><i class="fa-regular fa-envelope"></i> ${artist.email}</p>
+                                <span class="role-pill">${escapeHtml(artist.role)}</span>
+                                <h4>${escapeHtml(artist.nama)}</h4>
+                                <p><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-pink);"></i> ${escapeHtml(artist.spesialisasi)}</p>
+                                <p style="margin-top: 3px;"><i class="fa-regular fa-envelope"></i> ${escapeHtml(artist.email)}</p>
                             </div>
                         </div>
 
                         <div class="staff-stats-row">
                             <div>
-                                <span>Total Reservasi:</span>
-                                <strong>${totalHandled} Sesi</strong>
+                                <span>Klien Dilayani:</span>
+                                <strong>${perf.totalClients}+</strong>
                             </div>
                             <div>
-                                <span>Slot Terkunci:</span>
-                                <strong style="color: var(--success);">${activeHandled} Aktif</strong>
+                                <span>Rating Dinamis:</span>
+                                <strong style="color: var(--success);">${perf.ratingText}</strong>
                             </div>
                             <div>
                                 <span>Status Kerja:</span>
-                                <strong style="color: var(--dark-pink);">${artist.status}</strong>
+                                <strong style="color: var(--dark-pink);">${escapeHtml(artist.status)}</strong>
                             </div>
                         </div>
                     </div>
 
-                    <div class="staff-card-actions">
-                        <button type="button" class="toggle-duty-btn" onclick="toggleStaffDuty(${idx})">
-                            <i class="fa-solid fa-repeat"></i> Ganti Status Sesi
-                        </button>
+                    <div class="staff-card-actions" style="flex-wrap: wrap; gap: 8px;">
+                        <div style="display:flex; gap: 6px; flex-wrap: wrap;">
+                            <button type="button" class="toggle-duty-btn" onclick="toggleStaffDuty(${idx})">
+                                <i class="fa-solid fa-repeat"></i> Status
+                            </button>
+                            ${canEditThisArtist ? `
+                            <button type="button" class="btn-quick-edit-staff" onclick="openProfileEditorFor('${artist.id}')">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit Profil
+                            </button>` : ""}
+                        </div>
                         <a href="https://wa.me/6281234567890" target="_blank" style="font-size: 12px; color: var(--success); text-decoration: none; font-weight: 600;">
-                            <i class="fa-brands fa-whatsapp"></i> Hubungi MUA
+                            <i class="fa-brands fa-whatsapp"></i> Hubungi
                         </a>
                     </div>
                 `;
@@ -2274,12 +3348,378 @@
         }
 
         function toggleStaffDuty(index) {
-            if (OFFICIAL_STAFF_MUA[index]) {
-                const cur = OFFICIAL_STAFF_MUA[index].status;
-                OFFICIAL_STAFF_MUA[index].status = (cur === "Ready on Duty") ? "Busy in Session" : "Ready on Duty";
+            if (staffProfiles[index]) {
+                const artist = staffProfiles[index];
+                const isBecomingBusy = artist.status === "Ready on Duty";
+                artist.status = isBecomingBusy ? "Busy in Session" : "Ready on Duty";
+                artist.isReady = !isBecomingBusy;
+
+                // Sinkronkan tag filter 'ready' untuk halaman publik staffmua.html
+                const catTokens = (artist.category || "").split(/\s+/).filter(Boolean).filter(c => c !== "ready");
+                if (artist.isReady) catTokens.push("ready");
+                artist.category = catTokens.join(" ");
+
+                saveStaffProfiles();
                 renderStaffCards();
-                showToast(`Status tugas ${OFFICIAL_STAFF_MUA[index].name} diperbarui: ${OFFICIAL_STAFF_MUA[index].status}`);
+                showToast(`Status tugas ${artist.nama} diperbarui & disinkronkan: ${artist.status}`);
             }
+        }
+
+        // ==========================================================================
+        // 9B. EDITOR PROFIL & 3 PORTOFOLIO TERBAIK (SINKRON KE staffmua.html)
+        // ==========================================================================
+        const PORTFOLIO_CATEGORIES = ["Wedding", "Graduation", "Engagement", "Birthday", "Photoshoot", "Custom"];
+        let activeEditorArtistId = null;
+        let editorDraftPhoto = "";
+        let editorDraftPortfolio = [];
+
+        function compressImageToBase64(file, maxWidth, quality, callback) {
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (evt) {
+                const img = new Image();
+                img.onload = function () {
+                    const canvas = document.createElement("canvas");
+                    let width = img.width;
+                    let height = img.height;
+                    if (width > maxWidth) {
+                        height = Math.round((height * maxWidth) / width);
+                        width = maxWidth;
+                    }
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0, width, height);
+                    const compressed = canvas.toDataURL("image/jpeg", quality);
+                    callback(compressed);
+                };
+                img.onerror = function () {
+                    callback(evt.target.result);
+                };
+                img.src = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function initProfileEditor() {
+            const selectEl = document.getElementById("editorArtistSelect");
+            const badgeEl = document.getElementById("editorAccessBadge");
+            if (!selectEl) return;
+
+            const isSuper = isSuperAdminSession();
+            const loggedStaff = findLoggedInStaffProfile() || staffProfiles[0];
+
+            selectEl.innerHTML = "";
+            staffProfiles.forEach(artist => {
+                const opt = document.createElement("option");
+                opt.value = artist.id;
+                opt.textContent = `${artist.nama} (${artist.role})`;
+                selectEl.appendChild(opt);
+            });
+
+            if (isSuper) {
+                selectEl.disabled = false;
+                if (badgeEl) {
+                    badgeEl.innerHTML = `<i class="fa-solid fa-crown"></i> <span>Akses Super Admin (6 Artist)</span>`;
+                }
+            } else {
+                selectEl.disabled = true;
+                if (badgeEl) {
+                    badgeEl.innerHTML = `<i class="fa-solid fa-user-lock"></i> <span>Mode Profil Pribadi</span>`;
+                }
+            }
+
+            activeEditorArtistId = loggedStaff ? loggedStaff.id : staffProfiles[0].id;
+            selectEl.value = activeEditorArtistId;
+            loadArtistIntoEditor(activeEditorArtistId);
+
+            // Bind change selector
+            selectEl.onchange = function () {
+                activeEditorArtistId = this.value;
+                loadArtistIntoEditor(activeEditorArtistId);
+            };
+
+            // Upload Foto Profil
+            const btnUploadProfile = document.getElementById("btnTriggerProfileUpload");
+            const fileInputProfile = document.getElementById("editProfilePhotoInput");
+            const btnResetProfile = document.getElementById("btnResetProfilePhoto");
+
+            if (btnUploadProfile && fileInputProfile) {
+                btnUploadProfile.onclick = () => fileInputProfile.click();
+                fileInputProfile.onchange = function () {
+                    const file = this.files && this.files[0];
+                    if (!file) return;
+                    if (!file.type.startsWith("image/")) {
+                        showToast("Mohon pilih file gambar (JPG/PNG/WebP).");
+                        return;
+                    }
+                    compressImageToBase64(file, 520, 0.8, function (base64Data) {
+                        editorDraftPhoto = base64Data;
+                        document.getElementById("editProfilePhotoPreview").src = base64Data;
+                        showToast("Pratinjau foto profil diperbarui. Klik 'Simpan Profil' untuk menerapkan.");
+                    });
+                    this.value = "";
+                };
+            }
+
+            if (btnResetProfile) {
+                btnResetProfile.onclick = function () {
+                    const artist = staffProfiles.find(p => p.id === activeEditorArtistId);
+                    const defArtist = DEFAULT_STAFF_PROFILES.find(p => p.id === activeEditorArtistId);
+                    const fallbackImg = (defArtist && defArtist.fotoProfil) || (artist && artist.defaultFoto) || "img/MUA-STAFF-Nadine.png";
+                    editorDraftPhoto = fallbackImg;
+                    document.getElementById("editProfilePhotoPreview").src = fallbackImg;
+                    showToast("Foto profil dikembalikan ke foto bawaan.");
+                };
+            }
+
+            // Batalkan perubahan
+            const btnReload = document.getElementById("btnReloadEditorData");
+            if (btnReload) {
+                btnReload.onclick = function () {
+                    loadArtistIntoEditor(activeEditorArtistId);
+                    showToast("Perubahan dibatalkan, data dimuat ulang.");
+                };
+            }
+
+            // Submit Simpan Profil
+            const form = document.getElementById("staffProfileEditorForm");
+            if (form) {
+                form.onsubmit = function (e) {
+                    e.preventDefault();
+                    saveArtistProfileFromEditor();
+                };
+            }
+        }
+
+        function loadArtistIntoEditor(artistId) {
+            const artist = staffProfiles.find(p => p.id === artistId) || staffProfiles[0];
+            if (!artist) return;
+
+            activeEditorArtistId = artist.id;
+            const selectEl = document.getElementById("editorArtistSelect");
+            if (selectEl) selectEl.value = artist.id;
+
+            editorDraftPhoto = artist.fotoProfil || artist.defaultFoto || "img/MUA-STAFF-Nadine.png";
+            document.getElementById("editProfilePhotoPreview").src = editorDraftPhoto;
+            document.getElementById("editPhotoArtistTitle").innerText = `Foto Profil — ${artist.nama}`;
+            document.getElementById("editArtistName").value = artist.nama || "";
+            document.getElementById("editArtistSpecialty").value = artist.spesialisasi || "";
+            document.getElementById("editArtistExp").value = artist.pengalamanTahun || 5;
+            document.getElementById("editArtistBio").value = artist.bio || "";
+
+            // Siapkan tepat 3 slot portofolio terbaik
+            const existing = Array.isArray(artist.portofolioTerbaik) ? artist.portofolioTerbaik : [];
+            editorDraftPortfolio = [0, 1, 2].map(i => {
+                const item = existing[i];
+                if (item) {
+                    return {
+                        judul: item.judul || "",
+                        kategori: item.kategori || "Wedding",
+                        gambar: item.gambar || ""
+                    };
+                }
+                return { judul: "", kategori: "Wedding", gambar: "" };
+            });
+
+            renderPortfolioEditorSlots();
+            refreshEditorLiveStats();
+        }
+
+        function refreshEditorLiveStats() {
+            const artist = staffProfiles.find(p => p.id === activeEditorArtistId);
+            if (!artist) return;
+            const perf = calculateArtistPerformance(artist);
+            const clientsEl = document.getElementById("editorLiveClientsStat");
+            const ratingEl = document.getElementById("editorLiveRatingStat");
+
+            if (clientsEl) {
+                clientsEl.innerHTML = `${perf.totalClients}+ ${escapeHtml(artist.baseKlienLabel || "Klien")} <i class="fa-solid fa-circle-check" style="color: var(--success); font-size: 13px;" title="Base ${artist.baseKlien} + ${perf.completedPax} Pax Completed"></i>`;
+            }
+            if (ratingEl) {
+                ratingEl.innerHTML = `${perf.ratingText} <i class="fa-solid fa-star" style="color: #f39c12; font-size: 13px;" title="Selesai: ${perf.completedCount} | Batal: ${perf.cancelledCount}"></i>`;
+            }
+        }
+
+        function renderPortfolioEditorSlots() {
+            const container = document.getElementById("portfolioSlotsContainer");
+            if (!container) return;
+            container.innerHTML = "";
+
+            editorDraftPortfolio.forEach((slot, idx) => {
+                const card = document.createElement("div");
+                card.className = "portfolio-slot-card";
+
+                const thumbHTML = slot.gambar
+                    ? `<img src="${slot.gambar}" alt="Portofolio ${idx + 1}" id="slotPreviewImg_${idx}">`
+                    : `<div class="portfolio-slot-empty"><i class="fa-regular fa-image"></i>Belum ada foto</div>`;
+
+                const categoryOptions = PORTFOLIO_CATEGORIES.map(cat =>
+                    `<option value="${cat}" ${slot.kategori === cat ? "selected" : ""}>${cat}</option>`
+                ).join("");
+
+                card.innerHTML = `
+                    <div class="portfolio-slot-thumb">
+                        <span class="portfolio-slot-badge">Karya #${idx + 1}</span>
+                        ${thumbHTML}
+                    </div>
+                    <div class="portfolio-slot-fields">
+                        <div class="portfolio-slot-fields-row">
+                            <div>
+                                <label style="font-size: 11px; font-weight: 600; color: var(--text-light); display:block; margin-bottom:4px;">Judul Karya</label>
+                                <input type="text" class="editor-form-control" style="padding: 8px 11px; font-size: 12.5px;" placeholder="Contoh: Soft Glam Bridal" value="${escapeHtml(slot.judul)}" oninput="updateDraftPortfolioField(${idx}, 'judul', this.value)">
+                            </div>
+                            <div>
+                                <label style="font-size: 11px; font-weight: 600; color: var(--text-light); display:block; margin-bottom:4px;">Kategori Riasan</label>
+                                <select class="editor-form-control" style="padding: 8px 10px; font-size: 12.5px;" onchange="updateDraftPortfolioField(${idx}, 'kategori', this.value)">
+                                    ${categoryOptions}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="portfolio-slot-btns">
+                            <button type="button" class="btn-slot-upload" onclick="triggerPortfolioSlotUpload(${idx})">
+                                <i class="fa-solid fa-upload"></i> ${slot.gambar ? "Ganti Foto" : "Unggah Foto"}
+                            </button>
+                            ${slot.gambar ? `
+                            <button type="button" class="btn-slot-clear" onclick="clearPortfolioSlot(${idx})">
+                                <i class="fa-solid fa-trash-can"></i> Hapus Slot
+                            </button>` : ""}
+                            <input type="file" id="slotFileInput_${idx}" accept="image/*" hidden onchange="handlePortfolioSlotFile(${idx}, this)">
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateDraftPortfolioField(slotIndex, field, value) {
+            if (editorDraftPortfolio[slotIndex]) {
+                editorDraftPortfolio[slotIndex][field] = value;
+            }
+        }
+
+        function triggerPortfolioSlotUpload(slotIndex) {
+            const input = document.getElementById(`slotFileInput_${slotIndex}`);
+            if (input) input.click();
+        }
+
+        function handlePortfolioSlotFile(slotIndex, inputEl) {
+            const file = inputEl.files && inputEl.files[0];
+            if (!file) return;
+            if (!file.type.startsWith("image/")) {
+                showToast("Mohon pilih file gambar (JPG/PNG/WebP).");
+                return;
+            }
+            compressImageToBase64(file, 640, 0.78, function (base64Data) {
+                if (editorDraftPortfolio[slotIndex]) {
+                    editorDraftPortfolio[slotIndex].gambar = base64Data;
+                    if (!editorDraftPortfolio[slotIndex].judul.trim()) {
+                        editorDraftPortfolio[slotIndex].judul = `Karya Terbaik #${slotIndex + 1}`;
+                    }
+                    renderPortfolioEditorSlots();
+                    showToast(`Foto Karya #${slotIndex + 1} siap disimpan.`);
+                }
+            });
+            inputEl.value = "";
+        }
+
+        function clearPortfolioSlot(slotIndex) {
+            if (editorDraftPortfolio[slotIndex]) {
+                editorDraftPortfolio[slotIndex] = { judul: "", kategori: "Wedding", gambar: "" };
+                renderPortfolioEditorSlots();
+                showToast(`Slot Karya #${slotIndex + 1} dikosongkan.`);
+            }
+        }
+
+        function saveArtistProfileFromEditor() {
+            const idx = staffProfiles.findIndex(p => p.id === activeEditorArtistId);
+            if (idx === -1) return;
+
+            const oldName = staffProfiles[idx].nama;
+            const newName = (document.getElementById("editArtistName").value || "").trim() || oldName;
+            const newSpec = (document.getElementById("editArtistSpecialty").value || "").trim() || staffProfiles[idx].spesialisasi;
+            const newExp = Math.max(1, parseInt(document.getElementById("editArtistExp").value, 10) || 1);
+            const newBio = (document.getElementById("editArtistBio").value || "").trim() || staffProfiles[idx].bio;
+
+            // Saring hanya slot portofolio yang memiliki gambar (maks 3)
+            const cleanedPortfolio = editorDraftPortfolio
+                .filter(slot => slot && slot.gambar)
+                .slice(0, 3)
+                .map((slot, i) => ({
+                    judul: (slot.judul || "").trim() || `Karya Terbaik #${i + 1}`,
+                    kategori: slot.kategori || "Wedding",
+                    gambar: slot.gambar
+                }));
+
+            staffProfiles[idx] = {
+                ...staffProfiles[idx],
+                nama: newName,
+                spesialisasi: newSpec,
+                specialtyTag: newSpec.replace(/\s*Specialist$/i, "").trim() || newSpec,
+                pengalamanTahun: newExp,
+                bio: newBio,
+                fotoProfil: editorDraftPhoto || staffProfiles[idx].fotoProfil,
+                portofolioTerbaik: cleanedPortfolio
+            };
+
+            if (!saveStaffProfiles()) return;
+
+            // Jika artist yang diedit adalah admin yang sedang login, sinkronkan chira_admin_session & header
+            if (currentAdminSession && (
+                (currentAdminSession.email || "").toLowerCase() === (staffProfiles[idx].email || "").toLowerCase() ||
+                currentAdminSession.namaArtist === oldName
+            )) {
+                currentAdminSession.namaArtist = newName;
+                try {
+                    localStorage.setItem("chira_admin_session", JSON.stringify(currentAdminSession));
+                    localStorage.setItem("chira_user_name", newName);
+                } catch (e) {}
+            }
+
+            // Sinkronkan nama baru di bookingsData jika nama berubah
+            if (oldName !== newName) {
+                let bookingUpdated = false;
+                bookingsData.forEach(b => {
+                    if (b.staffName === oldName) {
+                        b.staffName = newName;
+                        bookingUpdated = true;
+                    }
+                });
+                if (bookingUpdated) {
+                    saveBookingsToStorage();
+                    renderOrdersTable();
+                }
+            }
+
+            // Perbarui semua tampilan di dashboard
+            syncAdminHeaderProfile();
+            renderStaffCards();
+            renderArtistTimeline();
+
+            // Refresh dropdown label selector
+            const selectEl = document.getElementById("editorArtistSelect");
+            if (selectEl) {
+                const opt = selectEl.querySelector(`option[value="${staffProfiles[idx].id}"]`);
+                if (opt) opt.textContent = `${newName} (${staffProfiles[idx].role})`;
+            }
+            document.getElementById("editPhotoArtistTitle").innerText = `Foto Profil — ${newName}`;
+
+            showToast(`Profil ${newName} berhasil disimpan & disinkronkan ke Staff MUA!`);
+        }
+
+        function openProfileEditorFor(artistId) {
+            // Pindah ke Tab 4 (Kelola Profil & Portofolio)
+            const tabs = document.querySelectorAll(".tab-btn");
+            tabs.forEach(t => t.classList.remove("active"));
+            document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+
+            const editorTabBtn = document.querySelector('.tab-btn[data-tab="tabProfileEditor"]');
+            const editorPane = document.getElementById("tabProfileEditor");
+            if (editorTabBtn) editorTabBtn.classList.add("active");
+            if (editorPane) editorPane.classList.add("active");
+
+            loadArtistIntoEditor(artistId);
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
         // ==========================================================================
@@ -2340,15 +3780,20 @@
 
         // DOM READY SETUP
         document.addEventListener("DOMContentLoaded", function() {
-            // A. Cek Hak Akses
+            // A. Jalankan Migrasi Otomatis Data Lama & Muat Master Profil 6 Staff
+            migrateLegacyNadineData();
+            loadStaffProfiles();
+
+            // B. Cek Hak Akses & Sinkronkan Foto/Nama Header
             if (!checkAdminAuth()) return;
 
-            // B. Muat Data
+            // C. Muat Data Pesanan, KPI, Timeline, Staff Cards & Editor Profil
             loadBookings();
             updateKPIs();
             renderOrdersTable();
             renderArtistTimeline();
             renderStaffCards();
+            initProfileEditor();
 
             // C. Tab Switching
             const tabs = document.querySelectorAll(".tab-btn");
@@ -2361,6 +3806,9 @@
                     const targetId = this.getAttribute("data-tab");
                     const targetPane = document.getElementById(targetId);
                     if (targetPane) targetPane.classList.add("active");
+                    if (targetId === "tabProfileEditor") {
+                        refreshEditorLiveStats();
+                    }
                 });
             });
 
@@ -2379,15 +3827,37 @@
                     updateKPIs();
                     renderOrdersTable();
                     renderArtistTimeline();
+                    renderStaffCards();
+                    refreshEditorLiveStats();
                     showToast("Data demonstrasi awal berhasil dipulihkan!");
                 }
             });
 
-            // G. Tutup Modal
+            // G. Tutup Modal Detail & Modal Alasan Penolakan
             document.getElementById("closeDetailModalBtn").addEventListener("click", closeDetailModal);
             document.getElementById("closeModalBottomBtn").addEventListener("click", closeDetailModal);
             document.getElementById("orderDetailModal").addEventListener("click", function(e) {
                 if (e.target === this) closeDetailModal();
+            });
+
+            document.getElementById("closeRejectModalBtn").addEventListener("click", closeRejectModal);
+            document.getElementById("cancelRejectModalBtn").addEventListener("click", closeRejectModal);
+            document.getElementById("confirmRejectOrderBtn").addEventListener("click", submitRejectOrder);
+            document.getElementById("rejectReasonModal").addEventListener("click", function(e) {
+                if (e.target === this) closeRejectModal();
+            });
+
+            // G2. Sinkronisasi Real-Time antar Tab (booking baru / rating customer)
+            window.addEventListener("storage", function(e) {
+                if (e.key === "chira_bookings" || e.key === STAFF_PROFILES_KEY) {
+                    loadStaffProfiles();
+                    loadBookings();
+                    updateKPIs();
+                    renderOrdersTable();
+                    renderArtistTimeline();
+                    renderStaffCards();
+                    refreshEditorLiveStats();
+                }
             });
 
             // H. Toggle Status Tugas Sendiri

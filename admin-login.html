@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin & MUA Artist | Chira Make Up</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -339,73 +340,13 @@
             flex-shrink: 0;
         }
 
-        /* ACCORDION PETUNJUK DEMO */
-        .demo-credentials-card {
-            width: 100%;
-            max-width: 390px;
-            margin-top: 10px;
-            background: #ffffff;
-            border: 1px solid #f2c8c3;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-        }
-
-        .demo-toggle-btn {
-            width: 100%;
-            padding: 8px 14px;
-            background: #fff9f9;
-            border: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--dark-pink);
-            font-family: inherit;
-        }
-
-        .demo-toggle-btn:hover {
-            background: #fde9e6;
-        }
-
-        .demo-content {
-            display: none;
-            padding: 10px 14px;
-            font-size: 11px;
-            color: #554444;
-            max-height: 160px;
-            overflow-y: auto;
-            border-top: 1px dashed #ebd4cf;
-            line-height: 1.5;
-        }
-
-        .demo-content table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .demo-content td {
-            padding: 4px 2px;
-            vertical-align: top;
-        }
-
-        .demo-pin-badge {
-            background: #f4dada;
-            padding: 1px 5px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-weight: bold;
-        }
-
         /* BAGIAN BAWAH */
         .bottom-section {
             text-align: center;
             color: #8c7878;
             font-size: 12px;
             line-height: 1.5;
-            margin-top: 10px;
+            margin-top: clamp(14px, 2.5vh, 22px);
         }
 
         .bottom-section a {
@@ -801,7 +742,7 @@
                         type="email"
                         id="adminEmail"
                         name="email"
-                        placeholder="contoh: nadine@chiramua.com"
+                        placeholder="contoh: aurora@chiramua.com"
                         aria-label="Email Admin"
                         required
                         autocomplete="email"
@@ -826,7 +767,7 @@
                         <input type="checkbox" name="remember" id="rememberMe">
                         <span>Ingat Perangkat Ini</span>
                     </label>
-                    <a href="#" class="forgot-link" onclick="alert('Untuk reset akun Admin/Artist, silakan hubungi Lead MUA / Super Admin (Nadine Veronica).'); return false;">Lupa Sandi?</a>
+                    <a href="#" class="forgot-link" onclick="alert('Untuk reset akun Admin/Artist, silakan hubungi Lead MUA / Super Admin (Nadine Queen Reina).'); return false;">Lupa Sandi?</a>
                 </div>
 
                 <button type="submit" class="login-button" id="submitLoginBtn">
@@ -851,50 +792,6 @@
                 </button>
 
             </form>
-
-            <!-- PETUNJUK KREDENSIAL DEMO UNTUK PENGUJIAN / PRESENTASI -->
-            <div class="demo-credentials-card">
-                <button type="button" class="demo-toggle-btn" id="toggleDemoBtn">
-                    <span><i class="fa-solid fa-circle-info"></i> Petunjuk Akun & PIN Demo (Klik)</span>
-                    <i class="fa-solid fa-chevron-down" id="demoChevron"></i>
-                </button>
-                <div class="demo-content" id="demoContent">
-                    <p style="margin-bottom: 6px;"><strong>PIN Studio (Master):</strong> <span class="demo-pin-badge">889900</span> (Semua akun)</p>
-                    <table>
-                        <tr>
-                            <td><strong>1. Nadine (Lead)</strong></td>
-                            <td>nadine@chiramua.com</td>
-                            <td>PIN: <span class="demo-pin-badge">112233</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>2. Aurora</strong></td>
-                            <td>aurora@chiramua.com</td>
-                            <td>PIN: <span class="demo-pin-badge">223344</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>3. Draco</strong></td>
-                            <td>draco@chiramua.com</td>
-                            <td>PIN: <span class="demo-pin-badge">334455</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>4. Lisa</strong></td>
-                            <td>lisa@chiramua.com</td>
-                            <td>PIN: <span class="demo-pin-badge">445566</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>5. Marco</strong></td>
-                            <td>marco@chiramua.com</td>
-                            <td>PIN: <span class="demo-pin-badge">556677</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>6. Thania</strong></td>
-                            <td>thania@chiramua.com</td>
-                            <td>PIN: <span class="demo-pin-badge">667788</span></td>
-                        </tr>
-                    </table>
-                    <p style="margin-top: 6px; color: #887777;">* Password standar: <code>password123</code></p>
-                </div>
-            </div>
 
             <!-- FOOTER BAWAH -->
             <footer class="bottom-section">
@@ -949,9 +846,9 @@
 
             <!-- INFORMASI ARTIST YANG DIOTENTIKASI -->
             <div class="admin-auth-info">
-                <div class="admin-avatar" id="authAvatar">NV</div>
+                <div class="admin-avatar" id="authAvatar">NQ</div>
                 <div class="admin-text-details">
-                    <div class="name" id="authArtistName">Nadine Muamlah Veronica</div>
+                    <div class="name" id="authArtistName">Nadine Queen Reina</div>
                     <div class="role" id="authArtistRole">Lead MUA / Super Admin</div>
                 </div>
             </div>
@@ -1024,8 +921,8 @@
             {
                 email: "nadine@chiramua.com",
                 googleEmail: "nadine.mua@gmail.com",
-                nama: "Nadine Muamlah Veronica",
-                inisial: "NV",
+                nama: "Nadine Queen Reina",
+                inisial: "NQ",
                 role: "Lead MUA / Super Admin",
                 personalPin: "112233"
             },
@@ -1112,17 +1009,6 @@
         const personalPinHint = document.getElementById("personalPinHint");
         const attemptsText = document.getElementById("attemptsText");
         const cancelPinBtn = document.getElementById("cancelPinBtn");
-
-        // ACCORDION TOGGLE
-        const toggleDemoBtn = document.getElementById("toggleDemoBtn");
-        const demoContent = document.getElementById("demoContent");
-        const demoChevron = document.getElementById("demoChevron");
-        toggleDemoBtn.addEventListener("click", function() {
-            const isVisible = demoContent.style.display === "block";
-            demoContent.style.display = isVisible ? "none" : "block";
-            demoChevron.classList.toggle("fa-chevron-down", isVisible);
-            demoChevron.classList.toggle("fa-chevron-up", !isVisible);
-        });
 
         // FUNGSI TAMPILKAN ALERT
         function showAlert(msg, isSuccess = false) {
