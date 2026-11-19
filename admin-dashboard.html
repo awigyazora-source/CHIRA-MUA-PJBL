@@ -2581,7 +2581,386 @@
                 grid-template-columns: 1fr;
             }
         }
+    
+        /* --- STILISASI MODUL LAPORAN KEUANGAN & OPERASIONAL --- */
+        .report-filter-bar {
+            background: #ffffff;
+            border: 1px solid #ebd4cf;
+            border-radius: 16px;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            box-shadow: 0 2px 10px rgba(146, 121, 121, 0.04);
+        }
+
+        .filter-group-left, .filter-group-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group-left label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .report-custom-dates {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fdf6f6;
+            padding: 5px 12px;
+            border-radius: 12px;
+            border: 1px solid #f0dede;
+        }
+
+        .report-custom-dates span {
+            font-size: 11.5px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .filter-input-date {
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid #e5c9c9;
+            font-family: inherit;
+            font-size: 12px;
+            color: var(--text-dark);
+            outline: none;
+            background: #fff;
+        }
+
+        .filter-input-date:focus {
+            border-color: var(--accent-pink);
+        }
+
+        .btn-filter-apply {
+            background: var(--dark-pink);
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-filter-apply:hover {
+            background: var(--dark-pink-hover);
+        }
+
+        .btn-filter-reset {
+            background: #fbecec;
+            color: var(--dark-pink);
+            border: 1px solid #ebd4cf;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-filter-reset:hover {
+            background: #f5d6d6;
+        }
+
+        .report-active-badge {
+            background: linear-gradient(135deg, #fdf2f4 0%, #fff7f8 100%);
+            color: var(--dark-pink);
+            border: 1px solid #eecbd2;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .report-kpi-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .report-kpi-icon-wrap {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: #fdf2f4;
+            color: var(--accent-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+
+        .report-breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 8px;
+            padding-top: 7px;
+            border-top: 1px dashed #f2dede;
+        }
+
+        .report-breakdown-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .report-breakdown-row strong {
+            color: var(--text-dark);
+        }
+
+        .report-summary-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff8f8 100%);
+            border: 1px solid #ebd4cf;
+            border-radius: 16px;
+            padding: 16px 22px;
+            box-shadow: 0 2px 10px rgba(146, 121, 121, 0.04);
+        }
+
+        .summary-stat-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .summary-stat-box i {
+            font-size: 24px;
+            color: var(--accent-pink);
+            background: #fdf0f2;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .summary-stat-box small {
+            display: block;
+            font-size: 11.5px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .summary-stat-box strong {
+            display: block;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 2px;
+        }
+
+        .report-charts-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 20px;
+        }
+
+        .chart-canvas-wrap {
+            position: relative;
+            height: 270px;
+            width: 100%;
+            padding: 10px 0 0;
+        }
+
+        .print-report-template {
+            display: none;
+        }
+
+        @media (max-width: 992px) {
+            .report-charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- ATURAN CETAK RESMI BERGAYA STRUK / E-RECEIPT (@media print) --- */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 12mm 15mm;
+            }
+
+            /* Sembunyikan semua elemen kontrol, header admin, sidebar, dan tab non-cetak */
+            body * {
+                visibility: hidden !important;
+            }
+
+            .admin-sidebar,
+            .admin-topbar,
+            .report-header-banner,
+            .report-filter-bar,
+            .btn-print-report,
+            .pagination-container,
+            .report-charts-grid,
+            .table-container-card,
+            .report-kpi-grid,
+            .report-summary-bar,
+            .sidebar-backdrop,
+            .toast,
+            .modal-overlay,
+            .action-btns-group,
+            .kpi-grid,
+            .dashboard-analytics-grid {
+                display: none !important;
+            }
+
+            /* Tampilkan khusus template struk resmi */
+            #printReportTemplate,
+            #printReportTemplate * {
+                visibility: visible !important;
+            }
+
+            #printReportTemplate {
+                display: block !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 10px 15px !important;
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-family: 'Poppins', Arial, sans-serif !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .print-kop {
+                display: flex !important;
+                align-items: center !important;
+                gap: 16px !important;
+                border-bottom: 2.5px solid #222222 !important;
+                padding-bottom: 12px !important;
+                margin-bottom: 14px !important;
+            }
+
+            .print-kop-logo {
+                width: 60px !important;
+                height: auto !important;
+            }
+
+            .print-kop-text h2 {
+                font-size: 19px !important;
+                font-family: 'Playfair Display', serif !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.8px !important;
+                margin: 0 0 2px !important;
+                color: #111111 !important;
+                text-transform: uppercase !important;
+            }
+
+            .print-kop-text p {
+                font-size: 10.5px !important;
+                margin: 0 !important;
+                color: #333333 !important;
+                line-height: 1.35 !important;
+            }
+
+            .print-meta-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+                margin-bottom: 14px !important;
+                background: #faf6f6 !important;
+                border: 1px solid #d8bebe !important;
+                border-radius: 6px !important;
+                padding: 9px 14px !important;
+                font-size: 10.5px !important;
+                color: #222222 !important;
+            }
+
+            .print-receipt-summary {
+                border: 1.5px solid #333333 !important;
+                border-radius: 6px !important;
+                padding: 11px 15px !important;
+                margin-bottom: 14px !important;
+                background: #ffffff !important;
+            }
+
+            .print-receipt-summary-grid {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 12px !important;
+            }
+
+            .print-table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                font-size: 10px !important;
+                margin-bottom: 20px !important;
+            }
+
+            .print-table th, .print-table td {
+                border: 1px solid #cccccc !important;
+                padding: 5px 7px !important;
+                text-align: left !important;
+            }
+
+            .print-table th {
+                background-color: #f6e8ea !important;
+                color: #111111 !important;
+                font-weight: 700 !important;
+                text-transform: uppercase !important;
+                font-size: 9px !important;
+            }
+
+            .print-signatures {
+                display: flex !important;
+                justify-content: space-between !important;
+                margin-top: 25px !important;
+                page-break-inside: avoid !important;
+            }
+
+            .print-sign-col {
+                width: 220px !important;
+                text-align: center !important;
+                font-size: 10.5px !important;
+            }
+
+            .print-sign-space {
+                height: 55px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            .print-sign-name {
+                font-weight: 700 !important;
+                text-decoration: underline !important;
+                margin-top: 4px !important;
+                color: #111 !important;
+            }
+        }
+
     </style>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -3003,8 +3382,191 @@
 
                 <!-- 5. TAB LAPORAN BISNIS & KEUANGAN CHIRA MUA -->
                 <section class="tab-pane" id="tabReports">
-                    <div class="reports-container" id="reportsContent">
-                        <!-- Diisi dinamis oleh JavaScript -->
+                    <div class="reports-container">
+                        <!-- BANNER HEADER & TOMBOL CETAK -->
+                        <div class="report-header-banner">
+                            <div>
+                                <h3><i class="fa-solid fa-file-invoice-dollar" style="color: var(--dark-pink);"></i> Laporan Keuangan &amp; Operasional Bisnis</h3>
+                                <p>Rekapitulasi Omzet, Penerimaan DP 50% QRIS, Piutang Hari-H, &amp; Kinerja 6 Artist Atelier</p>
+                            </div>
+                            <button type="button" class="btn-print-report" onclick="prepareAndPrintReport()">
+                                <i class="fa-solid fa-print"></i> Cetak Laporan Keuangan (Struk / PDF)
+                            </button>
+                        </div>
+
+                        <!-- 1. FILTER PERIODE & TANGGAL -->
+                        <div class="report-filter-bar">
+                            <div class="filter-group-left">
+                                <label for="reportPeriodPreset"><i class="fa-solid fa-calendar-days" style="color: var(--accent-pink);"></i> Periode Laporan:</label>
+                                <select id="reportPeriodPreset" class="filter-select" onchange="handleReportPeriodChange()">
+                                    <option value="all" selected>Semua Periode</option>
+                                    <option value="this_month">Bulan Ini (November 2026)</option>
+                                    <option value="last_month">Bulan Lalu (Oktober 2026)</option>
+                                    <option value="year_2026">Tahun Berjalan 2026</option>
+                                    <option value="custom">Kustom Rentang Tanggal...</option>
+                                </select>
+
+                                <div class="report-custom-dates" id="reportCustomDateWrap" style="display: none;">
+                                    <span>Dari:</span>
+                                    <input type="date" id="reportStartDate" class="filter-input-date">
+                                    <span>Sampai:</span>
+                                    <input type="date" id="reportEndDate" class="filter-input-date">
+                                    <button type="button" class="btn-filter-apply" onclick="applyReportCustomDate()">
+                                        <i class="fa-solid fa-check"></i> Terapkan
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="filter-group-right">
+                                <span class="report-active-badge" id="reportActivePeriodBadge">
+                                    <i class="fa-regular fa-calendar-days"></i> Semua Periode
+                                </span>
+                                <button type="button" class="btn-filter-reset" onclick="resetReportPeriodFilter()" title="Kembali ke Semua Periode">
+                                    <i class="fa-solid fa-rotate-left"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 2. 4 KARTU INDIKATOR KEUANGAN (KPI) -->
+                        <div class="report-kpi-grid">
+                            <!-- KPI 1: TOTAL OMZET KOTOR -->
+                            <div class="report-kpi-card">
+                                <div class="report-kpi-top">
+                                    <h4>Total Omzet Kotor (Gross)</h4>
+                                    <div class="report-kpi-icon-wrap"><i class="fa-solid fa-sack-dollar"></i></div>
+                                </div>
+                                <div class="report-kpi-val" id="repGrossOmzet" style="color: var(--dark-pink);">Rp 0</div>
+                                <div class="report-breakdown-row">
+                                    <span><i class="fa-solid fa-wand-magic-sparkles"></i> Jasa: <strong id="repServiceRev">Rp 0</strong></span>
+                                    <span><i class="fa-solid fa-car-side"></i> Transport: <strong id="repTransportRev">Rp 0</strong></span>
+                                </div>
+                            </div>
+
+                            <!-- KPI 2: KAS MASUK DP 50% QRIS -->
+                            <div class="report-kpi-card">
+                                <div class="report-kpi-top">
+                                    <h4>Kas Masuk DP 50% (QRIS)</h4>
+                                    <div class="report-kpi-icon-wrap" style="background: #eafaf1; color: var(--success);"><i class="fa-solid fa-qrcode"></i></div>
+                                </div>
+                                <div class="report-kpi-val" id="repTotalDP" style="color: var(--success);">Rp 0</div>
+                                <div class="report-kpi-sub"><i class="fa-solid fa-circle-check"></i> Validasi QRIS Bank Masuk</div>
+                            </div>
+
+                            <!-- KPI 3: KAS MASUK PELUNASAN -->
+                            <div class="report-kpi-card">
+                                <div class="report-kpi-top">
+                                    <h4>Kas Masuk Pelunasan</h4>
+                                    <div class="report-kpi-icon-wrap" style="background: #ebf5fb; color: var(--info);"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                                </div>
+                                <div class="report-kpi-val" id="repCompletedSettlement" style="color: var(--info);">Rp 0</div>
+                                <div class="report-kpi-sub" id="repCompletedSessionsCount">0 Sesi Selesai 100%</div>
+                            </div>
+
+                            <!-- KPI 4: PIUTANG SISA PELUNASAN (HARI-H) -->
+                            <div class="report-kpi-card">
+                                <div class="report-kpi-top">
+                                    <h4>Piutang Sisa Pelunasan</h4>
+                                    <div class="report-kpi-icon-wrap" style="background: #fef5e7; color: var(--warning);"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                                </div>
+                                <div class="report-kpi-val" id="repOutstandingBalance" style="color: var(--warning);">Rp 0</div>
+                                <div class="report-kpi-sub" id="repConfirmedOrdersCount">0 Pesanan Berjalan (Hari-H)</div>
+                            </div>
+                        </div>
+
+                        <!-- RINGKASAN TAMBAHAN (TOTAL KAS RIIL & AOV) -->
+                        <div class="report-summary-bar">
+                            <div class="summary-stat-box">
+                                <i class="fa-solid fa-vault"></i>
+                                <div>
+                                    <small>Total Kas Riil Terkumpul (DP + Pelunasan)</small>
+                                    <strong id="repTotalCashReal">Rp 0</strong>
+                                </div>
+                            </div>
+                            <div class="summary-stat-box">
+                                <i class="fa-solid fa-chart-line"></i>
+                                <div>
+                                    <small>Rata-Rata Nilai Transaksi (AOV)</small>
+                                    <strong id="repAOV">Rp 0</strong>
+                                </div>
+                            </div>
+                            <div class="summary-stat-box">
+                                <i class="fa-solid fa-receipt"></i>
+                                <div>
+                                    <small>Volume Transaksi Terpilih</small>
+                                    <strong id="repActiveOrderCount">0 Reservasi</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. VISUALISASI GRAFIK ANALITIK (2 CHARTS) -->
+                        <div class="report-charts-grid">
+                            <!-- CHART 1: BAR CHART PER KATEGORI -->
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <div>
+                                        <h3><i class="fa-solid fa-chart-column" style="color: var(--accent-pink);"></i> Omzet &amp; Pesanan per Kategori</h3>
+                                        <p>Perbandingan kontribusi finansial: Bridal, Graduation, Engagement, Party &amp; Custom</p>
+                                    </div>
+                                    <span class="chart-badge">Live Analytics</span>
+                                </div>
+                                <div class="chart-canvas-wrap">
+                                    <canvas id="categoryRevenueChart"></canvas>
+                                </div>
+                            </div>
+
+                            <!-- CHART 2: DONUT KONTRIBUSI 6 MUA -->
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <div>
+                                        <h3><i class="fa-solid fa-chart-pie" style="color: var(--accent-pink);"></i> Kontribusi Finansial 6 Staff MUA</h3>
+                                        <p>Proporsi omzet &amp; jumlah sesi make-up selesai per artist</p>
+                                    </div>
+                                    <span class="chart-badge">6 Artists</span>
+                                </div>
+                                <div class="chart-canvas-wrap">
+                                    <canvas id="artistContributionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. TABEL REKAPITULASI TRANSAKSI FINANSIAL -->
+                        <div class="table-container-card">
+                            <div class="table-toolbar">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <h4 style="font-size: 15px; font-weight: 700; color: var(--text-dark); margin:0;">
+                                        <i class="fa-solid fa-table-list" style="color: var(--accent-pink);"></i> Rekapitulasi Rincian Transaksi Finansial
+                                    </h4>
+                                    <span class="count-badge" id="reportTableCountBadge">0 Transaksi</span>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="order-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Kode Booking</th>
+                                            <th>Tanggal &amp; Sesi</th>
+                                            <th>Klien &amp; Kontak</th>
+                                            <th>Staff MUA</th>
+                                            <th>Kategori &amp; Zona</th>
+                                            <th>Jasa + Transport</th>
+                                            <th>DP 50% QRIS</th>
+                                            <th>Sisa Pelunasan</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reportTransactionsTableBody">
+                                        <!-- Diisi dinamis -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- PAGINATION LAPORAN -->
+                            <div class="pagination-container" id="reportsPagination"></div>
+                        </div>
+
+                        <!-- 5. TEMPLATE CETAK RESMI (@media print) -->
+                        <div class="print-report-template" id="printReportTemplate">
+                            <!-- Diisi dinamis sebelum window.print() -->
+                        </div>
                     </div>
                 </section>
 
@@ -3661,6 +4223,15 @@
 
         let scheduleCurrentPage = 1;
         const schedulePageSize = 6;
+
+        let reportPeriod = "all";
+        let reportCustomStartDate = "";
+        let reportCustomEndDate = "";
+        let reportsCurrentPage = 1;
+        const reportsPageSize = 8;
+        let categoryChartInstance = null;
+        let artistChartInstance = null;
+
 
         let activeModalOrder = null;
 
@@ -4574,6 +5145,7 @@
             renderScheduleTable();
                 renderStaffCards();
                 refreshEditorLiveStats();
+                renderReportsSection();
 
                 const msg = newStatus === "Cancelled"
                     ? `Pesanan ${bookingCode} ditolak & alasan tersimpan ke halaman Customer.`
@@ -4684,6 +5256,7 @@
             renderDashboardOverview();
             renderScheduleTable();
             renderStaffCards();
+            renderReportsSection();
 
             showToast(`Pesanan Baru Berhasil Masuk! (${bookingCode} - ${client.name})`);
         }
@@ -4821,138 +5394,689 @@
         // ==========================================================================
         // 8B. RENDER LAPORAN BISNIS & KEUANGAN CHIRA MUA
         // ==========================================================================
-        function renderReportsSection() {
-            const container = document.getElementById("reportsContent");
-            if (!container) return;
+        // ==========================================================================
+        // 8B. MODUL LAPORAN KEUANGAN & OPERASIONAL BISNIS LENGKAP
+        // ==========================================================================
+        function getServiceCategory(item) {
+            const key = ((item.serviceKey || "") + " " + (item.serviceName || "")).toLowerCase();
+            if (key.includes("wedding") || key.includes("bridal") || key.includes("pengantin") || key.includes("pre-wedding")) {
+                return "Bridal";
+            }
+            if (key.includes("graduation") || key.includes("wisuda")) {
+                return "Graduation";
+            }
+            if (key.includes("engagement") || key.includes("lamaran") || key.includes("sangjit")) {
+                return "Engagement";
+            }
+            return "Party & Custom";
+        }
 
-            const validOrders = bookingsData.filter(b => b.status !== "Cancelled");
-            const totalOmset = validOrders.reduce((sum, b) => sum + Number(b.totalPrice || 0), 0);
-            const totalDP = validOrders.reduce((sum, b) => sum + Number(b.paidAmount || b.dpAmount || (b.totalPrice * 0.5) || 0), 0);
-            const totalRemaining = totalOmset - totalDP;
-            const aov = validOrders.length > 0 ? Math.round(totalOmset / validOrders.length) : 0;
+        function getFilteredReportBookings() {
+            let list = bookingsData.filter(b => b.status !== "Cancelled");
 
-            const serviceMap = {};
-            validOrders.forEach(b => {
-                const key = b.serviceName || "Lainnya";
-                if (!serviceMap[key]) serviceMap[key] = { count: 0, revenue: 0 };
-                serviceMap[key].count++;
-                serviceMap[key].revenue += Number(b.totalPrice || 0);
+            const now = new Date();
+            const currYear = now.getFullYear();
+            const currMonth = now.getMonth();
+
+            if (reportPeriod === "this_month") {
+                list = list.filter(b => {
+                    const dStr = b.selectedDate || (b.timestamp ? b.timestamp.slice(0, 10) : "");
+                    if (!dStr) return true;
+                    const parts = dStr.split("-");
+                    if (parts.length >= 2) {
+                        const yr = parseInt(parts[0], 10);
+                        const mo = parseInt(parts[1], 10) - 1;
+                        return yr === currYear && mo === currMonth;
+                    }
+                    return true;
+                });
+            } else if (reportPeriod === "last_month") {
+                const lastMoDate = new Date(currYear, currMonth - 1, 1);
+                const targetYr = lastMoDate.getFullYear();
+                const targetMo = lastMoDate.getMonth();
+                list = list.filter(b => {
+                    const dStr = b.selectedDate || (b.timestamp ? b.timestamp.slice(0, 10) : "");
+                    if (!dStr) return true;
+                    const parts = dStr.split("-");
+                    if (parts.length >= 2) {
+                        const yr = parseInt(parts[0], 10);
+                        const mo = parseInt(parts[1], 10) - 1;
+                        return yr === targetYr && mo === targetMo;
+                    }
+                    return true;
+                });
+            } else if (reportPeriod === "year_2026") {
+                list = list.filter(b => {
+                    const dStr = b.selectedDate || (b.timestamp ? b.timestamp.slice(0, 10) : "");
+                    return !dStr || dStr.startsWith("2026");
+                });
+            } else if (reportPeriod === "custom") {
+                if (reportCustomStartDate) {
+                    list = list.filter(b => {
+                        const dStr = b.selectedDate || (b.timestamp ? b.timestamp.slice(0, 10) : "");
+                        return !dStr || dStr >= reportCustomStartDate;
+                    });
+                }
+                if (reportCustomEndDate) {
+                    list = list.filter(b => {
+                        const dStr = b.selectedDate || (b.timestamp ? b.timestamp.slice(0, 10) : "");
+                        return !dStr || dStr <= reportCustomEndDate;
+                    });
+                }
+            }
+
+            return list;
+        }
+
+        function getReportPeriodLabel() {
+            if (reportPeriod === "all") return "Semua Periode";
+            if (reportPeriod === "this_month") return "Bulan Ini (November 2026)";
+            if (reportPeriod === "last_month") return "Bulan Lalu (Oktober 2026)";
+            if (reportPeriod === "year_2026") return "Tahun Berjalan 2026";
+            if (reportPeriod === "custom") {
+                const s = reportCustomStartDate || "...";
+                const e = reportCustomEndDate || "...";
+                return `Kustom: ${s} s/d ${e}`;
+            }
+            return "Semua Periode";
+        }
+
+        function handleReportPeriodChange() {
+            const sel = document.getElementById("reportPeriodPreset");
+            const customWrap = document.getElementById("reportCustomDateWrap");
+            if (!sel) return;
+
+            reportPeriod = sel.value;
+            if (reportPeriod === "custom") {
+                if (customWrap) customWrap.style.display = "flex";
+            } else {
+                if (customWrap) customWrap.style.display = "none";
+                reportsCurrentPage = 1;
+                renderReportsSection();
+            }
+        }
+
+        function applyReportCustomDate() {
+            const sInput = document.getElementById("reportStartDate");
+            const eInput = document.getElementById("reportEndDate");
+            reportCustomStartDate = sInput ? sInput.value : "";
+            reportCustomEndDate = eInput ? eInput.value : "";
+            reportsCurrentPage = 1;
+            renderReportsSection();
+        }
+
+        function resetReportPeriodFilter() {
+            reportPeriod = "all";
+            reportCustomStartDate = "";
+            reportCustomEndDate = "";
+            const sel = document.getElementById("reportPeriodPreset");
+            const customWrap = document.getElementById("reportCustomDateWrap");
+            const sInput = document.getElementById("reportStartDate");
+            const eInput = document.getElementById("reportEndDate");
+
+            if (sel) sel.value = "all";
+            if (customWrap) customWrap.style.display = "none";
+            if (sInput) sInput.value = "";
+            if (eInput) eInput.value = "";
+
+            reportsCurrentPage = 1;
+            renderReportsSection();
+        }
+
+        function setReportsPage(page) {
+            reportsCurrentPage = page;
+            const filtered = getFilteredReportBookings();
+            renderReportTransactionsTable(filtered);
+        }
+
+        function renderReportKPIs(filtered) {
+            // 1. Total Omzet Kotor: Akumulasi transaksi Confirmed & Completed
+            const revBookings = filtered.filter(b => b.status === "Confirmed" || b.status === "Completed");
+            let grossOmzet = 0;
+            let transportOmzet = 0;
+
+            revBookings.forEach(b => {
+                const total = Number(b.totalPrice || 0);
+                const zoneInfo = getOrderZoneInfo(b);
+                const transport = Number(zoneInfo.fee || b.transportFee || 0);
+                grossOmzet += total;
+                transportOmzet += transport;
+            });
+            const serviceOmzet = Math.max(0, grossOmzet - transportOmzet);
+
+            // 2. Kas Masuk DP 50% QRIS: Total DP valid masuk
+            const dpEligible = filtered.filter(b => 
+                b.status === "Confirmed" || 
+                b.status === "Completed" || 
+                b.status === "DP 50% Paid (Slot Locked)"
+            );
+            const totalDP = dpEligible.reduce((sum, b) => {
+                const dp = b.paidAmount || b.dpAmount || (Number(b.totalPrice || 0) * 0.5) || 0;
+                return sum + Number(dp);
+            }, 0);
+
+            // 3. Kas Masuk Pelunasan: Pelunasan 100% dari sesi Completed
+            const completedBookings = filtered.filter(b => b.status === "Completed");
+            const totalPelunasan = completedBookings.reduce((sum, b) => {
+                const total = Number(b.totalPrice || 0);
+                const dp = Number(b.dpAmount || b.paidAmount || (total * 0.5) || 0);
+                const remaining = Math.max(0, total - dp);
+                return sum + remaining;
+            }, 0);
+
+            // 4. Piutang Sisa Pelunasan: Tagihan 50% berjalan dari Confirmed
+            const confirmedBookings = filtered.filter(b => b.status === "Confirmed");
+            const totalPiutang = confirmedBookings.reduce((sum, b) => {
+                const total = Number(b.totalPrice || 0);
+                const dp = Number(b.paidAmount || b.dpAmount || (total * 0.5) || 0);
+                const remaining = b.remainingAmount !== undefined ? Number(b.remainingAmount) : Math.max(0, total - dp);
+                return sum + remaining;
+            }, 0);
+
+            // Ringkasan Finansial Tambahan
+            const totalKasRiil = totalDP + totalPelunasan;
+            const aov = revBookings.length > 0 ? Math.round(grossOmzet / revBookings.length) : 0;
+
+            // Update DOM Elements
+            const elGross = document.getElementById("repGrossOmzet");
+            const elServ = document.getElementById("repServiceRev");
+            const elTrans = document.getElementById("repTransportRev");
+            const elDP = document.getElementById("repTotalDP");
+            const elPelunasan = document.getElementById("repCompletedSettlement");
+            const elCompCount = document.getElementById("repCompletedSessionsCount");
+            const elPiutang = document.getElementById("repOutstandingBalance");
+            const elConfCount = document.getElementById("repConfirmedOrdersCount");
+            const elCashReal = document.getElementById("repTotalCashReal");
+            const elAOV = document.getElementById("repAOV");
+            const elActiveCount = document.getElementById("repActiveOrderCount");
+            const elBadge = document.getElementById("reportActivePeriodBadge");
+
+            if (elGross) elGross.innerText = formatRupiah(grossOmzet);
+            if (elServ) elServ.innerText = formatRupiah(serviceOmzet);
+            if (elTrans) elTrans.innerText = formatRupiah(transportOmzet);
+            if (elDP) elDP.innerText = formatRupiah(totalDP);
+            if (elPelunasan) elPelunasan.innerText = formatRupiah(totalPelunasan);
+            if (elCompCount) elCompCount.innerText = `${completedBookings.length} Sesi Selesai (100% Lunas)`;
+            if (elPiutang) elPiutang.innerText = formatRupiah(totalPiutang);
+            if (elConfCount) elConfCount.innerText = `${confirmedBookings.length} Pesanan Berjalan (Hari-H)`;
+            if (elCashReal) elCashReal.innerText = formatRupiah(totalKasRiil);
+            if (elAOV) elAOV.innerText = formatRupiah(aov);
+            if (elActiveCount) elActiveCount.innerText = `${filtered.length} Reservasi Aktif`;
+            if (elBadge) elBadge.innerHTML = `<i class="fa-regular fa-calendar-days"></i> ${getReportPeriodLabel()}`;
+
+            return {
+                grossOmzet,
+                serviceOmzet,
+                transportOmzet,
+                totalDP,
+                totalPelunasan,
+                totalPiutang,
+                totalKasRiil,
+                aov,
+                completedCount: completedBookings.length,
+                confirmedCount: confirmedBookings.length,
+                activeCount: filtered.length
+            };
+        }
+
+        function renderReportCharts(filtered) {
+            const revBookings = filtered.filter(b => b.status === "Confirmed" || b.status === "Completed");
+
+            // 1. Data per Kategori: Bridal, Graduation, Engagement, Party & Custom
+            const categories = ["Bridal", "Graduation", "Engagement", "Party & Custom"];
+            const catData = {
+                "Bridal": { omzet: 0, count: 0 },
+                "Graduation": { omzet: 0, count: 0 },
+                "Engagement": { omzet: 0, count: 0 },
+                "Party & Custom": { omzet: 0, count: 0 }
+            };
+
+            revBookings.forEach(b => {
+                const cat = getServiceCategory(b);
+                if (!catData[cat]) catData[cat] = { omzet: 0, count: 0 };
+                catData[cat].omzet += Number(b.totalPrice || 0);
+                catData[cat].count += 1;
             });
 
-            let serviceRows = "";
-            Object.keys(serviceMap).forEach(key => {
-                const item = serviceMap[key];
-                const pct = totalOmset > 0 ? Math.round((item.revenue / totalOmset) * 100) : 0;
-                serviceRows += `
-                    <tr>
-                        <td><strong>${escapeHtml(key)}</strong></td>
-                        <td>${item.count} Sesi</td>
-                        <td><strong>${formatRupiah(item.revenue)}</strong></td>
-                        <td><span style="font-weight: 700; color: var(--dark-pink);">${pct}%</span></td>
-                    </tr>
-                `;
+            const catOmzetVals = categories.map(c => catData[c].omzet);
+            const catCountVals = categories.map(c => catData[c].count);
+
+            // 2. Data per 6 Staff MUA
+            const artistNames = [
+                "Nadine Queen Reina",
+                "Aurora Clarissa",
+                "Draco Sebastian",
+                "Lisa Anggraini",
+                "Marco Pratama",
+                "Thania Aurellia Putri"
+            ];
+            const artistColors = [
+                "#d8738a",
+                "#e89cae",
+                "#8d3950",
+                "#b47b86",
+                "#d4a373",
+                "#e29578"
+            ];
+
+            const artistData = {};
+            artistNames.forEach(name => {
+                artistData[name] = { omzet: 0, completed: 0, count: 0 };
             });
 
-            let staffRows = "";
-            staffProfiles.forEach(staff => {
-                const staffOrders = validOrders.filter(b => b.staffName === staff.nama);
-                const staffRev = staffOrders.reduce((sum, b) => sum + Number(b.totalPrice || 0), 0);
-                staffRows += `
+            filtered.forEach(b => {
+                const name = b.staffName || "Nadine Queen Reina";
+                const matched = artistNames.find(n => n.toLowerCase() === name.toLowerCase()) || "Nadine Queen Reina";
+                if (b.status === "Confirmed" || b.status === "Completed") {
+                    artistData[matched].omzet += Number(b.totalPrice || 0);
+                    artistData[matched].count += 1;
+                }
+                if (b.status === "Completed") {
+                    artistData[matched].completed += 1;
+                }
+            });
+
+            const artistOmzetVals = artistNames.map(n => artistData[n].omzet);
+            const artistCompletedVals = artistNames.map(n => artistData[n].completed);
+
+            // CHART 1: BAR CHART PER KATEGORI (Chart.js)
+            const ctxCat = document.getElementById("categoryRevenueChart");
+            if (ctxCat && typeof Chart !== "undefined") {
+                if (categoryChartInstance) {
+                    categoryChartInstance.destroy();
+                }
+                categoryChartInstance = new Chart(ctxCat, {
+                    type: 'bar',
+                    data: {
+                        labels: categories,
+                        datasets: [
+                            {
+                                label: 'Omzet (Rp)',
+                                data: catOmzetVals,
+                                backgroundColor: 'rgba(216, 115, 138, 0.85)',
+                                borderColor: '#c45872',
+                                borderWidth: 1.5,
+                                borderRadius: 6,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: 'Jumlah Sesi',
+                                data: catCountVals,
+                                backgroundColor: 'rgba(141, 57, 80, 0.85)',
+                                borderColor: '#8d3950',
+                                borderWidth: 1.5,
+                                borderRadius: 6,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: { boxWidth: 12, font: { family: 'Poppins', size: 11 } }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        if (context.datasetIndex === 0) {
+                                            return ' ' + context.dataset.label + ': ' + formatRupiah(context.parsed.y);
+                                        }
+                                        return ' ' + context.dataset.label + ': ' + context.parsed.y + ' Sesi';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                ticks: {
+                                    callback: function(val) {
+                                        if (val >= 1000000) return (val / 1000000) + ' Jt';
+                                        if (val >= 1000) return (val / 1000) + ' Rb';
+                                        return val;
+                                    },
+                                    font: { family: 'Poppins', size: 10 }
+                                },
+                                grid: { color: 'rgba(235, 212, 207, 0.4)' }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                grid: { drawOnChartArea: false },
+                                ticks: {
+                                    stepSize: 1,
+                                    font: { family: 'Poppins', size: 10 }
+                                }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { font: { family: 'Poppins', size: 11, weight: '500' } }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // CHART 2: DONUT KONTRIBUSI 6 STAFF MUA (Chart.js)
+            const ctxArtist = document.getElementById("artistContributionChart");
+            if (ctxArtist && typeof Chart !== "undefined") {
+                if (artistChartInstance) {
+                    artistChartInstance.destroy();
+                }
+
+                const totalOmzetArtists = artistOmzetVals.reduce((a, b) => a + b, 0) || 1;
+
+                artistChartInstance = new Chart(ctxArtist, {
+                    type: 'doughnut',
+                    data: {
+                        labels: artistNames.map(n => n.split(' ')[0]),
+                        datasets: [{
+                            data: artistOmzetVals.map(v => v > 0 ? v : 0.0001),
+                            backgroundColor: artistColors,
+                            borderWidth: 2,
+                            borderColor: '#ffffff',
+                            hoverOffset: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 12,
+                                    font: { family: 'Poppins', size: 10.5 },
+                                    generateLabels: function(chart) {
+                                        const data = chart.data;
+                                        return data.labels.map((lbl, i) => {
+                                            const val = artistOmzetVals[i];
+                                            const pct = Math.round((val / totalOmzetArtists) * 100);
+                                            const comp = artistCompletedVals[i];
+                                            return {
+                                                text: `${lbl} (${pct}%, ${comp} Done)`,
+                                                fillStyle: artistColors[i],
+                                                hidden: false,
+                                                index: i
+                                            };
+                                        });
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const idx = context.dataIndex;
+                                        const fullName = artistNames[idx];
+                                        const val = artistOmzetVals[idx];
+                                        const pct = Math.round((val / totalOmzetArtists) * 100);
+                                        const comp = artistCompletedVals[idx];
+                                        return [
+                                            ` ${fullName}`,
+                                            ` Omzet: ${formatRupiah(val)} (${pct}%)`,
+                                            ` Selesai: ${comp} Sesi`
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '60%'
+                    }
+                });
+            }
+        }
+
+        function renderReportTransactionsTable(filtered) {
+            const tbody = document.getElementById("reportTransactionsTableBody");
+            const countBadge = document.getElementById("reportTableCountBadge");
+            if (!tbody) return;
+
+            if (countBadge) countBadge.innerText = `${filtered.length} Transaksi`;
+
+            const totalItems = filtered.length;
+            const totalPages = Math.ceil(totalItems / reportsPageSize) || 1;
+
+            if (reportsCurrentPage > totalPages) reportsCurrentPage = totalPages;
+            if (reportsCurrentPage < 1) reportsCurrentPage = 1;
+
+            if (totalItems === 0) {
+                tbody.innerHTML = `
                     <tr>
-                        <td>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <img src="${staff.fotoProfil}" alt="${escapeHtml(staff.nama)}" style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover;" onerror="this.src='img/CHIRA_LOGO-removebg-preview.png'">
-                                <div>
-                                    <strong>${escapeHtml(staff.nama)}</strong>
-                                    <small style="display:block; font-size:10.5px; color:var(--text-light);">${escapeHtml(staff.spesialisasi)}</small>
-                                </div>
+                        <td colspan="9">
+                            <div class="empty-state">
+                                <i class="fa-regular fa-folder-open"></i>
+                                <p>Tidak ada transaksi pada periode yang dipilih.</p>
                             </div>
                         </td>
-                        <td>${staffOrders.length} Reservasi</td>
-                        <td><strong>${formatRupiah(staffRev)}</strong></td>
-                        <td><i class="fa-solid fa-star" style="color: #f1c40f;"></i> ${staff.baseRating || 98}%</td>
+                    </tr>
+                `;
+                renderPagination("reportsPagination", reportsCurrentPage, 1, 0, reportsPageSize, "setReportsPage");
+                return;
+            }
+
+            const startIdx = (reportsCurrentPage - 1) * reportsPageSize;
+            const paged = filtered.slice(startIdx, startIdx + reportsPageSize);
+
+            tbody.innerHTML = "";
+            paged.forEach(item => {
+                const tr = document.createElement("tr");
+                const dpNominal = item.dpAmount || (item.totalPrice * 0.5) || 0;
+                const remaining = (item.totalPrice || 0) - dpNominal;
+                const statusBadge = getStatusBadge(item.status);
+                const zoneInfo = getOrderZoneInfo(item);
+                const category = getServiceCategory(item);
+
+                const feeTrans = Number(zoneInfo.fee || item.transportFee || 0);
+                const feeJasa = Math.max(0, Number(item.totalPrice || 0) - feeTrans);
+
+                tr.innerHTML = `
+                    <td><span class="booking-id-pill">${item.bookingCode || "CHR-DEMO"}</span></td>
+                    <td>
+                        <div><strong>${formatDateIndo(item.selectedDate)}</strong></div>
+                        <small style="color: var(--dark-pink); font-size: 11px;"><i class="fa-regular fa-clock"></i> ${item.startTime || "08:00"} WIB</small>
+                    </td>
+                    <td>
+                        <div class="client-info">
+                            <strong>${escapeHtml(item.custName || "Klien")}</strong>
+                            <a href="https://wa.me/62${cleanPhone(item.custPhone)}" target="_blank" title="WhatsApp Klien">
+                                <i class="fa-brands fa-whatsapp"></i> ${item.custPhone || "-"}
+                            </a>
+                        </div>
+                    </td>
+                    <td><strong style="color: var(--text-dark);">${escapeHtml(item.staffName || "Staff MUA")}</strong></td>
+                    <td>
+                        <div style="display:flex; flex-direction:column; gap:3px;">
+                            <span class="service-badge"><i class="fa-solid fa-tag"></i> ${category}</span>
+                            <span class="badge-zone ${zoneInfo.badgeClass}" style="font-size:10px; padding: 2px 7px;"><i class="${zoneInfo.icon}"></i> ${zoneInfo.short}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <strong style="color: var(--text-dark);">${formatRupiah(item.totalPrice || 0)}</strong>
+                        <div style="font-size: 10px; color: var(--text-light);">Jasa: ${formatRupiah(feeJasa)} | Trans: ${formatRupiah(feeTrans)}</div>
+                    </td>
+                    <td><strong style="color: var(--success); font-size: 13.5px;">${formatRupiah(dpNominal)}</strong></td>
+                    <td><strong style="color: var(--warning); font-size: 13.5px;">${formatRupiah(remaining)}</strong></td>
+                    <td>${statusBadge}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            renderPagination("reportsPagination", reportsCurrentPage, totalPages, totalItems, reportsPageSize, "setReportsPage");
+        }
+
+        function renderReportsSection() {
+            const filtered = getFilteredReportBookings();
+            renderReportKPIs(filtered);
+            renderReportCharts(filtered);
+            renderReportTransactionsTable(filtered);
+        }
+
+        function prepareAndPrintReport() {
+            const printEl = document.getElementById("printReportTemplate");
+            if (!printEl) return;
+
+            const filtered = getFilteredReportBookings();
+            const stats = renderReportKPIs(filtered);
+
+            // Current Admin
+            const loggedStaff = findLoggedInStaffProfile();
+            const adminName = (loggedStaff && loggedStaff.nama) || (currentAdminSession && currentAdminSession.namaArtist) || "Nadine Queen Reina";
+            const adminRole = (currentAdminSession && currentAdminSession.role) || "Lead MUA / Super Admin";
+
+            // Date formatting
+            const now = new Date();
+            const formattedNow = now.toLocaleDateString("id-ID", {
+                day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit"
+            });
+            const dateOnlyNow = now.toLocaleDateString("id-ID", {
+                day: "numeric", month: "long", year: "numeric"
+            });
+            const docRef = `CHR-FIN/${now.getFullYear()}/${(now.getMonth() + 1).toString().padStart(2, "0")}/${Math.floor(1000 + Math.random() * 9000)}`;
+
+            let rowsHTML = "";
+            filtered.forEach((item, idx) => {
+                const dpNominal = item.dpAmount || (item.totalPrice * 0.5) || 0;
+                const remaining = (item.totalPrice || 0) - dpNominal;
+                const zoneInfo = getOrderZoneInfo(item);
+                const category = getServiceCategory(item);
+                const feeTrans = Number(zoneInfo.fee || item.transportFee || 0);
+                const feeJasa = Math.max(0, Number(item.totalPrice || 0) - feeTrans);
+
+                rowsHTML += `
+                    <tr>
+                        <td style="text-align: center;">${idx + 1}</td>
+                        <td><strong>${item.bookingCode || "-"}</strong></td>
+                        <td>${formatDateIndo(item.selectedDate)} (${item.startTime || "-"})</td>
+                        <td>${escapeHtml(item.custName || "-")}<br><small style="color:#555;">${item.custPhone || ""}</small></td>
+                        <td>${escapeHtml(item.staffName || "-")}</td>
+                        <td>${category} (${zoneInfo.short})</td>
+                        <td>${formatRupiah(feeJasa)}</td>
+                        <td>${formatRupiah(feeTrans)}</td>
+                        <td><strong>${formatRupiah(item.totalPrice || 0)}</strong></td>
+                        <td style="color:#1e8449; font-weight:600;">${formatRupiah(dpNominal)}</td>
+                        <td style="color:#b9770e; font-weight:600;">${formatRupiah(remaining)}</td>
+                        <td>${item.status}</td>
                     </tr>
                 `;
             });
 
-            container.innerHTML = `
-                <div class="report-header-banner">
+            if (filtered.length === 0) {
+                rowsHTML = `<tr><td colspan="12" style="text-align:center; padding:15px;">Tidak ada transaksi pada periode ini.</td></tr>`;
+            }
+
+            printEl.innerHTML = `
+                <div class="print-kop">
+                    <img src="img/Favicon.png" class="print-kop-logo" alt="Logo CHIRA">
+                    <div class="print-kop-text">
+                        <h2>CHIRA MAKE-UP ATELIER MALANG</h2>
+                        <p><strong>Professional Bridal, Graduation, Engagement &amp; Editorial Make-Up Studio</strong></p>
+                        <p>Studio Atelier — Jl. Ijen No. 88, Oro-oro Dowo, Kec. Klojen, Kota Malang, Jawa Timur 65119</p>
+                        <p>WhatsApp: +62 889-8986-5380 | Email: management@chiramua.com | Website: chiramua.com</p>
+                    </div>
+                </div>
+
+                <div class="print-meta-grid">
                     <div>
-                        <h3><i class="fa-solid fa-file-invoice-dollar" style="color: var(--dark-pink);"></i> Laporan Bisnis &amp; Finansial Atelier</h3>
-                        <p>Periode Tahun Berjalan 2026 • Rekapitulasi Pembayaran QRIS DP 50%, Piutang Hari H &amp; Kinerja Artist</p>
+                        <strong>DOKUMEN:</strong> LAPORAN RESMI KEUANGAN &amp; OPERASIONAL BISNIS<br>
+                        <strong>NO. REFERENSI:</strong> ${docRef}<br>
+                        <strong>STATUS AUDIT:</strong> Terverifikasi Sinkron Data Transaksi Atelier
                     </div>
-                    <button type="button" class="btn-print-report" onclick="window.print()">
-                        <i class="fa-solid fa-print"></i> Cetak / Ekspor Laporan
-                    </button>
-                </div>
-
-                <div class="report-kpi-grid">
-                    <div class="report-kpi-card">
-                        <h4>Total Omset Reservasi</h4>
-                        <div class="report-kpi-val" style="color: var(--dark-pink);">${formatRupiah(totalOmset)}</div>
-                        <div class="report-kpi-sub">Dari ${validOrders.length} sesi layanan terdaftar</div>
-                    </div>
-                    <div class="report-kpi-card">
-                        <h4>Penerimaan DP 50% QRIS</h4>
-                        <div class="report-kpi-val" style="color: #27ae60;">${formatRupiah(totalDP)}</div>
-                        <div class="report-kpi-sub">Kas masuk diverifikasi aman</div>
-                    </div>
-                    <div class="report-kpi-card">
-                        <h4>Estimasi Pelunasan Hari H</h4>
-                        <div class="report-kpi-val" style="color: #2980b9;">${formatRupiah(totalRemaining)}</div>
-                        <div class="report-kpi-sub">Sisa 50% dilunasi saat sesi make-up</div>
-                    </div>
-                    <div class="report-kpi-card">
-                        <h4>Rata-Rata Nilai Pesanan (AOV)</h4>
-                        <div class="report-kpi-val" style="color: var(--text-dark);">${formatRupiah(aov)}</div>
-                        <div class="report-kpi-sub">Rerata nilai transaksi per klien</div>
+                    <div style="text-align: right;">
+                        <strong>PERIODE LAPORAN:</strong> ${getReportPeriodLabel()}<br>
+                        <strong>WAKTU CETAK:</strong> ${formattedNow} WIB<br>
+                        <strong>PETUGAS PENCETAK:</strong> ${escapeHtml(adminName)} (${escapeHtml(adminRole)})
                     </div>
                 </div>
 
-                <div class="report-tables-grid">
-                    <div class="table-container-card" style="box-shadow: 0 4px 18px rgba(146, 121, 121, 0.05);">
-                        <div style="padding: 16px 20px; border-bottom: 1px solid #f3e6e3;">
-                            <h4 style="font-size: 15px; font-weight: 700; color: var(--text-dark); margin:0;">
-                                <i class="fa-solid fa-users" style="color: var(--accent-pink);"></i> Kontribusi Finansial 6 Staff MUA
-                            </h4>
+                <div class="print-receipt-summary">
+                    <div style="font-weight: 700; font-size: 11px; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">
+                        RINGKASAN REALISASI KAS &amp; PENDAPATAN (E-RECEIPT AUDIT)
+                    </div>
+                    <div class="print-receipt-summary-grid">
+                        <div>
+                            <div style="font-size: 9px; color: #555; text-transform: uppercase;">Total Omzet Kotor (Gross)</div>
+                            <div style="font-size: 13.5px; font-weight: 700;">${formatRupiah(stats.grossOmzet)}</div>
+                            <div style="font-size: 8.5px; color: #777;">Jasa: ${formatRupiah(stats.serviceOmzet)} | Trans: ${formatRupiah(stats.transportOmzet)}</div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="order-table">
-                                <thead>
-                                    <tr>
-                                        <th>Staff MUA</th>
-                                        <th>Volume Sesi</th>
-                                        <th>Kontribusi Omset</th>
-                                        <th>Rating Klien</th>
-                                    </tr>
-                                </thead>
-                                <tbody>${staffRows}</tbody>
-                            </table>
+                        <div>
+                            <div style="font-size: 9px; color: #555; text-transform: uppercase;">Kas Masuk DP 50% QRIS</div>
+                            <div style="font-size: 13.5px; font-weight: 700; color: #1e8449;">${formatRupiah(stats.totalDP)}</div>
+                            <div style="font-size: 8.5px; color: #777;">QRIS Bank Terverifikasi Aman</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 9px; color: #555; text-transform: uppercase;">Kas Masuk Pelunasan</div>
+                            <div style="font-size: 13.5px; font-weight: 700; color: #2874a6;">${formatRupiah(stats.totalPelunasan)}</div>
+                            <div style="font-size: 8.5px; color: #777;">Pelunasan ${stats.completedCount} Sesi Selesai (Hari-H)</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 9px; color: #555; text-transform: uppercase;">Piutang Sisa Pelunasan</div>
+                            <div style="font-size: 13.5px; font-weight: 700; color: #b9770e;">${formatRupiah(stats.totalPiutang)}</div>
+                            <div style="font-size: 8.5px; color: #777;">Tagihan ${stats.confirmedCount} Pesanan Confirmed Hari-H</div>
                         </div>
                     </div>
+                    <div style="margin-top: 10px; padding-top: 7px; border-top: 1px dashed #ccc; display: flex; justify-content: space-between; font-size: 10px;">
+                        <span><strong>TOTAL KAS RIIL DITERIMA:</strong> ${formatRupiah(stats.totalKasRiil)}</span>
+                        <span><strong>RERATA NILAI TRANSAKSI (AOV):</strong> ${formatRupiah(stats.aov)}</span>
+                        <span><strong>TOTAL TRANSAKSI TERDATA:</strong> ${stats.activeCount} Sesi Layanan</span>
+                    </div>
+                </div>
 
-                    <div class="table-container-card" style="box-shadow: 0 4px 18px rgba(146, 121, 121, 0.05);">
-                        <div style="padding: 16px 20px; border-bottom: 1px solid #f3e6e3;">
-                            <h4 style="font-size: 15px; font-weight: 700; color: var(--text-dark); margin:0;">
-                                <i class="fa-solid fa-chart-pie" style="color: var(--accent-pink);"></i> Proporsi Kategori Layanan
-                            </h4>
+                <table class="print-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25px; text-align: center;">No</th>
+                            <th>Kode Booking</th>
+                            <th>Tanggal &amp; Jam Sesi</th>
+                            <th>Klien &amp; Kontak</th>
+                            <th>Staff MUA</th>
+                            <th>Kategori &amp; Zona</th>
+                            <th>Jasa Rias</th>
+                            <th>Transport</th>
+                            <th>Total Tagihan</th>
+                            <th>DP 50% QRIS</th>
+                            <th>Sisa Hari-H</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rowsHTML}
+                    </tbody>
+                </table>
+
+                <div class="print-signatures">
+                    <div class="print-sign-col">
+                        <div>Kota Malang, ${dateOnlyNow}</div>
+                        <div style="font-weight: 600; margin-top: 2px;">Diverifikasi oleh:</div>
+                        <div class="print-sign-space">
+                            <span style="font-size: 10px; color: #888; font-style: italic;">[ Terverifikasi Sistem ]</span>
                         </div>
-                        <div class="table-responsive">
-                            <table class="order-table">
-                                <thead>
-                                    <tr>
-                                        <th>Kategori Layanan</th>
-                                        <th>Pesanan</th>
-                                        <th>Nominal</th>
-                                        <th>Share</th>
-                                    </tr>
-                                </thead>
-                                <tbody>${serviceRows || '<tr><td colspan="4" style="text-align:center;">Belum ada transaksi</td></tr>'}</tbody>
-                            </table>
+                        <div class="print-sign-name">Bagian Keuangan &amp; Administrasi</div>
+                        <div style="font-size: 9.5px; color: #666;">CHIRA Make-Up Atelier Malang</div>
+                    </div>
+
+                    <div class="print-sign-col">
+                        <div>Kota Malang, ${dateOnlyNow}</div>
+                        <div style="font-weight: 600; margin-top: 2px;">Disahkan oleh:</div>
+                        <div class="print-sign-space">
+                            <div style="display:inline-block; border: 1.5px solid #c45872; color: #c45872; border-radius: 6px; padding: 4px 8px; font-weight: 700; font-size: 10px; transform: rotate(-5deg); letter-spacing: 0.5px;">
+                                CHIRA MAKE-UP<br>OFFICIAL ATELIER
+                            </div>
                         </div>
+                        <div class="print-sign-name">Nadine Queen Reina</div>
+                        <div style="font-size: 9.5px; color: #666;">Lead MUA &amp; Founder CHIRA Atelier</div>
                     </div>
                 </div>
             `;
+
+            setTimeout(() => {
+                window.print();
+            }, 150);
         }
 
         // 9. RENDER TAB KELOLA 6 STAFF MUA (TERHUBUNG DENGAN chira_staff_profiles)
