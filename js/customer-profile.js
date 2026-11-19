@@ -415,7 +415,7 @@
                             </div>
                             <div class="profile-form-group">
                                 <label for="profCustPhone">Nomor WhatsApp Aktif:</label>
-                                <input type="tel" id="profCustPhone" class="profile-form-input" placeholder="contoh: 081234567890" required>
+                                <input type="tel" id="profCustPhone" class="profile-form-input" placeholder="contoh: 0889-8986-5380" required>
                             </div>
                             <div class="profile-form-group">
                                 <label for="profCustAddress">Alamat Lengkap (Untuk Home Service / Lokasi Acara):</label>
