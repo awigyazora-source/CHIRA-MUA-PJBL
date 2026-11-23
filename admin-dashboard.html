@@ -93,21 +93,28 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            align-items: center;
+            text-align: center;
         }
 
         .sidebar-brand-link {
-            display: inline-block;
+            display: flex;
+            justify-content: center;
+            width: 100%;
             text-decoration: none;
         }
 
         .sidebar-logo {
-            height: 54px;
+            height: auto;
+            max-width: 190px;
             width: auto;
             display: block;
+            margin: 0 auto;
+            object-fit: contain;
         }
 
         .sidebar-badge {
-            align-self: flex-start;
+            align-self: center;
             background: linear-gradient(135deg, #fcebeb 0%, #ffeef0 100%);
             color: var(--dark-pink);
             font-size: 10.5px;
