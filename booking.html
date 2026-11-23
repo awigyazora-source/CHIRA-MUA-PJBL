@@ -2538,6 +2538,9 @@
                 });
             });
 
+            // Sinkronkan ketersediaan & visibilitas staf dari chira_staff_profiles
+            syncStaffAvailabilityFromProfiles();
+
             // Pre-select Artist from URL parameter if present
             const urlParams = new URLSearchParams(window.location.search);
             const artistParam = urlParams.get('artist');
@@ -2546,7 +2549,7 @@
                 const decodedParam = decodeURIComponent(artistParam).toLowerCase();
                 staffCards.forEach(card => {
                     const sName = card.dataset.staff.toLowerCase();
-                    if ((sName.includes(decodedParam) || decodedParam.includes(sName)) && !card.classList.contains("disabled")) {
+                    if ((sName.includes(decodedParam) || decodedParam.includes(sName)) && !card.classList.contains("disabled") && card.style.display !== "none") {
                         selectStaff(card);
                     }
                 });
@@ -2554,6 +2557,69 @@
 
             // Initial calculation run
             updateCalculations();
+        });
+
+        // Sinkronisasi status aktif/nonaktif staf MUA secara real-time
+        function syncStaffAvailabilityFromProfiles() {
+            try {
+                const raw = localStorage.getItem("chira_staff_profiles");
+                if (!raw) return;
+                const profiles = JSON.parse(raw);
+                if (!Array.isArray(profiles)) return;
+
+                const staffCards = document.querySelectorAll(".staff-card");
+                let anySelectedVisible = false;
+
+                staffCards.forEach(card => {
+                    const staffName = (card.dataset.staff || "").trim().toLowerCase();
+                    const matched = profiles.find(p => {
+                        const pName = (p.nama || "").trim().toLowerCase();
+                        return pName === staffName || (pName.split(" ")[0] === staffName.split(" ")[0]);
+                    });
+
+                    if (matched) {
+                        const isDeactivated = matched.isActive === false || matched.status === "Nonaktif" || matched.status === "Dipecat";
+                        const isCuti = matched.status === "Cuti" || matched.status === "Cuti / Nonaktif Sementara";
+
+                        if (isDeactivated || isCuti) {
+                            // Staff nonaktif/dipecat/cuti otomatis hilang dari pilihan booking
+                            card.style.display = "none";
+                            card.classList.remove("selected");
+                        } else {
+                            card.style.display = "";
+                            const badge = card.querySelector(".staff-badge-status");
+                            if (badge) {
+                                if (matched.status === "Busy in Session" || matched.isReady === false) {
+                                    card.classList.add("disabled");
+                                    badge.className = "staff-badge-status badge-full";
+                                    badge.innerText = "■ Full Booked";
+                                } else {
+                                    card.classList.remove("disabled");
+                                    badge.className = "staff-badge-status badge-ready";
+                                    badge.innerText = "● Ready";
+                                }
+                            }
+                            if (card.classList.contains("selected")) {
+                                anySelectedVisible = true;
+                            }
+                        }
+                    }
+                });
+
+                // Jika artist terpilih disembunyikan, arahkan ke staf pertama yang aktif & ready
+                const visibleCards = Array.from(staffCards).filter(c => c.style.display !== "none" && !c.classList.contains("disabled"));
+                if (!anySelectedVisible && visibleCards.length > 0) {
+                    selectStaff(visibleCards[0]);
+                }
+            } catch (e) {
+                console.error("Gagal sinkron status staf MUA:", e);
+            }
+        }
+
+        window.addEventListener("storage", function(e) {
+            if (e.key === "chira_staff_profiles") {
+                syncStaffAvailabilityFromProfiles();
+            }
         });
 
         // --- 3. SELECTION HANDLERS ---

@@ -1032,6 +1032,32 @@
             );
         }
 
+        // CEK STATUS AKTIF / NONAKTIF STAFF DARI chira_staff_profiles
+        function checkStaffAccountDeactivated(admin) {
+            if (!admin) return null;
+            try {
+                const raw = localStorage.getItem("chira_staff_profiles");
+                if (raw) {
+                    const profiles = JSON.parse(raw);
+                    if (Array.isArray(profiles)) {
+                        const emailLower = (admin.email || "").trim().toLowerCase();
+                        const found = profiles.find(p => (p.email || "").trim().toLowerCase() === emailLower);
+                        if (found && (found.isActive === false || found.status === "Nonaktif" || found.status === "Dipecat")) {
+                            return {
+                                isBlocked: true,
+                                status: found.status || "Nonaktif",
+                                reason: found.deactivationReason || "Evaluasi Internal Manajemen Atelier",
+                                date: found.deactivationDate || "-"
+                            };
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error("Gagal memeriksa status staff:", e);
+            }
+            return null;
+        }
+
         // 3. SUBMIT FORM KREDENSIAL MANUAL (LANGKAH 1)
         adminLoginForm.addEventListener("submit", function(e) {
             e.preventDefault();
@@ -1044,6 +1070,12 @@
             if (!admin) {
                 // TAMPILKAN ALERT MERAH TEGAS SESUAI PERMINTAAN
                 showAlert("Akses Ditolak: Akun Anda tidak terdaftar dalam otoritas Admin Chira Make-Up.");
+                return;
+            }
+
+            const deact = checkStaffAccountDeactivated(admin);
+            if (deact) {
+                showAlert(`Akses Ditolak (${deact.status}): Akun Anda telah dinonaktifkan oleh Super Admin. Alasan: "${deact.reason}". Hubungi manajemen Atelier.`);
                 return;
             }
 
@@ -1080,6 +1112,11 @@
                 `;
                 item.addEventListener("click", function() {
                     googleSelectModal.style.display = "none";
+                    const deact = checkStaffAccountDeactivated(admin);
+                    if (deact) {
+                        showAlert(`Akses Ditolak (${deact.status}): Akun Anda telah dinonaktifkan oleh Super Admin. Alasan: "${deact.reason}". Hubungi manajemen Atelier.`);
+                        return;
+                    }
                     openPinModal(admin);
                 });
                 googleAccountsList.appendChild(item);

@@ -676,14 +676,30 @@
         }
 
         .btn-rate {
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-            color: var(--white);
-            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.28);
+            background: linear-gradient(135deg, #e89cae, #d8738a) !important;
+            color: var(--white) !important;
+            box-shadow: 0 4px 12px rgba(216, 115, 138, 0.28) !important;
         }
 
         .btn-rate:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(243, 156, 18, 0.38);
+            box-shadow: 0 6px 16px rgba(216, 115, 138, 0.38) !important;
+            background: linear-gradient(135deg, #d8738a, #c45872) !important;
+        }
+
+        .badge-review-sent {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #eafaf1;
+            color: #1e8449;
+            border: 1px solid #c2eed2;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: default;
+            box-shadow: 0 2px 6px rgba(30, 132, 73, 0.08);
         }
 
         .btn-rebook {
@@ -1280,8 +1296,8 @@
         <div class="chira-modal-card" style="max-width: 440px;">
             <div class="receipt-top-banner" style="padding: 20px 24px 16px;">
                 <button type="button" class="receipt-close-x" id="closeRatingBtn" aria-label="Tutup">&times;</button>
-                <h3 style="font-size: 19px;">Beri Rating MUA Artist</h3>
-                <p>Penilaian Anda langsung tersinkronisasi ke profil artist di halaman Staff MUA.</p>
+                <h3 style="font-size: 19px;">Beri Rating &amp; Ulasan Layanan</h3>
+                <p>Bagikan pengalaman riasan Anda untuk membantu calon pengantin &amp; klien lainnya. Ulasan akan diverifikasi dan ditampilkan di etalase resmi CHIRA MUA.</p>
             </div>
             <div class="rating-modal-body">
                 <img id="ratingArtistPhoto" class="rating-artist-preview" src="img/MUA-STAFF-Nadine.png" alt="Artist">
@@ -1297,7 +1313,7 @@
                 </div>
                 <div class="rating-label-text" id="ratingLabelText">Sempurna! Sangat Memuaskan (5/5)</div>
 
-                <textarea id="ratingReviewInput" class="rating-textarea" placeholder="Ceritakan pengalaman riasan Anda (opsional)..."></textarea>
+                <textarea id="ratingReviewInput" class="rating-textarea" placeholder="Ceritakan pengalaman riasan Anda bersama MUA kami (kualitas makeup, ketahanan, keramahan, ketepatan waktu)..."></textarea>
 
                 <div style="display: flex; gap: 10px; justify-content: center;">
                     <button type="button" class="btn-order-act btn-receipt" id="cancelRatingBtn">Batal</button>
@@ -1390,6 +1406,35 @@
         (function () {
             const BOOKINGS_KEY = "chira_bookings";
             const STAFF_PROFILES_KEY = "chira_staff_profiles";
+        const REVIEWS_STORAGE_KEY = "chira_reviews";
+
+        function getStoredReviews() {
+            try {
+                const raw = localStorage.getItem(REVIEWS_STORAGE_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed)) return parsed;
+                }
+            } catch (e) {
+                console.error("Gagal membaca chira_reviews", e);
+            }
+            return [];
+        }
+
+        function findReviewForOrder(bookingCode, order) {
+            const reviews = getStoredReviews();
+            const fromReviews = reviews.find(r => r.bookingCode === bookingCode);
+            if (fromReviews) return fromReviews;
+            if (order && order.userRating) {
+                return {
+                    rating: order.userRating,
+                    comment: order.userReview || "",
+                    date: order.ratedAt ? order.ratedAt.split("T")[0] : ""
+                };
+            }
+            return null;
+        }
+
 
             const FALLBACK_ARTIST_PHOTOS = {
                 "nadine": "img/MUA-STAFF-Nadine.png",
@@ -1722,18 +1767,20 @@
                         `;
                     }
 
-                    // Blok Review jika sudah dinilai
+                    // Blok Review Terverifikasi (dari chira_reviews atau order.userRating)
+                    const existingReview = findReviewForOrder(order.bookingCode, order);
                     let ratingBannerHTML = "";
-                    if (order.userRating) {
-                        const starsStr = "★".repeat(order.userRating) + "☆".repeat(5 - order.userRating);
+                    if (existingReview) {
+                        const rScore = Number(existingReview.rating || 5);
+                        const starsStr = "★".repeat(Math.round(rScore)) + "☆".repeat(5 - Math.round(rScore));
                         ratingBannerHTML = `
                             <div class="submitted-rating-banner">
                                 <div>
                                     <span class="submitted-stars">${starsStr}</span>
-                                    <strong style="margin-left: 6px;">Penilaian Anda (${order.userRating}/5)</strong>
-                                    ${order.userReview ? `<span style="margin-left: 8px; font-style: italic;">"${escapeHtml(order.userReview)}"</span>` : ""}
+                                    <strong style="margin-left: 6px;">Ulasan Anda (${rScore.toFixed(1)}/5)</strong>
+                                    ${existingReview.comment ? `<span style="margin-left: 8px; font-style: italic;">"${escapeHtml(existingReview.comment)}"</span>` : ""}
                                 </div>
-                                <span style="font-size: 11px; color: #1e8449; font-weight: 600;"><i class="fa-solid fa-circle-check"></i> Tersinkron ke Profil MUA</span>
+                                <span style="font-size: 11px; color: #1e8449; font-weight: 600;"><i class="fa-solid fa-circle-check"></i> Ulasan Terverifikasi</span>
                             </div>
                         `;
                     }
@@ -1772,12 +1819,21 @@
                             </button>
                         `;
 
-                        if (statusKey === "completed" && !order.userRating) {
-                            actionsHTML += `
-                                <button type="button" class="btn-order-act btn-rate" onclick="window.openArtistRatingModal('${escapeHtml(order.bookingCode)}')">
-                                    <i class="fa-solid fa-star"></i> Beri Rating
-                                </button>
-                            `;
+                        if (statusKey === "completed") {
+                            if (existingReview) {
+                                const rScore = Number(existingReview.rating || 5).toFixed(1);
+                                actionsHTML += `
+                                    <span class="badge-review-sent" title="Ulasan Anda untuk pesanan ini telah terverifikasi dan tersimpan">
+                                        <i class="fa-solid fa-star"></i> Ulasan Terkirim (★ ${rScore})
+                                    </span>
+                                `;
+                            } else {
+                                actionsHTML += `
+                                    <button type="button" class="btn-order-act btn-rate" onclick="window.openArtistRatingModal('${escapeHtml(order.bookingCode)}')">
+                                        <i class="fa-solid fa-star"></i> Beri Rating &amp; Ulasan
+                                    </button>
+                                `;
+                            }
                         }
                     }
 
@@ -1982,7 +2038,45 @@
                 order.ratedAt = new Date().toISOString();
                 saveAllBookings(allBookings);
 
-                // Sinkronkan & perbarui skor rating artist di chira_staff_profiles
+                // 1. Simpan ke sistem etalase ulasan terverifikasi chira_reviews
+                try {
+                    function normalizeServiceName(sn) {
+                        if (!sn) return "Custom Makeup";
+                        const s = String(sn).trim().toLowerCase();
+                        if (s.includes("wedding") || s.includes("bridal") || s.includes("nikah") || s.includes("pengantin") || s.includes("pre-wedding") || s.includes("prewedding")) return "Makeup Wedding / Pre-Wedding";
+                        if (s.includes("grad") || s.includes("wisuda")) return "Makeup Graduation";
+                        if (s.includes("engage") || s.includes("lamaran") || s.includes("tunangan")) return "Makeup Engagement";
+                        if (s.includes("birth") || s.includes("ulang tahun") || s.includes("party") || s.includes("pesta") || s.includes("gala")) return "Makeup Birthday";
+                        if (s.includes("photo") || s.includes("shoot") || s.includes("foto") || s.includes("editorial") || s.includes("commercial")) return "Makeup Photoshoot";
+                        return "Custom Makeup";
+                    }
+
+                    const reviewItem = {
+                        id: "REV-" + Date.now() + "-" + Math.random().toString(36).substr(2, 5).toUpperCase(),
+                        bookingCode: order.bookingCode,
+                        custName: order.custName || "Klien CHIRA MUA",
+                        serviceName: normalizeServiceName(order.serviceName),
+                        staffName: order.staffName || "Staff MUA",
+                        rating: Number(selectedStars),
+                        comment: reviewText,
+                        date: new Date().toISOString().split("T")[0],
+                        verified: true
+                    };
+
+                    let existingReviews = getStoredReviews();
+                    const existRevIdx = existingReviews.findIndex(r => r.bookingCode === order.bookingCode);
+                    if (existRevIdx >= 0) {
+                        existingReviews[existRevIdx] = Object.assign({}, existingReviews[existRevIdx], reviewItem);
+                    } else {
+                        existingReviews.unshift(reviewItem);
+                    }
+                    localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(existingReviews));
+                    window.dispatchEvent(new Event("storage"));
+                } catch (e) {
+                    console.error("Gagal menyimpan ke chira_reviews:", e);
+                }
+
+                // 2. Sinkronkan & perbarui skor rating artist di chira_staff_profiles
                 try {
                     const rawProfiles = localStorage.getItem(STAFF_PROFILES_KEY);
                     if (rawProfiles) {

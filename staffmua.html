@@ -418,6 +418,29 @@
             color: #c62828;
         }
 
+        .badge-deactivated {
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fca5a5;
+        }
+
+        .badge-deactivated::before {
+            content: "✕ ";
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .badge-cuti {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fcd34d;
+        }
+
+        .badge-cuti::before {
+            content: "▲ ";
+            color: #b45309;
+        }
+
         .specialty-tag {
             position: absolute;
             bottom: 14px;
@@ -1878,6 +1901,7 @@
                                 if (!found) return JSON.parse(JSON.stringify(def));
                                 return {
                                     ...JSON.parse(JSON.stringify(def)),
+                                    isActive: found.isActive !== false,
                                     ...found,
                                     portofolioTerbaik: Array.isArray(found.portofolioTerbaik)
                                         ? found.portofolioTerbaik.slice(0, 3)
@@ -2021,9 +2045,27 @@
 
                 profiles.forEach(artist => {
                     const stats = calculateArtistDynamicStats(artist, bookings);
-                    const isReady = artist.isReady !== false && artist.status !== "Busy in Session";
-                    const statusBadgeClass = isReady ? "badge-ready" : "badge-full";
-                    const statusBadgeText = isReady ? "Ready to Book" : "Full Booked";
+                    const isDeactivated = artist.isActive === false || artist.status === "Nonaktif" || artist.status === "Dipecat";
+                    const isCuti = artist.status === "Cuti" || artist.status === "Cuti / Nonaktif Sementara";
+                    const isBusy = artist.status === "Busy in Session";
+                    const isReady = !isDeactivated && !isCuti && !isBusy && (artist.isReady !== false);
+
+                    let statusBadgeClass = "badge-ready";
+                    let statusBadgeText = "Ready to Book";
+                    let statusBadgeStyle = "";
+
+                    if (isDeactivated) {
+                        statusBadgeClass = "badge-deactivated";
+                        statusBadgeText = "Tidak Bertugas / Nonaktif";
+                        statusBadgeStyle = "background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5;";
+                    } else if (isCuti) {
+                        statusBadgeClass = "badge-cuti";
+                        statusBadgeText = "Sedang Cuti";
+                        statusBadgeStyle = "background: #fef3c7; color: #b45309; border: 1px solid #fcd34d;";
+                    } else if (isBusy) {
+                        statusBadgeClass = "badge-full";
+                        statusBadgeText = "Full Booked";
+                    }
 
                     const catTokens = (artist.category || "").split(/\s+/).filter(Boolean).filter(c => c !== "ready");
                     if (isReady) catTokens.push("ready");
@@ -2064,22 +2106,33 @@
                     const clientTooltip = `Base ${artist.baseKlien} + ${stats.completedPax} pax pesanan selesai terverifikasi`;
                     const ratingTooltip = `Rating dinamis dari ${stats.completedCount} selesai & ${stats.cancelledCount} batal (Base ${artist.baseRating}%)`;
 
-                    const actionButtonHTML = isReady
-                        ? `<a href="booking.html?artist=${encodeURIComponent(artist.nama)}" class="btn-artist-book">
+                    let actionButtonHTML = "";
+                    if (isDeactivated) {
+                        actionButtonHTML = `<button type="button" class="btn-artist-disabled" style="background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; cursor: not-allowed;">
+                                <i class="fa-solid fa-user-slash"></i> Tidak Bertugas / Nonaktif
+                           </button>`;
+                    } else if (isCuti) {
+                        actionButtonHTML = `<button type="button" class="btn-artist-disabled" style="background: #fffbeb; color: #b45309; border: 1px solid #fde68a; cursor: not-allowed;">
+                                <i class="fa-solid fa-umbrella-beach"></i> Sedang Cuti Sementara
+                           </button>`;
+                    } else if (isReady) {
+                        actionButtonHTML = `<a href="booking.html?artist=${encodeURIComponent(artist.nama)}" class="btn-artist-book">
                                 <i class="fa-solid fa-calendar-check"></i> Pilih Artist &amp; Book
-                           </a>`
-                        : `<button type="button" class="btn-artist-disabled">
+                           </a>`;
+                    } else {
+                        actionButtonHTML = `<button type="button" class="btn-artist-disabled">
                                 <i class="fa-solid fa-ban"></i> Full Booked (Jadwal Penuh)
                            </button>`;
+                    }
 
                     const card = document.createElement("div");
                     card.className = "artist-profile-card";
                     card.setAttribute("data-category", categoryAttr);
                     card.innerHTML = `
                         <div class="artist-photo-wrap">
-                            <span class="artist-badge-status ${statusBadgeClass}">${statusBadgeText}</span>
+                            <span class="artist-badge-status ${statusBadgeClass}" style="${statusBadgeStyle}">${statusBadgeText}</span>
                             <span class="specialty-tag">${escapeHtml(artist.specialtyTag || artist.spesialisasi)}</span>
-                            <img src="${artist.fotoProfil}" alt="${escapeHtml(artist.nama)}" onerror="this.src='${escapeHtml(artist.defaultFoto || "img/CHIRA_LOGO-removebg-preview.png")}'">
+                            <img src="${artist.fotoProfil}" alt="${escapeHtml(artist.nama)}" onerror="this.src='${escapeHtml(artist.defaultFoto || "img/CHIRA_LOGO-removebg-preview.png")}'" style="${isDeactivated ? 'filter: grayscale(70%); opacity: 0.85;' : ''}">
                         </div>
                         <div class="artist-profile-body">
                             <div class="artist-profile-info">
