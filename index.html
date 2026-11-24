@@ -77,7 +77,7 @@
         }
 
         .nav-logo img {
-            height: 65px;
+            height: 50px;
             width: auto;
             display: block;
         }
@@ -118,36 +118,37 @@
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
+            min-height: 500px;
             width: 100%;
             background: linear-gradient(to right, rgba(40, 25, 25, 0.6) 0%, rgba(40, 25, 25, 0.1) 60%), url('img/bg-hero.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: 0 8%;
+            padding: 0 5%;
             position: relative;
         }
 
         .hero-content {
-            max-width: 650px;
+            max-width: 620px;
             color: var(--white);
             text-align: left;
-            margin-top: 50px;
+            margin-top: 25px;
             animation: fadeIn 1.5s ease-out;
         }
 
         .hero-content h1 {
-            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-size: clamp(2.4rem, 4.2vw, 3.6rem);
             color: var(--white);
-            line-height: 1.1;
-            margin-bottom: 20px;
+            line-height: 1.15;
+            margin-bottom: 14px;
             text-shadow: 2px 4px 15px rgba(0,0,0,0.4);
         }
 
         .hero-content p {
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            margin-bottom: 40px;
+            font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+            margin-bottom: 26px;
             font-weight: 300;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
         }
 
@@ -155,11 +156,11 @@
             display: inline-block;
             background-color: var(--white);
             color: var(--text-dark);
-            padding: 15px 40px;
+            padding: 12px 32px;
             border-radius: 30px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
             transition: 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -171,40 +172,45 @@
             transform: translateY(-3px);
         }
 
-        /* --- SECTION UMUM --- */
+        /* --- SECTION UMUM (RINGKAS & PROPORSIONAL) --- */
         section {
-            padding: 100px 5%;
+            padding: 56px 24px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
+            font-size: 2.3rem;
+            margin-bottom: 8px;
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--text-light);
-            font-size: 1rem;
-            margin-bottom: 60px;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
             font-weight: 300;
         }
 
-        /* --- SHORT GALLERY --- */
+        /* --- SHORT GALLERY (FADE TIPIS PINK) --- */
+        .gallery {
+            background: linear-gradient(180deg, #fcf1f1 0%, #f7e3e3 100%);
+            padding: 56px 24px;
+        }
+
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 1140px;
             margin: 0 auto;
         }
 
         .gallery-item {
-            border-radius: 15px;
+            border-radius: 14px;
             overflow: hidden;
-            height: 350px;
+            height: 280px;
             position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
         }
 
         .gallery-item img {
@@ -220,15 +226,16 @@
 
         .gallery-action {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 26px;
         }
 
         .btn-outline {
             display: inline-block;
             border: 2px solid var(--accent-pink);
             color: var(--text-dark);
-            padding: 12px 35px;
+            padding: 10px 30px;
             border-radius: 25px;
+            font-size: 13.5px;
             font-weight: 500;
             transition: 0.3s;
         }
@@ -238,106 +245,78 @@
             color: var(--white);
         }
 
-        /* --- OUR SERVICE (REVISI EDITORIAL + BACKGROUND PINK) --- */
+        /* --- OUR SERVICE (PUTIH BERSIH) --- */
         .services {
-            background-color: var(--primary-pink); /* Warna Pink */
-            padding: 120px 5% 100px; 
+            background-color: #ffffff;
+            padding: 56px 24px; 
             position: relative; 
         }
 
-        /* Pembatas Gelombang */
-        .wave-divider {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-
-        .wave-divider-top {
-            top: 0;
-        }
-
-        .wave-divider-bottom {
-            bottom: 0;
-            transform: rotate(180deg);
-        }
-
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-            height: 60px; 
-        }
-
-        .wave-divider .shape-fill {
-            fill: var(--bg-color); /* Warna krem/putih dari section sebelumnya */
-        }
-
-        /* CSS UNTUK HEADER & CARD LAYANAN (YANG SEBELUMNYA HILANG) */
+        /* CSS UNTUK HEADER & CARD LAYANAN */
         .services-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            gap: 40px;
+            max-width: 1140px;
+            margin: 0 auto 30px;
+            gap: 30px;
         }
 
         .services-header-left {
-            max-width: 500px;
+            max-width: 480px;
         }
 
         .services-eyebrow {
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--accent-pink);
-            margin-bottom: 15px;
-            font-weight: 500;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .services-title {
             font-family: var(--font-serif);
-            font-size: 3.5rem;
-            line-height: 1.1;
+            font-size: 2.6rem;
+            line-height: 1.15;
             color: var(--text-dark);
         }
 
         .services-header-right {
-            max-width: 400px;
-            font-size: 15px;
+            max-width: 420px;
+            font-size: 13.5px;
             color: var(--text-light);
-            line-height: 1.8;
-            padding-bottom: 10px;
+            line-height: 1.6;
+            padding-bottom: 6px;
         }
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 22px;
+            max-width: 1140px;
             margin: 0 auto;
         }
 
         .service-card {
             background-color: var(--white);
-            border-radius: 20px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 6px 20px rgba(158, 107, 107, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid #f0dede;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(158, 107, 107, 0.1);
         }
 
         .service-img-wrapper {
             width: 100%;
-            height: 250px;
+            height: 200px;
             overflow: hidden;
         }
 
@@ -353,23 +332,23 @@
         }
 
         .service-content {
-            padding: 30px;
+            padding: 22px 24px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .service-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
             color: var(--text-dark);
         }
 
         .service-content p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-light);
-            margin-bottom: 25px;
-            line-height: 1.7;
+            margin-bottom: 16px;
+            line-height: 1.6;
             flex-grow: 1;
         }
 
@@ -399,48 +378,34 @@
             margin-left: 12px;
         }
 
-        /* --- MEET OUR ARTIST --- */
+        /* --- MEET OUR ARTIST (PINK SOLID) --- */
         .artist-section {
-            background-color: var(--bg-color);
-            padding: 100px 5% 55px;
-        }
-
-        /* --- PEMBATAS VISUAL PINK CURVED WAVE & PINK LINE (MEET OUR MUA -> STUDIO) --- */
-        .artist-studio-divider {
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            background-color: var(--bg-color);
-            position: relative;
-            z-index: 2;
-        }
-
-        .artist-studio-divider svg {
-            display: block;
-            width: 100%;
-            height: 60px;
+            background-color: #f7e3e3;
+            padding: 56px 24px 48px;
         }
 
         .artist-card {
             display: flex;
             background-color: var(--white);
-            border-radius: 25px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            max-width: 1000px;
+            box-shadow: 0 6px 20px rgba(158, 107, 107, 0.05);
+            border: 1px solid #f0dede;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .artist-image {
             flex: 1;
             position: relative;
-            min-height: 500px;
+            min-height: 330px;
         }
 
         .artist-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top center;
             position: absolute;
             top: 0;
             left: 0;
@@ -448,63 +413,63 @@
 
         .artist-badge {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 14px;
+            left: 14px;
             background-color: var(--primary-pink);
             color: var(--text-dark);
-            padding: 8px 15px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             z-index: 2;
         }
 
         .artist-info {
             flex: 1.2;
-            padding: 50px;
+            padding: 26px 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .artist-name {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
+            font-size: 1.75rem;
+            margin-bottom: 2px;
         }
 
         .artist-title {
-            font-size: 1rem;
+            font-size: 0.88rem;
             color: var(--accent-pink);
             font-weight: 500;
-            margin-bottom: 25px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .artist-bio {
-            font-size: 15px;
+            font-size: 13px;
             color: var(--text-light);
-            margin-bottom: 30px;
-            line-height: 1.8;
+            margin-bottom: 16px;
+            line-height: 1.6;
         }
 
         .artist-stats {
             display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            padding: 20px 0;
+            gap: 20px;
+            margin-bottom: 18px;
+            padding: 10px 0;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
         }
 
         .stat-item h4 {
             font-family: var(--font-sans);
-            font-size: 1.5rem;
-            margin-bottom: 5px;
+            font-size: 1.25rem;
+            margin-bottom: 1px;
         }
 
         .stat-item p {
-            font-size: 12px;
+            font-size: 10.5px;
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -513,9 +478,10 @@
         .artist-btn {
             background-color: var(--text-dark);
             color: var(--white);
-            padding: 15px 30px;
-            border-radius: 25px;
+            padding: 10px 24px;
+            border-radius: 20px;
             text-align: center;
+            font-size: 13px;
             font-weight: 500;
             transition: 0.3s;
             display: inline-block;
@@ -526,16 +492,113 @@
             background-color: var(--accent-pink);
         }
 
-        /* --- TESTIMONIALS CAROUSEL --- */
-        .testimonials {
-            background-color: var(--primary-pink);
+        /* Mini Portofolio Nadine di Kartu Artist */
+        .artist-portfolio-mini {
+            margin-bottom: 20px;
+        }
+
+        .artist-portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-mini-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #4a3434;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .portfolio-mini-title i {
+            color: #b37b7b;
+        }
+
+        .portfolio-mini-more {
+            font-size: 11px;
+            color: var(--accent-pink);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .portfolio-mini-more:hover {
+            color: var(--dark-pink);
+            text-decoration: underline;
+        }
+
+        .artist-portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .portfolio-thumb-card {
             position: relative;
-            padding: 80px 5%;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            border: 1px solid #f0dede;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            background: #fdf5f6;
+        }
+
+        .portfolio-thumb-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .portfolio-thumb-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-thumb-card .thumb-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(50, 25, 25, 0.85) 0%, transparent 100%);
+            color: #ffffff;
+            font-size: 9.5px;
+            font-weight: 600;
+            padding: 12px 4px 4px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+        }
+
+        .portfolio-thumb-card:hover .thumb-caption {
+            opacity: 1;
+        }
+
+        #artist .gallery-action {
+            margin-top: 24px;
+        }
+
+        /* --- TESTIMONIALS CAROUSEL (PINK SOLID) --- */
+        .testimonials {
+            background-color: #f7e3e3;
+            position: relative;
+            padding: 56px 24px 60px;
         }
 
         .testi-carousel-wrapper {
             position: relative;
-            max-width: 1240px;
+            max-width: 1140px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -563,9 +626,10 @@
 
         .testi-card {
             background-color: var(--white);
-            padding: 32px 28px;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            padding: 22px 20px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0dede;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -575,23 +639,23 @@
         }
 
         .testi-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(216, 154, 154, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(216, 154, 154, 0.2);
         }
 
         .testi-stars {
             color: #f5b041;
-            margin-bottom: 12px;
-            font-size: 17px;
+            margin-bottom: 10px;
+            font-size: 15px;
             letter-spacing: 2px;
         }
 
         .testi-text {
             font-style: italic;
             color: var(--text-dark);
-            margin-bottom: 20px;
-            line-height: 1.7;
-            font-size: 13.5px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+            font-size: 13px;
             flex-grow: 1;
         }
 
@@ -759,7 +823,7 @@
         /* --- FOOTER (REVISI PREMIUM) --- */
         .site-footer {
             background-color: #fdf5f6;
-            padding: 80px 8% 40px;
+            padding: 60px 8% 35px;
             border-top: 1px solid #f0e5e5;
             font-family: var(--font-sans);
         }
@@ -767,8 +831,8 @@
         .footer-container {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 40px;
-            max-width: 1200px;
+            gap: 36px;
+            max-width: 1140px;
             margin: 0 auto;
         }
 
@@ -951,8 +1015,8 @@
         }
 
         .footer-bottom-wrap {
-            max-width: 1200px;
-            margin: 40px auto 0;
+            max-width: 1140px;
+            margin: 30px auto 0;
             display: flex;
             justify-content: flex-end;
         }
@@ -991,10 +1055,11 @@
                 flex-direction: column;
             }
             .artist-image {
-                min-height: 400px;
+                min-height: 280px;
+                max-height: 320px;
             }
             .artist-info {
-                padding: 30px;
+                padding: 24px 20px;
             }
         }
 
@@ -1036,15 +1101,15 @@
             }
         }
 
-        /* --- SECTION STUDIO ATELIER & INTERACTIVE GOOGLE MAPS --- */
+        /* --- SECTION STUDIO ATELIER & INTERACTIVE GOOGLE MAPS (PUTIH BERSIH DENGAN AKSEN PINK) --- */
         .studio-section {
-            background: linear-gradient(180deg, #fff1f2 0%, #ffffff 40%, var(--bg-color) 100%);
-            padding: 65px 5% 100px;
+            background: #ffffff;
+            padding: 56px 24px;
             position: relative;
         }
 
         .studio-section-container {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
         }
 
@@ -1056,33 +1121,33 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #fff;
-            color: var(--dark-pink);
-            font-size: 11px;
+            background: #fff6f7;
+            color: #927979;
+            font-size: 10.5px;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(158, 107, 107, 0.1);
-            margin-bottom: 16px;
-            border: 1px solid rgba(216, 154, 154, 0.3);
+            box-shadow: 0 4px 12px rgba(158, 107, 107, 0.05);
+            margin-bottom: 12px;
+            border: 1.5px solid #e5c3c6;
         }
 
         .studio-content-grid {
             display: grid;
-            grid-template-columns: 1fr 1.15fr;
-            gap: 35px;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
             align-items: stretch;
-            margin-top: 40px;
+            margin-top: 28px;
         }
 
         .studio-info-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(158, 107, 107, 0.08);
-            border: 1px solid var(--primary-pink);
+            background: #fff6f7;
+            border-radius: 18px;
+            padding: 24px 26px;
+            box-shadow: 0 6px 20px rgba(158, 107, 107, 0.05);
+            border: 1.5px solid #e5c3c6;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -1092,124 +1157,125 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 700;
             letter-spacing: 1px;
-            color: var(--accent-pink);
-            margin-bottom: 10px;
+            color: #b37b7b;
+            margin-bottom: 6px;
         }
 
         .studio-info-card h3 {
-            font-size: 1.8rem;
-            color: var(--text-dark);
-            margin-bottom: 12px;
+            font-size: 1.45rem;
+            color: #4a3434;
+            margin-bottom: 8px;
         }
 
         .studio-desc {
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 13px;
+            line-height: 1.55;
             color: var(--text-light);
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .studio-meta-list {
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            margin-bottom: 28px;
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
         .studio-meta-item {
             display: flex;
             align-items: flex-start;
-            gap: 14px;
+            gap: 12px;
         }
 
         .studio-meta-icon {
-            width: 36px;
-            height: 36px;
-            background: #fff2f2;
-            color: var(--dark-pink);
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background: #f7e2e4;
+            color: #927979;
+            border: 1px solid #ebd0d3;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 15px;
+            font-size: 13px;
             flex-shrink: 0;
             margin-top: 2px;
         }
 
         .studio-meta-item strong {
             display: block;
-            font-size: 13px;
-            color: var(--text-dark);
-            margin-bottom: 2px;
+            font-size: 12.5px;
+            color: #4a3434;
+            margin-bottom: 1px;
         }
 
         .studio-meta-item span {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-light);
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         .studio-chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 6px;
+            gap: 6px;
+            margin-top: 4px;
         }
 
         .studio-chip {
-            background: #fdf5f6;
-            color: var(--text-dark);
-            font-size: 11.5px;
-            padding: 4px 10px;
-            border-radius: 8px;
-            border: 1px solid rgba(216, 154, 154, 0.25);
+            background: #f7e2e4;
+            color: #553e3e;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid #ebd0d3;
             display: inline-flex;
             align-items: center;
             gap: 5px;
         }
 
         .studio-chip i {
-            color: var(--accent-pink);
+            color: #b37b7b;
         }
 
         .studio-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 8px;
         }
 
         .btn-gmaps-direct {
-            background: var(--dark-pink);
+            background: #927979;
             color: #fff;
-            padding: 12px 22px;
-            border-radius: 30px;
-            font-size: 13px;
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(146, 121, 121, 0.25);
+            box-shadow: 0 4px 10px rgba(146, 121, 121, 0.2);
         }
 
         .btn-gmaps-direct:hover {
             background: #7d6363;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(146, 121, 121, 0.35);
+            box-shadow: 0 6px 14px rgba(146, 121, 121, 0.3);
         }
 
         .btn-studio-booking {
             background: transparent;
-            color: var(--text-dark);
-            border: 1.5px solid var(--accent-pink);
-            padding: 12px 22px;
-            border-radius: 30px;
-            font-size: 13px;
+            color: #4a3434;
+            border: 1.5px solid #b37b7b;
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
@@ -1219,39 +1285,41 @@
         }
 
         .btn-studio-booking:hover {
-            background: var(--accent-pink);
+            background: #b37b7b;
             color: #fff;
             transform: translateY(-2px);
         }
 
         .studio-map-card {
-            background: var(--white);
-            border-radius: 24px;
+            background: #fff6f7;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(158, 107, 107, 0.1);
-            border: 1px solid var(--primary-pink);
+            box-shadow: 0 6px 20px rgba(158, 107, 107, 0.05);
+            border: 1.5px solid #e5c3c6;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
         .map-card-header {
-            padding: 14px 20px;
-            background: #fff;
+            padding: 10px 16px;
+            background: #fdf0f1;
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 1px solid #f3e6e6;
-            font-size: 12px;
+            border-bottom: 1.5px solid #e5c3c6;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--text-dark);
+            color: #4a3434;
             letter-spacing: 0.5px;
+            flex-shrink: 0;
         }
 
         .map-expand-btn {
             margin-left: auto;
-            color: var(--accent-pink);
+            color: #b37b7b;
             text-decoration: none;
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
@@ -1259,14 +1327,16 @@
         }
 
         .map-expand-btn:hover {
-            color: var(--dark-pink);
+            color: #927979;
             text-decoration: underline;
         }
 
         .map-iframe-wrapper {
             position: relative;
             flex: 1;
-            min-height: 380px;
+            width: 100%;
+            min-height: 320px;
+            height: auto;
         }
 
         .map-iframe-wrapper iframe {
@@ -1275,43 +1345,44 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
+            display: block;
         }
 
         .map-card-footer {
-            padding: 12px 20px;
-            background: #faf4f5;
+            padding: 10px 20px;
+            background: #fdf0f1;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-dark);
-            border-top: 1px solid #f3e6e6;
+            font-size: 11.5px;
+            color: #4a3434;
+            border-top: 1.5px solid #e5c3c6;
+            flex-shrink: 0;
         }
 
         .zone-tag {
             background: #eafaf1;
             color: #27ae60;
             font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10.5px;
         }
 
         @media (max-width: 900px) {
             .artist-section {
                 padding-bottom: 40px;
             }
-            .artist-studio-divider svg {
-                height: 40px;
-            }
             .studio-section {
-                padding-top: 50px;
+                padding: 40px 20px;
             }
             .studio-content-grid {
                 grid-template-columns: 1fr;
             }
             .map-iframe-wrapper {
-                min-height: 320px;
+                min-height: 280px;
+                height: 280px;
             }
             .map-card-footer {
                 flex-direction: column;
@@ -1319,6 +1390,12 @@
                 align-items: flex-start;
             }
         }
+            .map-card-footer {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+        
 
         /* --- TESTIMONIALS VERIFIED ARCHIVE & AGGREGATE STYLES --- */
         .testi-card-top-row {
@@ -1349,16 +1426,16 @@
 
         .testi-aggregate-container {
             max-width: 720px;
-            margin: 0 auto 36px auto;
+            margin: 0 auto 28px auto;
             background: #ffffff;
             border: 1.5px solid #f2d8dc;
             border-radius: 20px;
-            padding: 20px 32px;
-            box-shadow: 0 8px 25px rgba(216, 154, 154, 0.12);
+            padding: 16px 26px;
+            box-shadow: 0 6px 20px rgba(216, 154, 154, 0.1);
             display: flex;
             align-items: center;
             justify-content: space-around;
-            gap: 24px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
@@ -1863,13 +1940,6 @@
     <!-- OUR SERVICE (UTUH DAN RAPI) -->
     <section id="service" class="services">
         
-        <!-- PEMBATAS ATAS -->
-        <div class="wave-divider wave-divider-top">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
-        </div>
-
         <!-- Header Layanan -->
         <div class="services-header">
             <div class="services-header-left">
@@ -1958,13 +2028,6 @@
 
         </div>
 
-        <!-- PEMBATAS BAWAH -->
-        <div class="wave-divider wave-divider-bottom">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
-        </div>
-
     </section>
 
     <!-- MEET OUR ARTIST -->
@@ -2000,6 +2063,28 @@
                     </div>
                 </div>
 
+                <!-- 3 Portofolio Terbaik Nadine -->
+                <div class="artist-portfolio-mini">
+                    <div class="artist-portfolio-header">
+                        <span class="portfolio-mini-title"><i class="fa-solid fa-wand-magic-sparkles"></i> 3 Portofolio Terbaik</span>
+                        <a href="Portfolio.html" class="portfolio-mini-more">Lihat Galeri &rarr;</a>
+                    </div>
+                    <div class="artist-portfolio-grid" id="nadinePortfolioGrid">
+                        <div class="portfolio-thumb-card" title="Radiant Akad Bridal">
+                            <img src="img/Portfolio-wedding1-after.png" alt="Radiant Akad Bridal">
+                            <span class="thumb-caption">Akad Bridal</span>
+                        </div>
+                        <div class="portfolio-thumb-card" title="Soft Glam Reception">
+                            <img src="img/Portfolio-wedding2-after.png" alt="Soft Glam Reception">
+                            <span class="thumb-caption">Soft Glam</span>
+                        </div>
+                        <div class="portfolio-thumb-card" title="Flawless Glass Skin">
+                            <img src="img/Portfolio-wedding3-after.png" alt="Flawless Glass Skin">
+                            <span class="thumb-caption">Glass Skin</span>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="booking.html" class="artist-btn">Select Artist & Book</a>
             </div>
         </div>
@@ -2007,30 +2092,6 @@
             <a href="staffmua.html" class="btn-outline">See All Artists</a>
         </div>
     </section>
-
-    <!-- PEMBATAS VISUAL ELEGAN: PINK LINE & CURVED WAVE DIVIDER (MEET OUR MUA -> STUDIO ATELIER) -->
-    <div class="artist-studio-divider" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <defs>
-                <linearGradient id="pinkWaveFill" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#f8dede" stop-opacity="0.85" />
-                    <stop offset="45%" stop-color="#fae7e8" stop-opacity="0.9" />
-                    <stop offset="100%" stop-color="#fff1f2" stop-opacity="1" />
-                </linearGradient>
-                <linearGradient id="pinkWaveLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="var(--accent-pink)" stop-opacity="0.15" />
-                    <stop offset="20%" stop-color="var(--accent-pink)" stop-opacity="0.75" />
-                    <stop offset="50%" stop-color="var(--dark-pink)" stop-opacity="0.95" />
-                    <stop offset="80%" stop-color="var(--accent-pink)" stop-opacity="0.75" />
-                    <stop offset="100%" stop-color="var(--accent-pink)" stop-opacity="0.15" />
-                </linearGradient>
-            </defs>
-            <!-- Gelombang Lembut Berisi Soft Blush Pink -->
-            <path d="M0,27.35A600.21,600.21,0,0,0,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3L1200,120L0,120Z" fill="url(#pinkWaveFill)"></path>
-            <!-- Garis Lengkung Pink Berkelas (Pink Line Accent) -->
-            <path d="M0,27.35A600.21,600.21,0,0,0,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3" fill="none" stroke="url(#pinkWaveLine)" stroke-width="2.5" stroke-linecap="round"></path>
-        </svg>
-    </div>
 
     <!-- SECTION STUDIO ATELIER & INTERACTIVE GOOGLE MAPS -->
     <section id="studio-location" class="studio-section">
@@ -2120,7 +2181,6 @@
                     </div>
                     <div class="map-card-footer">
                         <span><i class="fa-solid fa-car"></i> Akses mudah & strategis di pusat Kota Malang</span>
-                        <span class="zone-tag">Zona 1: Bebas Biaya Transport (Rp 0)</span>
                     </div>
                 </div>
             </div>
@@ -2814,14 +2874,86 @@
                 renderCarouselReviews(reviews);
             }
 
-            // Jalankan inisialisasi etalase ulasan
+            // --- SINKRONISASI OTOMATIS PROFIL & PORTOFOLIO NADINE DARI chira_staff_profiles ---
+            function syncNadineProfile() {
+                try {
+                    const raw = localStorage.getItem("chira_staff_profiles");
+                    if (!raw) return;
+                    const profiles = JSON.parse(raw);
+                    if (!Array.isArray(profiles)) return;
+                    const nadine = profiles.find(p => p.id === "nadine" || (p.nama && p.nama.toLowerCase().includes("nadine")));
+                    if (!nadine) return;
+
+                    // Foto Profil
+                    const nadineImg = document.querySelector("#artist .artist-image img");
+                    if (nadineImg && nadine.fotoProfil) {
+                        nadineImg.src = nadine.fotoProfil;
+                    }
+
+                    // Bio
+                    const nadineBio = document.querySelector("#artist .artist-bio");
+                    if (nadineBio && nadine.bio) {
+                        nadineBio.textContent = nadine.bio;
+                    }
+
+                    // Spesialisasi
+                    const nadineTitle = document.querySelector("#artist .artist-title");
+                    if (nadineTitle && nadine.spesialisasi) {
+                        nadineTitle.textContent = nadine.spesialisasi;
+                    }
+
+                    // Statistik jika tersedia
+                    const statItems = document.querySelectorAll("#artist .artist-stats .stat-item");
+                    if (statItems && statItems.length >= 3) {
+                        if (nadine.pengalamanTahun) {
+                            const h4 = statItems[0].querySelector("h4");
+                            if (h4) h4.textContent = nadine.pengalamanTahun + "+";
+                        }
+                        if (nadine.baseKlien) {
+                            const h4 = statItems[1].querySelector("h4");
+                            if (h4) h4.textContent = nadine.baseKlien + "+";
+                            const p = statItems[1].querySelector("p");
+                            if (p && nadine.baseKlienLabel) p.textContent = nadine.baseKlienLabel;
+                        }
+                        if (nadine.baseRating) {
+                            const h4 = statItems[2].querySelector("h4");
+                            if (h4) h4.textContent = nadine.baseRating + "%";
+                        }
+                    }
+
+                    // 3 Portofolio Terbaik
+                    if (Array.isArray(nadine.portofolioTerbaik) && nadine.portofolioTerbaik.length > 0) {
+                        const grid = document.getElementById("nadinePortfolioGrid");
+                        if (grid) {
+                            grid.innerHTML = nadine.portofolioTerbaik.slice(0, 3).map((item, idx) => {
+                                const imgUrl = item.gambar || `img/Portfolio-wedding${idx + 1}-after.png`;
+                                const title = item.judul || `Portofolio ${idx + 1}`;
+                                return `
+                                    <div class="portfolio-thumb-card" title="${title}">
+                                        <img src="${imgUrl}" alt="${title}">
+                                        <span class="thumb-caption">${title}</span>
+                                    </div>
+                                `;
+                            }).join("");
+                        }
+                    }
+                } catch (e) {
+                    console.error("Gagal sinkronisasi profil Nadine di index.html:", e);
+                }
+            }
+
+            // Jalankan inisialisasi etalase ulasan & profil artist
             loadAndRenderAllReviews();
             setupModalArchiveEvents();
+            syncNadineProfile();
 
-            // Dengarkan perubahan localStorage dari tab lain (misal pesanan-saya.html)
+            // Dengarkan perubahan localStorage dari tab lain (misal admin-dashboard.html atau pesanan-saya.html)
             window.addEventListener("storage", (e) => {
                 if (e.key === REVIEWS_KEY || !e.key) {
                     loadAndRenderAllReviews();
+                }
+                if (e.key === "chira_staff_profiles" || !e.key) {
+                    syncNadineProfile();
                 }
             });
 
@@ -2834,7 +2966,6 @@
                 }, 100);
             });
         });
-    </script>
     </script>
 
     <!-- MODAL ARSIP SEMUA ULASAN PELANGGAN TERVERIFIKASI -->
