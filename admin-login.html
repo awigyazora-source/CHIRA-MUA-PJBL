@@ -742,7 +742,7 @@
                         type="email"
                         id="adminEmail"
                         name="email"
-                        placeholder="contoh: aurora@chiramua.com"
+                        placeholder="contoh: awigya@chiramua.com atau aurora@chiramua.com"
                         aria-label="Email Admin"
                         required
                         autocomplete="email"
@@ -767,7 +767,7 @@
                         <input type="checkbox" name="remember" id="rememberMe">
                         <span>Ingat Perangkat Ini</span>
                     </label>
-                    <a href="#" class="forgot-link" onclick="alert('Untuk reset akun Admin/Artist, silakan hubungi Lead MUA / Super Admin (Nadine Queen Reina).'); return false;">Lupa Sandi?</a>
+                    <a href="#" class="forgot-link" onclick="alert('Untuk reset akun Admin/Artist, silakan hubungi Super Admin / Owner (Awigya Zora).'); return false;">Lupa Sandi?</a>
                 </div>
 
                 <button type="submit" class="login-button" id="submitLoginBtn">
@@ -846,10 +846,10 @@
 
             <!-- INFORMASI ARTIST YANG DIOTENTIKASI -->
             <div class="admin-auth-info">
-                <div class="admin-avatar" id="authAvatar">NQ</div>
+                <div class="admin-avatar" id="authAvatar">AZ</div>
                 <div class="admin-text-details">
-                    <div class="name" id="authArtistName">Nadine Queen Reina</div>
-                    <div class="role" id="authArtistRole">Lead MUA / Super Admin</div>
+                    <div class="name" id="authArtistName">Awigya Zora</div>
+                    <div class="role" id="authArtistRole">Super Admin / Owner</div>
                 </div>
             </div>
 
@@ -916,14 +916,22 @@
         // 1. MASTER STUDIO PIN (6-Digit)
         const MASTER_STUDIO_PIN = "889900";
 
-        // 2. WHITELIST 6 AKUN RESMI MUA ARTIST & ADMIN DARI @staffmua.html
+        // 2. WHITELIST AKUN RESMI SUPER ADMIN / OWNER & 6 STAFF MUA ARTIST
         const ADMIN_WHITELIST = [
+            {
+                email: "awigya@chiramua.com",
+                googleEmail: "awigya.owner@gmail.com",
+                nama: "Awigya Zora",
+                inisial: "AZ",
+                role: "Super Admin / Owner",
+                personalPin: "998877"
+            },
             {
                 email: "nadine@chiramua.com",
                 googleEmail: "nadine.mua@gmail.com",
                 nama: "Nadine Queen Reina",
                 inisial: "NQ",
-                role: "Lead MUA / Super Admin",
+                role: "Senior Bridal MUA",
                 personalPin: "112233"
             },
             {

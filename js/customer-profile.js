@@ -230,14 +230,6 @@
                         <i class="fa-solid fa-gauge-high"></i>
                         <span>Kembali ke Admin Dashboard</span>
                     </a>
-                    <a href="booking.html" class="dropdown-item">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        <span>Formulir Pemesanan</span>
-                    </a>
-                    <a href="pesanan-saya.html" class="dropdown-item">
-                        <i class="fa-solid fa-receipt"></i>
-                        <span>Pesanan Saya</span>
-                    </a>
                     <a href="staffmua.html" class="dropdown-item">
                         <i class="fa-solid fa-users"></i>
                         <span>Lihat Profil Tim MUA</span>
@@ -615,11 +607,82 @@
         }
     }
 
+    // Helper Indikator Halaman Aktif di Navbar Otomatis
+    function highlightActiveNavLink() {
+        const navLinks = document.querySelectorAll(".nav-links li a, .nav-links a");
+        if (!navLinks || navLinks.length === 0) return;
+
+        const currentPath = window.location.pathname.toLowerCase();
+        let filename = currentPath.substring(currentPath.lastIndexOf("/") + 1).toLowerCase();
+        if (!filename || filename === "" || filename === "chira-mua-pjbl") {
+            filename = "index.html";
+        }
+
+        navLinks.forEach(link => {
+            const href = (link.getAttribute("href") || "").toLowerCase();
+            if (!href || href === "#" || link.classList.contains("nav-btn") || (link.closest && link.closest("#nav-login-item"))) return;
+
+            let isMatch = false;
+
+            if (filename === "index.html") {
+                if (href === "#home" || href === "index.html" || href === "index.html#home") {
+                    isMatch = true;
+                }
+            } else if (filename === "portfolio.html") {
+                if (href.includes("portfolio.html")) isMatch = true;
+            } else if (filename === "booking.html") {
+                if (href.includes("booking.html")) isMatch = true;
+            } else if (filename === "staffmua.html") {
+                if (href.includes("staffmua.html")) isMatch = true;
+            }
+
+            if (isMatch) {
+                link.classList.add("active");
+            } else if (
+                href.includes("portfolio.html") || 
+                href.includes("booking.html") || 
+                href.includes("staffmua.html") || 
+                href === "#home" || 
+                href === "index.html" || 
+                href === "index.html#home"
+            ) {
+                link.classList.remove("active");
+            }
+        });
+    }
+
+    // Pencegatan Global: Blokir Tautan & Tombol Booking untuk Akun Admin / Staff MUA
+    function setupAdminBookingBlocker() {
+        document.addEventListener("click", function (e) {
+            const adminSession = getAdminSession();
+            if (!adminSession || !adminSession.isAdmin) return;
+
+            const target = e.target.closest("a, button, [onclick]");
+            if (!target) return;
+
+            const href = (target.getAttribute("href") || "").toLowerCase();
+            const onclickAttr = (target.getAttribute("onclick") || "").toLowerCase();
+
+            // Deteksi apakah mengarah ke halaman booking.html
+            const isBookingTarget = href.includes("booking.html") || 
+                                   onclickAttr.includes("booking.html");
+
+            if (isBookingTarget) {
+                e.preventDefault();
+                e.stopPropagation();
+                alert("Akses Ditolak: Akun Admin / Staff MUA tidak diperbolehkan membuat pesanan. Silakan logout dan gunakan akun Buyer/Pelanggan jika ingin memesan layanan.");
+                return false;
+            }
+        }, true);
+    }
+
     // Inisialisasi Saat DOM Siap
     function init() {
         renderNavbarProfile();
         ensureProfileModalMarkup();
         autoFillBookingForm();
+        highlightActiveNavLink();
+        setupAdminBookingBlocker();
     }
 
     if (document.readyState === "loading") {

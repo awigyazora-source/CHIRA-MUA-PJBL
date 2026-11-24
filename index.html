@@ -98,8 +98,15 @@
             transition: color 0.3s;
         }
 
-        .nav-links li a:hover {
-            color: var(--accent-pink);
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #d8738a;
+        }
+
+        .nav-links li a.active {
+            font-weight: 700;
+            border-bottom: 2px solid #d8738a;
+            padding-bottom: 4px;
         }
 
         .nav-btn {
@@ -1897,7 +1904,7 @@
             <img src="img/CHIRA_LOGO-removebg-preview.png" alt="Chira Make Up Logo">
         </div>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
+            <li><a href="#home" class="active">Home</a></li>
             <li><a href="#service">Service</a></li>
             <li><a href="Portfolio.html">Portfolio</a></li>
             <li><a href="booking.html">Booking</a></li>

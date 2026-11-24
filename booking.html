@@ -20,17 +20,22 @@
     <!-- SCRIPT PROTEKSI LOGIN (Eksekusi seawal mungkin) -->
     <script>
         (function() {
-            const loginStatus = localStorage.getItem("chira_login_status");
-            let hasAdminSession = false;
+            // 1. Cek sesi admin aktif - blokir pembuatan pesanan oleh akun Admin / Staff MUA
             try {
                 const adminRaw = localStorage.getItem("chira_admin_session");
                 if (adminRaw) {
                     const parsed = JSON.parse(adminRaw);
-                    if (parsed && parsed.isAdmin) hasAdminSession = true;
+                    if (parsed && parsed.isAdmin) {
+                        alert("Akses Ditolak: Akun Admin / Staff MUA tidak diperbolehkan membuat pesanan. Silakan logout dan gunakan akun Buyer/Pelanggan jika ingin memesan layanan.");
+                        window.location.replace("admin-dashboard.html");
+                        return;
+                    }
                 }
             } catch (e) {}
 
-            if (loginStatus !== "true" && !hasAdminSession) {
+            // 2. Cek status login pelanggan
+            const loginStatus = localStorage.getItem("chira_login_status");
+            if (loginStatus !== "true") {
                 alert("Akses Terbatas! Silakan login terlebih dahulu untuk melakukan pemesanan.");
                 window.location.replace("login.html");
             }
@@ -125,7 +130,13 @@
 
         .nav-links li a:hover,
         .nav-links li a.active {
-            color: var(--accent-pink);
+            color: #d8738a;
+        }
+
+        .nav-links li a.active {
+            font-weight: 700;
+            border-bottom: 2px solid #d8738a;
+            padding-bottom: 4px;
         }
 
         .nav-btn {
@@ -3009,6 +3020,19 @@
 
         // --- 5. MODAL QRIS & SIMULASI TRANSAKSI ---
         function handleProceedPayment() {
+            // Lapisan Proteksi Ganda: Blokir submit pesanan oleh akun Admin / Staff MUA
+            try {
+                const adminRaw = localStorage.getItem("chira_admin_session");
+                if (adminRaw) {
+                    const parsed = JSON.parse(adminRaw);
+                    if (parsed && parsed.isAdmin) {
+                        alert("Akses Ditolak: Akun Admin / Staff MUA tidak diperbolehkan membuat pesanan. Silakan logout dan gunakan akun Buyer/Pelanggan jika ingin memesan layanan.");
+                        window.location.replace("admin-dashboard.html");
+                        return;
+                    }
+                }
+            } catch (e) {}
+
             // Validasi Input
             const custName = document.getElementById("custName").value.trim();
             const custPhone = document.getElementById("custPhone").value.trim();

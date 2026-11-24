@@ -579,7 +579,8 @@
 }
 
 /* ADMIN DROPDOWN HEADER */
-.dropdown-header.admin-header {
+.dropdown-header.admin-header,
+.dropdown-admin-header {
     background: linear-gradient(135deg, #fff2f2 0%, #fffbfb 100%);
     border-bottom: 1px solid #ebd4cf;
     padding: 12px 18px;
@@ -594,7 +595,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.7px;
-    color: #ffffff;
+    color: #ffffff !important;
     background: linear-gradient(135deg, #d89a9a, #927979);
     padding: 3px 9px;
     border-radius: 12px;
@@ -603,28 +604,44 @@
     box-shadow: 0 2px 5px rgba(146, 121, 121, 0.2);
 }
 
-.dropdown-header.admin-header strong {
+.admin-badge-indicator i,
+.admin-badge-indicator span,
+.dropdown-header.admin-header .admin-badge-indicator,
+.dropdown-header.admin-header .admin-badge-indicator i,
+.dropdown-header.admin-header .admin-badge-indicator span,
+.dropdown-admin-header .admin-badge-indicator,
+.dropdown-admin-header .admin-badge-indicator i,
+.dropdown-admin-header .admin-badge-indicator span {
+    color: #ffffff !important;
+}
+
+.dropdown-header.admin-header strong,
+.dropdown-admin-header strong {
     font-size: 13.5px;
-    color: #332222;
+    color: #000000 !important;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.admin-role-badge-text {
+.admin-role-badge-text,
+.dropdown-header.admin-header .admin-role-badge-text,
+.dropdown-admin-header .admin-role-badge-text {
     font-size: 11px;
     font-weight: 600;
-    color: #927979;
+    color: #000000 !important;
     margin-top: 2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.admin-email-text {
+.admin-email-text,
+.dropdown-header.admin-header .admin-email-text,
+.dropdown-admin-header .admin-email-text {
     font-size: 10.5px;
-    color: #7a6666;
+    color: #000000 !important;
     margin-top: 1px;
     white-space: nowrap;
     overflow: hidden;

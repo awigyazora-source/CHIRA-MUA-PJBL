@@ -55,7 +55,12 @@
             font-size: 14px; font-weight: 500; color: var(--text-dark);
             text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;
         }
-        .nav-links li a:hover, .nav-links li a.active { color: var(--accent-pink); }
+        .nav-links li a:hover, .nav-links li a.active { color: #d8738a; }
+        .nav-links li a.active {
+            font-weight: 700;
+            border-bottom: 2px solid #d8738a;
+            padding-bottom: 4px;
+        }
         .nav-btn {
             background-color: var(--text-dark); color: var(--white) !important;
             padding: 10px 25px; border-radius: 20px; transition: background 0.3s, transform 0.2s;

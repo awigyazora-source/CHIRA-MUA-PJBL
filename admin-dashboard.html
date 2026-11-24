@@ -3487,11 +3487,11 @@
                     <!-- DROPDOWN PROFIL ADMIN DENGAN 'KELOLA PROFIL SAYA' & LOGOUT -->
                     <div class="admin-profile-dropdown-wrap" id="adminProfileDropdownWrap">
                         <button type="button" class="admin-profile-trigger" id="adminProfileTrigger" aria-expanded="false" title="Menu Akun Profil Saya">
-                            <div class="artist-avatar-circle" id="topAdminInitials">NQ</div>
+                            <div class="artist-avatar-circle" id="topAdminInitials">AZ</div>
                             <div class="artist-meta">
-                                <div class="artist-name" id="topAdminName">Nadine Queen Reina</div>
+                                <div class="artist-name" id="topAdminName">Awigya Zora</div>
                                 <div class="artist-role">
-                                    <span id="topAdminRole">Lead MUA / Super Admin</span>
+                                    <span id="topAdminRole">Super Admin / Owner</span>
                                     <span class="duty-status-badge" id="dutyToggleBtn" title="Klik untuk ubah status tugas">
                                         <i class="fa-solid fa-circle" style="font-size: 7px;"></i> <span id="dutyText">Ready on Duty</span>
                                     </span>
@@ -3503,12 +3503,12 @@
                         <div class="admin-profile-dropdown-menu" id="adminProfileDropdownMenu">
                             <div class="admin-dropdown-header">
                                 <div class="admin-dropdown-user-info">
-                                    <strong id="dropdownAdminName">Nadine Queen Reina</strong>
-                                    <small id="dropdownAdminEmail">nadine@chiramua.com</small>
-                                    <div class="dropdown-role-tag" id="dropdownAdminRoleBadge"><i class="fa-solid fa-shield-halved"></i> Super Admin</div>
+                                    <strong id="dropdownAdminName">Awigya Zora</strong>
+                                    <small id="dropdownAdminEmail">awigya@chiramua.com</small>
+                                    <div class="dropdown-role-tag" id="dropdownAdminRoleBadge"><i class="fa-solid fa-shield-halved"></i> Super Admin / Owner</div>
                                 </div>
                             </div>
-                            <div class="admin-dropdown-divider"></div>
+                            <div class="admin-dropdown-divider" id="dropdownEditProfileDivider"></div>
                             <button type="button" class="admin-dropdown-item" id="btnDropdownEditMyProfile">
                                 <i class="fa-solid fa-id-card-clip"></i>
                                 <div>
@@ -4313,7 +4313,7 @@
                 id: "nadine",
                 nama: "Nadine Queen Reina",
                 email: "nadine@chiramua.com",
-                role: "Lead MUA / Super Admin",
+                role: "Senior Bridal MUA",
                 spesialisasi: "Senior Bridal & Glow Specialist",
                 specialtyTag: "Bridal & Glow Specialist",
                 category: "bridal ready",
@@ -4465,10 +4465,15 @@
                         staffProfiles = DEFAULT_STAFF_PROFILES.map(def => {
                             const found = parsed.find(p => p.id === def.id || p.email === def.email);
                             if (!found) return JSON.parse(JSON.stringify(def));
+                            // Migrasi role Nadine dari Super Admin ke Senior Bridal MUA
+                            const cleanRole = (found.role === "Lead MUA / Super Admin" || found.id === "nadine")
+                                ? "Senior Bridal MUA"
+                                : (found.role || def.role);
                             return {
                                 ...JSON.parse(JSON.stringify(def)),
                                 isActive: found.isActive !== false,
                                 ...found,
+                                role: cleanRole,
                                 portofolioTerbaik: Array.isArray(found.portofolioTerbaik)
                                     ? found.portofolioTerbaik.slice(0, 3)
                                     : JSON.parse(JSON.stringify(def.portofolioTerbaik))
@@ -5006,7 +5011,8 @@
             if (!currentAdminSession) return false;
             const roleStr = (currentAdminSession.role || "").toLowerCase();
             const emailStr = (currentAdminSession.email || "").toLowerCase();
-            return roleStr.includes("super admin") || roleStr.includes("lead mua") || emailStr === "nadine@chiramua.com";
+            const nameStr = (currentAdminSession.namaArtist || "").toLowerCase();
+            return roleStr.includes("super admin") || roleStr.includes("owner") || emailStr === "awigya@chiramua.com" || nameStr.includes("awigya");
         }
 
         function findLoggedInStaffProfile() {
@@ -5020,17 +5026,23 @@
 
         function syncAdminHeaderProfile() {
             if (!currentAdminSession) return;
-            const matchedProfile = findLoggedInStaffProfile();
-            const name = (matchedProfile && matchedProfile.nama) || currentAdminSession.namaArtist || "Nadine Queen Reina";
-            const role = currentAdminSession.role || (matchedProfile && matchedProfile.role) || "Lead MUA / Super Admin";
-            const email = currentAdminSession.email || (matchedProfile && matchedProfile.email) || "nadine@chiramua.com";
             const isSuper = isSuperAdminSession();
+            const matchedProfile = findLoggedInStaffProfile();
+            const name = (matchedProfile && matchedProfile.nama) || currentAdminSession.namaArtist || (isSuper ? "Awigya Zora" : "Nadine Queen Reina");
+            const role = currentAdminSession.role || (matchedProfile && matchedProfile.role) || (isSuper ? "Super Admin / Owner" : "Senior Bridal MUA");
+            const email = currentAdminSession.email || (matchedProfile && matchedProfile.email) || (isSuper ? "awigya@chiramua.com" : "nadine@chiramua.com");
 
             // Topbar header
             const topName = document.getElementById("topAdminName");
             const topRole = document.getElementById("topAdminRole");
             if (topName) topName.innerText = name;
             if (topRole) topRole.innerText = role;
+
+            // Duty status badge: Sembunyikan untuk Super Admin / Owner
+            const dutyBadge = document.getElementById("dutyToggleBtn");
+            if (dutyBadge) {
+                dutyBadge.style.display = isSuper ? "none" : "inline-flex";
+            }
 
             // Dropdown profile details
             const dropName = document.getElementById("dropdownAdminName");
@@ -5040,8 +5052,18 @@
             if (dropEmail) dropEmail.innerText = email;
             if (dropRoleBadge) {
                 dropRoleBadge.innerHTML = isSuper 
-                    ? `<i class="fa-solid fa-shield-halved"></i> Super Admin` 
+                    ? `<i class="fa-solid fa-shield-halved"></i> Super Admin / Owner` 
                     : `<i class="fa-solid fa-paintbrush"></i> Staff MUA`;
+            }
+
+            // Sembunyikan 'Kelola Profil Saya' untuk Super Admin / Owner
+            const btnEditProfile = document.getElementById("btnDropdownEditMyProfile");
+            const divEditProfile = document.getElementById("dropdownEditProfileDivider");
+            if (btnEditProfile) {
+                btnEditProfile.style.display = isSuper ? "none" : "flex";
+            }
+            if (divEditProfile) {
+                divEditProfile.style.display = isSuper ? "none" : "block";
             }
 
             // Role-based Sidebar item visibility: Kelola 6 Profil MUA (HANYA SUPER ADMIN), Laporan (SEMUA AKUN)
@@ -5074,7 +5096,7 @@
             const avatarEl = document.getElementById("topAdminInitials");
             if (avatarEl) {
                 const parts = name.trim().split(" ");
-                let initials = "AD";
+                let initials = "AZ";
                 if (parts.length >= 2) initials = (parts[0][0] + parts[1][0]).toUpperCase();
                 else if (parts.length === 1) initials = parts[0].slice(0, 2).toUpperCase();
 
@@ -7620,8 +7642,8 @@
 
             // Current Admin
             const loggedStaff = findLoggedInStaffProfile();
-            const adminName = (loggedStaff && loggedStaff.nama) || (currentAdminSession && currentAdminSession.namaArtist) || "Nadine Queen Reina";
-            const adminRole = (loggedStaff && loggedStaff.role) || (currentAdminSession && currentAdminSession.role) || (isSuper ? "Lead MUA / Super Admin" : "Staff MUA");
+            const adminName = (loggedStaff && loggedStaff.nama) || (currentAdminSession && currentAdminSession.namaArtist) || (isSuper ? "Awigya Zora" : "Nadine Queen Reina");
+            const adminRole = (currentAdminSession && currentAdminSession.role) || (loggedStaff && loggedStaff.role) || (isSuper ? "Super Admin / Owner" : "Senior Bridal MUA");
 
             // Date formatting
             const now = new Date();
@@ -7778,8 +7800,8 @@
                                 CHIRA MAKE-UP<br>OFFICIAL ATELIER
                             </div>
                         </div>
-                        <div class="print-sign-name">Nadine Queen Reina</div>
-                        <div style="font-size: 9.5px; color: #666;">Lead MUA &amp; Founder CHIRA Atelier</div>
+                        <div class="print-sign-name">Awigya Zora</div>
+                        <div style="font-size: 9.5px; color: #666;">Owner &amp; Super Admin CHIRA Atelier</div>
                     </div>
                 </div>
             `;
@@ -7859,17 +7881,15 @@
                             </div>
                             ` : ''}
 
-                            ${!isNadine ? (
-                                isDeactivated ? `
-                                <button type="button" class="btn-reactivate-staff" onclick="reactivateStaff('${artist.id}')" style="background: #e8f8f5; color: #1e8449; border: 1px solid #a3e4d7; padding: 5px 12px; border-radius: 14px; font-size: 11.5px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-user-check"></i> Aktifkan Kembali
-                                </button>
-                                ` : `
-                                <button type="button" class="btn-deactivate-staff" onclick="openStaffDeactivationModal('${artist.id}')" style="background: #fdf2f2; color: #c0392b; border: 1px solid #fadbd8; padding: 5px 12px; border-radius: 14px; font-size: 11.5px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
-                                    <i class="fa-solid fa-user-xmark"></i> Nonaktifkan / Pecat
-                                </button>
-                                `
-                            ) : ''}
+                            ${isDeactivated ? `
+                            <button type="button" class="btn-reactivate-staff" onclick="reactivateStaff('${artist.id}')" style="background: #e8f8f5; color: #1e8449; border: 1px solid #a3e4d7; padding: 5px 12px; border-radius: 14px; font-size: 11.5px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                                <i class="fa-solid fa-user-check"></i> Aktifkan Kembali
+                            </button>
+                            ` : `
+                            <button type="button" class="btn-deactivate-staff" onclick="openStaffDeactivationModal('${artist.id}')" style="background: #fdf2f2; color: #c0392b; border: 1px solid #fadbd8; padding: 5px 12px; border-radius: 14px; font-size: 11.5px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                                <i class="fa-solid fa-user-xmark"></i> Nonaktifkan / Pecat
+                            </button>
+                            `}
                         </div>
 
                         <a href="https://wa.me/6288989865380" target="_blank" style="font-size: 12px; color: var(--success); text-decoration: none; font-weight: 600; margin-left: auto;">
@@ -7940,7 +7960,7 @@
             artist.isReady = false;
             artist.deactivationReason = reason;
             artist.deactivationDate = dateStr;
-            artist.deactivatedBy = "Nadine Queen Reina (Super Admin)";
+            artist.deactivatedBy = (currentAdminSession && currentAdminSession.namaArtist) ? `${currentAdminSession.namaArtist} (Super Admin / Owner)` : "Awigya Zora (Super Admin / Owner)";
 
             // Sinkronkan tag filter category agar tidak lagi 'ready'
             const catTokens = (artist.category || "").split(/\s+/).filter(Boolean).filter(c => c !== "ready");
@@ -8296,6 +8316,10 @@
                 showToast("Akses Terbatas: Menu Kelola Profil Staff hanya dapat diakses oleh Super Admin!");
                 targetId = "tabDashboard";
             }
+            if (targetId === "tabProfileEditor" && isSuper) {
+                showToast("Super Admin adalah manajemen studio dan tidak memiliki profil penata rias.");
+                targetId = "tabDashboard";
+            }
 
             const navItems = document.querySelectorAll(".sidebar-nav-item");
             navItems.forEach(t => {
@@ -8478,6 +8502,10 @@
             if (btnEditMyProfile) {
                 btnEditMyProfile.addEventListener("click", function() {
                     if (profileWrap) profileWrap.classList.remove("open");
+                    if (isSuperAdminSession()) {
+                        showToast("Super Admin adalah manajemen studio dan tidak memiliki profil penata rias.");
+                        return;
+                    }
                     const loggedStaff = findLoggedInStaffProfile();
                     const targetArtistId = loggedStaff ? loggedStaff.id : "nadine";
                     openProfileEditorFor(targetArtistId);

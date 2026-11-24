@@ -135,12 +135,25 @@
         }
 
         .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent-pink);
+        .nav-links a.active,
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #d8738a;
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
+        .nav-links a.active,
+        .nav-links li a.active {
+            font-weight: 700;
+            border-bottom: 2px solid #d8738a;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a.active::after,
+        .nav-links li a.active::after {
+            display: none;
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
         }
 
