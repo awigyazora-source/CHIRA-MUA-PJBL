@@ -405,7 +405,7 @@
         }
 
         .modal-title {
-            font-family: var(--font-serif);
+            
             font-size: 21px;
             color: var(--text-dark);
             margin-bottom: 4px;
